@@ -60,8 +60,8 @@
             <!-- 投稿した写真　-->
             <div id="userPostImg">
                 <div class="imgRow">
-                <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
-                <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
+                <a href="hostpage_ViewOnly.php" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
+                <a href="hostpage_ViewOnly.php" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
                 <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
                 </div>
 

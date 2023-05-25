@@ -74,8 +74,8 @@
             <!-- 参加者一覧　-->
             <div id="attendantImg">
                 <div class="imgRow">
-                <a href="#" class="imgBox"><img src="./image/studenticon.jpg"></a>
-                <a href="#" class="imgBox"><img src="./image/studenticon.jpg"></a>
+                <a href="userpage_ViewOnly.php" class="imgBox"><img src="./image/studenticon.jpg"></a>
+                <a href="userpage_ViewOnly.php" class="imgBox"><img src="./image/studenticon2.jpg"></a>
                 <a href="#" class="imgBox"><img src="./image/studenticon.jpg"></a>
                 </div>
 
