@@ -75,43 +75,63 @@
             <!-- イベント履歴　-->
             <div class="eventHistory">
 
-                    <div class="place-content" id="page<?= $i ?>">
+                <div class="place-content">
 
-                        <a href="event_Content.php" class="col-md-12 col-lg-10 mx-auto item-box">
-                            <div class="event-item">
-                                    <diV class="col-md-7 center-item">
-                                        <img src="./image/ResultArea1.jpeg" alt="">
+                    <a href="event_Content.php" class="col-md-12 col-lg-10 mx-auto item-box">
+                        <div class="event-item">
+                                <diV class="col-md-7 center-item">
+                                    <div class="eventControl_Img">
+                                        <img src="./image/Event1.jpeg" alt="">
+                                    </div>    
 
-                                        <div class="information">
-                                            <h3>イベント名</h3>
-                                            <p>日時</p>
-                                            <p>場所</p>
-                                            <p>テーマ</p>
+                                    <div class="information">
+
+                                        <h3>イベント名</h3>
+
+                                        <div class="EvCon_Place">
+                                            <h4>場所</h4>
+                                            <p id="#">大阪府大阪市北区OOOOOO</p>
                                         </div>
-                                    </diV>
-                            </div>
-                        </a>
 
-                    </div>
+                                        <div class="EvCon_Theme">
+                                            <h4>テーマ</h4>
+                                            <p id="#">環境</p>
+                                        </div>    
+                                    </div>
+                                </diV>
+                        </div>
+                    </a>
 
-                    <div class="place-content" id="page<?= $i ?>">
+                </div>
 
-                        <a href="event_Content.php" class="col-md-12 col-lg-10 mx-auto item-box">
-                            <div class="event-item">
-                                    <diV class="col-md-7 center-item">
-                                        <img src="./image/ResultArea1.jpeg" alt="">
+                <div class="place-content">
 
-                                        <div class="information">
-                                            <h3>イベント名</h3>
-                                            <p>日時</p>
-                                            <p>場所</p>
-                                            <p>テーマ</p>
+                    <a href="event_Content.php" class="col-md-12 col-lg-10 mx-auto item-box">
+                        <div class="event-item">
+                                <diV class="col-md-7 center-item">
+                                    <div class="eventControl_Img">
+                                        <img src="./image/Event1.jpeg" alt="">
+                                    </div>    
+
+                                    <div class="information">
+
+                                        <h3>イベント名</h3>
+
+                                        <div class="EvCon_Place">
+                                            <h4>場所</h4>
+                                            <p id="#">大阪府大阪市北区OOOOOO</p>
                                         </div>
-                                    </diV>
-                            </div>
-                        </a>
 
-                    </div>
+                                        <div class="EvCon_Theme">
+                                            <h4>テーマ</h4>
+                                            <p id="#">環境</p>
+                                        </div>    
+                                    </div>
+                                </diV>
+                        </div>
+                    </a>
+
+                </div>
 
             </div>
         </div>

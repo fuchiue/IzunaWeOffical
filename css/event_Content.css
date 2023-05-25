@@ -58,6 +58,7 @@
 #event_InfoTitle{
     display: grid;
     margin-right: 60px;
+    margin-left: 35px;
 }
 
 .EV_Small_Title{
@@ -78,8 +79,6 @@
     border-radius: 20px;
 }
 
-/*イベント詳細 CSS 終了*/
-
 
 #event_Box2{
     padding: 20px 150px;
@@ -99,3 +98,59 @@
     border-radius: 10px;
     box-shadow: 7px 5px 5px gray;
 }
+
+/*イベント詳細 CSS 終了*/
+/*-------------------------------------------------*/
+
+/* 団体アイコン＋団体紹介エリア CSS 開始 */
+
+#selfInfo_TopArea{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 55px;
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+
+#selfIcon_pic img{
+    width: 75%;
+}
+
+#redDecoBox{
+    border-left: 6px solid #DD0000;
+    height: 330px;
+    margin-right: 50px;
+    
+  }
+
+#selfInfo_Box{
+    /* padding-top: 120px; */
+}
+
+#selfInfo_Box h1{
+    font-family: 'HandWriteFont';
+    font-size: 60px;
+    padding: 10px 0px;
+}
+
+#selfInfo_title{
+    font-family: 'HandWriteFont';
+    font-size: 30px;
+}
+
+.word-break {
+    display: flex;
+  }
+  
+.word-break div {
+    margin-top: 20px;
+    /* border: 2px solid red; */
+    width: 250px;
+}
+  
+.normal p{
+    word-break: break-all;
+  }
+/* 団体アイコン＋団体紹介エリア CSS 終了*/
+/*-------------------------------------------------*/

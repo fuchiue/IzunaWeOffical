@@ -66,8 +66,32 @@
 
     </section>
 
-    <div id="joinEventBtn">
-    </div>
+    <!-- 団体アイコン＋紹介エリア -->
+    <section id="selfInfo_TopArea">
+        <!-- 写真 -->
+        <div id="selfIcon_pic">
+            <img src="./image/groupicon.jpg">
+        </div>
+
+        <!-- 分割線 -->
+        <div id="redDecoBox"></div>
+
+        <!-- 団体情報 -->
+        <div id="selfInfo_Box">
+
+            <!-- 団体名　-->
+            <h1>団体名</h1>
+
+            <!-- 団体紹介文　-->
+            <p id="selfInfo_title">団体紹介文</p>
+            <div class="word-break">
+                <div class="normal">
+                  <p>OOOOOOOOO内容OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
 
     <?php include('./Navbar/footer.php'); ?>
 
