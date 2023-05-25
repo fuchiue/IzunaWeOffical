@@ -74,8 +74,8 @@
             <!-- 参加者一覧　-->
             <div id="attendantImg">
                 <div class="imgRow">
-                <a href="#" class="imgBox"><img src="./image/studenticon.jpg"></a>
-                <a href="#" class="imgBox"><img src="./image/studenticon.jpg"></a>
+                <a href="userpage_ViewOnly.php" class="imgBox"><img src="./image/studenticon.jpg"></a>
+                <a href="userpage_ViewOnly.php" class="imgBox"><img src="./image/studenticon2.jpg"></a>
                 <a href="#" class="imgBox"><img src="./image/studenticon.jpg"></a>
                 </div>
 
@@ -174,17 +174,18 @@
 
                     <div class="place-content">
 
-                        <a href="event_Content.php" class="col-md-12 col-lg-10 mx-auto item-box">
                             <div class="event-item">
                                     <diV class="col-md-7 center-item">
                                         <div class="joinedPpl_Control_Img">
-                                            <img src="./image/studenticon.jpg" alt="">
+                                            <a href="userpage_ViewOnly.php">
+                                                <img src="./image/studenticon.jpg" alt="">
+                                            </a>
                                         </div>
 
                                         <div class="information">
                                             <h3>イベント名</h3>
                                             <p>ユーザー名</p>
-                                            <p>メールアドレス</p>
+                                            <p><a href="mailto:info&#64;example.com">info&#64;example.com</a></p>
                                             <p>質問: OOOOOですか? </p>
                                             <p>回答: OOOOOO</p>
                                         </div>
@@ -196,17 +197,18 @@
 
                     <div class="place-content">
 
-                        <a href="event_Content.php" class="col-md-12 col-lg-10 mx-auto item-box">
                             <div class="event-item">
                                     <diV class="col-md-7 center-item">
                                         <div class="joinedPpl_Control_Img">
-                                            <img src="./image/studenticon2.jpg" alt="">
+                                            <a href="userpage_ViewOnly.php">
+                                                <img src="./image/studenticon2.jpg" alt="">
+                                            </a>
                                         </div>
 
                                         <div class="information">
                                             <h3>イベント名</h3>
                                             <p>ユーザー名</p>
-                                            <p>メールアドレス</p>
+                                            <p><a href="mailto:user&#64;example.com">user&#64;example.com</a></p>
                                             <p>質問: OOOOOですか? </p>
                                             <p>回答: OOOOOO</p>
                                         </div>
