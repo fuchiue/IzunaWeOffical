@@ -70,7 +70,9 @@
     <section id="selfInfo_TopArea">
         <!-- 写真 -->
         <div id="selfIcon_pic">
-            <img src="./image/groupicon.jpg">
+            <a href="hostpage_ViewOnly.php">
+                <img src="./image/groupicon.jpg">
+            </a>
         </div>
 
         <!-- 分割線 -->
