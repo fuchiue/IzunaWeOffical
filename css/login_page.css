@@ -1,0 +1,112 @@
+/*Header画像エリア  開始*/
+
+#UL_header img{
+    width: 100%;
+    height: 300px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 50px;
+}
+  
+  /*Header画像エリア CSS 終了*/
+  /*-------------------------------------------------*/
+
+  /*ログインのタイトル CSS 開始*/
+  
+#UL_Title{
+  text-align: center;
+  margin-top: -50px;
+}
+
+#UL_Title img{
+  width: 65%;
+}
+
+/* #UL_Title h1{
+  color: #DD0000;
+  font-family: 'OutlineFont';
+  font-size: 50px;
+}
+
+#UL_Title h2{
+  color: #DD0000;
+  font-family: 'OutlineFont';
+  font-size: 30px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}   */
+
+/*ログインのタイトル CSS 終了*/
+/*-------------------------------------------------*/
+
+/*ログインの入力 CSS 開始*/
+
+#login_Area{
+  
+}
+
+.loginBox{
+  background-color: #dcdcdc;
+  margin: 30px 200px;
+  padding: 40px 126px;
+  border-radius: 20px;
+  display: grid;
+  
+}
+
+#loginMidBox{
+  padding: 0px 60px;
+}
+
+.loginSmallBox{
+  display: grid;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.loginSmallBox label{
+  font-size: 18px;
+}
+
+#loginSubmit{
+  text-align: center;
+}
+
+#loginSubmit button{
+  background-color: #DD0000;
+  padding:12px 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: none;
+  font-family: 'HandWriteFont';
+  font-size: 20px;
+  color: #ffff;
+  border-radius: 10px;
+  box-shadow: 7px 5px 5px gray;
+}
+
+.loginBox a{
+  text-align: center;
+}
+
+#user_SignUp_Btn{
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 60px;
+}
+
+#user_SignUp_Btn a{
+  background-color: orange;
+  padding:12px 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: none;
+  font-family: 'HandWriteFont';
+  font-size: 20px;
+  color: #ffff;
+  border-radius: 10px;
+  box-shadow: 7px 5px 5px gray
+}
+
+/*ログインの入力 CSS　終了*/

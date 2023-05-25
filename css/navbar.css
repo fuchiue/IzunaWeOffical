@@ -1,0 +1,131 @@
+@font-face {
+    font-family: 'HandWriteFont';
+    src: url(../font/851MkPOP_101.ttf) format('TrueType');
+}
+@font-face {
+    font-family: 'OutlineFont';
+    src: url(../font/GN-Natsu-iro-Schedule.ttf) format('TrueType');
+}
+@font-face {
+    font-family: 'KleeOneFont';
+    src: url(../font/KleeOne-Regular.ttf) format('TrueType');
+}
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+}
+
+/* NavBar CSS 開始*/
+
+*::before,
+*::after{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: white;
+}
+
+@keyframes logo_fade_in {
+    0%{
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 75%;
+    margin-right: 150px;
+    margin-top: 30px;
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: logo_fade_in 0.6s ease;
+    /* padding: 40px 110px; */
+    z-index: 10000;
+    margin-left: 150px;
+    background-color: white;
+    border-radius: 3rem;
+}
+
+header.sticky{
+padding: 10px 30px;
+background-color:#EEEEEE;
+}
+
+header.sticky ul li a{
+    color:#DD0000;
+}
+
+header.sticky .logo{
+    color:#DD0000;
+}
+
+
+header .logo{
+    position: relative;
+    font-weight: 700;
+    color: #DD0000;
+    text-decoration: none;
+    font-size: 1.8em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: logo_fade_in 0.6s ease;
+}
+
+header ul{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header ul li{
+    position: relative;
+    list-style: none;
+}
+
+header ul li a {
+    position: relative;
+    margin: 0 15px;
+    text-decoration: none;
+    color:#DD0000;
+    letter-spacing: 2px;
+    font-size: large;
+    animation: logo_fade_in 0.6s ease;
+}
+
+/* NavBar CSS 終了*/
+
+/*Footer Css 開始*/
+
+footer{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    background-color:#DD0000;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  footer a{
+    color: #ffffff;
+    margin: 10px;
+  }
+
+  footer p{
+    color: #ffffff;
+    text-align: center;
+  }
+
+/* Footer CSS 終了*/

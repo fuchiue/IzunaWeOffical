@@ -1,0 +1,114 @@
+/*Header画像エリア  開始*/
+
+#UJ_header img{
+    width: 100%;
+    height: 300px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 50px;
+}
+  
+/*Header画像エリア CSS 終了*/
+/*-------------------------------------------------*/
+
+/*イベントのタイトル CSS 開始*/
+  
+#UJ_Title{
+    display: grid;
+    text-align: center;
+}
+  
+#UJ_Title h1{
+    color: #DD0000;
+    font-family: 'HandWriteFont';
+    font-size: 50px;
+}
+  
+#UJ_Title h2{
+    color: #DD0000;
+    font-family: 'OutlineFont';
+    font-size: 30px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}  
+  
+/*イベントのタイトル CSS 終了*/
+/*-------------------------------------------------*/
+
+/*イベント情報入力エリア　CSS　開始*/
+
+#enter_InfoArea{
+    padding-bottom: 50px;
+}
+
+#enter_BigInfoBox{
+    background-color: #dcdcdc;
+    margin: 30px 200px;
+    padding: 40px 126px;
+    border-radius: 20px;
+}
+
+.enter_InfoBox{
+    display: grid;
+    padding: 10px 10px;
+}
+
+.enter_InfoBox input{
+    background-color:  #d0abab;
+    border: solid 0.5px #555555;
+}
+
+.required{
+    font-family: 'KleeOneFont';
+}
+.noteArea{
+    font-family: 'KleeOneFont';
+}
+
+/* 必須項目 */
+.required::after {
+    content: "必須";
+    color: #ffffff;
+    background: #cc0000;
+    font-size: 0.4em;
+    padding: 0.3em;
+    border-radius: 0.5em;
+    margin-left:0.3em;
+}
+
+/* 写真 */
+#upload_PhotoBox input{
+    display: none;
+}
+
+#upload_PhotoBox label{
+    height: 100px;
+    width: 150px;
+    border-radius: 6px;
+    border: dashed 1px #DD0000;
+    background-color: orange;
+}
+
+#upload_PhotoBox label:hover{
+    height: 100px;
+    width: 150px;
+    border-radius: 6px;
+    border: dashed 1px #DD0000;
+}
+
+#enter_InfoSubmit{
+    text-align: center;
+}
+
+#enter_InfoSubmit button{
+    padding: 15px 40px;
+    background-color: #ffffff;
+    border: dashed 2px #DC0000;
+    border-radius: 10px;
+    font-family: 'HandWriteFont';
+    font-size: 25px;
+    box-shadow: 7px 5px 5px gray;
+}
+
+/*イベント情報入力エリア　CSS　終了*/  

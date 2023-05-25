@@ -1,0 +1,101 @@
+/*Header画像エリア  開始*/
+
+#EV_header img{
+    width: 100%;
+    height: 300px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 50px;
+}
+
+/*Header画像エリア CSS 終了*/
+/*-------------------------------------------------*/
+
+/*イベントのタイトル ＋ 写真 CSS 開始*/
+
+#EV_Title{
+    display: grid;
+    text-align: center;
+}
+
+#EV_Title h1{
+    color: #DD0000;
+    font-family: 'HandWriteFont';
+    font-size: 50px;
+}
+
+#EV_Title h2{
+    color: #DD0000;
+    font-family: 'OutlineFont';
+    font-size: 40px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+#EV_Title img{
+    width: 50%;
+}
+
+
+/*イベントのタイトル ＋ 写真 CSS 終了*/
+/*-------------------------------------------------*/
+
+/*イベント詳細 CSS 開始*/
+
+#event_BigDetails{
+    display: grid;
+    justify-content: center;
+    margin: 30px 0 50px 0px;
+}
+
+#event_Box1{
+    display: flex;
+    margin-bottom: 20px;
+    margin-left: -150px;
+}
+
+#event_InfoTitle{
+    display: grid;
+    margin-right: 60px;
+}
+
+.EV_Small_Title{
+    margin: 20px 30px;
+}
+
+#event_SmallContent{
+    display: grid;
+}
+
+#eventName, #eventTheme,#eventTime,
+#event_Meet_Time, #eventPlace, #eventPeople,
+#eventInfo
+{
+    background-color: #cbcbcb;
+    padding: 10px 20px;
+    margin: 10px 30px;
+    border-radius: 20px;
+}
+
+/*イベント詳細 CSS 終了*/
+
+
+#event_Box2{
+    padding: 20px 150px;
+}
+
+#joinEventBtn{
+    text-align: center;
+    text-decoration: none;
+}
+
+#submitBtn{
+    background-color:orange;
+    color: #ffff;
+    font-family: 'HandWriteFont';
+    font-size: 25px;
+    padding: 15px 40px;
+    border-radius: 10px;
+    box-shadow: 7px 5px 5px gray;
+}

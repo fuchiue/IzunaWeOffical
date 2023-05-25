@@ -1,0 +1,232 @@
+/*Header画像エリア ＋ ページ名CSS 開始*/
+
+#SP_header{
+    display: flex;
+}
+
+#SP_header img{
+    width: 100%;
+    height: 300px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    z-index: 1;
+}
+
+#SP_tilte{
+    background-color: #DD0000;
+    top: 265px;
+    left:75% ;
+    padding: 20px 40px;
+    z-index: 500;
+    position: absolute;
+    text-align: center;
+    
+}
+
+#SP_tilte h1{
+    font-family: 'OutlineFont';
+    font-size: 40px;
+    color: #ffff;
+}
+
+#SP_tilte p{
+    color: #ffff;
+    font-weight: bold;
+}
+
+/*Header画像エリア ＋ ページ名CSS 終了*/
+/*-------------------------------------------------*/
+
+/*入力情報エリア　CSS　開始 */
+
+#signUp_TopArea{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 45px 0px 30px 0px;
+}
+
+/*入力情報(上部)　CSS　開始 */
+
+.required::after {
+    content: "必須";
+    color: #ffffff;
+    background: #cc0000;
+    font-size: 0.4em;
+    padding: 0.3em;
+    border-radius: 0.5em;
+    margin-left:0.3em;
+  }
+
+#upload_IconBox input{
+    display: none;
+}
+
+#upload_IconBox label{
+    height: 100px;
+    width: 150px;
+    border-radius: 6px;
+    border: dashed 1px #DD0000;
+}
+
+#upload_IconBox label:hover{
+    height: 100px;
+    width: 150px;
+    border-radius: 6px;
+    border: dashed 1px #DD0000;
+}
+
+
+#redDecoBox{
+    border-left: 6px solid #DD0000;
+    height: 315px;
+    margin-right: 50px;
+    margin-left: 50px;
+  }
+
+#signUp_TopBox {
+    margin-right: 20px;
+}
+
+
+#signUp_TopSmallArea{
+    display: flex;
+}
+
+.singlebox input{
+    background-color: #d0abab;
+    height: 25px;
+    border: solid 0.5px #555555;
+    margin: 10px 0px;
+}
+
+#genderBox{
+    padding: 10px 0px;
+}
+
+
+/*入力情報(上部)　CSS　終了 */
+/*--------------------------------*/
+
+/*入力情報(下部)　CSS　開始 */
+
+#signUp_BottomArea{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#signUp_BottomArea label{
+    padding: 10px 0px;
+    font-family: 'KleeOneFont';
+    font-size: 20px;
+}
+
+#signUp_place {
+    padding: 10px 0px;
+    font-family: 'KleeOneFont';
+    font-size: 15px;
+}
+
+#signUp_BottomArea input{
+    background-color: #d0abab;
+    height: 25px;
+    border: solid 0.5px #555555;
+}
+
+#signUp_BottomArea textarea{
+    background-color: #d0abab;  
+}
+
+#signUp_BottomBox{
+    display: flex;
+    padding: 10px 0px;
+}
+
+.signUp_BSmallBox{
+    margin-right: 30px;
+    padding-top: 10px;
+}
+
+/*参加したいカテゴリ*/
+
+select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0!important;
+    background:#cbcbcb;
+    background-image: none;
+    border-radius: 10px;
+}
+
+select::-ms-expand{
+    display: none;
+}
+
+.select{
+    position: relative;
+    display: flex;
+    width: 15em;
+    height: 3em;
+    line-height: 3;
+    margin-right: 10px;
+    background: #cbcbcb;
+    overflow: hidden;
+    border-radius: 10px
+}
+
+select{
+    flex: 1;
+    padding: 0.5em;
+    color: #555555;
+    cursor: pointer;
+    
+}
+
+.select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    cursor: pointer;
+    pointer-events: none;
+    transition: .25s all event;
+}
+
+.select:hover::after{
+    color: #555555;
+}
+
+
+/*送信ボタン*/
+#signUp_BtnArea{
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+#signUp_BtnArea button{
+padding: 15px 40px;
+background-color: #ffffff;
+border: dashed 2px #DC0000;
+border-radius: 10px;
+font-family: 'HandWriteFont';
+font-size: 25px;
+box-shadow: 7px 5px 5px gray;
+}
+
+#signUp_BtnArea button:hover{
+    background-color: #DC0000;
+    color: #ffffff;
+    border: dashed 2px #ffffff;
+}
+/*入力情報(下部)　CSS　終了 */
+
+/*入力情報エリア　CSS　終了 */
