@@ -69,56 +69,66 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="img_box">
-                            <img src="./image/works1.jpg">
-                            <div class="HP_eventDetails">
-                                <h2>イベント名</h2>
-                                <p>日時</p>
-                                <p>場所</p>
-                            </div>
+                            <a href="event_Content.php">
+                                <img src="./image/works1.jpg">
+                                <div class="HP_eventDetails">
+                                    <h2>イベント名</h2>
+                                    <p>日時</p>
+                                    <p>場所</p>
+                                </div>
+                            </a>
                         </div>
                     </div>
 
                     <div class="swiper-slide">
                         <div class="img_box">
-                            <img src="./image/works2.jpg">
-                            <div class="HP_eventDetails">
-                                <h2>イベント名</h2>
-                                <p>日時</p>
-                                <p>場所</p>
-                            </div>
+                            <a href="event_Content.php">
+                                <img src="./image/works2.jpg">
+                                <div class="HP_eventDetails">
+                                    <h2>イベント名</h2>
+                                    <p>日時</p>
+                                    <p>場所</p>
+                                </div>
+                            </a>
                         </div>
                     </div>
 
                     <div class="swiper-slide">
                         <div class="img_box">
-                            <img src="./image/works3.jpg">
-                            <div class="HP_eventDetails">
-                                <h2>イベント名</h2>
-                                <p>日時</p>
-                                <p>場所</p>
-                            </div>
+                            <a href="event_Content.php"> 
+                                <img src="./image/works3.jpg">
+                                <div class="HP_eventDetails">
+                                    <h2>イベント名</h2>
+                                    <p>日時</p>
+                                    <p>場所</p>
+                                </div>
+                            </a>
                         </div>
                     </div>
 
                     <div class="swiper-slide">
                         <div class="img_box">
-                            <img src="./image/works1.jpg">
-                            <div class="HP_eventDetails">
-                                <h2>イベント名</h2>
-                                <p>日時</p>
-                                <p>場所</p>
-                            </div>
+                            <a href="event_Content.php">
+                                <img src="./image/works1.jpg">
+                                <div class="HP_eventDetails">
+                                    <h2>イベント名</h2>
+                                    <p>日時</p>
+                                    <p>場所</p>
+                                </div>
+                            </a>
                         </div>
                     </div>
 
                     <div class="swiper-slide">
                         <div class="img_box">
-                            <img src="./image/works2.jpg">
-                            <div class="HP_eventDetails">
-                                <h2>イベント名</h2>
-                                <p>日時</p>
-                                <p>場所</p>
-                            </div>
+                            <a href="event_Content.php">
+                                <img src="./image/works2.jpg">
+                                <div class="HP_eventDetails">
+                                    <h2>イベント名</h2>
+                                    <p>日時</p>
+                                    <p>場所</p>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>

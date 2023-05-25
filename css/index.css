@@ -183,6 +183,10 @@ select {
   color: #DD0000;
 }
 
+a {
+  text-decoration: none;
+}
+
 
 /*最近イベントCSS　終了*/
 
