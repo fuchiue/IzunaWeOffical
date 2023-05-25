@@ -64,67 +64,182 @@
     <section class="place-content-wrap">
 
         <div class="place-content" id="page<?= $i ?>">
-
             <a href="event_Content.php" class="col-md-12 col-lg-10 mx-auto item-box">
                 <div class="event-item">
                         <diV class="col-md-7 center-item">
-                            <img src="./image/ResultArea1.jpeg" alt="">
+                            <div class="eventControl_Img">
+                                <img src="./image/ResultArea1.jpeg" alt="" >
+                            </div>
 
                             <div class="information">
+                                <p id="event01_Status">募集中</p>
                                 <h3>イベント名</h3>
-                                <p>日時</p>
-                                <p>場所</p>
-                                <p>テーマ</p>
+                                <div class="EvCon_Date">
+                                    <h4>日時</h4>
+                                    <p id="#">2023年00月00日　12:00時</p>
+                                </div>
+                                <div class="EvCon_Place">
+                                    <h4>場所</h4>
+                                    <p id="#">大阪府大阪市北区OOOOOO</p>
+                                </div>
+                                <div class="EvCon_Theme">
+                                    <h4>テーマ</h4>
+                                    <p id="#">環境</p>
+                                </div>    
                             </div>
                         </diV>
                 </div>
             </a>
-
         </div>
-
         <div class="place-content" id="page<?= $i ?>">
-
             <a href="event_Content.php" class="col-md-12 col-lg-10 mx-auto item-box">
                 <div class="event-item">
                         <diV class="col-md-7 center-item">
-                            <img src="./image/ResultArea1.jpeg" alt="">
+                            <div class="eventControl_Img">
+                                <img src="./image/ResultArea1.jpeg" alt="" >
+                            </div>
 
                             <div class="information">
+                                <p id="event01_Status">募集中</p>
                                 <h3>イベント名</h3>
-                                <p>日時</p>
-                                <p>場所</p>
-                                <p>テーマ</p>
+                                <div class="EvCon_Date">
+                                    <h4>日時</h4>
+                                    <p id="#">2023年00月00日　12:00時</p>
+                                </div>
+                                <div class="EvCon_Place">
+                                    <h4>場所</h4>
+                                    <p id="#">大阪府大阪市北区OOOOOO</p>
+                                </div>
+                                <div class="EvCon_Theme">
+                                    <h4>テーマ</h4>
+                                    <p id="#">環境</p>
+                                </div>    
                             </div>
                         </diV>
                 </div>
             </a>
-
         </div>
-
         <div class="place-content" id="page<?= $i ?>">
-
             <a href="event_Content.php" class="col-md-12 col-lg-10 mx-auto item-box">
                 <div class="event-item">
                         <diV class="col-md-7 center-item">
-                            <img src="./image/ResultArea1.jpeg" alt="">
+                            <div class="eventControl_Img">
+                                <img src="./image/ResultArea1.jpeg" alt="" >
+                            </div>
 
                             <div class="information">
+                                <p id="event01_Status">募集中</p>
                                 <h3>イベント名</h3>
-                                <p>日時</p>
-                                <p>場所</p>
-                                <p>テーマ</p>
+                                <div class="EvCon_Date">
+                                    <h4>日時</h4>
+                                    <p id="#">2023年00月00日　12:00時</p>
+                                </div>
+                                <div class="EvCon_Place">
+                                    <h4>場所</h4>
+                                    <p id="#">大阪府大阪市北区OOOOOO</p>
+                                </div>
+                                <div class="EvCon_Theme">
+                                    <h4>テーマ</h4>
+                                    <p id="#">環境</p>
+                                </div>    
                             </div>
                         </diV>
                 </div>
             </a>
-
         </div>
+        <div class="place-content" id="page<?= $i ?>">
+            <a href="event_Content.php" class="col-md-12 col-lg-10 mx-auto item-box">
+                <div class="event-item">
+                        <diV class="col-md-7 center-item">
+                            <div class="eventControl_Img">
+                                <img src="./image/ResultArea1.jpeg" alt="" >
+                            </div>
 
+                            <div class="information">
+                                <p id="event01_Status">募集中</p>
+                                <h3>イベント名</h3>
+                                <div class="EvCon_Date">
+                                    <h4>日時</h4>
+                                    <p id="#">2023年00月00日　12:00時</p>
+                                </div>
+                                <div class="EvCon_Place">
+                                    <h4>場所</h4>
+                                    <p id="#">大阪府大阪市北区OOOOOO</p>
+                                </div>
+                                <div class="EvCon_Theme">
+                                    <h4>テーマ</h4>
+                                    <p id="#">環境</p>
+                                </div>    
+                            </div>
+                        </diV>
+                </div>
+            </a>
+        </div>
+        <div class="place-content" id="page<?= $i ?>">
+            <a href="event_Content.php" class="col-md-12 col-lg-10 mx-auto item-box">
+                <div class="event-item">
+                        <diV class="col-md-7 center-item">
+                            <div class="eventControl_Img">
+                                <img src="./image/ResultArea1.jpeg" alt="" >
+                            </div>
+
+                            <div class="information">
+                                <p id="event01_Status">募集中</p>
+                                <h3>イベント名</h3>
+                                <div class="EvCon_Date">
+                                    <h4>日時</h4>
+                                    <p id="#">2023年00月00日　12:00時</p>
+                                </div>
+                                <div class="EvCon_Place">
+                                    <h4>場所</h4>
+                                    <p id="#">大阪府大阪市北区OOOOOO</p>
+                                </div>
+                                <div class="EvCon_Theme">
+                                    <h4>テーマ</h4>
+                                    <p id="#">環境</p>
+                                </div>    
+                            </div>
+                        </diV>
+                </div>
+            </a>
+        </div>
+        <div class="place-content" id="page<?= $i ?>">
+            <a href="event_Content.php" class="col-md-12 col-lg-10 mx-auto item-box">
+                <div class="event-item">
+                        <diV class="col-md-7 center-item">
+                            <div class="eventControl_Img">
+                                <img src="./image/ResultArea1.jpeg" alt="" >
+                            </div>
+
+                            <div class="information">
+                                <p id="event01_Status">募集中</p>
+                                <h3>イベント名</h3>
+                                <div class="EvCon_Date">
+                                    <h4>日時</h4>
+                                    <p id="#">2023年00月00日　12:00時</p>
+                                </div>
+                                <div class="EvCon_Place">
+                                    <h4>場所</h4>
+                                    <p id="#">大阪府大阪市北区OOOOOO</p>
+                                </div>
+                                <div class="EvCon_Theme">
+                                    <h4>テーマ</h4>
+                                    <p id="#">環境</p>
+                                </div>    
+                            </div>
+                        </diV>
+                </div>
+            </a>
+        </div>
+        
 </section>
     
     <?php include('./Navbar/footer.php'); ?>
 
-    <a></a> <!-- To Top Apple Button-->
+    <!-- To Top Apple Button-->
+    <div id="pagetop" >
+            <a href="#"><img src="./image/HT_Fox3 (Small Search).PNG"></a>
+    </div>
     
     <script src="./js/navbar.js"></script>
 </body>
