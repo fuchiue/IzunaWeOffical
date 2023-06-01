@@ -240,8 +240,8 @@ select {
 #pagetop {
     position: fixed;
     right: 30px;
-    bottom: 0px;
+    bottom: -10px;
     cursor: pointer;
-    z-index: 10;
+    z-index: 1000000;
 }
 /*　検索結果の一覧表CSS　終了*/
