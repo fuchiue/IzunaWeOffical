@@ -32,16 +32,16 @@
             <!-- 入力情報(上部) -->
             <div id="signUp_TopArea">
                 <!-- 写真 -->
-                <div id="upload_IconBox">
-                    <input type="file" id="file">
-                    <label for="file">Upload File</label>
+                <div class="drag-area">
+                    <button>ファイルを選択</button>
+                    <input type="file" hidden>
                 </div>
 
                 <!-- 分割線 -->
                 <div id="redDecoBox"></div>
 
                 <!-- 個人情報 -->
-                <div id="-signUp_TopSmallArea">
+                <div id="signUp_TopSmallArea">
                     <!-- 一行目の情報 -->
                     <div id="signUp_TopBox">
                         <label class="required">団体名：</label>
@@ -50,23 +50,23 @@
                     <!-- 一行目の情報終わり -->
 
                     <!-- 二行目の情報 -->
-                    <div id="second">
+                    <div id="tel_mail">
                         <!-- 左側 -->
-                        <div>
-                            <div>
+                        
+                            <div id="telArea">
                                 <label class="required">電話番号：</label>
                                 <div><input type="text" required></div>
                             </div>
-                        </div>
+                        
                         <!-- 左側終わり -->
 
                         <!-- 右側 -->
-                        <div>
-                            <div>
+                        
+                            <div id="mailArea">
                                 <label class="required">メールアドレス：</label>
                                 <div><input type="text" required></div>
                             </div>
-                        </div>
+                        
                         <!-- 右側終わり -->
                     </div>
                     <!-- 二行目の情報終わり -->
@@ -74,11 +74,11 @@
                     <!-- 三行目の情報 -->
                     <div id="signUp_place">
                         <label class="required">ご住所：</label>
-                        <div>
-                        都道府県<input type="text" style="width:100px" required>
-                        　市/区<input type="text" style="width:100px" required>
+                        <div id="placeBox1">
+                        都道府県：<input type="text" style="width:100px" required>
+                        　市/区：<input type="text" style="width:100px" required>
                         </div>
-                        <div>丁目/番号<input type="text" style="width:370px" required></div>
+                        <div id="placeBox2">丁目/番号：<input type="text" style="width:370px" required></div>
                     </div>
                     <!-- 三行目の情報終わり -->
                 </div>
@@ -93,16 +93,19 @@
                 </div>
 
                 <label class="required" class="signUp_BSmallBox">イベント募集のカテゴリー：</label>
-                <div>
-                    <select name="eventTypes" id="eventTypes">
-                        <option value="#">テーマ</option>
-                        <option value="#">教育</option>
-                        <option value="#">国際</option>
-                        <option value="#">介護</option>
-                        <option value="#">災害</option>
-                        <option value="#">お祭り</option>
-                    </select>
-                </div>
+                    <div id="signUp_BSmallBox2">
+                        <p>参加したいカテゴリ：</p>
+                        <div class="select">
+                            <select name="eventTypes" id="eventTypes">
+                                <option value="#">テーマ</option>
+                                <option value="#">教育</option>
+                                <option value="#">国際</option>
+                                <option value="#">介護</option>
+                                <option value="#">災害</option>
+                                <option value="#">お祭り</option>
+                            </select>
+                        </div> 
+                    </div>
             </div>
 
             <div id="signUp_BtnArea">

@@ -58,7 +58,7 @@
             </div>
         </div>    
 
-        <div id="event_Box2">
+        <div id="event_Box2" > <!--  ***** ページの担当へ：PHPでイベントのstatusを参照して、応募ボタンをhiddenかどうか***** -->
             <a href="userJoin.php" id="joinEventBtn">
                 <p id="submitBtn">応募</p>
             </a>
