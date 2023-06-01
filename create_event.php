@@ -51,7 +51,14 @@
                 </div>
                 <div class="enter_InfoBox">
                     <label class="required">イベントテーマ：</label>
-                    <input type="text" required>
+                    <select name="eventTypes" id="eventTypes">
+                            <option value="#">テーマ</option>
+                            <option value="#">教育</option>
+                            <option value="#">国際</option>
+                            <option value="#">介護</option>
+                            <option value="#">災害</option>
+                            <option value="#">お祭り</option>
+                    </select>
                 </div>
                 <div class="enter_InfoBox">
                     <label class="required">平均活動時間：</label>
