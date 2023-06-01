@@ -114,13 +114,13 @@
                     <div id="signUp_BSmallBox2">
                         <p>参加したいカテゴリ：</p>
                         <div class="select">
-                            <select name="eventTypes" id="eventTypes">
-                                <option value="#">テーマ</option>
-                                <option value="#">教育</option>
-                                <option value="#">国際</option>
-                                <option value="#">介護</option>
-                                <option value="#">災害</option>
-                                <option value="#">お祭り</option>
+                            <select name="theme" id="eventTypes">
+                                <option value="教育">教育</option>
+                                <option value="国際">国際</option>
+                                <option value="介護">介護</option>
+                                <option value="災害">災害</option>
+                                <option value="お祭り">お祭り</option>
+                                <option value="その他">その他</option>
                             </select>
                         </div> 
                     </div>
