@@ -36,24 +36,83 @@
                 <!-- 写真 -->
                 <div class="drag-area">
                     <div class="icon"><i class="fa-solid fa-cloud-arrow-up" style="color: #DD0000;"></i></div>
-                    <p>Drag and Drop to Upload File</p>
+                    <p>ここにファイルをドラッグ＆ドロップ</p>
                     <span>または</span>
-                    <button>Browse Files</button>
+                    <button>ファイルを選択</button>
+                    <input type="file" hidden>
                 </div>
 
-                <!-- ホスト選択 -->
-                <div id="choose_Host">
-                    <buttom>ホスト１</buttom>
-                    <div>ホスト２</div>
-                    <div>ホスト３</div>
-                    <div>ホスト４</div>
-                    <div>ホスト５</div>
+                <!-- ホスト選択 Scroll box -->
+                <div class="scroll-bg">
+                    <div class="scroll-div">
+                        <div class="scroll-object">
+
+                            <div class="place-content">
+                                <a href="event_Content.php" class="col-md-12 col-lg-10 mx-auto item-box">
+                                    <div class="event-item">
+                                            <diV class="col-md-7 center-item">
+                                                <div class="eventControl_Img">
+                                                    <img src="./image/Event1.jpeg" alt="">
+                                                </div>    
+
+                                                <div class="information">
+
+                                                    <h3>イベント名</h3>
+
+                                                </div>
+                                            </diV>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="place-content">
+                                <a href="event_Content.php" class="col-md-12 col-lg-10 mx-auto item-box">
+                                    <div class="event-item">
+                                            <diV class="col-md-7 center-item">
+                                                <div class="eventControl_Img">
+                                                    <img src="./image/Event1.jpeg" alt="">
+                                                </div>    
+
+                                                <div class="information">
+
+                                                    <h3>イベント名</h3>
+
+                                                </div>
+                                            </diV>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="place-content">
+                                <a href="event_Content.php" class="col-md-12 col-lg-10 mx-auto item-box">
+                                    <div class="event-item">
+                                            <diV class="col-md-7 center-item">
+                                                <div class="eventControl_Img">
+                                                    <img src="./image/Event1.jpeg" alt="">
+                                                </div>    
+
+                                                <div class="information">
+
+                                                    <h3>イベント名</h3>
+
+                                                </div>
+
+                                            </diV>
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
+
+
             </div>
 
-            <div id="BtnArea">
-                <button type="submit">投稿</button>
+            <div id="signUp_BtnArea">
+                <button type="submit">送信</button>
             </div>
+
         </form>
     </section>
 

@@ -6,7 +6,7 @@
     padding-top: 20px;
     padding-left: 20px;
     padding-right: 20px;
-    padding-bottom: 50px;
+    padding-bottom: 40px;
 }
   
 /*Header画像エリア CSS 終了*/
@@ -30,7 +30,6 @@
     font-family: 'OutlineFont';
     font-size: 30px;
     padding-top: 10px;
-    padding-bottom: 20px;
 }  
   
 /*タイトル CSS 終了*/
@@ -56,8 +55,8 @@
 /* 写真 */
 .drag-area{
     border: 2px dashed #DC0000;
-    height: 500px;
-    width: 500px;
+    height: 370px;
+    width: 370px;
     border-radius: 5px;
     display: flex;
     align-items: center;
@@ -96,28 +95,115 @@
     cursor: pointer;
 }
 
+.drag-area.active img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/*ホストを選択するエリア*/
 
 #choose_Host{
     background-color: #dcdcdc;
     /* margin: 30px 200px; */
-    padding: 40px 126px;
+    padding: 30px 0px;
     border-radius: 20px;
 }
 
+.place-content{
+    display: grid;
+    justify-content: center;
+    width: 100%;
+}
 
-/*ボタン*/
-#BtnArea{
+.event-item{
+    background:#eeeeee;
+    border-radius: 10px;
+    padding:15px 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.item-box{
+    margin-left: 30px;
+    margin-right: 30px;
+    text-decoration: none;
+    color: #555555;
+}
+
+.event-item:hover{
+    background:#999999;
+}
+
+.center-item{
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.event-item img{
+    width: 30vmin;
+    height: 20vmin;
+    margin-right: 30px;
+    object-fit: cover;
+}
+
+.event-item h5{
+    padding: 0px 45px;
+}
+
+.eventControl{
+    display: block;
+}
+
+.information{
+    padding-right: 60px;
+}
+
+.eventControl_Img img{
+    width: 30vmin;
+    height: 30vmin;
+    margin-right: 30px;
+    object-fit: cover;
+}
+
+/*送信ボタン*/
+#signUp_BtnArea{
     text-align: center;
-    padding-top: 30px;
     padding-bottom: 30px;
 }
 
-#BtnArea button{
+#signUp_BtnArea button{
 padding: 15px 40px;
-background-color: orange;
+background-color: #ffffff;
 border: dashed 2px #DC0000;
 border-radius: 10px;
 font-family: 'HandWriteFont';
 font-size: 25px;
 box-shadow: 7px 5px 5px gray;
+}
+
+#signUp_BtnArea button:hover{
+    background-color: #DC0000;
+    color: #ffffff;
+    border: dashed 2px #ffffff;
+}
+
+/* Testing Scroll CSS */
+
+.scroll-bg{
+    background-color: #dcdcdc;
+    width: 540px;
+    margin: 3% auto;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.scroll-div{
+    width: 482px;
+    background-color: #dcdcdc;
+    height: 300px;
+    overflow: hidden;
+    overflow-y: scroll;
 }
