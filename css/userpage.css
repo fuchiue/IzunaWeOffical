@@ -219,14 +219,4 @@
     object-fit: cover;
 }
 
-.joinedPpl_Control{
-    display: none;
-}
-
-.joinedPpl_Control_Img img{
-    width: 30vmin;
-    height: 30vmin;
-    margin-right: 30px;
-    object-fit: cover;
-}
 /* 投稿写真＋イベント履歴エリア CSS 終了 */
