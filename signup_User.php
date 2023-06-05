@@ -81,6 +81,11 @@
                             <label class="required">メールアドレス：</label>
                             <div><input type="text" required></div>
                         </div>
+
+                        <div class="singlebox">
+                            <label class="required">パスワード：</label>
+                            <div><input type="password" required></div>
+                        </div>
                     </div>
                     <!-- 右側の情報終わり -->
                 </div>

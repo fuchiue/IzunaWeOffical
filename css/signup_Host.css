@@ -117,9 +117,13 @@
     padding-top: 95px;
 }
 
-#tel_mail{
+#mail_pass{
     display: flex;
     padding: 10px 0px;
+}
+
+#pwArea{
+    margin-left: 10px;
 }
 
 #telArea{
@@ -138,7 +142,8 @@
 #telArea input,
 #mailArea input,
 #placeBox1 input,
-#placeBox2 input{
+#placeBox2 input,
+#pwArea input{
     background-color: #d0abab; 
     border: solid 0.5px #555555;
 }

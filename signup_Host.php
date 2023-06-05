@@ -46,15 +46,19 @@
                     <div id="signUp_TopBox">
                         <label class="required">団体名：</label>
                         <div><input type="text" required></div>
+
+                        <label class="required">電話番号：</label>
+                        <div><input type="text" required></div>
+
                     </div>
                     <!-- 一行目の情報終わり -->
 
                     <!-- 二行目の情報 -->
-                    <div id="tel_mail">
+                    <div id="mail_pass">
                         <!-- 左側 -->
                         
-                            <div id="telArea">
-                                <label class="required">電話番号：</label>
+                            <div id="mailArea">
+                                <label class="required">メールアドレス：</label>
                                 <div><input type="text" required></div>
                             </div>
                         
@@ -62,9 +66,9 @@
 
                         <!-- 右側 -->
                         
-                            <div id="mailArea">
-                                <label class="required">メールアドレス：</label>
-                                <div><input type="text" required></div>
+                            <div id="pwArea">
+                                <label class="required">パスワード：</label>
+                                <div><input type="password" required></div>
                             </div>
                         
                         <!-- 右側終わり -->
