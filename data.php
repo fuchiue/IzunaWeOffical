@@ -45,13 +45,13 @@ function hostGetData($id)
 }
 
 /*
-対応するIDの投稿した画像を表示必要なホストのデータを取得
+対応するIDのボランティア参加済みのユーザーのIDとアイコンを返す
 @$id検索するホストのID
 */
-function hostGetphoto($id)
+function hostGetjoinUser($id)
 {
     try {
-        $sql = 'SELECT J.USER_ID, FROM
+        $sql = 'SELECT J.USER_ID,U.ICON FROM
         JOINED AS J
         INNER JOIN
         EVENT AS E
@@ -59,8 +59,13 @@ function hostGetphoto($id)
         INNER JOIN
         USER AS U
         ON J.USER_ID = U.USER_ID
-        WHERE E.OWNER_ID = 100002
-        AND J.STATUS="参加済み";';
+        WHERE E.OWNER_ID = :id
+        AND J.STATUS="参加済み";'; //
+        $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする 
+        $stmt->bindValue(':id', $id, PDO::PARAM_STR); //sqlの:idに変数の$idを代入
+        $stmt->execute(); //実行
+        $result = $stmt->fetchAll(); //データを取得
+        return $result; //データを返す
     } catch (Exception $e) {
         exit($e->getMessage());
     }

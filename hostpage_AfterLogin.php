@@ -1,7 +1,8 @@
 <?php
 require_once "./data.php";
-//$hostdata = hostGetData($_SESSION['id']); //ログイン機能が追加されたら使う
-$hostdata = hostGetData("100001"); //ログイン未実装のため使用
+$id = "100002"; //IDを取得
+$hostdata = hostGetData($id); //ホストの情報を取得
+$joinedUsers = hostGetjoinUser($id); //ボランティアに参加したユーザを取得
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -73,32 +74,17 @@ $hostdata = hostGetData("100001"); //ログイン未実装のため使用
                 <div class="scroll-bg">
                     <div class="scroll-div">
                         <div class="scroll-object">
-
                             <div class="imgRow">
-                                <a href="#" class="imgBox"><img src="./image/Event1.jpeg"></a>
-                                <a href="#" class="imgBox"><img src="./image/Event1.jpeg"></a>
-                                <a href="#" class="imgBox"><img src="./image/Event1.jpeg"></a>
+                                <a class="imgBox"><img src="./image/Event1.jpeg"></a>
+                                <a class="imgBox"><img src="./image/Event1.jpeg"></a>
+                                <a class="imgBox"><img src="./image/Event1.jpeg"></a>
                             </div>
 
                             <div class="imgRow">
-                                <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
-                                <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
-                                <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
+                                <a class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
+                                <a class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
+                                <a class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
                             </div>
-
-                            <div class="imgRow">
-                                <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
-                                <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
-                                <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
-                            </div>
-
-                            <div class="imgRow">
-                                <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
-                                <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
-                                <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
-                            </div>
-
-
                         </div>
                     </div>
                 </div>
@@ -108,16 +94,41 @@ $hostdata = hostGetData("100001"); //ログイン未実装のため使用
 
             <!-- 参加者一覧　-->
             <div id="attendantImg">
-                <div class="imgRow">
-                    <a href="userpage_ViewOnly.php" class="imgBox"><img src="./image/studenticon.jpg"></a>
-                    <a href="userpage_ViewOnly.php" class="imgBox"><img src="./image/studenticon2.jpg"></a>
-                    <a href="#" class="imgBox"><img src="./image/studenticon.jpg"></a>
-                </div>
+                <div class="scroll-bg">
+                    <div class="scroll-div">
+                        <div class="scroll-object">
+                            <?php
+                            $cont = 0; //表示回数を管理
+                            //三回表示ごとにタグを閉じる
+                            foreach ($joinedUsers as $user) { //参加ユーザの数だけ回る
+                                if ($cont == 0) {
+                                    echo '<div class="imgRow">';
+                                    echo "\n";
+                                }
+                                echo '<a href="./hostpage_ViewOnly.php?' . $user['USER_ID'] . '" class="imgBox"><img src="' . $user['ICON'] . '"></a>';
+                                echo "\n";
+                                if ($cont == 2) {
+                                    echo '</div>';
+                                    echo "\n";
+                                    $cont = 0;
+                                } else {
+                                    $cont++;
+                                }
+                            }
+                            //ユーザが一人もいなかったとき
+                            if (!$joinedUsers) {
+                                echo '<div class="imgRow">';
+                                echo "\n";
+                            }
+                            //ループを抜けた後タグを閉じていないときに閉じる
+                            if ($cont == 0) {
+                                echo '</div>';
+                                echo "\n";
+                            }
+                            ?>
 
-                <div class="imgRow">
-                    <a href="#" class="imgBox"><img src="./image/studenticon.jpg"></a>
-                    <a href="#" class="imgBox"><img src="./image/studenticon.jpg"></a>
-                    <a href="#" class="imgBox"><img src="./image/studenticon.jpg"></a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
