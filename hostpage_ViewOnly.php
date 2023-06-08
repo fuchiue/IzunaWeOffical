@@ -39,7 +39,11 @@
 
             <!-- 団体紹介文　-->
             <p id="selfInfo_title">団体紹介文</p>
-            <p>OOOOOOOOOOOOOOOOOOOOOOOOOOOOOO</p>
+            <div class="word-break">
+                <div class="normal">
+                  <p>OOOOOOOOO内容OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO</p>
+                </div>
+            </div>
         </div>
 
     </section>

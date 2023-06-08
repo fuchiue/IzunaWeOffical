@@ -69,6 +69,33 @@
     padding: 10px 0px;
 }
 
+#pointArea{
+    display: flex;
+}
+
+#pointArea img{
+    width: 30px;
+    height: 30px;
+}
+
+#pointArea p{
+    padding-top: 4px;
+}
+
+.word-break {
+    display: flex;
+  }
+  
+.word-break div {
+    margin-top: 20px;
+    /* border: 2px solid red; */
+    width: 380px;
+}
+  
+.normal p{
+    word-break: break-all;
+  }
+
 /* 個人アイコン＋自己紹介エリア CSS 終了*/
 /*-------------------------------------------------*/
 

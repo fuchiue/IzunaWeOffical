@@ -17,13 +17,20 @@
     <!--検索エリア-->
     <section id="Opening">
 
-        <img src="./image/opening2.jpg">
+        <img src="./image/Home_opening.jpg">
+        <!-- <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="./image/Home_opening.jpg"></div>
+                <div class="swiper-slide"><img src="./image/Home_opening.jpg"></div>
+                <div class="swiper-slide"><img src="./image/Home_opening.jpg"></div>
+                <div class="swiper-slide"><img src="./image/Home_opening.jpg"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div> -->
         
         <div id="search" class="search">
 
             <form action="searchResult.php" method="GET" class="search-bar" target="_self" enctype="">
-                <input type="hidden" id="lat"  name="lat">
-                <input type="hidden" id="lng"  name="lng">
                 <input type="text" placeholder="キーワードで検索" name="searchR">
     
                 <div class="select">

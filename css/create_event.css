@@ -63,6 +63,23 @@
     border: solid 0.5px #555555;
 }
 
+.enterAddress{
+    display: flex;
+}
+
+.enterAddress p{
+    font-family: 'KleeOneFont';
+}
+
+.enterAddress_Box{
+    display: flex;
+    padding: 10px 0px;
+}
+
+.enter_InfoBox p{
+    font-family: 'KleeOneFont';
+}
+
 .required{
     font-family: 'KleeOneFont';
 }
@@ -82,6 +99,10 @@
 }
 
 /* 写真 */
+#upload_PhotoBox{
+    margin-top: 10px;
+}
+
 #upload_PhotoBox input{
     display: none;
 }
@@ -90,7 +111,9 @@
     height: 100px;
     width: 150px;
     border-radius: 6px;
-    border: dashed 1px #DD0000;
+    padding: 10px 10px;
+    border: none;
+    font-family: 'HandWriteFont';
     background-color: orange;
 }
 

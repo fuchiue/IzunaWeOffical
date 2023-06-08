@@ -34,14 +34,21 @@
         <!-- 個人情報 -->
         <div id="selfInfo_Box">
             <!-- ポイント表示 -->
-            <p>Point Icon Insert：１００点</p>
+            <div id="pointArea">
+                <img src="./image/Point.PNG">
+                <p>：１００点</p>
+            </div>
 
             <!-- ニックネーム　-->
             <h1>ニックネーム</h1>
 
             <!-- 自己紹介文　-->
             <p>自己紹介文</p>
-            <p>OOOOOOOOOOOOOOOOOOOOOOOOOOOOOO</p>
+            <div class="word-break">
+                <div class="normal">
+                  <p>OOOOOOOOO内容OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO</p>
+                </div>
+            </div>
         </div>
 
     </section>
