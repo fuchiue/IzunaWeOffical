@@ -3,6 +3,7 @@ require_once "./data.php";
 $id = "100002"; //IDを取得
 $hostdata = hostGetData($id); //ホストの情報を取得
 $joinedUsers = hostGetjoinUser($id); //ボランティアに参加したユーザを取得
+$eventDatas = HostGetevent($id); //ホストの開催したイベントの情報を取得
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -102,13 +103,17 @@ $joinedUsers = hostGetjoinUser($id); //ボランティアに参加したユー�
                             //三回表示ごとにタグを閉じる
                             foreach ($joinedUsers as $user) { //参加ユーザの数だけ回る
                                 if ($cont == 0) {
-                                    echo '<div class="imgRow">';
+                                    echo '<div class="imgRow">'; //初めのタグ
                                     echo "\n";
                                 }
+
+                                //写真の表示　対応するユーザのIDを変数で送っている。
                                 echo '<a href="./hostpage_ViewOnly.php?' . $user['USER_ID'] . '" class="imgBox"><img src="' . $user['ICON'] . '"></a>';
                                 echo "\n";
+
+                                //三回写真を表示したら終わりのタグそれ以外ならカウントアップ
                                 if ($cont == 2) {
-                                    echo '</div>';
+                                    echo '</div>'; //終わりのタグ
                                     echo "\n";
                                     $cont = 0;
                                 } else {
@@ -117,12 +122,12 @@ $joinedUsers = hostGetjoinUser($id); //ボランティアに参加したユー�
                             }
                             //ユーザが一人もいなかったとき
                             if (!$joinedUsers) {
-                                echo '<div class="imgRow">';
+                                echo '<div class="imgRow">'; //始まりのタグ
                                 echo "\n";
                             }
                             //ループを抜けた後タグを閉じていないときに閉じる
                             if ($cont == 0) {
-                                echo '</div>';
+                                echo '</div>'; //終わりのタグ
                                 echo "\n";
                             }
                             ?>
@@ -151,73 +156,43 @@ $joinedUsers = hostGetjoinUser($id); //ボランティアに参加したユー�
             <!-- イベント一覧　-->
             <div class="eventControl">
 
-                <div class="place-content">
+                <?php foreach ($eventDatas as $eventData) : ?>
+                    <div class="place-content">
 
-                    <a href="event_Content.php" class="col-md-12 col-lg-10 mx-auto item-box">
-                        <div class="event-item">
-                            <diV class="col-md-7 center-item">
-                                <div class="eventControl_Img">
-                                    <img src="./image/ResultArea1.jpeg" alt="">
-                                </div>
-
-                                <div class="information">
-                                    <p id="event01_Status">募集中</p>
-                                    <h3>イベント名</h3>
-                                    <div class="EvCon_Date">
-                                        <h4>日時</h4>
-                                        <p id="#">2023年00月00日　12:00時</p>
+                        <a href="event_Content.php?<?= $eventData['EVENT_ID'] ?>" class="col-md-12 col-lg-10 mx-auto item-box">
+                            <div class="event-item">
+                                <diV class="col-md-7 center-item">
+                                    <div class="eventControl_Img">
+                                        <img src="<?= $eventData['ICON'] ?>" alt="">
                                     </div>
-                                    <div class="EvCon_Place">
-                                        <h4>場所</h4>
-                                        <p id="#">大阪府大阪市北区OOOOOO</p>
-                                    </div>
-                                    <div class="EvCon_Theme">
-                                        <h4>テーマ</h4>
-                                        <p id="#">環境</p>
-                                    </div>
-                                </div>
-                            </diV>
-                        </div>
-                    </a>
 
-                </div>
-
-                <div class="place-content">
-
-                    <a href="event_Content.php" class="col-md-12 col-lg-10 mx-auto item-box">
-                        <div class="event-item">
-                            <diV class="col-md-7 center-item">
-                                <div class="eventControl_Img">
-                                    <img src="./image/Event1.jpeg" alt="">
-                                </div>
-
-                                <div class="information">
-                                    <p id="event02_Status">募集終了</p>
-                                    <h3>イベント名</h3>
-                                    <div class="EvCon_Date">
-                                        <h4>日時</h4>
-                                        <p id="#">2023年00月00日　12:00時</p>
+                                    <div class="information">
+                                        <p id="event01_Status"><?= $eventData['STATUS'] ?></p>
+                                        <h3><?= $eventData['EVENT_NAME'] ?></h3>
+                                        <div class="EvCon_Date">
+                                            <h4>日時</h4>
+                                            <p id="#"><?php echo date("Y年m月d日 H:i", strtotime($eventData['SCHEDULE'])) ?></p>
+                                        </div>
+                                        <div class="EvCon_Place">
+                                            <h4>場所</h4>
+                                            <p id="#"><?= $eventData['ADDRESS'] ?></p>
+                                        </div>
+                                        <div class="EvCon_Theme">
+                                            <h4>テーマ</h4>
+                                            <p id="#"><?= $eventData['THEME'] ?></p>
+                                        </div>
                                     </div>
-                                    <div class="EvCon_Place">
-                                        <h4>場所</h4>
-                                        <p id="#">大阪府大阪市北区OOOOOO</p>
-                                    </div>
-                                    <div class="EvCon_Theme">
-                                        <h4>テーマ</h4>
-                                        <p id="#">環境</p>
-                                    </div>
-                                </div>
-                            </diV>
-                        </div>
-                    </a>
+                                </diV>
+                            </div>
+                        </a>
 
-                </div>
+                    </div>
+                <?php endforeach; ?>
 
             </div>
 
             <!-- 応募者一覧　-->
             <div class="joinedPpl_Control">
-
                 <div class="place-content">
 
                     <div class="event-item">
@@ -231,30 +206,7 @@ $joinedUsers = hostGetjoinUser($id); //ボランティアに参加したユー�
                             <div class="information">
                                 <h3>イベント名</h3>
                                 <p>ユーザー名</p>
-                                <p><a href="mailto:info&#64;example.com">info&#64;example.com</a></p>
-                                <p>質問: OOOOOですか? </p>
-                                <p>回答: OOOOOO</p>
-                            </div>
-                        </diV>
-                    </div>
-                    </a>
-
-                </div>
-
-                <div class="place-content">
-
-                    <div class="event-item">
-                        <diV class="col-md-7 center-item">
-                            <div class="joinedPpl_Control_Img">
-                                <a href="userpage_ViewOnly.php">
-                                    <img src="./image/studenticon2.jpg" alt="">
-                                </a>
-                            </div>
-
-                            <div class="information">
-                                <h3>イベント名</h3>
-                                <p>ユーザー名</p>
-                                <p><a href="mailto:user&#64;example.com">user&#64;example.com</a></p>
+                                <p><a href="mailto: info&#64;example.com ">info&#64;example.com</a></p>
                                 <p>質問: OOOOOですか? </p>
                                 <p>回答: OOOOOO</p>
                             </div>

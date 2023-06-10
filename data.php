@@ -60,7 +60,24 @@ function hostGetjoinUser($id)
         USER AS U
         ON J.USER_ID = U.USER_ID
         WHERE E.OWNER_ID = :id
-        AND J.STATUS="参加済み";'; //
+        AND J.STATUS="参加済み";'; //ホストのIDのイベントに参加済みの人の情報を取得
+        $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする 
+        $stmt->bindValue(':id', $id, PDO::PARAM_STR); //sqlの:idに変数の$idを代入
+        $stmt->execute(); //実行
+        $result = $stmt->fetchAll(); //データを取得
+        return $result; //データを返す
+    } catch (Exception $e) {
+        exit($e->getMessage());
+    }
+}
+/*
+対応するIDの開催したボランティアの情報を返す
+@$id検索するホストのID
+*/
+function HostGetevent($id)
+{
+    try {
+        $sql = 'SELECT * FROM EVENT WHERE OWNER_ID = :id'; //ホストの開催したイベントを取得
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする 
         $stmt->bindValue(':id', $id, PDO::PARAM_STR); //sqlの:idに変数の$idを代入
         $stmt->execute(); //実行
