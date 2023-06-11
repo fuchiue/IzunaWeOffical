@@ -1,6 +1,6 @@
 <?php
 require_once "./data.php";
-$id = "100001"; //IDを取得
+$id = "100002"; //IDを取得
 $hostdata = hostGetData($id); //ホストの情報を取得
 $joinedUsers = hostGetjoinUser($id); //ボランティアに参加したユーザを取得
 $eventDatas = HostGetevent($id); //ホストの開催したイベントの情報を取得
@@ -109,7 +109,7 @@ $registers = GetRegister($id);
                                 }
 
                                 //写真の表示　対応するユーザのIDを変数で送っている。
-                                echo '<a href="./hostpage_ViewOnly.php?' . $user['USER_ID'] . '" class="imgBox"><img src="' . $user['ICON'] . '"></a>';
+                                echo '<a href="./hostpage_ViewOnly.php?id=' . $user['USER_ID'] . '" class="imgBox"><img src="' . $user['ICON'] . '"></a>';
                                 echo "\n";
 
                                 //三回写真を表示したら終わりのタグそれ以外ならカウントアップ
@@ -160,7 +160,7 @@ $registers = GetRegister($id);
                 <?php foreach ($eventDatas as $eventData) : ?>
                     <div class="place-content">
 
-                        <a href="event_Content.php?<?= $eventData['EVENT_ID'] ?>" class="col-md-12 col-lg-10 mx-auto item-box">
+                        <a href="event_Content.php?id=<?= $eventData['EVENT_ID'] ?>" class="col-md-12 col-lg-10 mx-auto item-box">
                             <div class="event-item">
                                 <diV class="col-md-7 center-item">
                                     <div class="eventControl_Img">
@@ -210,8 +210,6 @@ $registers = GetRegister($id);
                                     <h3><?= $register['EVENT_NAME'] ?></h3>
                                     <p><?= $register['USER_NAME'] ?></p>
                                     <p><a href="mailto: <?= $register['EMAIL'] ?>"><?= $register['EMAIL'] ?></a></p>
-                                    <p>質問: OOOOOですか? </p>
-                                    <p>回答: OOOOOO</p>
                                 </div>
                             </diV>
                         </div>

@@ -111,15 +111,3 @@ function GetRegister($id)
         exit($e->getMessage());
     }
 }
-/*
-イベントを作成する際に任意で追加できる質問を保存しておくところがない
-EVENTテーブルにホストからの質問を管理できるカラムを追加
-質問を保存しておくテーブルを作成しFKする。
-EVENT_IDに付随するquestionテーブルを作成する
-questionテーブル
-question_NO | EVENT_NO | question |
-
-また質問に対して回答を保存するテーブルも必要なため
-ANSテーブルを作成する
-ANS_NO | question_NO | USER_NO | ANS |
-*/
