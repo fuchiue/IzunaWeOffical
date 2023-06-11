@@ -1,9 +1,10 @@
 <?php
 require_once "./data.php";
-$id = "100002"; //IDを取得
+$id = "100001"; //IDを取得
 $hostdata = hostGetData($id); //ホストの情報を取得
 $joinedUsers = hostGetjoinUser($id); //ボランティアに参加したユーザを取得
 $eventDatas = HostGetevent($id); //ホストの開催したイベントの情報を取得
+$registers = GetRegister($id);
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -193,29 +194,31 @@ $eventDatas = HostGetevent($id); //ホストの開催したイベントの情報
 
             <!-- 応募者一覧　-->
             <div class="joinedPpl_Control">
-                <div class="place-content">
 
-                    <div class="event-item">
-                        <diV class="col-md-7 center-item">
-                            <div class="joinedPpl_Control_Img">
-                                <a href="userpage_ViewOnly.php">
-                                    <img src="./image/studenticon.jpg" alt="">
-                                </a>
-                            </div>
+                <?php foreach ($registers as $register) : ?>
+                    <div class="place-content">
 
-                            <div class="information">
-                                <h3>イベント名</h3>
-                                <p>ユーザー名</p>
-                                <p><a href="mailto: info&#64;example.com ">info&#64;example.com</a></p>
-                                <p>質問: OOOOOですか? </p>
-                                <p>回答: OOOOOO</p>
-                            </div>
-                        </diV>
+                        <div class="event-item">
+                            <diV class="col-md-7 center-item">
+                                <div class="joinedPpl_Control_Img">
+                                    <a href="userpage_ViewOnly.php">
+                                        <img src="<?= $register['ICON'] ?>" alt="">
+                                    </a>
+                                </div>
+
+                                <div class="information">
+                                    <h3><?= $register['EVENT_NAME'] ?></h3>
+                                    <p><?= $register['USER_NAME'] ?></p>
+                                    <p><a href="mailto: <?= $register['EMAIL'] ?>"><?= $register['EMAIL'] ?></a></p>
+                                    <p>質問: OOOOOですか? </p>
+                                    <p>回答: OOOOOO</p>
+                                </div>
+                            </diV>
+                        </div>
+                        </a>
+
                     </div>
-                    </a>
-
-                </div>
-
+                <?php endforeach; ?>
             </div>
         </div>
 
