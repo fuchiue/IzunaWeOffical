@@ -45,17 +45,10 @@
                     <!-- 一行目の情報 -->
                     <div id="signUp_TopBox">
                         <label class="required">団体名：</label>
-<<<<<<< HEAD
                         <div><input type="text" name="organization" required></div>
 
                         <label class="required">電話番号：</label>
                         <div><input type="text" name="tel" required></div>
-=======
-                        <div><input type="text" required></div>
-
-                        <label class="required">電話番号：</label>
-                        <div><input type="text" required></div>
->>>>>>> develop_JOLIE
 
                     </div>
                     <!-- 一行目の情報終わり -->
@@ -66,11 +59,7 @@
                         
                             <div id="mailArea">
                                 <label class="required">メールアドレス：</label>
-<<<<<<< HEAD
                                 <div><input type="text" name="email" required></div>
-=======
-                                <div><input type="text" required></div>
->>>>>>> develop_JOLIE
                             </div>
                         
                         <!-- 左側終わり -->
@@ -79,11 +68,7 @@
                         
                             <div id="pwArea">
                                 <label class="required">パスワード：</label>
-<<<<<<< HEAD
                                 <div><input type="password" name="password" required></div>
-=======
-                                <div><input type="password" required></div>
->>>>>>> develop_JOLIE
                             </div>
                         
                         <!-- 右側終わり -->
@@ -94,17 +79,10 @@
                     <div id="signUp_place">
                         <label class="required">ご住所：</label>
                         <div id="placeBox1">
-<<<<<<< HEAD
                         都道府県：<input type="text" style="width:100px" name="prefecture" required>
                         　市/区：<input type="text" style="width:100px" name="city" required>
                         </div>
                         <div id="placeBox2">丁目/番号：<input type="text" style="width:370px" name="chome" required></div>
-=======
-                        都道府県：<input type="text" style="width:100px" required>
-                        　市/区：<input type="text" style="width:100px" required>
-                        </div>
-                        <div id="placeBox2">丁目/番号：<input type="text" style="width:370px" required></div>
->>>>>>> develop_JOLIE
                     </div>
                     <!-- 三行目の情報終わり -->
                 </div>
