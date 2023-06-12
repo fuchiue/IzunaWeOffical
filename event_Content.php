@@ -1,4 +1,16 @@
 <?php
+require_once "./data.php";
+
+
+try{
+
+}catch(PDOException $poe){
+    exit("DBエラー".$poe -> getMessage());
+}
+
+$stmt= null; //破棄の意味 return the intergers back to zero
+$db = null;
+
 ?>
 
 <!DOCTYPE html>
