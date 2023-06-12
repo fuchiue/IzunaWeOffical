@@ -1,5 +1,24 @@
+<?php
+session_start();
+require_once __DIR__ . "/data.php";
+// ログインからIDを取ってくる
+// $userid = filter_input(INPUT_POST, "user");
+
+$userid = 10001;
+// IDが入ってたら、TakeUserData,TakePostData,TakeEventDataファンクションを実行してデータを取得する
+if ($userid != null) {
+    $userdata = TakeUserData($userid);
+    $postdata = TakePostData($userid);
+    $eventdata = TakeEventData($userid);
+} else {
+    // header('Location:'.'/login_page_User.php');
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,8 +27,9 @@
     <link rel="stylesheet" href="./css/userpage.css">
     <title>ボランティア</title>
 </head>
+
 <body>
-    
+
     <?php include('./Navbar/navbar.php'); ?>
 
     <!-- Header画像エリア ＋ ページ名 -->
@@ -25,7 +45,7 @@
     <section id="selfInfo_TopArea">
         <!-- 写真 -->
         <div id="selfIcon_pic">
-            <img src="./image/studenticon.jpg">
+            <img src="./image/HT_Fox3 (1).PNG">
         </div>
 
         <!-- 分割線 -->
@@ -34,15 +54,21 @@
         <!-- 個人情報 -->
         <div id="selfInfo_Box">
             <!-- ポイント表示 -->
-            <p>Point Icon Insert：１００点</p>
-
+            <p>Point Icon Insert：
+                <?= $userdata['POINT'] ?>点
+            </p>
             <!-- ニックネーム　-->
-            <h1>ニックネーム</h1>
+            <h1>
+                <?= $userdata['NICKNAME'] ?>
+            </h1>
 
             <!-- 自己紹介文　-->
             <p>自己紹介文</p>
-            <p>OOOOOOOOOOOOOOOOOOOOOOOOOOOOOO</p>
+            <p>
+                <?= $userdata['NOTE'] ?>
+            </p>
         </div>
+
 
     </section>
 
@@ -54,96 +80,76 @@
         <div id="userView_Btn">
             <button id="imgBtn">写真</button>
             <button id="historyBtn">イベント履歴</button>
-            <a href="#" id="userpostBtn">投稿</a>
+            <a href="postPic.php?user=<?= urlencode($userid) ?>" id="userpostBtn">投稿</a>
         </div>
-        
+
         <div id="switchPage">
             <!-- 投稿した写真　-->
             <div id="userPostImg">
                 <div class="imgRow">
-                <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
-                <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
-                <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
-                </div>
-
-                <div class="imgRow">
-                <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
-                <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
-                <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
+                    <?php $count = 0; ?>
+                    <?php foreach ($postdata as $postdatas): ?>
+                        <a href="hostpage_ViewOnly.php?id=<?= $postdatas['OWNER_ID'] ?>" class="imgBox"><img src=".<?= $postdatas['PHOTO'] ?>"></a>
+                        <?php $count++; ?>
+                        <?php if ($count % 3 === 0): ?>
+                        </div>
+                        <?php if ($count !== count($postdata)): ?>
+                            <div class="imgRow">
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
                 </div>
             </div>
 
             <!-- イベント履歴　-->
             <div class="eventHistory">
+                <?php $count = 0; ?>
+                <?php foreach ($eventdata as $eventdatas): ?>
+                    <div class="place-content">
 
-                <div class="place-content">
-
-                    <a href="event_Content.php" class="col-md-12 col-lg-10 mx-auto item-box">
-                        <div class="event-item">
+                        <a href="event_Content.php?id=<?= $eventdatas['EVENT_ID'] ?>" class="col-md-12 col-lg-10 mx-auto item-box">
+                            <div class="event-item">
                                 <diV class="col-md-7 center-item">
                                     <div class="eventControl_Img">
-                                        <img src="./image/Event1.jpeg" alt="">
-                                    </div>    
+                                        <img src=".<?= $eventdatas['ICON'] ?>" alt="">
+                                    </div>
 
                                     <div class="information">
 
-                                        <h3>イベント名</h3>
+                                        <h3>
+                                            <?= $eventdatas['EVENT_NAME'] ?>
+                                        </h3>
 
                                         <div class="EvCon_Place">
                                             <h4>場所</h4>
-                                            <p id="#">大阪府大阪市北区OOOOOO</p>
+                                            <p id="#">
+                                                <?= $eventdatas['ADDRESS'] ?>
+                                            </p>
                                         </div>
 
                                         <div class="EvCon_Theme">
                                             <h4>テーマ</h4>
-                                            <p id="#">環境</p>
-                                        </div>    
-                                    </div>
-                                </diV>
-                        </div>
-                    </a>
-
-                </div>
-
-                <div class="place-content">
-
-                    <a href="event_Content.php" class="col-md-12 col-lg-10 mx-auto item-box">
-                        <div class="event-item">
-                                <diV class="col-md-7 center-item">
-                                    <div class="eventControl_Img">
-                                        <img src="./image/Event1.jpeg" alt="">
-                                    </div>    
-
-                                    <div class="information">
-
-                                        <h3>イベント名</h3>
-
-                                        <div class="EvCon_Place">
-                                            <h4>場所</h4>
-                                            <p id="#">大阪府大阪市北区OOOOOO</p>
+                                            <p id="#">
+                                                <?= $eventdatas['THEME'] ?>
+                                            </p>
                                         </div>
-
-                                        <div class="EvCon_Theme">
-                                            <h4>テーマ</h4>
-                                            <p id="#">環境</p>
-                                        </div>    
                                     </div>
                                 </diV>
-                        </div>
-                    </a>
+                            </div>
+                        </a>
 
-                </div>
-
+                    </div>
+                <?php endforeach; ?>
             </div>
         </div>
 
     </section>
 
-    
+
     <?php include('./Navbar/footer.php'); ?>
 
     <a></a> <!-- To Top Apple Button-->
-    
+
     <script src="./js/navbar.js"></script>
     <script src="./js/userpage.js"></script>
 </body>

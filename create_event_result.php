@@ -1,9 +1,43 @@
 <?php
 require_once "./data.php";
+if( $_SERVER["REQUEST_METHOD"] !== "POST"){
+    header("Location: create_event.php");
+    exit();
+  }
+
 session_start();
 // $owner_id = $_SESSION["ID"];
 
+// ファイル関連の取得
+$submit = filter_input(INPUT_POST, "submit");
+$event_name = filter_input(INPUT_POST,"event_name");
+$theme = filter_input(INPUT_POST,"theme");
+$note = filter_input(INPUT_POST,"note");
+$area = filter_input(INPUT_POST,"area");
+$address1 = filter_input(INPUT_POST,"address1");
+$address2 = filter_input(INPUT_POST,"address2");
+// if(isset($_FILES["icon"])){
+//     $icon = file_get_contents($_FILES["icon"]["tmp_name"]);
+// }
+$schedule = filter_input(INPUT_POST,"schedule");
+$hour = filter_input(INPUT_POST,"hour",FILTER_VALIDATE_INT);
+$addressAll = $area.$address1.$address2;
+$icon = "123";
+// $hour = 60;
+// var_dump($hour);
+$owner_id = 100001;
+
+// 作成したイベント内容を保存
+
+
+$result = eventSave($event_name, $theme, $note, $area, $addressAll, $icon, $schedule, $hour, $owner_id);
+var_dump($result);
+// ファイルデータを取得
+$event_info = getAllEvent();
+
+
 ?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -12,7 +46,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./css/navbar.css">
-    <link rel="stylesheet" href="./css/create_event.css">
+    <link rel="stylesheet" href="./css/create_event_result.css">
     
     <title>ボランティア</title>
 </head>
@@ -35,15 +69,15 @@ session_start();
     <!-- 入力情報 -->
     <section id="enter_InfoArea">
 
-        <form action="create_event_result.php" method="POST" enctype="multipart/form-data">
+        <!-- < foreach($event_info as $info) :?> -->
             <div id="enter_BigInfoBox">
                 <div class="enter_InfoBox">
                     <label class="required">イベント名：</label>
-                    <input type="text" name="event_name" required>
+                    <p class="text" name="event_name" required><?= $event_name ?></p>
                 </div>
                 <div class="enter_InfoBox">
                     <label class="required">日時：</label>
-                    <input type="datetime-local" name="schedule" required>
+                    <p class="text" name="schedule" required><?= $schedule ?></p>
                 </div>
                 <div class="enter_InfoBox">
                     <label class="required">会場：</label>
@@ -53,55 +87,48 @@ session_start();
 
                         <p>都道府県　</p>
 
-                        <input type="text" style="width:100px" name="area" required>
+                        <p class="text"" style="width:100px" name="area" required><?= $area ?></p>
 
                         </div>
+
 
                         <div class="enterAddress_Box">
 
                         <p>　市/区　</p>
 
-                        <input type="text" style="width:100px" name="address1" required>
+                        <p class="text" style="width:100px" name="address1" required><?= $address1 ?></p>
 
                         </div>  
 
                     </div>
 
-                    <p>丁目/番号</p><input type="text" name="address2" required>
+                    <p>丁目/番号</p><p class="text" name="address2" required><?= $address2 ?></p>
                 </div>
                 <div class="enter_InfoBox">
                     <label class="required">活動内容：</label>
-                    <input type="text" name="note" required>
+                    <p class="text" name="note" required><?= $note ?></p>
                 </div>
                 <div class="enter_InfoBox">
                     <label class="required">イベントテーマ：</label>
-                    <select name="theme">
-                            <option value="教育">教育</option>
-                            <option value="国際">国際</option>
-                            <option value="介護">介護</option>
-                            <option value="災害">災害</option>
-                            <option value="お祭り">お祭り</option>
-                            <option value="その他">その他</option>
-                    </select>
+                    <p class="text" name="theme">
+                            <?= $theme ?></p>
+                    </p>
                 </div>
                 <div class="enter_InfoBox">
                     <label class="required">平均活動時間：</label>
-                    <input type="number" name="hour" min="10" step="10" placeholder="（１０分単位）" required>
+                    <p class="text" name="hour" min="10" step="10" placeholder="（１０分単位）" required><?= $hour ?></p>
                 </div>
 
                 <!-- 写真 -->
                 <div id="upload_PhotoBox">
-                    <input type="file" name="icon" id="file">
+                    <input type="file" name="icon" id="file" accept="image/*">
                     <label for="file">写真＋</label>
                 </div>
-                
             </div>
-
             <div id="enter_InfoSubmit">
-                <button type="submit" name="submit">送信</button>
+                <button onclick="location.href='create_event.php'">戻る</button>
             </div>
-            
-        </form>
+        <!--  endforeach?> -->
     </section>
 
     <?php include('./Navbar/footer.php'); ?>

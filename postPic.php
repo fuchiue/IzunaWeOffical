@@ -1,3 +1,7 @@
+<?php
+    $userid = filter_input(INPUT_GET, "user");
+    var_dump($userid);
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
