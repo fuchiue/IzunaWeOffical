@@ -1,3 +1,8 @@
+<?php 
+require_once "./data.php";
+
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -17,36 +22,39 @@
     <!--検索エリア-->
     <section id="Opening">
 
-        <img src="./image/opening2.jpg">
-        
+        <div id="home">
+        <img src="./image/Home_opening.jpg">
+        <img src="./image/Home_opening2.jpg">
+        <img src="./image/opening3.jpg">
+        </div>
+    
         <div id="search" class="search">
 
             <form action="searchResult.php" method="GET" class="search-bar" target="_self" enctype="">
-                <input type="hidden" id="lat"  name="lat">
-                <input type="hidden" id="lng"  name="lng">
-                <input type="text" placeholder="キーワードで検索" name="searchR">
+
+                <input type="text" placeholder="キーワードで検索" name="searchKeyWord">
     
                 <div class="select">
                     <select name="pickArea" id="pickArea">
-                        <option value="#">エリア</option>
-                        <option value="#">北海道</option>
-                        <option value="#">東北</option>
-                        <option value="#">関東</option>
-                        <option value="#">中部</option>
-                        <option value="#">関西</option>
-                        <option value="#">四国</option>
-                        <option value="#">九州</option>
+                        <option value="1" selected>エリア</option>
+                        <option value="北海道">北海道</option>
+                        <option value="東北">東北</option>
+                        <option value="関東">関東</option>
+                        <option value="中部">中部</option>
+                        <option value="関西">関西</option>
+                        <option value="四国">四国</option>
+                        <option value="九州">九州</option>
                     </select>
                 </div>
 
                 <div class="select">
                     <select name="eventTypes" id="eventTypes">
-                        <option value="#">テーマ</option>
-                        <option value="#">教育</option>
-                        <option value="#">国際</option>
-                        <option value="#">介護</option>
-                        <option value="#">災害</option>
-                        <option value="#">お祭り</option>
+                        <option value="1" selected>テーマ</option>
+                        <option value="教育">教育</option>
+                        <option value="国際">国際</option>
+                        <option value="福祉">福祉</option>
+                        <option value="災害">災害</option>
+                        <option value="お祭り">お祭り</option>
                     </select>
                 </div>
     

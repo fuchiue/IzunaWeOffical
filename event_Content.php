@@ -1,3 +1,18 @@
+<?php
+require_once "./data.php";
+
+
+try{
+
+}catch(PDOException $poe){
+    exit("DBエラー".$poe -> getMessage());
+}
+
+$stmt= null; //破棄の意味 return the intergers back to zero
+$db = null;
+
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -58,7 +73,7 @@
             </div>
         </div>    
 
-        <div id="event_Box2">
+        <div id="event_Box2" > <!--  ***** ページの担当へ：PHPでイベントのstatusを参照して、応募ボタンをhiddenかどうか***** -->
             <a href="userJoin.php" id="joinEventBtn">
                 <p id="submitBtn">応募</p>
             </a>

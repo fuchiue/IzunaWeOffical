@@ -39,7 +39,11 @@
 
             <!-- 団体紹介文　-->
             <p id="selfInfo_title">団体紹介文</p>
-            <p>OOOOOOOOOOOOOOOOOOOOOOOOOOOOOO</p>
+            <div class="word-break">
+                <div class="normal">
+                  <p>OOOOOOOOO内容OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO</p>
+                </div>
+            </div>
         </div>
 
     </section>
@@ -58,17 +62,40 @@
         <div id="switchPage">
             <!-- 投稿した写真　-->
             <div id="hostPostImg">
-                <div class="imgRow">
-                <a href="#" class="imgBox"><img src="./image/Event1.jpeg"></a>
-                <a href="#" class="imgBox"><img src="./image/Event1.jpeg"></a>
-                <a href="#" class="imgBox"><img src="./image/Event1.jpeg"></a>
+
+            <div class="scroll-bg">
+                    <div class="scroll-div">
+                        <div class="scroll-object">
+                            <div class="imgRow">
+                                <a href="#" class="imgBox"><img src="./image/Event1.jpeg"></a>
+                                <a href="#" class="imgBox"><img src="./image/Event1.jpeg"></a>
+                                <a href="#" class="imgBox"><img src="./image/Event1.jpeg"></a>
+                            </div>
+
+                            <div class="imgRow">
+                                <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
+                                <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
+                                <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
+                            </div>
+
+                            <div class="imgRow">
+                                <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
+                                <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
+                                <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
+                            </div>
+
+                            <div class="imgRow">
+                                <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
+                                <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
+                                <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
+                            </div>
+                            
+
+                        </div>
+                    </div>
                 </div>
 
-                <div class="imgRow">
-                <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
-                <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
-                <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
-                </div>
+
             </div>
 
             <!-- 参加者一覧　-->

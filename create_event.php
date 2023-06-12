@@ -41,9 +41,17 @@
                 </div>
                 <div class="enter_InfoBox">
                     <label class="required">会場：</label>
-                    <div>都道府県<input type="text" style="width:100px" required>
-                    　市/区<input type="text" style="width:100px" required></div>
-                    <div>丁目/番号</div><input type="text" required>
+                    <div class="enterAddress">
+                        <div class="enterAddress_Box">
+                        <p>都道府県　</p>
+                        <input type="text" style="width:100px" required>
+                        </div> 
+                        <div class="enterAddress_Box">
+                        <p>　市/区　</p>
+                        <input type="text" style="width:100px" required>
+                        </div>  
+                    </div>
+                    <p>丁目/番号</p><input type="text" required>
                 </div>
                 <div class="enter_InfoBox">
                     <label class="required">活動内容：</label>

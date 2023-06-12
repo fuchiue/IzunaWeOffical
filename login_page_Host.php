@@ -37,7 +37,7 @@
             <div id="loginMidBox">
                 <div class="loginSmallBox">
                     <label>メールアドレス：</label>
-                    <input type="email" placeholder="example@gmail.com" required>
+                    <input type="text" placeholder="example@gmail.com" required>
                 </div>
                 <div class="loginSmallBox">
                     <label>パスワード：</label>

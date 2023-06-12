@@ -26,4 +26,3 @@ function dbc()
 }
 dbc();
 ?>
-

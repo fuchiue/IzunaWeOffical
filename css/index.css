@@ -1,13 +1,25 @@
+
 /* Opening エリア CSS　開始*/
 
-#Opening  img{
+/* #Opening  img{
     width: 100%;
     padding: 20px;
     z-index: 1;
+} */
+
+#home img{
+  display: none;
+  width: 100%;
+  padding: 20px;
+  z-index: 1;
+}
+
+#home img:first-child {
+  display: block;
 }
 
 #Opening{
-  position: relative;
+    position: relative;
     width: 100%;
     display: flex;
     padding-top: 0px;
@@ -15,8 +27,9 @@
     padding-right: 0px;
     padding-bottom: 30px;
     margin-top: 0px;
-}
+  }
 
+  
 /*検索ボックス　CSS　開始 */
 
 .search{
@@ -30,7 +43,7 @@
     width:100%;
     position: absolute;
     z-index: 500;
-    top: 60%;
+    top: 73%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -73,8 +86,14 @@
     cursor: pointer;
 }
 
+/*ホーム写真自動的に変更エリア　CSS　開始 */
 
-/*指定距離+テーマ　ボックス　CSS　開始 */
+
+
+/*ホーム写真自動的に変更エリア　CSS　終了 */
+
+
+/*指定エリア+テーマ　ボックス　CSS　開始 */
 
 select{
     -webkit-appearance: none;
@@ -129,7 +148,11 @@ select {
     color: #555555;
 }
 
-/*指定距離+テーマ　ボックス　CSS　終了*/
+#errorM{
+  text-align: center;
+  color: #DD0000;
+}
+/*指定エリア+テーマ　ボックス　CSS　終了*/
 /* 検索ボックス　CSS　終了 */
 /* Opening エリア CSS　終了*/
 

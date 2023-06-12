@@ -33,10 +33,9 @@
             <!-- 入力情報(上部) -->
             <div id="signUp_TopArea">
                 <!-- 写真 -->
-                <div id="upload_IconBox">
-                    <input type="file" name="img" id="file" accept="image/*">
-                    <label for="file">Upload File</label>
-                    <img src=""></img>
+                <div class="drag-area">
+                    <button>ファイルを選択</button>
+                    <input type="file" hidden>
                 </div>
 
                 <!-- 分割線 -->
@@ -87,6 +86,11 @@
                             <label class="required">パスワード：</label>
                             <div><input type="password" name="password" required></div>
                         </div>
+
+                        <div class="singlebox">
+                            <label class="required">パスワード：</label>
+                            <div><input type="password" required></div>
+                        </div>
                     </div>
                     <!-- 右側の情報終わり -->
                 </div>
@@ -112,23 +116,24 @@
                 <input type="text" name=history>
 
                 <div id="signUp_BottomBox">
-                    <div class="signUp_BSmallBox">
+                    <div id="signUp_BSmallBox1">
                         <label>やりたいこと：</label>
                         <input type="text" name="do">
                     </div>
-
-                    <div class="signUp_BSmallBox">
-                        <label>参加したいカテゴリ：</label>
-                        <select name="eventTypes" id="eventTypes">
-                            <option value="#">テーマ</option>
-                            <option value="#">教育</option>
-                            <option value="#">国際</option>
-                            <option value="#">介護</option>
-                            <option value="#">災害</option>
-                            <option value="#">お祭り</option>
-                        </select>
+                    
+                    <div id="signUp_BSmallBox2">
+                        <p>参加したいカテゴリ：</p>
+                        <div class="select">
+                            <select name="theme" id="eventTypes">
+                                <option value="教育">教育</option>
+                                <option value="国際">国際</option>
+                                <option value="介護">介護</option>
+                                <option value="災害">災害</option>
+                                <option value="お祭り">お祭り</option>
+                                <option value="その他">その他</option>
+                            </select>
+                        </div> 
                     </div>
-                </div>
             </div>
 
             <div id="signUp_BtnArea">
@@ -144,6 +149,7 @@
     <script SPc="./js/navbar.js"></script>
     <script SPc="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script SPc="./js/index.js"></script>
+    <script src="./js/postpic.js"></script>
 
 </body>
 
