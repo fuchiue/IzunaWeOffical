@@ -28,14 +28,15 @@
     <!-- 入力情報エリア -->
     <section id="signUp_Area">
 
-        <form action="signup_UserData.php" method="post" class="">
+        <form action="signup_UserData.php" method="post" enctype="multipart/form-data" class="">
 
             <!-- 入力情報(上部) -->
             <div id="signUp_TopArea">
                 <!-- 写真 -->
                 <div id="upload_IconBox">
-                    <input type="file" name="img" id="file">
+                    <input type="file" name="img" id="file" accept="image/*">
                     <label for="file">Upload File</label>
+                    <img src=""></img>
                 </div>
 
                 <!-- 分割線 -->
@@ -51,7 +52,7 @@
                         </div>
                         <div class="singlebox">
                             <label class="required">ニックネーム：</label>
-                            <div><input type="text" name="nickname"required></div>
+                            <div><input type="text" name="nickname" required></div>
                         </div>
                         <div class="singlebox">
                             <label class="required">電話番号：</label>
@@ -80,7 +81,11 @@
                         </div>
                         <div class="singlebox">
                             <label class="required">メールアドレス：</label>
-                            <div><input type="text" name="mail" required></div>
+                            <div><input type="text" name="email" required></div>
+                        </div>
+                        <div class="singlebox">
+                            <label class="required">パスワード：</label>
+                            <div><input type="password" name="password" required></div>
                         </div>
                     </div>
                     <!-- 右側の情報終わり -->
@@ -98,7 +103,7 @@
                 </div>
 
                 <label class="required">自己紹介文：</label>
-                <textarea placeholder="自己紹介文を入力してください" required></textarea>
+                <textarea name="introduction" placeholder="自己紹介文を入力してください" required></textarea>
 
                 <label>スキル/資格：</label>
                 <input type="text" name="skill">

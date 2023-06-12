@@ -4,7 +4,7 @@ require_once "./data.php";
 session_start();
 
 //形式チェックしたいメールアドレス
-$email = 'email';
+$email = 'mail';
 //形式チェックに使う正規表現
 $parten = "/^[a-zA-Z0-9]+@[a-zA-Z0-9-]+(.[a-zA-Z0-9-]+)*$/";
 if( preg_match($pattern, $email ) ){
@@ -14,7 +14,7 @@ if( preg_match($pattern, $email ) ){
 }
 
 //数値入力電話番号
-if(preg_match("/[^0-9]/", $_POST['tel'],$_POST['birthday'])){
+if(preg_match("/[^0-9]/", $_POST['tel'])){
     echo "数値以外が入力されています。";
 }
 
@@ -28,11 +28,12 @@ $password = $POST["password"];
 $UserQuery = "SELECT * FROM user WHERE email = :email";
 $UserStmt = $PDO ->prepare($UserQuery);
 $UserStmt ->bindValue(':email',$email,PDO::PARAM_STR);
-$UserStmt -> execute();
+$UserStmt -> execute;
 
 if ($UserStmt->rowCount() > 0) {
     echo "このメールアドレスは既に登録されています。別のメールアドレスを使用してください。";
 }
+
 
 // 画像のアップロード処理
 //保存先のディレクトリー
@@ -47,54 +48,46 @@ if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
     // データベースに保存
     try {
         $pdo->beginTransaction(); // トランザクションの開始
-        $sql = "INSERT INTO user(
-            USER_NAME,
-            NICKNAME,
+        $sql = "INSERT INTO owner(
+            OWNER_NAME,
             NOTE,
-            BIRTHDAY,
             ADDRESS,
-            GENDER,
             ICON,
             TEL,
             EMAIL,
             PASSWORD
+            THEME
         ) VALUES (
-            :USER_NAME,
-            :NICKNAME,
+            :OWNER_NAME,
             :NOTE,
-            :BIRTHDAY,
             :ADDRESS,
-            :GENDER,
             :ICON,
             :TEL,
             :EMAIL,
             :PASSWORD
+            :THEME
         )";
 
         $stmt = $pdo->prepare($sql);
 
-        $user_name = $_POST["family_name"] . $_POST["name"];
-
-        $stmt->bindValue(":USER_NAME", $user_name ,PDO::PARAM_STR);
-        $stmt->bindValue(":NICKNAME", $_POST["nickname"], PDO::PARAM_STR);
+        $stmt->bindValue(":OWNER_NAME", $_POST["organization"] ,PDO::PARAM_STR);
         $stmt->bindValue(":NOTE", $_POST["introduction"], PDO::PARAM_STR);
-        $stmt->bindValue(":BIRTHDAY", $_POST["birthday"], PDO::PARAM_INT);
         $stmt->bindValue(":ADDRESS", $_POST["prefecture"] . $_POST["city"] . $_POST["chome"], PDO::PARAM_STR);
-        $stmt->bindValue(":GENDER", $_POST["gender"], PDO::PARAM_INT);
         $stmt->bindValue(":ICON", $target_file, PDO::PARAM_STR);
         $stmt->bindValue(":TEL", $_POST["tel"], PDO::PARAM_INT);
         $stmt->bindValue(":EMAIL", $_POST["email"], PDO::PARAM_STR);
         $stmt->bindValue(":PASSWORD", $_POST["password"], PDO::PARAM_STR);
+        $srmt->bindValue(":THEME", $_POST["theme"], PDO::PARAM_STR);
 
         $stmt->execute();
         echo "データが正常に保存されました。";
         $pdo->commit(); // 成功したらコミット
 
-        $sql="SELECT USER_ID from USER ORDER BY USER_ID DESC LIMIT 1";
+        $sql="SELECT OWNER_ID from OWNER ORDER BY OWNER_ID DESC LIMIT 1";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        $_SESSION['id'] = $result['USER_ID'];
+        $_SESSION['id'] = $result['OWNER_ID'];
 
         // リダイレクト
         header("Location: ./userpage_AfterLogin.php");
@@ -107,3 +100,4 @@ if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
 } else {
     echo "画像のアップロード中にエラーが発生しました。";
 }
+?>
