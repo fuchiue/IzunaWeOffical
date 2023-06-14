@@ -1,6 +1,6 @@
 <?php
-require_once "./data.php";
 session_start();
+require_once "./data.php";
 $id = $_SESSION["id"]; //IDを取得
 $hostdata = hostGetData($id); //ホストの情報を取得
 $joinedUser = hostGetjoinUser($id); //ボランティアに参加したユーザを取得

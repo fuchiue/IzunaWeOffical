@@ -1,6 +1,12 @@
 <?php
 
 session_start();
+//セッションからIDを取得
+//IDに値が入っているか確認
+//IDの桁数を確認
+//5桁ならユーザページに遷移
+//6桁ならホストページに遷移
+
 require_once __DIR__ . "/data.php";
 $username = filter_input(INPUT_POST, "user");
 $password = filter_input(INPUT_POST, "password");
@@ -48,9 +54,12 @@ UserLogin($username, $password);
         <!-- <form action="userpage_AfterLogin.php" method="post" class="loginBox"> -->
         <form action="" method="post" class="loginBox">
             <div id="loginMidBox">
-                <p style="font-size:0.1em;color:#f00;"><?php
-                                                        echo $msg;
-                                                        ?></p>
+                <p style="font-size:0.1em;color:#f00;">
+                    <?php
+                    if (isset($msg)) {
+                        echo $msg;
+                    }
+                    ?></p>
                 <div class="loginSmallBox">
                     <label>メールアドレスまたはユーザ名：</label>
                     <input type="text" name="user" placeholder="example@gmail.com" required>

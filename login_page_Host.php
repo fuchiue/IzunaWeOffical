@@ -48,9 +48,12 @@ HostLogin($username, $password);
         <form action="" method="post" class="loginBox">
 
             <div id="loginMidBox">
-                <p style="font-size:0.1em;color:#f00;"><?php
-                                                        echo $msg;
-                                                        ?></p>
+                <p style="font-size:0.1em;color:#f00;">
+                    <?php
+                    if (isset($msg)) {
+                        echo $msg;
+                    }
+                    ?></p>
                 <div class="loginSmallBox">
                     <label>メールアドレスまたはユーザ名：</label>
                     <input type="text" name="user" placeholder="example@gmail.com" required>
