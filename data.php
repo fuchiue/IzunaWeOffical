@@ -25,7 +25,6 @@ function dbc()
 }
 dbc();
 
-
 /*
 ホストプロフィールページに必要なホストのデータを取得
 @$id検索するホストのID
@@ -181,6 +180,78 @@ function Getevent($id)
         return $result; //データを返す
     } catch (Exception $e) {
         exit($e->getMessage());
+    }
+}
+//ユーザのログイン
+function UserLogin($username, $password)
+{
+    if ($username != null && $password != null) {
+        try { // トランザクション開始
+            $pdo = dbc();
+            if (strpos($username, '@')) {
+                $sql = "SELECT * FROM USER WHERE EMAIL=:username";
+            } else {
+                $sql = "SELECT * FROM USER WHERE USER_NAME=:username";
+            }
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($result && $result["PASSWORD"] === $password) {
+                // ユーザー番号をセッションに登録
+                $_SESSION["id"] = $result["USER_ID"];
+                echo $_SESSION["id"];
+                header("Location: userpage_AfterLogin.php");
+                //ユーザのマイページに移行する
+            } else {
+                $msg = "ユーザー名またはパスワードが正しくありません";
+                header("Location: login_page_User.php?msg=$msg");
+            }
+            $pdo->commit();
+        } catch (PDOException $poe) {
+            $pdo->rollBack();
+            echo "DB 接続エラー" . $poe->getMessage();
+        } finally {
+            $stmt = null;
+            $pdo = null;
+        }
+    }
+}
+
+//オーナのログイン
+function HostLogin($username, $password)
+{
+    if ($username != null && $password != null) {
+        try { // トランザクション開始
+            $pdo = dbc();
+            if (strpos($username, '@')) {
+                $sql = "SELECT * FROM OWNER WHERE EMAIL=:username";
+            } else {
+                $sql = "SELECT * FROM OWNER WHERE OWNER_NAME=:username";
+            }
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($result && $result["PASSWORD"] === $password) {
+                echo $result;
+                // ユーザー番号をセッションに登録
+                $_SESSION["id"] = $result["OWNER_ID"];
+                echo $_SESSION["id"];
+                header("Location: hostpage_AfterLogin.php");
+                //ユーザのマイページに移行する
+            } else {
+                $msg = "ユーザー名またはパスワードが正しくありません";
+                header("Location: login_page_Host.php?msg=$msg");
+            }
+            $pdo->commit();
+        } catch (PDOException $poe) {
+            $pdo->rollBack();
+            echo "DB 接続エラー" . $poe->getMessage();
+        } finally {
+            $stmt = null;
+            $pdo = null;
+        }
     }
 }
 
