@@ -8,7 +8,6 @@ function dbc()
     $user = "root";
     $pass = "root";
     $dns = "mysql:host=$host;dbname=$dbname;charset=utf8";
-
     try {
         $pdo = new PDO(
             $dns,
@@ -113,54 +112,55 @@ function GetRegister($id)
 }
 
 
-function searchResult($searchKeyWord,$pickArea,$eventTypes){
-    try{
+function searchResult($searchKeyWord, $pickArea, $eventTypes)
+{
+    try {
         $sql = "SELECT * FROM event";
         $where = "";
 
-            if($searchKeyWord){
-                $where = " WHERE EVENT_NAME LIKE :searchKeyWord";
-                $searchKeyWord = "%".$searchKeyWord."%";
-            }
+        if ($searchKeyWord) {
+            $where = " WHERE EVENT_NAME LIKE :searchKeyWord";
+            $searchKeyWord = "%" . $searchKeyWord . "%";
+        }
 
-            if($pickArea && $pickArea!= '1'){
-                if($searchKeyWord){
-                    $where .= " AND AREA = :pickArea";
-                }else {
-                    $where = " WHERE AREA = :pickArea";
-                }
+        if ($pickArea && $pickArea != '1') {
+            if ($searchKeyWord) {
+                $where .= " AND AREA = :pickArea";
+            } else {
+                $where = " WHERE AREA = :pickArea";
             }
+        }
 
-            if($eventTypes && $eventTypes!= '1'){
-                if($searchKeyWord){
-                    $where .= " AND THEME = :eventTypes";
-                }else {
-                    $where = " WHERE THEME = :eventTypes";
-                }
+        if ($eventTypes && $eventTypes != '1') {
+            if ($searchKeyWord) {
+                $where .= " AND THEME = :eventTypes";
+            } else {
+                $where = " WHERE THEME = :eventTypes";
             }
+        }
 
-            $stmt = dbc()->prepare($sql.$where); 
+        $stmt = dbc()->prepare($sql . $where);
 
-            if($searchKeyWord){
-                $stmt->bindParam(':searchKeyWord',$searchKeyWord, PDO::PARAM_STR);
-            }
-            if($pickArea && $pickArea!= '1'){
-                $stmt->bindParam(':pickArea',$pickArea, PDO::PARAM_STR);
-            }
-            if($eventTypes && $eventTypes!= '1'){
-                $stmt->bindParam(':eventTypes',$eventTypes, PDO::PARAM_STR);
-            }
-    
-            $stmt -> execute();   // SQL 実行されます
+        if ($searchKeyWord) {
+            $stmt->bindParam(':searchKeyWord', $searchKeyWord, PDO::PARAM_STR);
+        }
+        if ($pickArea && $pickArea != '1') {
+            $stmt->bindParam(':pickArea', $pickArea, PDO::PARAM_STR);
+        }
+        if ($eventTypes && $eventTypes != '1') {
+            $stmt->bindParam(':eventTypes', $eventTypes, PDO::PARAM_STR);
+        }
 
-            $result = [];
-            while($rows = $stmt -> fetch(PDO:: FETCH_ASSOC)){   // レコードを取ってくる
-                $result[] = $rows;
-            }
-            return $result; //データを返す
+        $stmt->execute();   // SQL 実行されます
 
-    }catch(PDOException $poe){
-        exit("DBエラー".$poe -> getMessage());
+        $result = [];
+        while ($rows = $stmt->fetch(PDO::FETCH_ASSOC)) {   // レコードを取ってくる
+            $result[] = $rows;
+        }
+        return $result; //データを返す
+
+    } catch (PDOException $poe) {
+        exit("DBエラー" . $poe->getMessage());
     }
 }
 
@@ -182,4 +182,40 @@ function Getevent($id)
     } catch (Exception $e) {
         exit($e->getMessage());
     }
+}
+//ユーザのデータの取得
+function TakeUserData($userid)
+{
+    $id = filter_var($userid, FILTER_SANITIZE_FULL_SPECIAL_CHARS); // ユーザー名をエスケープしてフィルタリングする
+    $pdo = dbc();
+    $sql = "SELECT POINT,NICKNAME,NOTE FROM USER WHERE USER_ID=:userid";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':userid', $id, PDO::PARAM_STR);
+    $stmt->execute();
+    $userdata = $stmt->fetch();
+    return $userdata;
+}
+
+//投稿写真の取得
+function TakePostData($userid)
+{
+    $id = filter_var($userid, FILTER_SANITIZE_FULL_SPECIAL_CHARS); // ユーザー名をエスケープしてフィルタリングする
+    $pdo = dbc();
+    $sql = "SELECT PHOTO,OWNER_ID FROM POST WHERE USER_ID=:userid";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':userid', $id, PDO::PARAM_STR);
+    $stmt->execute();
+    $postdata = $stmt->fetchall(PDO::FETCH_ASSOC);
+    return $postdata;
+}
+function TakeEventData($userid)
+{
+    $id = filter_var($userid, FILTER_SANITIZE_FULL_SPECIAL_CHARS); // ユーザー名をエスケープしてフィルタリングする
+    $pdo = dbc();
+    $sql = "SELECT EVENT_ID,ICON,EVENT_NAME,ADDRESS,THEME FROM EVENT WHERE EVENT_ID IN (SELECT EVENT_ID FROM JOINED WHERE USER_ID=:userid AND STATUS='参加済み')";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':userid', $id, PDO::PARAM_STR);
+    $stmt->execute();
+    $eventdata = $stmt->fetchall(PDO::FETCH_ASSOC);
+    return $eventdata;
 }
