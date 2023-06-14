@@ -25,6 +25,7 @@ function dbc()
 }
 dbc();
 
+
 /*
 ホストプロフィールページに必要なホストのデータを取得
 @$id検索するホストのID
@@ -165,7 +166,6 @@ function searchResult($searchKeyWord, $pickArea, $eventTypes)
 }
 
 
-
 /*
 対応するIDの開催したボランティアの各詳細情報ページを返す
 @$id検索するホストのID
@@ -183,6 +183,7 @@ function Getevent($id)
         exit($e->getMessage());
     }
 }
+
 //ユーザのデータの取得
 function TakeUserData($userid)
 {
@@ -195,7 +196,6 @@ function TakeUserData($userid)
     $userdata = $stmt->fetch();
     return $userdata;
 }
-
 //投稿写真の取得
 function TakePostData($userid)
 {

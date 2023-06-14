@@ -2,9 +2,10 @@
 require_once "./data.php";
 $id = "100002"; //IDを取得
 $hostdata = hostGetData($id); //ホストの情報を取得
-$joinedUsers = hostGetjoinUser($id); //ボランティアに参加したユーザを取得
+$joinedUser = hostGetjoinUser($id); //ボランティアに参加したユーザを取得
 $eventDatas = HostGetevent($id); //ホストの開催したイベントの情報を取得
-$registers = GetRegister($id);
+$registers = GetRegister($id); //参加応募者一覧を取得
+$photodatas = TakePostData($id); //投稿した写真を取得
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -76,24 +77,49 @@ $registers = GetRegister($id);
                 <div class="scroll-bg">
                     <div class="scroll-div">
                         <div class="scroll-object">
-                            <div class="imgRow">
-                                <a class="imgBox"><img src="./image/Event1.jpeg"></a>
-                                <a class="imgBox"><img src="./image/Event1.jpeg"></a>
-                                <a class="imgBox"><img src="./image/Event1.jpeg"></a>
-                            </div>
+                            <?php
+                            $cont = 0; //表示回数を管理
+                            //三回表示ごとにタグを閉じる
+                            foreach ($photodatas as $photo) { //参加ユーザの数だけ回る
+                                if ($cont == 0) {
+                                    echo '<div class="imgRow">'; //初めのタグ
+                                    echo "\n";
+                                }
 
-                            <div class="imgRow">
-                                <a class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
-                                <a class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
-                                <a class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
-                            </div>
+                                //写真の表示
+                                echo '<a class="imgBox"><img src="' . $photo['PHOTO'] . '"></a>';
+                                echo "\n";
+
+                                //三回写真を表示したら終わりのタグそれ以外ならカウントアップ
+                                if ($cont == 2) {
+                                    echo '</div>'; //終わりのタグ
+                                    echo "\n";
+                                    $cont = 0;
+                                } else {
+                                    $cont++;
+                                }
+                            }
+
+                            //ユーザが一人もいなかったとき
+                            if (!$photodatas) {
+                                echo '<div class="imgRow">'; //始まりのタグ
+                                echo "\n";
+                                echo '</div>'; //終わりのタグ
+                                echo "\n";
+                            }
+                            //ループを抜けた後タグを閉じていないときに閉じる
+                            if ($cont != 0) {
+                                echo '</div>'; //終わりのタグ
+                                echo "\n";
+                            }
+
+                            ?>
                         </div>
                     </div>
                 </div>
 
 
             </div>
-
             <!-- 参加者一覧　-->
             <div id="attendantImg">
                 <div class="scroll-bg">
@@ -102,12 +128,12 @@ $registers = GetRegister($id);
                             <?php
                             $cont = 0; //表示回数を管理
                             //三回表示ごとにタグを閉じる
-                            foreach ($joinedUsers as $user) { //参加ユーザの数だけ回る
+                            foreach ($joinedUser as $user) { //参加ユーザの数だけ回る
+
                                 if ($cont == 0) {
                                     echo '<div class="imgRow">'; //初めのタグ
                                     echo "\n";
                                 }
-
                                 //写真の表示　対応するユーザのIDを変数で送っている。
                                 echo '<a href="./hostpage_ViewOnly.php?id=' . $user['USER_ID'] . '" class="imgBox"><img src="' . $user['ICON'] . '"></a>';
                                 echo "\n";
@@ -120,20 +146,21 @@ $registers = GetRegister($id);
                                 } else {
                                     $cont++;
                                 }
-                                
                             }
-                            
+
                             //ユーザが一人もいなかったとき
-                            if (!$joinedUsers) {
+                            if (!$joinedUser) {
                                 echo '<div class="imgRow">'; //始まりのタグ
                                 echo "\n";
-                            }
-                            //ループを抜けた後タグを閉じていないときに閉じる
-                            if ($cont == 0) {
                                 echo '</div>'; //終わりのタグ
                                 echo "\n";
                             }
-                            
+                            //ループを抜けた後タグを閉じていないときに閉じる
+                            if ($cont != 0) {
+                                echo '</div>'; //終わりのタグ
+                                echo "\n";
+                            }
+
                             ?>
 
                         </div>
