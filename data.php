@@ -111,3 +111,75 @@ function GetRegister($id)
         exit($e->getMessage());
     }
 }
+
+
+function searchResult($searchKeyWord,$pickArea,$eventTypes){
+    try{
+        $sql = "SELECT * FROM event";
+        $where = "";
+
+            if($searchKeyWord){
+                $where = " WHERE EVENT_NAME LIKE :searchKeyWord";
+                $searchKeyWord = "%".$searchKeyWord."%";
+            }
+
+            if($pickArea && $pickArea!= '1'){
+                if($searchKeyWord){
+                    $where .= " AND AREA = :pickArea";
+                }else {
+                    $where = " WHERE AREA = :pickArea";
+                }
+            }
+
+            if($eventTypes && $eventTypes!= '1'){
+                if($searchKeyWord){
+                    $where .= " AND THEME = :eventTypes";
+                }else {
+                    $where = " WHERE THEME = :eventTypes";
+                }
+            }
+
+            $stmt = dbc()->prepare($sql.$where); 
+
+            if($searchKeyWord){
+                $stmt->bindParam(':searchKeyWord',$searchKeyWord, PDO::PARAM_STR);
+            }
+            if($pickArea && $pickArea!= '1'){
+                $stmt->bindParam(':pickArea',$pickArea, PDO::PARAM_STR);
+            }
+            if($eventTypes && $eventTypes!= '1'){
+                $stmt->bindParam(':eventTypes',$eventTypes, PDO::PARAM_STR);
+            }
+    
+            $stmt -> execute();   // SQL 実行されます
+
+            $result = [];
+            while($rows = $stmt -> fetch(PDO:: FETCH_ASSOC)){   // レコードを取ってくる
+                $result[] = $rows;
+            }
+            return $result; //データを返す
+
+    }catch(PDOException $poe){
+        exit("DBエラー".$poe -> getMessage());
+    }
+}
+
+
+
+/*
+対応するIDの開催したボランティアの各詳細情報ページを返す
+@$id検索するホストのID
+*/
+function Getevent($id)
+{
+    try {
+        $sql = 'SELECT * FROM EVENT WHERE EVENT_ID = :id'; //ホストの開催したイベントを取得
+        $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする 
+        $stmt->bindValue(':id', $id, PDO::PARAM_STR); //sqlの:idに変数の$idを代入
+        $stmt->execute(); //実行
+        $result = $stmt->fetchAll(); //データを取得
+        return $result; //データを返す
+    } catch (Exception $e) {
+        exit($e->getMessage());
+    }
+}

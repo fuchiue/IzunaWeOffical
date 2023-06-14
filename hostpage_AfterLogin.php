@@ -66,7 +66,7 @@ $registers = GetRegister($id);
         <div class="hostView_Btn">
             <button id="imgBtn">写真</button>
             <button id="attendantBtn">参加者の皆様</button>
-            <a href="#" id="hostpostBtn">投稿</a>
+            <a href="postPic_Host.php" id="hostpostBtn">投稿</a>
         </div>
 
         <div id="switchPage">
@@ -120,7 +120,9 @@ $registers = GetRegister($id);
                                 } else {
                                     $cont++;
                                 }
+                                
                             }
+                            
                             //ユーザが一人もいなかったとき
                             if (!$joinedUsers) {
                                 echo '<div class="imgRow">'; //始まりのタグ
@@ -131,6 +133,7 @@ $registers = GetRegister($id);
                                 echo '</div>'; //終わりのタグ
                                 echo "\n";
                             }
+                            
                             ?>
 
                         </div>
@@ -197,26 +200,25 @@ $registers = GetRegister($id);
 
                 <?php foreach ($registers as $register) : ?>
                     <div class="place-content">
-
                         <div class="event-item">
                             <diV class="col-md-7 center-item">
                                 <div class="joinedPpl_Control_Img">
                                     <a href="userpage_ViewOnly.php">
-                                        <img src="<?= $register['ICON'] ?>" alt="">
+                                        <img src="<?= $register['ICON']; ?>" alt="">
                                     </a>
                                 </div>
 
-                                <div class="information">
-                                    <h3><?= $register['EVENT_NAME'] ?></h3>
-                                    <p><?= $register['USER_NAME'] ?></p>
-                                    <p><a href="mailto: <?= $register['EMAIL'] ?>"><?= $register['EMAIL'] ?></a></p>
+                                <div class="informationUser">
+                                    <h3><?= $register['EVENT_NAME']; ?></h3>
+                                    <p><?= $register['USER_NAME']; ?></p>
+                                    <p><a href="mailto: <?= $register['EMAIL']; ?>"><?= $register['EMAIL']; ?></a></p>
                                 </div>
                             </diV>
                         </div>
                         </a>
-
                     </div>
                 <?php endforeach; ?>
+
             </div>
         </div>
 
