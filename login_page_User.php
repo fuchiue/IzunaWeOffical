@@ -2,11 +2,20 @@
 
 session_start();
 //セッションからIDを取得
-//IDに値が入っているか確認
-//IDの桁数を確認
-//5桁ならユーザページに遷移
-//6桁ならホストページに遷移
 
+if(isset($_SESSION["id"])){
+$id = $_SESSION["id"];
+}
+//IDに値が入っているか確認
+if(isset($id)){
+    //5桁ならユーザページに遷移
+    if(strlen((int)$id)==5){
+        header("Location: userpage_AfterLogin.php");
+    //6桁ならホストページに遷移
+    }else if(strlen((int)$id)==6){
+        header("Location: hostpage_AfterLogin.php");
+    }
+}
 require_once __DIR__ . "/data.php";
 $username = filter_input(INPUT_POST, "user");
 $password = filter_input(INPUT_POST, "password");
