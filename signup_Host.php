@@ -128,7 +128,7 @@
     <script SPc="./js/navbar.js"></script>
     <script SPc="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script SPc="./js/index.js"></script>
-    <script src="./js/postpic.js"></script>
+    <script src="./js/signup.js"></script>
 
 </body>
 
