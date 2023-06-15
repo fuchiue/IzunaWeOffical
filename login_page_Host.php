@@ -1,3 +1,15 @@
+<?php
+
+session_start();
+require_once __DIR__ . "/data.php";
+$username = filter_input(INPUT_POST, "user");
+$password = filter_input(INPUT_POST, "password");
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $msg=$_GET['msg'];
+}
+$result = [];
+HostLogin($username, $password);
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -32,16 +44,19 @@
 
         <!-- ログイン -->
 
-        <form action="#" method="post" class="loginBox">
+        <form action="" method="post" class="loginBox">
             
             <div id="loginMidBox">
+                <p style="font-size:0.1em;color:#f00;"><?php
+                    echo $msg;
+                ?></p>
                 <div class="loginSmallBox">
-                    <label>メールアドレス：</label>
-                    <input type="email" placeholder="example@gmail.com" required>
+                    <label>メールアドレスまたはユーザ名：</label>
+                    <input type="text" name="user" placeholder="example@gmail.com" required>
                 </div>
                 <div class="loginSmallBox">
                     <label>パスワード：</label>
-                    <input type="text" required>
+                    <input type="password" name="password" required>
                 </div>
                 
             </div>

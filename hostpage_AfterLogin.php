@@ -1,3 +1,10 @@
+<?php
+session_start();
+require_once __DIR__ . "/data.php";
+// ログインからIDを取ってくる
+$ownerid = $_SESSION["id"];
+var_dump($ownerid);
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
