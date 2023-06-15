@@ -64,7 +64,7 @@
 
                         <div id="mailArea">
                             <label class="required">メールアドレス：</label>
-                            <div><input type="text" name="email" required></div>
+                            <div><input type="email" name="email" required></div>
                         </div>
 
                         <!-- 左側終わり -->

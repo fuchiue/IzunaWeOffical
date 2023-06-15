@@ -36,10 +36,9 @@
                 <div id="returnDrag">
                         <div class="drag-area">
                             <button id="selectPicBtn">ファイルを選択</button>
-                            <input type="file" hidden>
+                            <input type="file" name="img" hidden>
                         </div>
                     <button id="newSelectBtn">ファイルを選択</button>
-                    <input type="file" hidden>
                 </div>    
 
                 <!-- 分割線 -->
@@ -84,7 +83,7 @@
                         </div>
                         <div class="singlebox">
                             <label class="required">メールアドレス：</label>
-                            <div><input type="text" name="email" required></div>
+                            <div><input type="email" name="email" required></div>
                         </div>
                         <div class="singlebox">
                             <label class="required">パスワード：</label>
