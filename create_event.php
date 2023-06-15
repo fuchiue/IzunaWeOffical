@@ -94,10 +94,15 @@ session_start();
                 </div>
 
                 <!-- 写真 -->
-                <div id="upload_PhotoBox">
-                    <input type="file" name="icon" id="file">
-                    <label for="file">写真＋</label>
+                <div class="text-center">
+                <!-- サムネイル表示 -->
+                <div id="icon" style="text-align: center" class="d-inline-block me-1 mt-1 mb-5""><img></div>
+                </div>
 
+                <!-- ファイル入力Button -->
+                <div id="upload_PhotoBox">
+                    <input type="file" name="icon" id="inputIcon" accept="image/*">
+                    <label for="inputIcon">写真＋</label>
                 </div>
                 
             </div>
@@ -114,6 +119,7 @@ session_start();
     <script src="./js/navbar.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="./js/index.js"></script>
+    <script src="./js/create_event.js"></script>
 
 </body>
 

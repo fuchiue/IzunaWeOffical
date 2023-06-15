@@ -20,40 +20,18 @@ $schedule = filter_input(INPUT_POST,"schedule");
 $hour = filter_input(INPUT_POST,"hour",FILTER_VALIDATE_INT);
 $addressAll = $area.$address1.$address2;
 $detail = filter_input(INPUT_POST,"detail");
-// var_dump($detail);
 
 $owner_id = 100001;
 
 // アップロードされたファイルの一時的な保存場所からファイルを取得し、保存先のディレクトリに移動させる
-// var_dump($_FILES["icon"]["name"]);
-if(isset($_FILES["icon"]) && $_FILES["icon"]["name"] != ""){
-    $icon_tmp = $_FILES["icon"]["tmp_name"];
-    // $icon_extension = pathinfo($_FILES["icon"]["name"], PATHINFO_EXTENSION);
-    // $icon_name = uniqid() . "_" . $icon_extension; // 一意のファイル名を生成
-    $icon_name = date('YmdHis') . "_" . $_FILES["icon"]["name"]; // 一意のファイル名を生成
-    $icon_path = "./images/eventicon/" . $icon_name;
-
-    // 画像ファイルかどうかをチェックする
-    $allowed_extensions = array("jpg", "jpeg", "png", "gif");
-    $icon_extension = strtolower(pathinfo($icon_name, PATHINFO_EXTENSION));
-    $err_msg = "";
-    
-    if (in_array($icon_extension, $allowed_extensions)) {
-        move_uploaded_file($icon_tmp, $icon_path);
-        // データベースにパス名を保存する処理などを追加する
-    } else {
-        // 画像ファイルではない場合のエラーメッセージを表示するなどの処理を行う
-        $err_msg = "添付ファイルは画像ではありません。";
-    }
-}
-if(isset($err_msg)){
-    $icon_path = null;
-}
+$icon_tmp = $_FILES["icon"]["tmp_name"];
+$icon_name = date('YmdHis') . "_" . $_FILES["icon"]["name"]; // 一意のファイル名を生成
+$icon_path = "./images/eventicon/" . $icon_name;
+move_uploaded_file($icon_tmp, $icon_path);
 // 作成したイベント内容を保存
 $result = eventSave($event_name, $theme, $note, $area, $addressAll, $icon_path, $schedule, $hour, $owner_id, $detail);
 // ファイルデータを取得
 // $event_info = getAllEvent();
-
 
 ?>
 
@@ -147,19 +125,9 @@ $result = eventSave($event_name, $theme, $note, $area, $addressAll, $icon_path, 
 
             <!-- アップロードされた画像を表示 -->
             <div id="upload_PhotoBox">
-            <?php
-            // var_dump($icon_path);
-            if(isset($icon_path) && empty($err_msg)){
-                echo '<div id="uploaded_image">';
-                echo '<img src="' . $icon_path . '" alt="アップロードされた画像" style="max-width: 600px; max-height: 600px;">';
-                echo '</div>';
-            }elseif(!empty($err_msg)){
-                echo '<p style="color: red;">' . $err_msg . '</p>';
-            }else{
-                echo '<input type="file" name="icon" id="file" accept="image/*">';
-                echo '<label for="file">写真＋</label>';
-            }
-            ?>
+                <div id="uploaded_image">
+                    <img src="<?= $icon_path ?>" alt="アップロードされた画像" style="max-width: 600px; max-height: 600px;">
+                </div>
             </div>
         </div>
 

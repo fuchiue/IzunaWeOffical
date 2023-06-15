@@ -52,24 +52,10 @@ function eventSave($event_name, $theme, $note, $area, $addressAll, $icon, $sched
         // プリペアドステートメントを作成
         $stmt = $pdo->prepare($sql);
 
-        // 画像ファイルかどうかをチェックする
-        $allowed_extensions = array("jpg", "jpeg", "png", "gif");
-        $err_msg = "";
-        
-        if($_FILES["icon"]["error"] === UPLOAD_ERR_OK){
-            $icon_extension = strtolower(pathinfo($_FILES["icon"]["name"], PATHINFO_EXTENSION));
-
-            if (in_array($icon_extension, $allowed_extensions)) {
-                // アップロードされたファイルの一時的な保存場所からファイルを取得し、保存先のディレクトリに移動させる
-               $icon_tmp = $_FILES["icon"]["tmp_name"];
-               $icon_name = date('YmdHis') . "_" . $_FILES["icon"]["name"];
-               $icon_path = "./images/eventicon/" . $icon_name;
-               move_uploaded_file($icon_tmp, $icon_path);
-               // データベースにパス名を保存する処理などを追加する
-           } else {
-               $icon_path = ""; // 画像でない場合はnullにする
-           }
-        }
+        $icon_tmp = $_FILES["icon"]["tmp_name"];
+        $icon_name = date('YmdHis') . "_" . $_FILES["icon"]["name"];
+        $icon_path = "./images/eventicon/" . $icon_name;
+        move_uploaded_file($icon_tmp, $icon_path);
 
         // パラメータをバインド
         $stmt->bindParam(1, $event_name,PDO::PARAM_STR);
@@ -77,22 +63,16 @@ function eventSave($event_name, $theme, $note, $area, $addressAll, $icon, $sched
         $stmt->bindParam(3, $note,PDO::PARAM_STR);
         $stmt->bindParam(4, $area, PDO::PARAM_STR);
         $stmt->bindParam(5, $addressAll, PDO::PARAM_STR);
-        $stmt->bindValue(6, $icon_path, PDO::PARAM_STR);
+        $stmt->bindParam(6, $icon_path, PDO::PARAM_STR);
         $stmt->bindValue(7, $schedule, PDO::PARAM_STR);
         $stmt->bindParam(8, $hour, PDO::PARAM_INT);
         $stmt->bindParam(9, $owner_id, PDO::PARAM_INT);
         if($detail){ 
             $stmt->bindParam(10, $detail, PDO::PARAM_STR); 
         }else{
-            $detail = "";
+            $detail = null;
             $stmt->bindParam(10, $detail, PDO::PARAM_STR); 
         }
-        // $icon_pathがnullでない場合にのみパラメータをバインド
-        // if ($icon_path !== null) {
-        //     $stmt->bindParam(6, $icon_path, PDO::PARAM_STR);
-        // } else {
-        //     $stmt->bindValue(6, null, PDO::PARAM_NULL);
-        // }
         // クエリを実行
         $stmt->execute();
 
