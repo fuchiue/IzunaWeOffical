@@ -215,6 +215,11 @@
     padding-right: 60px;
 }
 
+.informationUser{
+    width: 300px;
+    padding-right: 60px;
+}
+
 .eventControl_Img img{
     width: 30vmin;
     height: 30vmin;
@@ -243,14 +248,14 @@
 
 .scroll-bg{
     background-color: #f0f0f0;
-    width: 775px;
+    width: 845px;
     margin: 3% auto;
     padding: 30px;
     border-radius: 20px;
 }
 
 .scroll-div{
-    width: 720px;
+    width: 790px;
     background-color: #f0f0f0;
     height: 300px;
     overflow: hidden;

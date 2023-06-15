@@ -1,16 +1,11 @@
 <?php
 require_once "./data.php";
 
-
-try{
-
-}catch(PDOException $poe){
-    exit("DBエラー".$poe -> getMessage());
-}
-
-$stmt= null; //破棄の意味 return the intergers back to zero
-$db = null;
-
+$id = $_GET["eventId"]; //前ページで選択された項目のidを取得する
+$eventdata = Getevent($id);
+// echo "<pre>";
+// print_r($eventdata);
+// echo "</pre>";
 ?>
 
 <!DOCTYPE html>
@@ -56,21 +51,19 @@ $db = null;
                 <p class="EV_Small_Title">イベント名：</p>
                 <p class="EV_Small_Title">活動テーマ：</p>
                 <p class="EV_Small_Title">日時：</p>
-                <p class="EV_Small_Title">集合時間：</p>
                 <p class="EV_Small_Title">活動場所：</p>
-                <p class="EV_Small_Title">募集対象：</p>
                 <p class="EV_Small_Title">募集詳細：</p>
             </div>
 
+            <?php foreach($eventdata as $eventvalue):?> 
             <div id="event_SmallContent">
-                <p id="eventName">OOOイベント</p>
-                <p id="eventTheme">環境</p>
-                <p id="eventTime">2023年O月O日　00:00</p>
-                <p id="event_Meet_Time">00:00</p>
-                <p id="eventPlace">大阪府大阪市</p>
-                <p id="eventPeople">高校生、大学生</p>
-                <p id="eventInfo">OOOOOOOOO</p>
+                <p id="eventName"><?= $eventvalue["EVENT_NAME"];?></p>
+                <p id="eventTheme"><?= $eventvalue["THEME"];?></p>
+                <p id="eventTime"><?= $eventvalue["SCHEDULE"];?></p>
+                <p id="eventPlace"><?= $eventvalue["ADDRESS"];?></p>
+                <p id="eventInfo"><?= $eventvalue["NOTE"];?></p>
             </div>
+            <?php endforeach ?>
         </div>    
 
         <div id="event_Box2" > <!--  ***** ページの担当へ：PHPでイベントのstatusを参照して、応募ボタンをhiddenかどうか***** -->

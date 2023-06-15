@@ -3,11 +3,8 @@ require_once "./data.php";
 $searchKeyWord = null;
 $pickArea = null;
 $eventTypes = null;
+$status["message"] = null;
 
-$status = [
-    "status" => true,
-    "message" => null,
-];
 
 if (isset($_GET["searchKeyWord"])){
     $searchKeyWord = $_GET["searchKeyWord"];
@@ -21,80 +18,14 @@ if (isset($_GET["eventTypes"])){
     $eventTypes = $_GET["eventTypes"];
 }
 
-    try{
-        //-------------- 学校のやり方-------------//
-        // $host = "localhost";
-        // $dbname = "izanadb";
-        // $user = "root";
-        // $pass = "root";
-        // $dsn = "mysql:host=$host; dbname=$dbname; charset=utf8";
+$searchResult = searchResult($searchKeyWord, $pickArea, $eventTypes);
 
-        // $db = new PDO($dsn,$user,$pass); //PDO("access database's root"," login username","database password")
-        // $db -> setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
-        // $db -> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_WARNING ); //新規値so that is false
-        //-------------- 学校のやり方-------------//
-
-        $sql = "SELECT * FROM event";
-        $where = "";
-
-            if($searchKeyWord){
-                $where = " WHERE EVENT_NAME LIKE :searchKeyWord";
-                $searchKeyWord = "%".$searchKeyWord."%";
-            }
-
-            if($pickArea && $pickArea!= '1'){
-                if($searchKeyWord){
-                    $where .= " AND AREA = :pickArea";
-                }else {
-                    $where = " WHERE AREA = :pickArea";
-                }
-            }
-
-            if($eventTypes && $eventTypes!= '1'){
-                if($searchKeyWord){
-                    $where .= " AND THEME = :eventTypes";
-                }else {
-                    $where = " WHERE THEME = :eventTypes";
-                }
-            }
-
-            // $stmt = $db ->prepare($sql.$where); //-------------- 学校のやり方-------------//
-            $stmt = dbc()->prepare($sql.$where); 
-
-            if($searchKeyWord){
-                $stmt->bindParam(':searchKeyWord',$searchKeyWord, PDO::PARAM_STR);
-            }
-
-            if($pickArea && $pickArea!= '1'){
-                $stmt->bindParam(':pickArea',$pickArea, PDO::PARAM_STR);
-            }
-
-            if($eventTypes && $eventTypes!= '1'){
-                $stmt->bindParam(':eventTypes',$eventTypes, PDO::PARAM_STR);
-            }
-            
-
-            $stmt -> execute();   // SQL 実行されます
-
-            $result = [];
-            while($rows = $stmt -> fetch(PDO:: FETCH_ASSOC)){   // レコードを取ってくる
-                $result[] = $rows;
-            }
-
-            if (empty($result)) { 
-                $status["message"] ='条件に当てはまる募集は見つかりません。再検索してください。'; 
-            } 
-            
-
-    }catch(PDOException $poe){
-        exit("DBエラー".$poe -> getMessage());
-    }
-
+if (empty($searchResult)) { 
+    $status["message"] ='条件に当てはまる募集は見つかりません。再検索してください。'; 
+} 
 
 // echo "<pre>";
-print_r($result);
-// print_r($sql.$where);
-// print_r($eventTypes);
+// print_r($searchResult);
 // echo "</pre>";
 
 $stmt= null; //破棄の意味 return the intergers back to zero
@@ -167,9 +98,9 @@ $db = null;
 
     <!-- 検索結果の一覧 -->
     <section class="place-content-wrap">
-        <?php foreach($result as $value):?> 
+        <?php foreach($searchResult as $value):?> 
             <div class="place-content" id="page">
-                <a href="event_Content.php?id=<?= $value["EVENT_ID"];?>" class="col-md-12 col-lg-10 mx-auto item-box">
+                <a href="event_Content.php?eventId=<?= $value["EVENT_ID"];?>" class="col-md-12 col-lg-10 mx-auto item-box">
                     <div class="event-item">
                             <diV class="col-md-7 center-item">
                                 <div class="eventControl_Img">
@@ -212,3 +143,76 @@ $db = null;
 </body>
 
 </html>
+
+
+ <!-- 
+       // try{
+    //     //-------------- 学校のやり方-------------//
+    //     // $host = "localhost";
+    //     // $dbname = "izanadb";
+    //     // $user = "root";
+    //     // $pass = "root";
+    //     // $dsn = "mysql:host=$host; dbname=$dbname; charset=utf8";
+
+    //     // $db = new PDO($dsn,$user,$pass); //PDO("access database's root"," login username","database password")
+    //     // $db -> setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
+    //     // $db -> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_WARNING ); //新規値so that is false
+    //     //-------------- 学校のやり方-------------//
+
+    //     $sql = "SELECT * FROM event";
+    //     $where = "";
+
+    //         if($searchKeyWord){
+    //             $where = " WHERE EVENT_NAME LIKE :searchKeyWord";
+    //             $searchKeyWord = "%".$searchKeyWord."%";
+    //         }
+
+    //         if($pickArea && $pickArea!= '1'){
+    //             if($searchKeyWord){
+    //                 $where .= " AND AREA = :pickArea";
+    //             }else {
+    //                 $where = " WHERE AREA = :pickArea";
+    //             }
+    //         }
+
+    //         if($eventTypes && $eventTypes!= '1'){
+    //             if($searchKeyWord){
+    //                 $where .= " AND THEME = :eventTypes";
+    //             }else {
+    //                 $where = " WHERE THEME = :eventTypes";
+    //             }
+    //         }
+
+    //         // $stmt = $db ->prepare($sql.$where); //-------------- 学校のやり方-------------//
+    //         $stmt = dbc()->prepare($sql.$where); 
+
+    //         if($searchKeyWord){
+    //             $stmt->bindParam(':searchKeyWord',$searchKeyWord, PDO::PARAM_STR);
+    //         }
+
+    //         if($pickArea && $pickArea!= '1'){
+    //             $stmt->bindParam(':pickArea',$pickArea, PDO::PARAM_STR);
+    //         }
+
+    //         if($eventTypes && $eventTypes!= '1'){
+    //             $stmt->bindParam(':eventTypes',$eventTypes, PDO::PARAM_STR);
+    //         }
+            
+
+    //         $stmt -> execute();   // SQL 実行されます
+
+    //         $result = [];
+    //         while($rows = $stmt -> fetch(PDO:: FETCH_ASSOC)){   // レコードを取ってくる
+    //             $result[] = $rows;
+    //         }
+
+    //         if (empty($result)) { 
+    //             $status["message"] ='条件に当てはまる募集は見つかりません。再検索してください。'; 
+    //         } 
+            
+
+    // }catch(PDOException $poe){
+    //     exit("DBエラー".$poe -> getMessage());
+    // }
+
+ -->

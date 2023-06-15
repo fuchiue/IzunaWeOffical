@@ -34,13 +34,13 @@
             <div id="signUp_TopArea">
                 <!-- 写真 -->
                 <div id="returnDrag">
-                    <div class="drag-area">
-                        <button id="selectPicBtn">ファイルを選択</button>
-                        <input type="file" hidden>
-                    </div>
+                        <div class="drag-area">
+                            <button id="selectPicBtn">ファイルを選択</button>
+                            <input type="file" hidden>
+                        </div>
                     <button id="newSelectBtn">ファイルを選択</button>
                     <input type="file" hidden>
-                </div>
+                </div>    
 
                 <!-- 分割線 -->
                 <div id="redDecoBox"></div>
