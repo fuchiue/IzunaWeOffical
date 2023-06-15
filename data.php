@@ -115,35 +115,35 @@ function GetRegister($id)
 
 function searchResult($searchKeyWord,$pickArea,$eventTypes){
     try{
-        var_dump($searchKeyWord);
-        var_dump($pickArea);
-        var_dump($eventTypes);
-        $sql = "SELECT * FROM event";
+        // var_dump($searchKeyWord);
+        // var_dump($pickArea);
+        // var_dump($eventTypes);
+        $sql = "SELECT * FROM event WHERE STATUS ='募集中' ";
         $where = "";
 
             if($searchKeyWord){
-                $where = " WHERE EVENT_NAME LIKE :searchKeyWord";
+                $where = " AND EVENT_NAME LIKE :searchKeyWord";
                 $searchKeyWord = "%".$searchKeyWord."%";
             }
 
             if($pickArea && $pickArea!= '1'){
-                if($where != ""){
+                // if($where != ""){
                     $where .= " AND AREA = :pickArea";
-                }else {
-                    $where = " WHERE AREA = :pickArea";
-                }
+                // }else {
+                    // $where = " AND AREA = :pickArea";
+                // }
             }
 
             if($eventTypes && $eventTypes!= '1'){
-                if($where != ""){
+                // if($where != ""){
                     $where .= " AND THEME = :eventTypes";
-                }else {
-                    $where = " WHERE THEME = :eventTypes";
-                }
+                // }else {
+                    // $where = " AND THEME = :eventTypes";
+                // }
             }
 
             $stmt = dbc()->prepare($sql.$where); 
-            var_dump($sql.$where);
+            // var_dump($sql.$where);
             if($searchKeyWord){
                 $stmt->bindParam(':searchKeyWord',$searchKeyWord, PDO::PARAM_STR);
             }

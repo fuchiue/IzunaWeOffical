@@ -69,21 +69,25 @@
     border: 2px solid #DC0000;
 }
 
-.drag-area .icon{
+#uploadTitle{
+    text-align: center;
+}
+
+#uploadTitle .icon{
     font-size: 100px;
 }
 
-.drag-area p{
+#uploadTitle p{
     font-size: 20px;
     font-weight: 500;
 }
 
-.drag-area span{
+#uploadTitle span{
     font-size: 20px;
     font-weight: 500;
 }
 
-.drag-area button{
+#selectPicBtn{
     padding:  10px 25px;
     font-size: 20px;
     font-weight: 300;
@@ -95,11 +99,26 @@
     cursor: pointer;
 }
 
+
 .drag-area.active img{
     height: 100%;
     width: 100%;
     object-fit: cover;
     border-radius: 5px;
+}
+
+#newSelectBtn{
+    display: none;
+    margin-top: 10px;
+    padding:  5px 15px;
+    font-size: 10px;
+    font-weight: 300;
+    border: none;
+    outline: none;
+    background: #DC0000;
+    color: #ffff;
+    border-radius: 20px;
+    cursor: pointer;
 }
 
 /*ホストを選択するエリア*/

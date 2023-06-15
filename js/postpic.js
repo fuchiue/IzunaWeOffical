@@ -1,6 +1,7 @@
 const dragArea = document.querySelector(".drag-area"),
 button = document.querySelector("#selectPicBtn"),
-newSelectBtn = document.querySelector("#newSelectBtn");
+newSelectBtn = document.querySelector("#newSelectBtn"),
+uploadTilte = document.querySelector("#uploadTitle"),
 input = document.querySelector("input");
 
 let file;
@@ -79,6 +80,7 @@ function showFile(){
             imgTag.setAttribute("src",fileURL);
             dragArea.appendChild(imgTag);
             button.style.display = "none";
+            uploadTilte.style.display = "none";
             newSelectBtn.style.display = "block";
         }
         fileReader.readAsDataURL(file);
