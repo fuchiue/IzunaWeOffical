@@ -1,6 +1,32 @@
 <?php 
 require_once "./data.php";
 
+try{
+
+    $sql = 'SELECT * FROM EVENT';
+    $stmt = dbc()->prepare($sql);
+
+    $stmt->execute();
+
+    $result = [];
+    
+    // fetch:1列
+    while ($rows = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $result[] = $rows;
+    }
+
+    $indexes = array_rand($result,4);
+
+
+
+}catch (Exception $e) {
+    exit($e->getMessage());
+}
+
+// echo "<pre>";
+// print_r($result);
+// echo "</pre>";
+
 ?>
 
 <!DOCTYPE html>
@@ -12,6 +38,7 @@ require_once "./data.php";
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./css/navbar.css">
     <link rel="stylesheet" href="./css/index.css">
+    <script src="https://kit.fontawesome.com/4d6369389a.js" crossorigin="anonymous"></script>
     <title>ボランティア</title>
 </head>
 
@@ -75,20 +102,22 @@ require_once "./data.php";
         <div class="container">
             <div class="swiper card_slider">
                 <div class="swiper-wrapper">
+
+                <?php foreach($result as $value):?> 
                     <div class="swiper-slide">
                         <div class="img_box">
                             <a href="event_Content.php">
                                 <img src="./image/works1.jpg">
                                 <div class="HP_eventDetails">
-                                    <h2>イベント名</h2>
-                                    <p>日時</p>
-                                    <p>場所</p>
+                                    <h2><?= $value["EVENT_NAME"] ;?></h2>
+                                    <p><i class="fa-regular fa-timer"></i><?= $value["SCHEDULE"] ;?></p>
+                                    <p><i class="fa-solid fa-location-dot" style="color: #ffffff;"></i><?= $value["ADDRESS"] ;?></p>
                                 </div>
                             </a>
                         </div>
                     </div>
-
-                    <div class="swiper-slide">
+                <?php endforeach ?>
+                    <!-- <div class="swiper-slide">
                         <div class="img_box">
                             <a href="event_Content.php">
                                 <img src="./image/works2.jpg">
@@ -138,7 +167,7 @@ require_once "./data.php";
                                 </div>
                             </a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-button-next"></div>
