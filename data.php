@@ -115,6 +115,9 @@ function GetRegister($id)
 
 function searchResult($searchKeyWord,$pickArea,$eventTypes){
     try{
+        var_dump($searchKeyWord);
+        var_dump($pickArea);
+        var_dump($eventTypes);
         $sql = "SELECT * FROM event";
         $where = "";
 
@@ -124,7 +127,7 @@ function searchResult($searchKeyWord,$pickArea,$eventTypes){
             }
 
             if($pickArea && $pickArea!= '1'){
-                if($searchKeyWord){
+                if($where != ""){
                     $where .= " AND AREA = :pickArea";
                 }else {
                     $where = " WHERE AREA = :pickArea";
@@ -132,7 +135,7 @@ function searchResult($searchKeyWord,$pickArea,$eventTypes){
             }
 
             if($eventTypes && $eventTypes!= '1'){
-                if($searchKeyWord){
+                if($where != ""){
                     $where .= " AND THEME = :eventTypes";
                 }else {
                     $where = " WHERE THEME = :eventTypes";
@@ -140,7 +143,7 @@ function searchResult($searchKeyWord,$pickArea,$eventTypes){
             }
 
             $stmt = dbc()->prepare($sql.$where); 
-
+            var_dump($sql.$where);
             if($searchKeyWord){
                 $stmt->bindParam(':searchKeyWord',$searchKeyWord, PDO::PARAM_STR);
             }
