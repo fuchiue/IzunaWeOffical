@@ -33,8 +33,12 @@
             <!-- 入力情報(上部) -->
             <div id="signUp_TopArea">
                 <!-- 写真 -->
-                <div class="drag-area">
-                    <button>ファイルを選択</button>
+                <div id="returnDrag">
+                    <div class="drag-area">
+                        <button id="selectPicBtn">ファイルを選択</button>
+                        <input type="file" hidden>
+                    </div>
+                    <button id="newSelectBtn">ファイルを選択</button>
                     <input type="file" hidden>
                 </div>
 
@@ -120,7 +124,7 @@
                         <label>やりたいこと：</label>
                         <input type="text" name="do">
                     </div>
-                    
+
                     <div id="signUp_BSmallBox2">
                         <p>参加したいカテゴリ：</p>
                         <div class="select">
@@ -132,13 +136,13 @@
                                 <option value="お祭り">お祭り</option>
                                 <option value="その他">その他</option>
                             </select>
-                        </div> 
+                        </div>
                     </div>
-            </div>
+                </div>
 
-            <div id="signUp_BtnArea">
-                <button type="submit">送信</button>
-            </div>
+                <div id="signUp_BtnArea">
+                    <button type="submit">送信</button>
+                </div>
 
         </form>
 

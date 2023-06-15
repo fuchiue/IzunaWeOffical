@@ -4,9 +4,9 @@ require_once "./data.php";
 session_start();
 
 //形式チェックしたいメールアドレス
-$email = 'mail';
-//形式チェックに使う正規表現
-$parten = "/^[a-zA-Z0-9]+@[a-zA-Z0-9-]+(.[a-zA-Z0-9-]+)*$/";
+$email = $_POST["email"];
+// //形式チェックに使う正規表現
+$pattern = "/^[a-zA-Z0-9]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*$/";
 if( preg_match($pattern, $email ) ){
     print_r("'$email'は正しい形式のメールアドレス");
 }else{
@@ -23,12 +23,12 @@ $pdo = dbc();
 
 //メールアドレスとパスワードの重複を防ぐ
 $email = $_POST["email"];
-$password = $POST["password"];
+$password = $_POST["password"];
 
 $UserQuery = "SELECT * FROM user WHERE email = :email";
-$UserStmt = $PDO ->prepare($UserQuery);
+$UserStmt = $pdo ->prepare($UserQuery);
 $UserStmt ->bindValue(':email',$email,PDO::PARAM_STR);
-$UserStmt -> execute;
+$UserStmt -> execute();
 
 if ($UserStmt->rowCount() > 0) {
     echo "このメールアドレスは既に登録されています。別のメールアドレスを使用してください。";

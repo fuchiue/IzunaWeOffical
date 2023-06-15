@@ -4,9 +4,9 @@ require_once "./data.php";
 session_start();
 
 //形式チェックしたいメールアドレス
-$email = 'email';
+$email = $_POST["email"];
 //形式チェックに使う正規表現
-$parten = "/^[a-zA-Z0-9]+@[a-zA-Z0-9-]+(.[a-zA-Z0-9-]+)*$/";
+$pattern = "/^[a-zA-Z0-9]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*$/";
 if( preg_match($pattern, $email ) ){
     print_r("'$email'は正しい形式のメールアドレス");
 }else{
@@ -14,7 +14,7 @@ if( preg_match($pattern, $email ) ){
 }
 
 //数値入力電話番号
-if(preg_match("/[^0-9]/", $_POST['tel'],$_POST['birthday'])){
+if (preg_match("/[^0-9]/", $_POST['tel']) || preg_match("/[^0-9]/", $_POST['birthday'])) {
     echo "数値以外が入力されています。";
 }
 
@@ -23,10 +23,10 @@ $pdo = dbc();
 
 //メールアドレスとパスワードの重複を防ぐ
 $email = $_POST["email"];
-$password = $POST["password"];
+$password = $_POST["password"];
 
 $UserQuery = "SELECT * FROM user WHERE email = :email";
-$UserStmt = $PDO ->prepare($UserQuery);
+$UserStmt = $pdo ->prepare($UserQuery);
 $UserStmt ->bindValue(':email',$email,PDO::PARAM_STR);
 $UserStmt -> execute();
 
@@ -37,6 +37,7 @@ if ($UserStmt->rowCount() > 0) {
 // 画像のアップロード処理
 //保存先のディレクトリー
 $target_dir = "./image/"; 
+var_dump($_FILES);
 //ファイルが指定されたディレクトリに保存されます。
 $target_file = $target_dir . basename($_FILES["img"]["name"]);
 

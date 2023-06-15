@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./css/navbar.css">
     <link rel="stylesheet" href="./css/signup_Host.css">
-    
+
     <title>ボランティア</title>
 </head>
 
@@ -15,7 +16,7 @@
 
     <?php include('./Navbar/navbar.php'); ?>
 
-        <!-- Header画像エリア ＋ ページ名 -->
+    <!-- Header画像エリア ＋ ページ名 -->
     <div id="SP_header">
         <img src="./image/navbar1.jpg">
         <div id="SP_tilte">
@@ -32,8 +33,12 @@
             <!-- 入力情報(上部) -->
             <div id="signUp_TopArea">
                 <!-- 写真 -->
-                <div class="drag-area">
-                    <button>ファイルを選択</button>
+                <div id="returnDrag">
+                    <div class="drag-area">
+                        <button id="selectPicBtn">ファイルを選択</button>
+                        <input type="file" hidden>
+                    </div>
+                    <button id="newSelectBtn">ファイルを選択</button>
                     <input type="file" hidden>
                 </div>
 
@@ -56,21 +61,21 @@
                     <!-- 二行目の情報 -->
                     <div id="mail_pass">
                         <!-- 左側 -->
-                        
-                            <div id="mailArea">
-                                <label class="required">メールアドレス：</label>
-                                <div><input type="text" name="email" required></div>
-                            </div>
-                        
+
+                        <div id="mailArea">
+                            <label class="required">メールアドレス：</label>
+                            <div><input type="text" name="email" required></div>
+                        </div>
+
                         <!-- 左側終わり -->
 
                         <!-- 右側 -->
-                        
-                            <div id="pwArea">
-                                <label class="required">パスワード：</label>
-                                <div><input type="password" name="password" required></div>
-                            </div>
-                        
+
+                        <div id="pwArea">
+                            <label class="required">パスワード：</label>
+                            <div><input type="password" name="password" required></div>
+                        </div>
+
                         <!-- 右側終わり -->
                     </div>
                     <!-- 二行目の情報終わり -->
@@ -79,8 +84,8 @@
                     <div id="signUp_place">
                         <label class="required">ご住所：</label>
                         <div id="placeBox1">
-                        都道府県：<input type="text" style="width:100px" name="prefecture" required>
-                        　市/区：<input type="text" style="width:100px" name="city" required>
+                            都道府県：<input type="text" style="width:100px" name="prefecture" required>
+                            　市/区：<input type="text" style="width:100px" name="city" required>
                         </div>
                         <div id="placeBox2">丁目/番号：<input type="text" style="width:370px" name="chome" required></div>
                     </div>
@@ -91,24 +96,24 @@
             <!-- 入力情報(下部) -->
             <div id="signUp_BottomArea">
 
-                <label class="required" name="introduction" >団体紹介文：</label>
+                <label class="required" name="introduction">団体紹介文：</label>
                 <div>
                     <textarea placeholder="団体紹介文を入力してください"></textarea>
                 </div>
 
                 <label class="required" class="signUp_BSmallBox">イベント募集のカテゴリー：</label>
-                    <div id="signUp_BSmallBox2">
-                        <div class="select">
+                <div id="signUp_BSmallBox2">
+                    <div class="select">
                         <select name="theme" id="eventTypes">
-                                <option value="教育">教育</option>
-                                <option value="国際">国際</option>
-                                <option value="介護">介護</option>
-                                <option value="災害">災害</option>
-                                <option value="お祭り">お祭り</option>
-                                <option value="その他">その他</option>
-                            </select>
-                        </div> 
+                            <option value="教育">教育</option>
+                            <option value="国際">国際</option>
+                            <option value="介護">介護</option>
+                            <option value="災害">災害</option>
+                            <option value="お祭り">お祭り</option>
+                            <option value="その他">その他</option>
+                        </select>
                     </div>
+                </div>
             </div>
 
             <div id="signUp_BtnArea">
