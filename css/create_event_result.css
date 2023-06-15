@@ -54,7 +54,7 @@
     padding: 10px 10px;
 }
 
-.enter_InfoBox input{
+.text{
     background-color:  #d0abab;
     border: solid 0.5px #555555;
 }
@@ -82,12 +82,9 @@
 .noteArea{
     font-family: 'KleeOneFont';
 }
-.detail{
-    font-family: 'KleeOneFont';
-}
 
 /* 必須項目 */
-.required::after {
+/* .required::after {
     content: "必須";
     color: #ffffff;
     background: #cc0000;
@@ -95,7 +92,7 @@
     padding: 0.3em;
     border-radius: 0.5em;
     margin-left:0.3em;
-}
+} */
 
 /* 写真 */
 #upload_PhotoBox{
@@ -129,11 +126,11 @@
     border: dashed 1px #DD0000;
 }
 
-#enter_InfoSubmit{
+#enter_InfoBack {
     text-align: center;
 }
 
-#enter_InfoSubmit button{
+#enter_InfoBack button {
     padding: 15px 40px;
     background-color: #ffffff;
     border: dashed 2px #DC0000;
