@@ -6,6 +6,7 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,7 +14,7 @@ session_start();
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./css/navbar.css">
     <link rel="stylesheet" href="./css/create_event.css">
-    
+
     <title>ボランティア</title>
 </head>
 
@@ -28,8 +29,8 @@ session_start();
 
     <!-- ページ名 -->
     <section id="UJ_Title">
-            <h1>『　イベント制作　』</h1>
-            <h2>Create New Event</h2>
+        <h1>『　イベント制作　』</h1>
+        <h2>Create New Event</h2>
     </section>
 
     <!-- 入力情報 -->
@@ -48,39 +49,26 @@ session_start();
                 <div class="enter_InfoBox">
                     <label class="required">会場：</label>
                     <div class="enterAddress">
-<<<<<<< HEAD
-                        <div class="enterAddress_Box">
-                        <p>都道府県　</p>
-                        <input type="text" style="width:100px" required>
-                        </div> 
-                        <div class="enterAddress_Box">
-                        <p>　市/区　</p>
-                        <input type="text" style="width:100px" required>
-                        </div>  
-                    </div>
-                    <p>丁目/番号</p><input type="text" required>
-=======
 
                         <div class="enterAddress_Box">
 
-                        <p>都道府県　</p>
+                            <p>都道府県　</p>
 
-                        <input type="text" style="width:100px" name="area" required>
+                            <input type="text" style="width:100px" name="area" required>
 
                         </div>
 
                         <div class="enterAddress_Box">
 
-                        <p>　市/区　</p>
+                            <p>　市/区　</p>
 
-                        <input type="text" style="width:100px" name="address1" required>
+                            <input type="text" style="width:100px" name="address1" required>
 
-                        </div>  
+                        </div>
 
                     </div>
 
                     <p>丁目/番号</p><input type="text" name="address2" required>
->>>>>>> develop_YUNWEN
                 </div>
                 <div class="enter_InfoBox">
                     <label class="required">活動内容：</label>
@@ -89,12 +77,12 @@ session_start();
                 <div class="enter_InfoBox">
                     <label class="required">イベントテーマ：</label>
                     <select name="theme">
-                            <option value="教育">教育</option>
-                            <option value="国際">国際</option>
-                            <option value="介護">介護</option>
-                            <option value="災害">災害</option>
-                            <option value="お祭り">お祭り</option>
-                            <option value="その他">その他</option>
+                        <option value="教育">教育</option>
+                        <option value="国際">国際</option>
+                        <option value="介護">介護</option>
+                        <option value="災害">災害</option>
+                        <option value="お祭り">お祭り</option>
+                        <option value="その他">その他</option>
                     </select>
                 </div>
                 <div class="enter_InfoBox">
@@ -108,22 +96,22 @@ session_start();
 
                 <!-- 写真 -->
                 <div class="text-center">
-                <!-- サムネイル表示 -->
-                <div id="icon" style="text-align: center" class="d-inline-block me-1 mt-1 mb-5""><img></div>
+                    <!-- サムネイル表示 -->
+                    <div id="icon" style="text-align: center" class="d-inline-block me-1 mt-1 mb-5""><img></div>
                 </div>
 
                 <!-- ファイル入力Button -->
-                <div id="upload_PhotoBox">
-                    <input type="file" name="icon" id="inputIcon" accept="image/*">
-                    <label for="inputIcon">写真＋</label>
-                </div>
-                
-            </div>
+                <div id=" upload_PhotoBox">
+                        <input type="file" name="icon" id="inputIcon" accept="image/*">
+                        <label for="inputIcon">写真＋</label>
+                    </div>
 
-            <div id="enter_InfoSubmit">
-                <button type="submit" name="submit">送信</button>
-            </div>
-            
+                </div>
+
+                <div id="enter_InfoSubmit">
+                    <button type="submit" name="submit">送信</button>
+                </div>
+
         </form>
     </section>
 
