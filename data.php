@@ -115,32 +115,36 @@ function GetRegister($id)
 function searchResult($searchKeyWord, $pickArea, $eventTypes)
 {
     try {
-        $sql = "SELECT * FROM event";
+        // var_dump($searchKeyWord);
+        // var_dump($pickArea);
+        // var_dump($eventTypes);
+        $sql = "SELECT * FROM event WHERE STATUS ='募集中' ";
         $where = "";
 
         if ($searchKeyWord) {
-            $where = " WHERE EVENT_NAME LIKE :searchKeyWord";
+            $where = " AND EVENT_NAME LIKE :searchKeyWord";
             $searchKeyWord = "%" . $searchKeyWord . "%";
         }
 
         if ($pickArea && $pickArea != '1') {
-            if ($searchKeyWord) {
-                $where .= " AND AREA = :pickArea";
-            } else {
-                $where = " WHERE AREA = :pickArea";
-            }
+            // if($where != ""){
+            $where .= " AND AREA = :pickArea";
+            // }else {
+            // $where = " AND AREA = :pickArea";
+            // }
         }
 
+
         if ($eventTypes && $eventTypes != '1') {
-            if ($searchKeyWord) {
-                $where .= " AND THEME = :eventTypes";
-            } else {
-                $where = " WHERE THEME = :eventTypes";
-            }
+            // if($where != ""){
+            $where .= " AND THEME = :eventTypes";
+            // }else {
+            // $where = " AND THEME = :eventTypes";
+            // }
         }
 
         $stmt = dbc()->prepare($sql . $where);
-
+        // var_dump($sql.$where);
         if ($searchKeyWord) {
             $stmt->bindParam(':searchKeyWord', $searchKeyWord, PDO::PARAM_STR);
         }
@@ -163,8 +167,6 @@ function searchResult($searchKeyWord, $pickArea, $eventTypes)
         exit("DBエラー" . $poe->getMessage());
     }
 }
-
-
 /*
 対応するIDの開催したボランティアの各詳細情報ページを返す
 @$id検索するホストのID

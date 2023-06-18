@@ -1,7 +1,6 @@
 const dragArea = document.querySelector(".drag-area"),
 button = document.querySelector("#selectPicBtn"),
 newSelectBtn = document.querySelector("#newSelectBtn"),
-uploadTilte = document.querySelector("#uploadTitle"), //投稿ボックスの文字をコントロールするため
 input = document.querySelector("input");
 
 let file;
@@ -79,7 +78,6 @@ function showFile(){
             let imgTag = document.createElement("img");
             imgTag.setAttribute("src",fileURL);
             dragArea.appendChild(imgTag);
-            uploadTilte.style.display = "none";
             button.style.display = "none";
             newSelectBtn.style.display = "block";
         }

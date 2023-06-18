@@ -1,6 +1,27 @@
 <?php 
 require_once "./data.php";
 
+try{
+    $sql = "SELECT * FROM EVENT WHERE STATUS ='募集中'";
+    $stmt = dbc()->prepare($sql);
+
+    $stmt->execute();
+
+    $result = []; 
+    // fetch:1列
+    while ($rows = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $result[] = $rows;
+    }
+    // $indexes = array_rand($result,6);
+}catch (Exception $e) {
+    exit($e->getMessage());
+}
+$stmt= null; //破棄の意味 return the intergers back to zero
+$db = null;
+// echo "<pre>";
+// print_r($result);
+// echo "</pre>";
+
 ?>
 
 <!DOCTYPE html>
@@ -12,6 +33,7 @@ require_once "./data.php";
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./css/navbar.css">
     <link rel="stylesheet" href="./css/index.css">
+    <script src="https://kit.fontawesome.com/4d6369389a.js" crossorigin="anonymous"></script>
     <title>ボランティア</title>
 </head>
 
@@ -74,72 +96,24 @@ require_once "./data.php";
 
         <div class="container">
             <div class="swiper card_slider">
+
                 <div class="swiper-wrapper">
+                <?php foreach($result as $index):?> 
                     <div class="swiper-slide">
                         <div class="img_box">
-                            <a href="event_Content.php">
-                                <img src="./image/works1.jpg">
+                            <a href="event_Content.php?eventId=<?= $index["EVENT_ID"];?>">
+                                <img src="<?= $index["ICON"] ;?>">
                                 <div class="HP_eventDetails">
-                                    <h2>イベント名</h2>
-                                    <p>日時</p>
-                                    <p>場所</p>
+                                    <h2><?= $index["EVENT_NAME"] ;?></h2>
+                                    <p><i class="fa-solid fa-calendar-days" style="color: #ffffff;"></i>　<?= $index["SCHEDULE"] ;?></p>
+                                    <p><i class="fa-solid fa-location-dot" style="color: #ffffff;"></i>　<?= $index["ADDRESS"] ;?></p>
                                 </div>
                             </a>
                         </div>
                     </div>
-
-                    <div class="swiper-slide">
-                        <div class="img_box">
-                            <a href="event_Content.php">
-                                <img src="./image/works2.jpg">
-                                <div class="HP_eventDetails">
-                                    <h2>イベント名</h2>
-                                    <p>日時</p>
-                                    <p>場所</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <div class="img_box">
-                            <a href="event_Content.php"> 
-                                <img src="./image/works3.jpg">
-                                <div class="HP_eventDetails">
-                                    <h2>イベント名</h2>
-                                    <p>日時</p>
-                                    <p>場所</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <div class="img_box">
-                            <a href="event_Content.php">
-                                <img src="./image/works1.jpg">
-                                <div class="HP_eventDetails">
-                                    <h2>イベント名</h2>
-                                    <p>日時</p>
-                                    <p>場所</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <div class="img_box">
-                            <a href="event_Content.php">
-                                <img src="./image/works2.jpg">
-                                <div class="HP_eventDetails">
-                                    <h2>イベント名</h2>
-                                    <p>日時</p>
-                                    <p>場所</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                <?php endforeach ?>
                 </div>
+
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-pagination"></div>

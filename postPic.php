@@ -34,11 +34,17 @@
         <form action="#" method="POST" class="">
             <div id="upload_TopArea">
                 <!-- 写真 -->
-                <div class="drag-area">
-                    <div class="icon"><i class="fa-solid fa-cloud-arrow-up" style="color: #DD0000;"></i></div>
-                    <p>ここにファイルをドラッグ＆ドロップ</p>
-                    <span>または</span>
-                    <button>ファイルを選択</button>
+                <div id="returnDrag">
+                    <div class="drag-area">
+                        <div id="uploadTitle">
+                            <div class="icon"><i class="fa-solid fa-cloud-arrow-up" style="color: #DD0000;"></i></div>
+                            <p>ここにファイルをドラッグ＆ドロップ</p>
+                            <span>または</span>
+                        </div>    
+                        <button id="selectPicBtn">ファイルを選択</button>
+                        <input type="file" hidden>
+                    </div>
+                    <button id="newSelectBtn">ファイルを選択</button>
                     <input type="file" hidden>
                 </div>
 

@@ -195,14 +195,16 @@ select {
 }
 
 .HP_eventDetails h2{
+  margin: 5px 0px;
   color: white;
 }
 
 .HP_eventDetails p{
+  margin: 5px 0px;
   color: white;
 }
 
-.swiper-pagination{ /*how to change the color??*/
+.swiper-pagination{ 
   color: #DD0000;
 }
 

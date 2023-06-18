@@ -32,10 +32,14 @@
             <!-- 入力情報(上部) -->
             <div id="signUp_TopArea">
                 <!-- 写真 -->
-                <div class="drag-area">
-                    <button>ファイルを選択</button>
+                <div id="returnDrag">
+                        <div class="drag-area">
+                            <button id="selectPicBtn">ファイルを選択</button>
+                            <input type="file" hidden>
+                        </div>
+                    <button id="newSelectBtn">ファイルを選択</button>
                     <input type="file" hidden>
-                </div>
+                </div>    
 
                 <!-- 分割線 -->
                 <div id="redDecoBox"></div>
@@ -144,7 +148,7 @@
     <script SPc="./js/navbar.js"></script>
     <script SPc="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script SPc="./js/index.js"></script>
-    <script src="./js/postpic.js"></script>
+    <script src="./js/signup.js"></script>
 
 </body>
 
