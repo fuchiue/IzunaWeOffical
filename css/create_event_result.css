@@ -54,7 +54,7 @@
     padding: 10px 10px;
 }
 
-.enter_InfoBox input{
+.text{
     background-color:  #d0abab;
     border: solid 0.5px #555555;
 }
@@ -76,35 +76,15 @@
     font-family: 'KleeOneFont';
 }
 
-.enterAddress{
-    display: flex;
-}
-
-.enterAddress p{
-    font-family: 'KleeOneFont';
-}
-
-.enterAddress_Box{
-    display: flex;
-    padding: 10px 0px;
-}
-
-.enter_InfoBox p{
-    font-family: 'KleeOneFont';
-}
-
 .required{
     font-family: 'KleeOneFont';
 }
 .noteArea{
     font-family: 'KleeOneFont';
 }
-.detail{
-    font-family: 'KleeOneFont';
-}
 
 /* 必須項目 */
-.required::after {
+/* .required::after {
     content: "必須";
     color: #ffffff;
     background: #cc0000;
@@ -112,16 +92,12 @@
     padding: 0.3em;
     border-radius: 0.5em;
     margin-left:0.3em;
-}
+} */
 
 /* 写真 */
 #upload_PhotoBox{
     margin-top: 10px;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> develop_YUNWEN
 #upload_PhotoBox input{
     display: none;
 }
@@ -139,9 +115,7 @@
     height: 100px;
     width: 150px;
     border-radius: 6px;
-    padding: 10px 10px;
-    border: none;
-    font-family: 'HandWriteFont';
+    border: dashed 1px #DD0000;
     background-color: orange;
 }
 
@@ -152,11 +126,11 @@
     border: dashed 1px #DD0000;
 }
 
-#enter_InfoSubmit{
+#enter_InfoBack {
     text-align: center;
 }
 
-#enter_InfoSubmit button{
+#enter_InfoBack button {
     padding: 15px 40px;
     background-color: #ffffff;
     border: dashed 2px #DC0000;
