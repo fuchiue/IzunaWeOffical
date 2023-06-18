@@ -101,7 +101,7 @@ session_start();
                 </div>
 
                 <!-- ファイル入力Button -->
-                <div id=" upload_PhotoBox">
+                <div id="upload_PhotoBox">
                         <input type="file" name="icon" id="inputIcon" accept="image/*">
                         <label for="inputIcon">写真＋</label>
                     </div>
