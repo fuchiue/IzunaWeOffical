@@ -264,7 +264,7 @@ function TakeUserData($userid)
 {
     $id = filter_var($userid, FILTER_SANITIZE_FULL_SPECIAL_CHARS); // ユーザー名をエスケープしてフィルタリングする
     $pdo = dbc();
-    $sql = "SELECT POINT,NICKNAME,NOTE FROM USER WHERE USER_ID=:userid";
+    $sql = "SELECT POINT,ICON,NICKNAME,NOTE FROM USER WHERE USER_ID=:userid";
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue(':userid', $id, PDO::PARAM_STR);
     $stmt->execute();
