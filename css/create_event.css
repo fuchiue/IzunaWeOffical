@@ -80,6 +80,13 @@
     font-family: 'KleeOneFont';
 }
 
+.enter_InfoBox textarea{
+    background-color: #d0abab; 
+    resize: none;
+    width:591px;
+    height:100px; 
+}
+
 .required{
     font-family: 'KleeOneFont';
 }

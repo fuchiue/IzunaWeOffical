@@ -6,22 +6,20 @@ if( $_SERVER["REQUEST_METHOD"] !== "POST"){
   }
 
 session_start();
-// $owner_id = $_SESSION["ID"];
+$owner_id = $_SESSION["id"];
 
 // ファイル関連の取得
 $submit = filter_input(INPUT_POST, "submit");
 $event_name = filter_input(INPUT_POST,"event_name");
 $theme = filter_input(INPUT_POST,"theme");
-$note = filter_input(INPUT_POST,"note");
+$note = h(filter_input(INPUT_POST,"note"));
 $area = filter_input(INPUT_POST,"area");
 $address1 = filter_input(INPUT_POST,"address1");
 $address2 = filter_input(INPUT_POST,"address2");
 $schedule = filter_input(INPUT_POST,"schedule");
 $hour = filter_input(INPUT_POST,"hour",FILTER_VALIDATE_INT);
 $addressAll = $area.$address1.$address2;
-$detail = filter_input(INPUT_POST,"detail");
-
-$owner_id = 100001;
+$detail = h(filter_input(INPUT_POST,"detail"));
 
 // アップロードされたファイルの一時的な保存場所からファイルを取得し、保存先のディレクトリに移動させる
 $icon_tmp = $_FILES["icon"]["tmp_name"];
@@ -100,7 +98,7 @@ $result = eventSave($event_name, $theme, $note, $area, $addressAll, $icon_path, 
             </div>
             <div class="enter_InfoBox">
                 <label class="required">活動内容：</label>
-                <p class="text" name="note" required><?= $note ?></p>
+                <p class="text" name="note" required><?=  nl2br($note) ?></p>
             </div>
             <div class="enter_InfoBox">
                 <label class="required">イベントテーマ：</label>
@@ -114,7 +112,7 @@ $result = eventSave($event_name, $theme, $note, $area, $addressAll, $icon_path, 
                 <label class="required">募集詳細：</label>
                 <?php
                 if(isset($detail) && !empty($detail)){
-                    echo '<p class="text" name="detail">' . $detail . '</p>';
+                    echo '<p class="text" name="detail">' .  nl2br($detail) . '</p>';
                 }else {
                     echo '<p class="text" name="detail">　</p>';
                 }
@@ -132,7 +130,7 @@ $result = eventSave($event_name, $theme, $note, $area, $addressAll, $icon_path, 
         </div>
 
         <div id="enter_InfoBack">
-            <button type="button" onclick="location.href='create_event.php'">戻る</button>
+            <button type="button" onclick="location.href='hostpage_AfterLogin.php'">戻る</button>
         </div>
     </section>
 
