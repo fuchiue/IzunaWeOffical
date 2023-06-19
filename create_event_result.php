@@ -125,7 +125,7 @@ $result = eventSave($event_name, $theme, $note, $area, $addressAll, $icon_path, 
 
             <!-- アップロードされた画像を表示 -->
             <div id="upload_PhotoBox">
-                <div id="uploaded_image">
+                <div id="uploaded_image" style="text-align: center">
                     <img src="<?= $icon_path ?>" alt="アップロードされた画像" style="max-width: 600px; max-height: 600px;">
                 </div>
             </div>
