@@ -180,12 +180,12 @@ select {
     margin-top: 15px;
 }
 
-
-
 .event-item{
+    width: 700px;
+    height: 230px;
     background:#eeeeee;
     border-radius: 10px;
-    padding:15px 96px;
+    padding:15px 50px;
     margin-bottom: 20px;
     cursor: pointer;
 }

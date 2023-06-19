@@ -104,7 +104,7 @@ $db = null;
                     <div class="event-item">
                             <diV class="col-md-7 center-item">
                                 <div class="eventControl_Img">
-                                    <img src="./image/ResultArea1.jpeg" alt="" >
+                                    <img src="<?= $value["ICON"];?>" alt="" >
                                 </div>
 
                                 <div class="information">

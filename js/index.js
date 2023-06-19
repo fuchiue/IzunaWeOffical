@@ -4,7 +4,7 @@ const sliderItems = document.querySelectorAll("#home img");
 //タイマーの間隔
 const delay = 3000;
 
-let i = 0;
+let i = 1;
 
 setInterval(function(){
 

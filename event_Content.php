@@ -35,8 +35,9 @@ $eventdata = Getevent($id);
         <h1>『　イベントの詳細　』</h1>
         <h2>Event Details</h2>
 
+        <?php foreach($eventdata as $eventvalue):?> 
         <div>
-        <img src="./image/banner2.jpg" id="event_detail_pic"> 
+        <img src="<?= $eventvalue["ICON"];?>"> 
         </div>
 
     </section>
@@ -55,7 +56,7 @@ $eventdata = Getevent($id);
                 <p class="EV_Small_Title">募集詳細：</p>
             </div>
 
-            <?php foreach($eventdata as $eventvalue):?> 
+            
             <div id="event_SmallContent">
                 <p id="eventName"><?= $eventvalue["EVENT_NAME"];?></p>
                 <p id="eventTheme"><?= $eventvalue["THEME"];?></p>

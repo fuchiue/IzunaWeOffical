@@ -175,7 +175,9 @@ select {
 }
 
 .img_box img{
-  max-width: 100%;
+  width: 347px;
+  height: 180px;
+  object-fit: cover;
 }
 
 .slider_container .container{

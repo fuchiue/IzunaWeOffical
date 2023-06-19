@@ -70,7 +70,7 @@ UserLogin($username, $password);
                     }
                     ?></p>
                 <div class="loginSmallBox">
-                    <label>メールアドレスまたはユーザ名：</label>
+                    <label>メールアドレス / ユーザ名：</label>
                     <input type="text" name="user" placeholder="example@gmail.com" required>
                 </div>
                 <div class="loginSmallBox">
