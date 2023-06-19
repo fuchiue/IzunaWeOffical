@@ -1,0 +1,142 @@
+/*Header画像エリア  開始*/
+
+#UJ_header img{
+    width: 100%;
+    height: 300px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 40px;
+}
+  
+/*Header画像エリア CSS 終了*/
+/*-------------------------------------------------*/
+
+/*タイトル CSS 開始*/
+  
+#UJ_Title{
+    display: grid;
+    text-align: center;
+}
+  
+#UJ_Title h1{
+    color: #DD0000;
+    font-family: 'HandWriteFont';
+    font-size: 50px;
+}
+  
+#UJ_Title h2{
+    color: #DD0000;
+    font-family: 'OutlineFont';
+    font-size: 30px;
+    padding-top: 10px;
+}  
+  
+/*タイトル CSS 終了*/
+/*-------------------------------------------------*/
+
+/*写真投稿エリア　CSS　開始*/
+
+
+#upload_Area{
+    padding-bottom: 50px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+#upload_TopArea{
+    display: flex;
+    align-items: center;
+    padding: 45px 0px 30px 0px;
+    justify-content: space-around;
+}
+
+/* 写真 */
+.drag-area{
+    border: 2px dashed #DC0000;
+    height: 370px;
+    width: 550px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.drag-area.active{
+    border: 2px solid #DC0000;
+}
+
+#uploadTitle{
+    text-align: center;
+}
+
+#uploadTitle .icon{
+    font-size: 100px;
+}
+
+#uploadTitle p{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+#uploadTitle span{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+#selectPicBtn{
+    padding:  10px 25px;
+    font-size: 20px;
+    font-weight: 300;
+    border: none;
+    outline: none;
+    background: #DC0000;
+    color: #ffff;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.drag-area.active img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+#newSelectBtn{
+    display: none;
+    margin-top: 10px;
+    padding:  5px 15px;
+    font-size: 10px;
+    font-weight: 300;
+    border: none;
+    outline: none;
+    background: #DC0000;
+    color: #ffff;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/*送信ボタン*/
+#signUp_BtnArea{
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+#signUp_BtnArea button{
+padding: 15px 40px;
+background-color: #ffffff;
+border: dashed 2px #DC0000;
+border-radius: 10px;
+font-family: 'HandWriteFont';
+font-size: 25px;
+box-shadow: 7px 5px 5px gray;
+}
+
+#signUp_BtnArea button:hover{
+    background-color: #DC0000;
+    color: #ffffff;
+    border: dashed 2px #ffffff;
+}

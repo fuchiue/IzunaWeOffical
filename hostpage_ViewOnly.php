@@ -1,5 +1,15 @@
+<?php
+session_start();
+require_once "./data.php";
+$id = $_SESSION["id"]; //IDを取得
+$hostdata = hostGetData($id); //ホストの情報を取得
+$joinedUser = hostGetjoinUser($id); //ボランティアに参加したユーザを取得
+$eventDatas = HostGetevent($id); //ホストの開催したイベントの情報を取得
+$photodatas = TakePostData($id); //投稿した写真を取得
+?>
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,8 +18,9 @@
     <link rel="stylesheet" href="./css/hostpage.css">
     <title>ボランティア</title>
 </head>
+
 <body>
-    
+
     <?php include('./Navbar/navbar.php'); ?>
 
     <!-- Header画像エリア ＋ ページ名 -->
@@ -22,10 +33,11 @@
     </div>
 
     <!-- 団体アイコン＋紹介エリア -->
+    <!-- 団体アイコン＋紹介エリア -->
     <section id="selfInfo_TopArea">
         <!-- 写真 -->
         <div id="selfIcon_pic">
-            <img src="./image/groupicon.jpg">
+            <img src="<?= $hostdata['ICON'] ?>">
         </div>
 
         <!-- 分割線 -->
@@ -35,11 +47,15 @@
         <div id="selfInfo_Box">
 
             <!-- 団体名　-->
-            <h1>団体名</h1>
+            <h1><?= $hostdata['OWNER_NAME'] ?></h1>
 
             <!-- 団体紹介文　-->
             <p id="selfInfo_title">団体紹介文</p>
-            <p>OOOOOOOOOOOOOOOOOOOOOOOOOOOOOO</p>
+            <div class="word-break">
+                <div class="normal">
+                    <p><?= $hostdata['NOTE'] ?></p>
+                </div>
+            </div>
         </div>
 
     </section>
@@ -54,114 +70,137 @@
             <button id="attendantBtn">参加者の皆様</button>
             <button id="nowEventBtn">募集中イベント</button>
         </div>
-        
+
         <div id="switchPage">
             <!-- 投稿した写真　-->
             <div id="hostPostImg">
-                <div class="imgRow">
-                <a href="#" class="imgBox"><img src="./image/Event1.jpeg"></a>
-                <a href="#" class="imgBox"><img src="./image/Event1.jpeg"></a>
-                <a href="#" class="imgBox"><img src="./image/Event1.jpeg"></a>
-                </div>
+                <?php
+                $cont = 0; //表示回数を管理
+                //三回表示ごとにタグを閉じる
+                foreach ($photodatas as $photo) { //参加ユーザの数だけ回る
+                    if ($cont == 0) {
+                        echo '<div class="imgRow">'; //初めのタグ
+                        echo "\n";
+                    }
 
-                <div class="imgRow">
-                <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
-                <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
-                <a href="#" class="imgBox"><img src="./image/ResultArea1.jpeg"></a>
-                </div>
+                    //写真の表示
+                    echo '<a class="imgBox"><img src="' . $photo['PHOTO'] . '"></a>';
+                    echo "\n";
+
+                    //三回写真を表示したら終わりのタグそれ以外ならカウントアップ
+                    if ($cont == 2) {
+                        echo '</div>'; //終わりのタグ
+                        echo "\n";
+                        $cont = 0;
+                    } else {
+                        $cont++;
+                    }
+                }
+
+                //ユーザが一人もいなかったとき
+                if (!$photodatas) {
+                    echo '<div class="imgRow">'; //始まりのタグ
+                    echo "\n";
+                    echo '</div>'; //終わりのタグ
+                    echo "\n";
+                }
+                //ループを抜けた後タグを閉じていないときに閉じる
+                if ($cont != 0) {
+                    echo '</div>'; //終わりのタグ
+                    echo "\n";
+                }
+
+                ?>
             </div>
 
             <!-- 参加者一覧　-->
             <div id="attendantImg">
-                <div class="imgRow">
-                <a href="userpage_ViewOnly.php" class="imgBox"><img src="./image/studenticon.jpg"></a>
-                <a href="userpage_ViewOnly.php" class="imgBox"><img src="./image/studenticon2.jpg"></a>
-                <a href="#" class="imgBox"><img src="./image/studenticon.jpg"></a>
-                </div>
+                <?php
+                $cont = 0; //表示回数を管理
+                //三回表示ごとにタグを閉じる
+                foreach ($joinedUser as $user) { //参加ユーザの数だけ回る
 
-                <div class="imgRow">
-                <a href="#" class="imgBox"><img src="./image/studenticon.jpg"></a>
-                <a href="#" class="imgBox"><img src="./image/studenticon.jpg"></a>
-                <a href="#" class="imgBox"><img src="./image/studenticon.jpg"></a>
-                </div>
+                    if ($cont == 0) {
+                        echo '<div class="imgRow">'; //初めのタグ
+                        echo "\n";
+                    }
+                    //写真の表示　対応するユーザのIDを変数で送っている。
+                    echo '<a href="./hostpage_ViewOnly.php?id=' . $user['USER_ID'] . '" class="imgBox"><img src="' . $user['ICON'] . '"></a>';
+                    echo "\n";
+
+                    //三回写真を表示したら終わりのタグそれ以外ならカウントアップ
+                    if ($cont == 2) {
+                        echo '</div>'; //終わりのタグ
+                        echo "\n";
+                        $cont = 0;
+                    } else {
+                        $cont++;
+                    }
+                }
+
+                //ユーザが一人もいなかったとき
+                if (!$joinedUser) {
+                    echo '<div class="imgRow">'; //始まりのタグ
+                    echo "\n";
+                    echo '</div>'; //終わりのタグ
+                    echo "\n";
+                }
+                //ループを抜けた後タグを閉じていないときに閉じる
+                if ($cont != 0) {
+                    echo '</div>'; //終わりのタグ
+                    echo "\n";
+                }
+
+                ?>
             </div>
-            
+
 
             <!-- イベント履歴　-->
             <div class="eventHistory">
 
+                <?php foreach ($eventDatas as $eventData) : ?>
                     <div class="place-content">
 
-                        <a href="event_Content.php" class="col-md-12 col-lg-10 mx-auto item-box">
+                        <a href="event_Content.php?id=<?= $eventData['EVENT_ID'] ?>" class="col-md-12 col-lg-10 mx-auto item-box">
                             <div class="event-item">
-                                    <diV class="col-md-7 center-item">
-                                        <div class="eventControl_Img">
-                                            <img src="./image/ResultArea1.jpeg" alt="" >
-                                        </div>
+                                <diV class="col-md-7 center-item">
+                                    <div class="eventControl_Img">
+                                        <img src="<?= $eventData['ICON'] ?>" alt="">
+                                    </div>
 
-                                        <div class="information">
-                                            <p id="event01_Status">募集中</p>
-                                            <h3>イベント名</h3>
-                                            <div class="EvCon_Date">
-                                                <h4>日時</h4>
-                                                <p id="#">2023年00月00日　12:00時</p>
-                                            </div>
-                                            <div class="EvCon_Place">
-                                                <h4>場所</h4>
-                                                <p id="#">大阪府大阪市北区OOOOOO</p>
-                                            </div>
-                                            <div class="EvCon_Theme">
-                                                <h4>テーマ</h4>
-                                                <p id="#">環境</p>
-                                            </div>    
+                                    <div class="information">
+                                        <p id="event01_Status"><?= $eventData['STATUS'] ?></p>
+                                        <h3><?= $eventData['EVENT_NAME'] ?></h3>
+                                        <div class="EvCon_Date">
+                                            <h4>日時</h4>
+                                            <p id="#"><?php echo date("Y年m月d日 H:i", strtotime($eventData['SCHEDULE'])) ?></p>
                                         </div>
-                                    </diV>
+                                        <div class="EvCon_Place">
+                                            <h4>場所</h4>
+                                            <p id="#"><?= $eventData['ADDRESS'] ?></p>
+                                        </div>
+                                        <div class="EvCon_Theme">
+                                            <h4>テーマ</h4>
+                                            <p id="#"><?= $eventData['THEME'] ?></p>
+                                        </div>
+                                    </div>
+                                </diV>
                             </div>
                         </a>
 
                     </div>
-
-                    <div class="place-content">
-
-                        <a href="event_Content.php" class="col-md-12 col-lg-10 mx-auto item-box">
-                            <div class="event-item">
-                                    <diV class="col-md-7 center-item">
-                                        <div class="eventControl_Img">
-                                            <img src="./image/Event1.jpeg" alt="">
-                                        </div>    
-
-                                        <div class="information">
-                                            <p id="event02_Status">募集終了</p>
-                                            <h3>イベント名</h3>
-                                            <div class="EvCon_Date">
-                                                <h4>日時</h4>
-                                                <p id="#">2023年00月00日　12:00時</p>
-                                            </div>
-                                            <div class="EvCon_Place">
-                                                <h4>場所</h4>
-                                                <p id="#">大阪府大阪市北区OOOOOO</p>
-                                            </div>
-                                            <div class="EvCon_Theme">
-                                                <h4>テーマ</h4>
-                                                <p id="#">環境</p>
-                                            </div>    
-                                        </div>
-                                    </diV>
-                            </div>
-                        </a>
-
-                    </div>
+                <?php endforeach; ?>
 
             </div>
         </div>
 
     </section>
 
-    
+
     <?php include('./Navbar/footer.php'); ?>
 
     <a></a> <!-- To Top Apple Button-->
-    
+
     <script src="./js/navbar.js"></script>
     <script src="./js/hostpage.js"></script>
 </body>

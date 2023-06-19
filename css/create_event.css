@@ -62,16 +62,20 @@
     background-color:  #d0abab;
     border: solid 0.5px #555555;
 }
+
 .enterAddress{
     display: flex;
 }
+
 .enterAddress p{
     font-family: 'KleeOneFont';
 }
+
 .enterAddress_Box{
     display: flex;
     padding: 10px 0px;
 }
+
 .enter_InfoBox p{
     font-family: 'KleeOneFont';
 }
@@ -104,6 +108,7 @@
 #upload_PhotoBox input{
     display: none;
 }
+
 #upload_PhotoBox label{
     height: 100px;
     width: 150px;
@@ -111,14 +116,6 @@
     padding: 10px 10px;
     border: none;
     font-family: 'HandWriteFont';
-    background-color: orange;
-}
-
-#upload_PhotoBox label{
-    height: 100px;
-    width: 150px;
-    border-radius: 6px;
-    border: dashed 1px #DD0000;
     background-color: orange;
 }
 

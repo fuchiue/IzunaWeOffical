@@ -74,6 +74,20 @@
     font-size: 30px;
 }
 
+.word-break {
+    display: flex;
+  }
+  
+.word-break div {
+    margin-top: 20px;
+    /* border: 2px solid red; */
+    width: 380px;
+}
+  
+.normal p{
+    word-break: break-all;
+  }
+
 /* 団体アイコン＋団体紹介エリア CSS 終了*/
 /*-------------------------------------------------*/
 
@@ -201,6 +215,11 @@
     padding-right: 60px;
 }
 
+.informationUser{
+    width: 300px;
+    padding-right: 60px;
+}
+
 .eventControl_Img img{
     width: 30vmin;
     height: 30vmin;
@@ -226,6 +245,23 @@
     margin-right: 30px;
     object-fit: cover;
 }
+
+.scroll-bg{
+    background-color: #f0f0f0;
+    width: 845px;
+    margin: 3% auto;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.scroll-div{
+    width: 790px;
+    background-color: #f0f0f0;
+    height: 300px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
 
 /* ホストログインした、マイページ専用のCSS　終了*/
 
