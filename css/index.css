@@ -9,6 +9,7 @@
 
 #home img{
   display: none;
+  /* opacity: 0; */
   width: 100%;
   padding: 20px;
   z-index: 1;
@@ -29,6 +30,23 @@
     margin-top: 0px;
   }
 
+  .fade-in-image {
+    animation: fadeIn 2s;
+  }
+  
+  @keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  .fade-out-image {
+    animation: fadeOut 2s;
+  }
+  @keyframes fadeOut {
+    0% {opacity:1;}
+    100% {opacity:0;}
+  }
+
   
 /*検索ボックス　CSS　開始 */
 
@@ -44,7 +62,7 @@
     position: absolute;
     z-index: 500;
     top: 73%;
-    left: 50%;
+    left: 47%;
     transform: translate(-50%, -50%);
 }
 
@@ -87,7 +105,13 @@
 }
 
 /*ホーム写真自動的に変更エリア　CSS　開始 */
-
+#HeartrusFoxFront{
+  width: 25%;
+  position: absolute;
+  z-index: 499;
+  top: 45%;
+  left: 75%;
+}
 
 
 /*ホーム写真自動的に変更エリア　CSS　終了 */
@@ -253,19 +277,29 @@ a {
   }
 
   #meritBox1 p{
+    width: 300px;
+    text-align: center;
     background-color:#cbcbcb;
     border-radius: 3rem;
     margin: 30px;
     padding: 20px;
+    cursor: pointer;
   }
 
   #meritBox2 p{
+    width: 300px;
+    text-align: center;
     background-color:#cbcbcb;
     border-radius: 3rem;
     margin: 30px;
     padding: 20px;
+    cursor: pointer;
   }
 
+  #meritBox1 p:hover,
+  #meritBox2 p:hover{
+    background-color:#DD0000;
+  }
 
   /*メリット一覧CSS　終了*/
 

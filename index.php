@@ -83,6 +83,9 @@ $db = null;
                 <button type="submit" value="send"><img src="./image/search.png"></button>
             </form>    
         </div>
+
+        <img src="./image/HeartrusFoxFront.gif" id="HeartrusFoxFront">
+        
     </section>
 
     <!--最近の活動-->
@@ -131,18 +134,20 @@ $db = null;
             <h1>ボランティアのメリット</h1>
             <div id="meritSmallBox">
                 <div id="meritBox1">
-                    <p>　　　社会貢献　　　</p>
-                    <p>　　　友達作り　　　</p>
-                    <p>　　　達成感ある　　　</p>
+                    <p>社会貢献</p>
+                    <p>友達作り</p>
+                    <p>達成感ある</p>
                 </div>
 
                 <div id="meritBox2">
-                    <p>　　　....　　　</p>
-                    <p>　　　....　　　</p>
-                    <p>　　　....　　　</p>
+                    <p>　　　生活に楽しみが生まれる　　　</p>
+                    <p>　　　社交スキルが高まる　　　</p>
+                    <p>　　　就活に有利だ　　　</p>
                 </div>
             </div>
         </div>
+
+        
 
     </section>
 

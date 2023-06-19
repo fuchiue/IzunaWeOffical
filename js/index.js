@@ -10,13 +10,18 @@ setInterval(function(){
 
     if(i == 0){
         sliderItems[i].style.display = 'block';
+        // sliderItems[i].className = "fade-in-image";
     }else if (i == sliderItems.length){
         sliderItems[i-1].style.display = 'none';
+        // sliderItems[i-1].className = "fade-out-image";
         sliderItems[0].style.display = 'block';
+        // sliderItems[0].className = "fade-in-image";
         i = 0;
     }else{
         sliderItems[i-1].style.display = 'none';
+        // sliderItems[i-1].className = "fade-out-image";
         sliderItems[i].style.display = 'block';
+        // sliderItems[i].className = "fade-in-image";
     }
 
     i++;
