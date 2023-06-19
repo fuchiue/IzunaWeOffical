@@ -31,18 +31,11 @@
 
         <form action="#" method="POST" class="">
             <div id="enter_BigInfoBox">
-                <div class="enter_InfoBox">
-                    <label class="required">参加者のお名前：</label>
-                    <input type="text" required>
-                </div>
-                <div class="enter_InfoBox">
-                    <label class="required">メールアドレス：</label>
-                    <input type="email" required>
-                </div>
+                <p>応募先に登録のお名前とメールアドレスが提示されます。よろしいですか</p>
                 <div class="enter_InfoBox">
                     <label class="required">質問：</label>
                     <p>This is a question area OOOOOですか？</p>
-                    <input type="text" required>
+                    <input type="text">
                 </div>
                 <div class="enter_InfoBox">
                     <label class="noteArea">備考：</label>

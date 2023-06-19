@@ -2,7 +2,9 @@
 require_once "./data.php";
 
 $id = $_GET["eventId"]; //前ページで選択された項目のidを取得する
-$eventdata = Getevent($id);
+$eventvalue = Getevent($id);
+$owner_id = $eventvalue["OWNER_ID"];
+$hostdata = hostGetData($owner_id); //ホストの情報を取得
 // echo "<pre>";
 // print_r($eventdata);
 // echo "</pre>";
@@ -55,7 +57,6 @@ $eventdata = Getevent($id);
                 <p class="EV_Small_Title">募集詳細：</p>
             </div>
 
-            <?php foreach($eventdata as $eventvalue):?> 
             <div id="event_SmallContent">
                 <p id="eventName"><?= $eventvalue["EVENT_NAME"];?></p>
                 <p id="eventTheme"><?= $eventvalue["THEME"];?></p>
@@ -63,11 +64,10 @@ $eventdata = Getevent($id);
                 <p id="eventPlace"><?= $eventvalue["ADDRESS"];?></p>
                 <p id="eventInfo"><?= $eventvalue["NOTE"];?></p>
             </div>
-            <?php endforeach ?>
         </div>    
 
         <div id="event_Box2" > <!--  ***** ページの担当へ：PHPでイベントのstatusを参照して、応募ボタンをhiddenかどうか***** -->
-            <a href="userJoin.php" id="joinEventBtn">
+            <a href="userJoin.php?eventId=<?= $id ?>" id="joinEventBtn">
                 <p id="submitBtn">応募</p>
             </a>
         </div>    
@@ -79,7 +79,7 @@ $eventdata = Getevent($id);
         <!-- 写真 -->
         <div id="selfIcon_pic">
             <a href="hostpage_ViewOnly.php">
-                <img src="./image/groupicon.jpg">
+            <img src="<?= $hostdata['ICON'] ?>">
             </a>
         </div>
 
@@ -90,13 +90,13 @@ $eventdata = Getevent($id);
         <div id="selfInfo_Box">
 
             <!-- 団体名　-->
-            <h1>団体名</h1>
+            <h1><?= $hostdata['OWNER_NAME'] ?></h1>
 
             <!-- 団体紹介文　-->
             <p id="selfInfo_title">団体紹介文</p>
             <div class="word-break">
                 <div class="normal">
-                  <p>OOOOOOOOO内容OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO</p>
+                  <p><?= $hostdata['NOTE'] ?></p>
                 </div>
             </div>
         </div>

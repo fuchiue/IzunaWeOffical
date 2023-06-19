@@ -180,7 +180,7 @@ function Getevent($id)
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする 
         $stmt->bindValue(':id', $id, PDO::PARAM_STR); //sqlの:idに変数の$idを代入
         $stmt->execute(); //実行
-        $result = $stmt->fetchAll(); //データを取得
+        $result = $stmt->fetch(); //データを取得
         return $result; //データを返す
     } catch (Exception $e) {
         exit($e->getMessage());
