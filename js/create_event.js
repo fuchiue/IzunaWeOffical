@@ -13,8 +13,8 @@ uploadIcon.onchange = (event) => {
     console.log(fileSize);
 
     if(validExtensions.includes(fileType)){
-        if(fileSize > 2 * 1024 * 1024){
-            alert("アップロードされた画像のサイズが2MBを超えています。2MB以下の画像を選択してください。");
+        if(fileSize > 5 * 1024 * 1024){
+            alert("アップロードされた画像のサイズが5MBを超えています。5MB以下の画像を選択してください。");
             elem.value = ""; // ファイル選択をリセット
             thumbImage.removeAttribute("src"); // 画像プレビューを削除
             return; // 処理を終了

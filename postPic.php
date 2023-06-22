@@ -1,3 +1,10 @@
+<?php
+session_start();
+require_once __DIR__ . "/data.php";
+// ログインからIDを取ってくる
+$userid = $_SESSION["id"];
+$eventdata = TakeEventData($userid);
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -31,7 +38,7 @@
     <!-- 入力情報 -->
     <section id="upload_Area">
 
-        <form action="#" method="POST" class="">
+        <form action="post_result.php" method="POST" class="" enctype="multipart/form-data">
             <div id="upload_TopArea">
                 <!-- 写真 -->
                 <div id="returnDrag">
@@ -42,18 +49,37 @@
                             <span>または</span>
                         </div>    
                         <button id="selectPicBtn">ファイルを選択</button>
-                        <input type="file" hidden>
+                        <input type="file" name="photo" hidden accept="image/*">
                     </div>
                     <button id="newSelectBtn">ファイルを選択</button>
-                    <input type="file" hidden>
+                    <!-- <input type="file" hidden accept="image/*"> -->
                 </div>
 
                 <!-- ホスト選択 Scroll box -->
                 <div class="scroll-bg">
                     <div class="scroll-div">
                         <div class="scroll-object">
-
+                        <?php foreach ($eventdata as $eventdatas) : ?>
                             <div class="place-content">
+                                <button value="<?= $eventdatas['OWNER_ID'] ?>"></button>
+                                <!-- <a href="event_Content.php?id=< $eventdatas['EVENT_ID'] ?>" class="col-md-12 col-lg-10 mx-auto item-box"> -->
+                                    <div class="event-item">
+                                            <diV class="col-md-7 center-item">
+                                                <div class="eventControl_Img">
+                                                <img src=".<?= $eventdatas['ICON'] ?>" alt="">
+                                                </div>    
+
+                                                <div class="information">
+
+                                                    <h3><?= $eventdatas['EVENT_NAME'] ?></h3>
+
+                                                </div>
+                                            </diV>
+                                    </div>
+                                </a>
+                            </div>
+                            <?php endforeach; ?>
+                            <!-- <div class="place-content">
                                 <a href="event_Content.php" class="col-md-12 col-lg-10 mx-auto item-box">
                                     <div class="event-item">
                                             <diV class="col-md-7 center-item">
@@ -84,29 +110,11 @@
                                                     <h3>イベント名</h3>
 
                                                 </div>
-                                            </diV>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="place-content">
-                                <a href="event_Content.php" class="col-md-12 col-lg-10 mx-auto item-box">
-                                    <div class="event-item">
-                                            <diV class="col-md-7 center-item">
-                                                <div class="eventControl_Img">
-                                                    <img src="./image/Event1.jpeg" alt="">
-                                                </div>    
-
-                                                <div class="information">
-
-                                                    <h3>イベント名</h3>
-
-                                                </div>
 
                                             </diV>
                                     </div>
                                 </a>
-                            </div>
+                            </div> -->
 
                         </div>
                     </div>
