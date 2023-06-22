@@ -375,3 +375,59 @@ function h($s)
 {
     return htmlspecialchars($s, ENT_QUOTES, "UTF-8");
 }
+
+/**
+ * 投稿した画像を保存
+ */
+$photo_directory = "./images/photo/";
+
+// ディレクトリが存在しない場合は作成する
+if (!is_dir($photo_directory)) {
+    mkdir($photo_directory, 0755, true);
+}
+
+function photoSave($id, $photo_path, $owner_id)
+{
+    $result = False;
+
+    $pdo = dbc(); // PDO インスタンスを取得
+
+    // トランザクションを開始
+    $pdo->beginTransaction();
+
+    $sql = "INSERT INTO POST(USER_ID, PHOTO, OWNER_ID) VALUES(?, ?, ?)";
+
+    try {
+        // プリペアドステートメントを作成
+        $stmt = $pdo->prepare($sql);
+
+        $photo_tmp = $_FILES["photo"]["tmp_name"];
+        $photo_name = date('YmdHis') . "_" . $_FILES["photo"]["name"];
+        $photo_path = "./images/photo/" . $photo_name;
+        move_uploaded_file($photo_tmp, $photo_path);
+
+        // パラメータをバインド
+        $stmt->bindParam(1, $id, PDO::PARAM_INT);
+        $stmt->bindParam(2, $photo_path, PDO::PARAM_STR);
+        if (strlen($id) !== 6) {
+            $stmt->bindParam(3, $owner_id, PDO::PARAM_INT);
+        } else {
+            $owner_id = null;
+            $stmt->bindParam(3, $owner_id, PDO::PARAM_INT);
+        }
+        // クエリを実行
+        $stmt->execute();
+
+        // コミット
+        $pdo->commit();
+
+        $result = true;
+        return $result;
+    } catch (\Exception $e) {
+        // ロールバック
+        $pdo->rollBack();
+
+        echo $e->getMessage();
+        return $result;
+    }
+}

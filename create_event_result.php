@@ -3,7 +3,7 @@ require_once "./data.php";
 if( $_SERVER["REQUEST_METHOD"] !== "POST"){
     header("Location: create_event.php");
     exit();
-  }
+}
 
 session_start();
 $owner_id = $_SESSION["id"];

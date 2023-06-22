@@ -1,3 +1,7 @@
+<?php
+require_once "./data.php";
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -31,7 +35,7 @@
     <!-- 入力情報 -->
     <section id="upload_Area">
 
-        <form action="#" method="POST" class="">
+        <form action="post_result_Host.php" method="POST" class="" enctype="multipart/form-data">
             <div id="upload_TopArea">
                 <!-- 写真 -->
                 <div id="returnDrag">
@@ -42,10 +46,9 @@
                                 <span>または</span>
                             </div>
                         <button id="selectPicBtn">ファイルを選択</button>
-                        <input type="file" hidden>
+                        <input type="file" name="photo" hidden accept="image/*">
                     </div>
                     <button id="newSelectBtn">ファイルを選択</button>
-                    <input type="file" hidden>
                 </div>
             </div>
 
