@@ -2,14 +2,8 @@
 require_once "./data.php";
 
 $id = $_GET["eventId"]; //前ページで選択された項目のidを取得する
-$eventvalue = Getevent($id);
-$owner_id = $eventvalue["OWNER_ID"];
-$hostdata = hostGetData($owner_id); //ホストの情報を取得
-
-if (strlen((int)$id) == 6) {
-    echo "hidden";
-}
-
+$eventdata = Getevent($id);
+$hostdata = hostGetData($eventdata['OWNER_ID']); //ホストの情報を取得
 // echo "<pre>";
 // print_r($eventdata);
 // echo "</pre>";
@@ -42,8 +36,9 @@ if (strlen((int)$id) == 6) {
         <h1>『　イベントの詳細　』</h1>
         <h2>Event Details</h2>
 
+        
         <div>
-        <img src="./image/banner2.jpg" id="event_detail_pic"> 
+        <img src="<?= $eventdata["ICON"];?>"> 
         </div>
 
     </section>
@@ -62,12 +57,13 @@ if (strlen((int)$id) == 6) {
                 <p class="EV_Small_Title">募集詳細：</p>
             </div>
 
+            
             <div id="event_SmallContent">
-                <p id="eventName"><?= $eventvalue["EVENT_NAME"];?></p>
-                <p id="eventTheme"><?= $eventvalue["THEME"];?></p>
-                <p id="eventTime"><?= $eventvalue["SCHEDULE"];?></p>
-                <p id="eventPlace"><?= $eventvalue["ADDRESS"];?></p>
-                <p id="eventInfo"><?= $eventvalue["NOTE"];?></p>
+                <p id="eventName"><?= $eventdata["EVENT_NAME"];?></p>
+                <p id="eventTheme"><?= $eventdata["THEME"];?></p>
+                <p id="eventTime"><?= $eventdata["SCHEDULE"];?></p>
+                <p id="eventPlace"><?= $eventdata["ADDRESS"];?></p>
+                <p id="eventInfo"><?= $eventdata["NOTE"];?></p>
             </div>
         </div>    
 
@@ -84,7 +80,7 @@ if (strlen((int)$id) == 6) {
         <!-- 写真 -->
         <div id="selfIcon_pic">
             <a href="hostpage_ViewOnly.php">
-            <img src="<?= $hostdata['ICON'] ?>">
+                <img src="<?= $hostdata['ICON'] ?>">
             </a>
         </div>
 

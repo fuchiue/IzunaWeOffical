@@ -49,7 +49,9 @@
 }
 
 #selfIcon_pic img{
-    width: 85%;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
 }
 
 #redDecoBox{
@@ -73,7 +75,7 @@
     display: flex;
 }
 
-#pointArea img{
+#pointIcon{
     width: 30px;
     height: 30px;
 }
@@ -196,9 +198,11 @@
 }
 
 .event-item{
+    width: 600px;
+    height: 230px;
     background:#eeeeee;
     border-radius: 10px;
-    padding:15px 20px;
+    padding:25px 50px;
     margin-bottom: 20px;
     cursor: pointer;
 }

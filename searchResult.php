@@ -104,7 +104,7 @@ $db = null;
                     <div class="event-item">
                             <diV class="col-md-7 center-item">
                                 <div class="eventControl_Img">
-                                    <img src="./image/ResultArea1.jpeg" alt="" >
+                                    <img src="<?= $value["ICON"];?>" alt="" >
                                 </div>
 
                                 <div class="information">
@@ -136,7 +136,7 @@ $db = null;
 
     <!-- To Top Apple Button-->
     <div id="pagetop" >
-            <a href="#"><img src="./image/HT_Fox3 (Small Search).PNG"></a>
+            <a href="#SR_header"><img src="./image/HT_Fox3 (Small Search).PNG"></a>
     </div>
     
     <script src="./js/navbar.js"></script>

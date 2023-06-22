@@ -54,9 +54,10 @@ if ($userid != null) {
         <!-- 個人情報 -->
         <div id="selfInfo_Box">
             <!-- ポイント表示 -->
-            <p>Point Icon Insert：
-                <?= $userdata['POINT'] ?>点
-            </p>
+            <div id="pointArea">
+                <img src="./image/Point.PNG" id="pointIcon">
+                <p>：<?= $userdata['POINT'] ?>点</p>
+            </div>
             <!-- ニックネーム　-->
             <h1>
                 <?= $userdata['NICKNAME'] ?>
