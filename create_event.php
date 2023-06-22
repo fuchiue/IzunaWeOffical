@@ -1,8 +1,5 @@
 <?php
 require_once "./data.php";
-session_start();
-// $owner_id = $_SESSION["ID"];
-
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -72,7 +69,7 @@ session_start();
                 </div>
                 <div class="enter_InfoBox">
                     <label class="required">活動内容：</label>
-                    <input type="text" name="note" required>
+                    <textarea maxlength="300" name="note" required></textarea>
                 </div>
                 <div class="enter_InfoBox">
                     <label class="required">イベントテーマ：</label>
@@ -91,7 +88,7 @@ session_start();
                 </div>
                 <div class="enter_InfoBox">
                     <label class="detail">募集詳細：</label>
-                    <input type="text" name="detail">
+                    <textarea maxlength="300" name="detail"></textarea>
                 </div>
 
                 <!-- 写真 -->

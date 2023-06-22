@@ -54,10 +54,17 @@ dragArea.addEventListener("drop",(event)=>{
 
 function showFile(){
     let fileType = file.type;
+    let fileSize = file.size;
     console.log(fileType);
 
     let validExtensions = ["image/jpeg", "image/jpg", "image/png", ];
     if(validExtensions.includes(fileType)){ //もしアップロードされたファイルは画像の型なら
+        if(fileSize > 5 * 1024 * 1024){
+            alert("アップロードされた画像のサイズが5MBを超えています。5MB以下の画像を選択してください。");
+            elem.value = ""; // ファイル選択をリセット
+            thumbImage.removeAttribute("src"); // 画像プレビューを削除
+            return; // 処理を終了
+        }
         
         //新しいファイル読み込みを作成
         let fileReader = new FileReader();
