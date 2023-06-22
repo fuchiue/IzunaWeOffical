@@ -18,7 +18,7 @@ if(isset($id)){
 require_once __DIR__ . "/data.php";
 $username = filter_input(INPUT_POST, "user");
 $password = filter_input(INPUT_POST, "password");
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if(isset($_GET['msg'])){
     $msg = $_GET['msg'];
 }
 $result = [];

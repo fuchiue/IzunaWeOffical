@@ -1,9 +1,34 @@
 <?php
 require_once "./data.php";
+session_start();
 
 $id = $_GET["eventId"]; //前ページで選択された項目のidを取得する
 $eventdata = Getevent($id);
 $hostdata = hostGetData($eventdata['OWNER_ID']); //ホストの情報を取得
+
+$buttonhidden = false; //応募ボタン非表示フラグ
+$eventjoin = 0;
+
+//セッションからIDを取得
+if (isset($_SESSION["id"])) {
+    $loginid = $_SESSION["id"];
+}
+
+//IDに値が入っているか確認
+if (isset($loginid)) {
+    //ホストでログインしているため応募ボタン非表示フラグをtrueに
+    if (strlen((int)$loginid) == 6) {
+        $buttonhidden = true;
+    } else {
+        $eventjoin = checkjoin($loginid, $id);
+    }
+}
+//ステータスが終了の場合応募ボタンを非表示フラグをtrueに
+if ($eventdata['STATUS'] == "終了") {
+    $buttonhidden = true;
+}
+
+
 // echo "<pre>";
 // print_r($eventdata);
 // echo "</pre>";
@@ -11,6 +36,7 @@ $hostdata = hostGetData($eventdata['OWNER_ID']); //ホストの情報を取得
 
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,9 +62,9 @@ $hostdata = hostGetData($eventdata['OWNER_ID']); //ホストの情報を取得
         <h1>『　イベントの詳細　』</h1>
         <h2>Event Details</h2>
 
-        
+
         <div>
-        <img src="<?= $eventdata["ICON"];?>"> 
+            <img src="<?= $eventdata["ICON"]; ?>">
         </div>
 
     </section>
@@ -57,22 +83,30 @@ $hostdata = hostGetData($eventdata['OWNER_ID']); //ホストの情報を取得
                 <p class="EV_Small_Title">募集詳細：</p>
             </div>
 
-            
+
             <div id="event_SmallContent">
-                <p id="eventName"><?= $eventdata["EVENT_NAME"];?></p>
-                <p id="eventTheme"><?= $eventdata["THEME"];?></p>
-                <p id="eventTime"><?= $eventdata["SCHEDULE"];?></p>
-                <p id="eventPlace"><?= $eventdata["ADDRESS"];?></p>
-                <p id="eventInfo"><?= $eventdata["NOTE"];?></p>
+                <p id="eventName"><?= $eventdata["EVENT_NAME"]; ?></p>
+                <p id="eventTheme"><?= $eventdata["THEME"]; ?></p>
+                <p id="eventTime"><?= $eventdata["SCHEDULE"]; ?></p>
+                <p id="eventPlace"><?= $eventdata["ADDRESS"]; ?></p>
+                <p id="eventInfo"><?= $eventdata["NOTE"]; ?></p>
             </div>
+        </div>
 
-        </div>    
-
-        <div id="event_Box2" > <!--  ***** ページの担当へ：PHPでイベントのstatusを参照して、応募ボタンをhiddenかどうか***** -->
-            <a href="userJoin.php" id="joinEventBtn">
-                <p id="submitBtn">応募</p>
-            </a>
-        </div>    
+        <div id="event_Box2" <?php if ($buttonhidden) {
+                                    echo "hidden";
+                                } ?>> 
+                                <!--  ***** ページの担当へ：PHPでイベントのstatusを参照して、応募ボタンをhiddenかどうか***** -->
+            <?php if ($eventjoin['COUNT(*)'] == 0): ?>
+                <a href="userJoin.php?eventId=<?= $id ?>" id="joinEventBtn">
+                    <p id="submitBtn">応募</p>
+                </a>
+            <?php else : ?>
+                <a id="joinEventBtn">
+                    <p id="submitBtn">応募済み</p>
+                </a>
+            <?php endif; ?>
+        </div>
 
     </section>
 
@@ -98,7 +132,7 @@ $hostdata = hostGetData($eventdata['OWNER_ID']); //ホストの情報を取得
             <p id="selfInfo_title">団体紹介文</p>
             <div class="word-break">
                 <div class="normal">
-                  <p><?= $hostdata['NOTE'] ?></p>
+                    <p><?= $hostdata['NOTE'] ?></p>
                 </div>
             </div>
         </div>

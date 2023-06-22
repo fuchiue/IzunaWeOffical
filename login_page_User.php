@@ -3,23 +3,23 @@
 session_start();
 //セッションからIDを取得
 
-if(isset($_SESSION["id"])){
-$id = $_SESSION["id"];
+if (isset($_SESSION["id"])) {
+    $id = $_SESSION["id"];
 }
 //IDに値が入っているか確認
-if(isset($id)){
+if (isset($id)) {
     //5桁ならユーザページに遷移
-    if(strlen((int)$id)==5){
+    if (strlen((int) $id) == 5) {
         header("Location: userpage_AfterLogin.php");
-    //6桁ならホストページに遷移
-    }else if(strlen((int)$id)==6){
+        //6桁ならホストページに遷移
+    } else if (strlen((int) $id) == 6) {
         header("Location: hostpage_AfterLogin.php");
     }
 }
 require_once __DIR__ . "/data.php";
 $username = filter_input(INPUT_POST, "user");
 $password = filter_input(INPUT_POST, "password");
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if (isset($_GET['msg'])) {
     $msg = $_GET['msg'];
 }
 $result = [];
@@ -68,7 +68,8 @@ UserLogin($username, $password);
                     if (isset($msg)) {
                         echo $msg;
                     }
-                    ?></p>
+                    ?>
+                </p>
                 <div class="loginSmallBox">
                     <label>メールアドレス / ユーザ名：</label>
                     <input type="text" name="user" placeholder="example@gmail.com" required>

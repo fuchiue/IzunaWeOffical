@@ -264,7 +264,7 @@ function TakeUserData($userid)
 {
     $id = filter_var($userid, FILTER_SANITIZE_FULL_SPECIAL_CHARS); // ユーザー名をエスケープしてフィルタリングする
     $pdo = dbc();
-    $sql = "SELECT POINT,NICKNAME,NOTE FROM USER WHERE USER_ID=:userid";
+    $sql = "SELECT POINT,ICON,NICKNAME,NOTE FROM USER WHERE USER_ID=:userid";
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue(':userid', $id, PDO::PARAM_STR);
     $stmt->execute();
@@ -374,4 +374,32 @@ function getAllEvent()
 function h($s)
 {
     return htmlspecialchars($s, ENT_QUOTES, "UTF-8");
+}
+
+//イベントへの参加応募を登録
+function addJoin($userId,$eventId){
+    try {
+        $sql = 'INSERT INTO joined(USER_ID,EVENT_ID)VALUES(?,?)'; //団体名、紹介文、アイコン画像を取得
+        $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
+        $stmt->bindParam(1, $userId, PDO::PARAM_INT);
+        $stmt->bindParam(2, $eventId, PDO::PARAM_INT);
+        $result = $stmt->execute(); //実行
+        return $result; //データを返す
+    } catch (Exception $e) {
+        exit($e->getMessage());
+    }
+}
+
+function checkjoin($userId,$eventId){
+    try {
+        $sql = 'SELECT COUNT(*) FROM joined WHERE EVENT_ID=:eventId AND USER_ID=:userId'; //団体名、紹介文、アイコン画像を取得
+        $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
+        $stmt->bindValue(':eventId', $eventId, PDO::PARAM_INT); 
+        $stmt->bindValue(':userId', $userId, PDO::PARAM_INT); 
+        $stmt->execute(); //実行
+        $result = $stmt->fetch(); //データを取得
+        return $result; //データを返す
+    } catch (Exception $e) {
+        exit($e->getMessage());
+    }
 }

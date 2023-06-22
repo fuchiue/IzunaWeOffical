@@ -28,7 +28,7 @@
     <!-- 入力情報エリア -->
     <section id="signUp_Area">
 
-        <form action="signup_HostData.php" method="post" class="">
+        <form action="signup_HostData.php" method="post" enctype="multipart/form-data" class="">
 
             <!-- 入力情報(上部) -->
             <div id="signUp_TopArea">
@@ -36,10 +36,10 @@
                 <div id="returnDrag">
                     <div class="drag-area">
                         <button id="selectPicBtn">ファイルを選択</button>
-                        <input type="file" hidden>
+                        <input type="file" name="img" hidden>
                     </div>
                     <button id="newSelectBtn">ファイルを選択</button>
-                    <input type="file" hidden>
+                    <input type="file"hidden>
                 </div>
 
                 <!-- 分割線 -->
@@ -75,6 +75,10 @@
                             <label class="required">パスワード：</label>
                             <div><input type="password" name="password" required></div>
                         </div>
+                        <div id="pwArea">
+                            <label class="required">パスワード(確認)：</label>
+                            <div><input type="password" name="password-K"required></div>
+                        </div>
 
                         <!-- 右側終わり -->
                     </div>
@@ -96,9 +100,9 @@
             <!-- 入力情報(下部) -->
             <div id="signUp_BottomArea">
 
-                <label class="required" name="introduction">団体紹介文：</label>
+                <label class="required" >団体紹介文：</label>
                 <div>
-                    <textarea placeholder="団体紹介文を入力してください"></textarea>
+                    <textarea name="introduction" placeholder="団体紹介文を入力してください"></textarea>
                 </div>
 
                 <label class="required" class="signUp_BSmallBox">イベント募集のカテゴリー：</label>
