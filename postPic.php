@@ -1,9 +1,9 @@
 <?php
 session_start();
-require_once __DIR__ . "/data.php";
+require_once "./data.php";
 // ログインからIDを取ってくる
 $userid = $_SESSION["id"];
-$eventdata = TakeEventData($userid);
+$eventdatas = TakeEventData($userid);
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -59,63 +59,28 @@ $eventdata = TakeEventData($userid);
                 <div class="scroll-bg">
                     <div class="scroll-div">
                         <div class="scroll-object">
-                        <?php foreach ($eventdata as $eventdatas) : ?>
+                        <?php foreach ($eventdatas as $eventdata) : ?>
                             <div class="place-content">
-                                <button value="<?= $eventdatas['OWNER_ID'] ?>"></button>
+                                
                                 <!-- <a href="event_Content.php?id=< $eventdatas['EVENT_ID'] ?>" class="col-md-12 col-lg-10 mx-auto item-box"> -->
                                     <div class="event-item">
+                                    <button type="submit" value="<?= $eventdata['OWNER_ID'] ?>" >
                                             <diV class="col-md-7 center-item">
                                                 <div class="eventControl_Img">
-                                                <img src=".<?= $eventdatas['ICON'] ?>" alt="">
+                                                <img src="<?= $eventdata['ICON'] ?>" alt="">
                                                 </div>    
 
                                                 <div class="information">
 
-                                                    <h3><?= $eventdatas['EVENT_NAME'] ?></h3>
+                                                    <h3><?= $eventdata['EVENT_NAME'] ?></h3>
 
                                                 </div>
                                             </diV>
+                                            </button>
                                     </div>
-                                </a>
+                                <!-- </a> -->
                             </div>
                             <?php endforeach; ?>
-                            <!-- <div class="place-content">
-                                <a href="event_Content.php" class="col-md-12 col-lg-10 mx-auto item-box">
-                                    <div class="event-item">
-                                            <diV class="col-md-7 center-item">
-                                                <div class="eventControl_Img">
-                                                    <img src="./image/Event1.jpeg" alt="">
-                                                </div>    
-
-                                                <div class="information">
-
-                                                    <h3>イベント名</h3>
-
-                                                </div>
-                                            </diV>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="place-content">
-                                <a href="event_Content.php" class="col-md-12 col-lg-10 mx-auto item-box">
-                                    <div class="event-item">
-                                            <diV class="col-md-7 center-item">
-                                                <div class="eventControl_Img">
-                                                    <img src="./image/Event1.jpeg" alt="">
-                                                </div>    
-
-                                                <div class="information">
-
-                                                    <h3>イベント名</h3>
-
-                                                </div>
-
-                                            </diV>
-                                    </div>
-                                </a>
-                            </div> -->
-
                         </div>
                     </div>
                 </div>

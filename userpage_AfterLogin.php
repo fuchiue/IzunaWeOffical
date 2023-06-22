@@ -90,7 +90,7 @@ if ($userid != null) {
                 <div class="imgRow">
                     <?php $count = 0; ?>
                     <?php foreach ($postdata as $postdatas) : ?>
-                        <a href="hostpage_ViewOnly.php?id=<?= $postdatas['OWNER_ID'] ?>" class="imgBox"><img src=".<?= $postdatas['PHOTO'] ?>"></a>
+                        <a href="hostpage_ViewOnly.php?id=<?= $postdatas['OWNER_ID'] ?>" class="imgBox"><img src="<?= $postdatas['PHOTO'] ?>"></a>
                         <?php $count++; ?>
                         <?php if ($count % 3 === 0) : ?>
                 </div>
@@ -108,11 +108,11 @@ if ($userid != null) {
                 <?php foreach ($eventdata as $eventdatas) : ?>
                     <div class="place-content">
 
-                        <a href="event_Content.php?id=<?= $eventdatas['EVENT_ID'] ?>" class="col-md-12 col-lg-10 mx-auto item-box">
+                        <a href="event_Content.php?eventId=<?= $eventdatas['EVENT_ID'] ?>" class="col-md-12 col-lg-10 mx-auto item-box">
                             <div class="event-item">
                                 <diV class="col-md-7 center-item">
                                     <div class="eventControl_Img">
-                                        <img src=".<?= $eventdatas['ICON'] ?>" alt="">
+                                        <img src="<?= $eventdatas['ICON'] ?>" alt="">
                                     </div>
 
                                     <div class="information">
