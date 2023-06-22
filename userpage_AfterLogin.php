@@ -45,7 +45,7 @@ if ($userid != null) {
     <section id="selfInfo_TopArea">
         <!-- 写真 -->
         <div id="selfIcon_pic">
-            <img src="./image/HT_Fox3 (1).PNG">
+            <img src="<?= $userdata['ICON'] ?>">
         </div>
 
         <!-- 分割線 -->
