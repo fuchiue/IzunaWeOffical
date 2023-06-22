@@ -11,9 +11,15 @@ if (preg_match("/[^0-9]/", $_POST['tel'])) {
 // データベース接続
 $pdo = dbc();
 
+//パスワード確認
+$password = $_POST["password"];
+$password_K = $_POST["password_K"];
+if($password != $password_K){
+    echo "パスワードが一致しません";
+}
+
 //メールアドレスとパスワードの重複を防ぐ
 $email = $_POST["email"];
-$password = $_POST["password"];
 
 $UserQuery = "SELECT * FROM user WHERE email = :email";
 $UserStmt = $pdo->prepare($UserQuery);
