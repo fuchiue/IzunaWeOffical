@@ -11,9 +11,15 @@ if(preg_match("/[^0-9]/", $_POST['tel'])){
 // データベース接続
 $pdo = dbc();
 
+//パスワード確認
+$password = $_POST["password"];
+$password_K = $_POST["password_K"];
+if($password != $password_K){
+    echo "パスワードが一致しません";
+}
+
 //メールアドレスとパスワードの重複を防ぐ
 $email = $_POST["email"];
-$password = $_POST["password"];
 
 $UserQuery = "SELECT * FROM owner WHERE email = :email";
 $UserStmt = $pdo ->prepare($UserQuery);
@@ -86,4 +92,3 @@ if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
 } else {
     echo "画像のアップロード中にエラーが発生しました。";
 }
-?>

@@ -34,12 +34,12 @@
             <div id="signUp_TopArea">
                 <!-- 写真 -->
                 <div id="returnDrag">
-                        <div class="drag-area">
-                            <button id="selectPicBtn">ファイルを選択</button>
-                            <input type="file" name="img" hidden>
-                        </div>
+                    <div class="drag-area">
+                        <button id="selectPicBtn">ファイルを選択</button>
+                        <input type="file" name="img" hidden>
+                    </div>
                     <button id="newSelectBtn">ファイルを選択</button>
-                </div>    
+                </div>
 
                 <!-- 分割線 -->
                 <div id="redDecoBox"></div>
@@ -91,8 +91,8 @@
                         </div>
 
                         <div class="singlebox">
-                            <label class="required">パスワード：</label>
-                            <div><input type="password" required></div>
+                            <label class="required">パスワード(確認)：</label>
+                            <div><input type="password" name="password-K" required></div>
                         </div>
                     </div>
                     <!-- 右側の情報終わり -->
