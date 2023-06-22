@@ -3,18 +3,8 @@ require_once "./data.php";
 
 session_start();
 
-// //形式チェックしたいメールアドレス
-// $email = $_POST["email"];
-// //形式チェックに使う正規表現
-// $pattern = "/^[a-zA-Z0-9]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*$/";
-// if (preg_match($pattern, $email)) {
-//     print_r("'$email'は正しい形式のメールアドレス");
-// } else {
-//     print_r("'$email'は不正な形式のメールアドレス");
-// }
-
 //数値入力電話番号
-if (preg_match("/[^0-9]/", $_POST['tel']) || preg_match("/[^0-9]/", $_POST['birthday'])) {
+if (preg_match("/[^0-9]/", $_POST['tel'])) {
     echo "数値以外が入力されています。";
 }
 
@@ -47,9 +37,6 @@ if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
 
     // データベースに保存
     try {
-        //$pdo->commit(); // 成功したらコミット
-
-        //$pdo->beginTransaction(); // トランザクションの開始
         $sql = "INSERT INTO user(
             USER_NAME,
             NICKNAME,
@@ -81,11 +68,11 @@ if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
         $stmt->bindValue(":USER_NAME", $user_name, PDO::PARAM_STR);
         $stmt->bindValue(":NICKNAME", $_POST["nickname"], PDO::PARAM_STR);
         $stmt->bindValue(":NOTE", $_POST["introduction"], PDO::PARAM_STR);
-        $stmt->bindValue(":BIRTHDAY", $_POST["birthday"], PDO::PARAM_INT);
+        $stmt->bindValue(":BIRTHDAY", $_POST["birthday"], PDO::PARAM_STR);  //2021/09/09
         $stmt->bindValue(":ADDRESS", $_POST["prefecture"] . $_POST["city"] . $_POST["chome"], PDO::PARAM_STR);
-        $stmt->bindValue(":GENDER", $_POST["gender"], PDO::PARAM_INT);
+        $stmt->bindValue(":GENDER", $_POST["gender"], PDO::PARAM_STR);
         $stmt->bindValue(":ICON", $target_file, PDO::PARAM_STR);
-        $stmt->bindValue(":TEL", $_POST["tel"], PDO::PARAM_INT);
+        $stmt->bindValue(":TEL", $_POST["tel"], PDO::PARAM_STR);
         $stmt->bindValue(":EMAIL", $_POST["email"], PDO::PARAM_STR);
         $stmt->bindValue(":PASSWORD", $_POST["password"], PDO::PARAM_STR);
 

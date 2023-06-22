@@ -62,7 +62,7 @@
                         </div>
                         <div class="singlebox">
                             <label class="required">生年月日：</label>
-                            <div><input type="text" placeholder="YYYY/MM/DD" name="birthday" required></div>
+                            <div><input type="date" placeholder="YYYY/MM/DD" name="birthday" required></div>
                         </div>
                     </div>
                     <!-- 左側の情報終わり -->
@@ -77,8 +77,8 @@
                         <div>
                             <label class="required">性別：</label>
                             <div id="genderBox">
-                                <input type="radio" name="gender" value="male" required>男　
-                                <input type="radio" name="gender" value="female" required>女
+                                <input type="radio" name="gender" value="男" required>男　
+                                <input type="radio" name="gender" value="女" required>女
                             </div>
                         </div>
                         <div class="singlebox">
