@@ -1,5 +1,18 @@
+<?php
+session_start();
+//セッションからIDを取得
+if (isset($_SESSION["id"])) {
+    $id = $_SESSION["id"];
+}
+//IDに値が入っているか確認
+if (!isset($id)) {
+    //ログインされてないためログインページに
+    header("Location: login_page_User.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +20,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./css/navbar.css">
     <link rel="stylesheet" href="./css/userJoin.css">
-    
+
     <title>ボランティア</title>
 </head>
 
@@ -22,17 +35,17 @@
 
     <!-- ページ名 -->
     <section id="UJ_Title">
-            <h1>『　イベント応募　』</h1>
-            <h2>Join Our Event</h2>
+        <h1>『　イベント応募　』</h1>
+        <h2>Join Our Event</h2>
     </section>
 
     <!-- 入力情報 -->
     <section id="enter_InfoArea">
 
-        <form action="#" method="POST" class="">
+        <form action="./userJoin_process.php" method="POST" class="">
             <div id="enter_BigInfoBox">
                 <p>応募先に登録のお名前とメールアドレスが提示されます。よろしいですか</p>
-                <div class="enter_InfoBox">
+                <!-- <div class="enter_InfoBox">
                     <label class="required">質問：</label>
                     <p>This is a question area OOOOOですか？</p>
                     <input type="text">
@@ -40,9 +53,9 @@
                 <div class="enter_InfoBox">
                     <label class="noteArea">備考：</label>
                     <input type="text">
-                </div>
+                </div> -->
             </div>
-            <div id="enter_InfoSubmit">
+            <div id="enter_InfoSubmit" >
                 <button type="submit">送信</button>
             </div>
         </form>

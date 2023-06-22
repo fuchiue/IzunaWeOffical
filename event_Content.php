@@ -5,6 +5,11 @@ $id = $_GET["eventId"]; //前ページで選択された項目のidを取得す�
 $eventvalue = Getevent($id);
 $owner_id = $eventvalue["OWNER_ID"];
 $hostdata = hostGetData($owner_id); //ホストの情報を取得
+
+if (strlen((int)$id) == 6) {
+    echo "hidden";
+}
+
 // echo "<pre>";
 // print_r($eventdata);
 // echo "</pre>";
