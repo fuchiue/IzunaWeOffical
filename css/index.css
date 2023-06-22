@@ -1,22 +1,25 @@
 
 /* Opening エリア CSS　開始*/
 
-/* #Opening  img{
-    width: 100%;
-    padding: 20px;
-    z-index: 1;
-} */
-
+/* Normal flashing*/
 #home img{
   display: none;
-  /* opacity: 0; */
   width: 100%;
   padding: 20px;
   z-index: 1;
-}
+} 
 
 #home img:first-child {
   display: block;
+}
+
+/*fade out code*/
+/* #home img{
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  padding: 20px;
+  z-index: 1;
 }
 
 #Opening{
@@ -28,7 +31,7 @@
     padding-right: 0px;
     padding-bottom: 30px;
     margin-top: 0px;
-  }
+  } */
 
   .fade-in-image {
     animation: fadeIn 2s;
@@ -46,6 +49,7 @@
     0% {opacity:1;}
     100% {opacity:0;}
   }
+  
 
   
 /*検索ボックス　CSS　開始 */
@@ -61,7 +65,7 @@
     width:100%;
     position: absolute;
     z-index: 500;
-    top: 73%;
+    top: 92%;
     left: 47%;
     transform: translate(-50%, -50%);
 }
