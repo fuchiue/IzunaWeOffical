@@ -44,7 +44,13 @@ if (!isset($id)) {
 
         <form action="./userJoin_process.php" method="POST" class="">
             <div id="enter_BigInfoBox">
-                <p>応募先に登録のお名前とメールアドレスが提示されます。よろしいですか</p>
+                <?php if(isset($_GET["ermsg"])){
+                        echo "応募の登録に失敗しました。時間をおいてやり直してください";
+                    }else{
+                        echo "<p>応募先に登録のお名前とメールアドレスが提示されます。よろしいですか</p>";
+                    }
+                    ?>
+                
                 <!-- <div class="enter_InfoBox">
                     <label class="required">質問：</label>
                     <p>This is a question area OOOOOですか？</p>
@@ -56,7 +62,7 @@ if (!isset($id)) {
                 </div> -->
             </div>
             <div id="enter_InfoSubmit" >
-                <button type="submit">送信</button>
+                <button type="submit" name="eventID" value="<?= $_GET["eventId"]; ?>">送信</button>
             </div>
         </form>
     </section>

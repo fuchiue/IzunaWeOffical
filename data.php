@@ -375,3 +375,31 @@ function h($s)
 {
     return htmlspecialchars($s, ENT_QUOTES, "UTF-8");
 }
+
+//イベントへの参加応募を登録
+function addJoin($userId,$eventId){
+    try {
+        $sql = 'INSERT INTO joined(USER_ID,EVENT_ID)VALUES(?,?)'; //団体名、紹介文、アイコン画像を取得
+        $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
+        $stmt->bindParam(1, $userId, PDO::PARAM_INT);
+        $stmt->bindParam(2, $eventId, PDO::PARAM_INT);
+        $result = $stmt->execute(); //実行
+        return $result; //データを返す
+    } catch (Exception $e) {
+        exit($e->getMessage());
+    }
+}
+
+function checkjoin($userId,$eventId){
+    try {
+        $sql = 'SELECT COUNT(*) FROM joined WHERE EVENT_ID=:eventId AND USER_ID=:userId'; //団体名、紹介文、アイコン画像を取得
+        $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
+        $stmt->bindValue(':eventId', $eventId, PDO::PARAM_INT); 
+        $stmt->bindValue(':userId', $userId, PDO::PARAM_INT); 
+        $stmt->execute(); //実行
+        $result = $stmt->fetch(); //データを取得
+        return $result; //データを返す
+    } catch (Exception $e) {
+        exit($e->getMessage());
+    }
+}

@@ -161,7 +161,7 @@ $photodatas = TakePostData($id); //投稿した写真を取得
                 <?php foreach ($eventDatas as $eventData) : ?>
                     <div class="place-content">
 
-                        <a href="event_Content.php?id=<?= $eventData['EVENT_ID'] ?>" class="col-md-12 col-lg-10 mx-auto item-box">
+                        <a href="event_Content.php?eventId=<?= $eventData['EVENT_ID'] ?>" class="col-md-12 col-lg-10 mx-auto item-box">
                             <div class="event-item">
                                 <diV class="col-md-7 center-item">
                                     <div class="eventControl_Img">
