@@ -106,27 +106,13 @@ function handleEventSelection(event) {
     eventItem.classList.add('selected');
 }
 
+/** 画像が添付されるかどうかを確認 */ 
 const submitBtn = document.querySelector("#signUp_BtnArea");
 const uploadphoto = document.querySelector("#photo");
-const radio = document.querySelectorAll('input[name="value"]');
 
 submitBtn.addEventListener("click", (event) => {
-    /** 画像が添付されるかを確認 */ 
     if(!uploadphoto.files || uploadphoto.files.length === 0){
         event.preventDefault(); // 送信をキャンセル
         alert("画像を添付してください");
-    }
-    
-    /** イベントが選択されるかを確認 */ 
-    let isChecked = false;
-    for(let i = 0; i < radio.length; i++ ){
-        if(radio[i].checked) {
-            isChecked = true;
-            break;
-        }
-    }
-    if(!isChecked){
-        event.preventDefault(); // 送信をキャンセル
-        alert("イベントを選択してください");
     }
 });

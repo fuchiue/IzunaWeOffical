@@ -46,7 +46,7 @@ require_once "./data.php";
                                 <span>または</span>
                             </div>
                         <button id="selectPicBtn">ファイルを選択</button>
-                        <input type="file" name="photo" hidden accept="image/*">
+                        <input type="file" id="photo" name="photo" hidden accept="image/*">
                     </div>
                     <button id="newSelectBtn">ファイルを選択</button>
                 </div>
@@ -63,7 +63,7 @@ require_once "./data.php";
 
     <script src="./js/navbar.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script src="./js/postpic.js"></script>
+    <script src="./js/postpic_Host.js"></script>
 
 </body>
 
