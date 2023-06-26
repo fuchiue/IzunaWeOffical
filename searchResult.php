@@ -136,7 +136,7 @@ $db = null;
 
     <!-- To Top Apple Button-->
     <div id="pagetop" >
-            <a href="#SR_header"><img src="./image/HT_Fox3 (Small Search).PNG"></a>
+            <a href="#SR_header"><img src="./image/HT_Fox3 (Small Search).gif"></a>
     </div>
     
     <script src="./js/navbar.js"></script>

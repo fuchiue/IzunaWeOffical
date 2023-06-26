@@ -244,4 +244,8 @@ select {
     cursor: pointer;
     z-index: 1000000;
 }
+
+#pagetop a img{
+    width: 205px;
+}
 /*　検索結果の一覧表CSS　終了*/
