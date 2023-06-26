@@ -133,7 +133,7 @@ if ($userid != null) {
                 <?php foreach ($eventdata as $eventdatas) : ?>
                     <div class="place-content">
 
-                        <a href="event_Content.php?id=<?= $eventdatas['EVENT_ID'] ?>" class="col-md-12 col-lg-10 mx-auto item-box">
+                        <a href="event_Content.php?eventId=<?= $eventdatas['EVENT_ID'] ?>" class="col-md-12 col-lg-10 mx-auto item-box">
                             <div class="event-item">
                                 <diV class="col-md-7 center-item">
                                     <div class="eventControl_Img">

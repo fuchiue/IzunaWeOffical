@@ -1,9 +1,9 @@
 <?php
 session_start();
-require_once __DIR__ . "/data.php";
+require_once "./data.php";
 // ログインからIDを取ってくる
 $userid = $_SESSION["id"];
-$eventdata = TakeEventData($userid);
+$eventdatas = TakeAllEventData($userid);
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -56,71 +56,38 @@ $eventdata = TakeEventData($userid);
                 </div>
 
                 <!-- ホスト選択 Scroll box -->
-                <div class="scroll-bg">
+                <div class="rightArea">
+                    <h3 id="annotations">この写真に対するイベントを選択してください</h3>
+                    <div class="scroll-bg">
                     <div class="scroll-div">
                         <div class="scroll-object">
-                        <?php foreach ($eventdata as $eventdatas) : ?>
+                        <?php foreach ($eventdatas as $eventdata) : ?>
                             <div class="place-content">
-                                <button value="<?= $eventdatas['OWNER_ID'] ?>"></button>
-                                <!-- <a href="event_Content.php?id=< $eventdatas['EVENT_ID'] ?>" class="col-md-12 col-lg-10 mx-auto item-box"> -->
+
                                     <div class="event-item">
+                                        <label>
+                                            <input type="radio"  id="event<?= $eventdata['OWNER_ID'] ?>"
+                                            name="value" value="<?= $eventdata['OWNER_ID'] ?>" hidden onchange="handleEventSelection(event)">
                                             <diV class="col-md-7 center-item">
                                                 <div class="eventControl_Img">
-                                                <img src=".<?= $eventdatas['ICON'] ?>" alt="">
+                                                    <img src="<?= $eventdata['ICON'] ?>" alt="イベント写真">
                                                 </div>    
 
                                                 <div class="information">
 
-                                                    <h3><?= $eventdatas['EVENT_NAME'] ?></h3>
+                                                    <h3><?= $eventdata['EVENT_NAME'] ?></h3>
 
                                                 </div>
                                             </diV>
+                                        </label>
                                     </div>
-                                </a>
+
                             </div>
                             <?php endforeach; ?>
-                            <!-- <div class="place-content">
-                                <a href="event_Content.php" class="col-md-12 col-lg-10 mx-auto item-box">
-                                    <div class="event-item">
-                                            <diV class="col-md-7 center-item">
-                                                <div class="eventControl_Img">
-                                                    <img src="./image/Event1.jpeg" alt="">
-                                                </div>    
-
-                                                <div class="information">
-
-                                                    <h3>イベント名</h3>
-
-                                                </div>
-                                            </diV>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="place-content">
-                                <a href="event_Content.php" class="col-md-12 col-lg-10 mx-auto item-box">
-                                    <div class="event-item">
-                                            <diV class="col-md-7 center-item">
-                                                <div class="eventControl_Img">
-                                                    <img src="./image/Event1.jpeg" alt="">
-                                                </div>    
-
-                                                <div class="information">
-
-                                                    <h3>イベント名</h3>
-
-                                                </div>
-
-                                            </diV>
-                                    </div>
-                                </a>
-                            </div> -->
-
                         </div>
                     </div>
                 </div>
-
-
+                </div>
             </div>
 
             <div id="signUp_BtnArea">

@@ -96,3 +96,12 @@ function showFile(){
         dragArea.classList.remove("active");
     }
 }
+
+function handleEventSelection(event) {
+    var eventItem = event.target.closest('.event-item');
+    var eventItems = document.querySelectorAll('.event-item');
+    eventItems.forEach(function(item) {
+      item.classList.remove('selected');
+    });
+    eventItem.classList.add('selected');
+}
