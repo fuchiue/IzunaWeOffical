@@ -10,6 +10,7 @@ $id = $_SESSION["id"];
 
 // ファイル関連の取得
 $submit = filter_input(INPUT_POST, "submit");
+$owner_id = filter_input(INPUT_POST, "value");
 
 // アップロードされたファイルの一時的な保存場所からファイルを取得し、保存先のディレクトリに移動させる
 $photo_tmp = $_FILES["photo"]["tmp_name"];

@@ -295,6 +295,19 @@ function TakeEventData($userid)
     return $eventdata;
 }
 
+function TakeAllEventData($userid)
+{
+    $id = filter_var($userid, FILTER_SANITIZE_FULL_SPECIAL_CHARS); // ユーザー名をエスケープしてフィルタリングする
+    $pdo = dbc();
+    $sql = "SELECT * FROM EVENT WHERE EVENT_ID IN (SELECT EVENT_ID FROM JOINED WHERE USER_ID=:userid AND STATUS='参加済み')";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':userid', $id, PDO::PARAM_STR);
+    $stmt->execute();
+    $eventdata = $stmt->fetchall(PDO::FETCH_ASSOC);
+    return $eventdata;
+}
+
+
 $directory = "./images/eventicon/";
 
 // ディレクトリが存在しない場合は作成する

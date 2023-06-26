@@ -3,7 +3,7 @@ session_start();
 require_once "./data.php";
 // ログインからIDを取ってくる
 $userid = $_SESSION["id"];
-$eventdatas = TakeEventData($userid);
+$eventdatas = TakeAllEventData($userid);
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -56,18 +56,21 @@ $eventdatas = TakeEventData($userid);
                 </div>
 
                 <!-- ホスト選択 Scroll box -->
-                <div class="scroll-bg">
+                <div class="rightArea">
+                    <h3 id="annotations">この写真に対するイベントを選択してください</h3>
+                    <div class="scroll-bg">
                     <div class="scroll-div">
                         <div class="scroll-object">
                         <?php foreach ($eventdatas as $eventdata) : ?>
                             <div class="place-content">
-                                
-                                <!-- <a href="event_Content.php?id=< $eventdatas['EVENT_ID'] ?>" class="col-md-12 col-lg-10 mx-auto item-box"> -->
+
                                     <div class="event-item">
-                                    <button type="submit" value="<?= $eventdata['OWNER_ID'] ?>" >
+                                        <label>
+                                            <input type="radio"  id="event<?= $eventdata['OWNER_ID'] ?>"
+                                            name="value" value="<?= $eventdata['OWNER_ID'] ?>" hidden onchange="handleEventSelection(event)">
                                             <diV class="col-md-7 center-item">
                                                 <div class="eventControl_Img">
-                                                <img src="<?= $eventdata['ICON'] ?>" alt="">
+                                                    <img src="<?= $eventdata['ICON'] ?>" alt="イベント写真">
                                                 </div>    
 
                                                 <div class="information">
@@ -76,16 +79,15 @@ $eventdatas = TakeEventData($userid);
 
                                                 </div>
                                             </diV>
-                                            </button>
+                                        </label>
                                     </div>
-                                <!-- </a> -->
+
                             </div>
                             <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
-
-
+                </div>
             </div>
 
             <div id="signUp_BtnArea">
