@@ -105,3 +105,26 @@ function handleEventSelection(event) {
     });
     eventItem.classList.add('selected');
 }
+
+const submitBtn = document.querySelector("#signUp_BtnArea");
+const uploadphoto = document.querySelector("#photo");
+const radio = document.querySelectorAll('input[name="value"]');
+
+submitBtn.addEventListener("click", (event) => {
+    if(!uploadphoto.files || uploadphoto.files.length === 0){
+        event.preventDefault(); // 送信をキャンセル
+        alert("画像を添付してください");
+    }
+    
+    let isChecked = false;
+    for(let i = 0; i < radio.length; i++ ){
+        if(radio[i].checked) {
+            isChecked = true;
+            break;
+        }
+    }
+    if(!isChecked){
+        event.preventDefault(); // 送信をキャンセル
+        alert("イベントを選択してください");
+    }
+});
