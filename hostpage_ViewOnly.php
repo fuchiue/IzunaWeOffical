@@ -1,7 +1,11 @@
 <?php
-session_start();
 require_once "./data.php";
-$id = $_SESSION["id"]; //IDを取得
+
+if(isset($_GET["id"])){
+    $id = $_GET["id"];
+}else{
+    header("Location: index.php");
+}
 $hostdata = hostGetData($id); //ホストの情報を取得
 $joinedUser = hostGetjoinUser($id); //ボランティアに参加したユーザを取得
 $eventDatas = HostGetevent($id); //ホストの開催したイベントの情報を取得
