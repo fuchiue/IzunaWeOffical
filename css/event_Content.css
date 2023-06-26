@@ -71,7 +71,7 @@
 
 #eventName, #eventTheme,#eventTime,
 #event_Meet_Time, #eventPlace, #eventPeople,
-#eventInfo
+#eventInfo,#eventDetail
 {
     background-color: #cbcbcb;
     padding: 10px 20px;

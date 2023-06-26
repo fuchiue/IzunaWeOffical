@@ -20,6 +20,7 @@ $schedule = filter_input(INPUT_POST,"schedule");
 $hour = filter_input(INPUT_POST,"hour",FILTER_VALIDATE_INT);
 $addressAll = $area.$address1.$address2;
 $detail = h(filter_input(INPUT_POST,"detail"));
+$questions = h(filter_input(INPUT_POST,"questions"));
 
 // アップロードされたファイルの一時的な保存場所からファイルを取得し、保存先のディレクトリに移動させる
 $icon_tmp = $_FILES["icon"]["tmp_name"];
@@ -27,7 +28,7 @@ $icon_name = date('YmdHis') . "_" . $_FILES["icon"]["name"]; // 一意のファ�
 $icon_path = "./images/eventicon/" . $icon_name;
 move_uploaded_file($icon_tmp, $icon_path);
 // 作成したイベント内容を保存
-$result = eventSave($event_name, $theme, $note, $area, $addressAll, $icon_path, $schedule, $hour, $owner_id, $detail);
+$result = eventSave($event_name, $theme, $note, $area, $addressAll, $icon_path, $schedule, $hour, $owner_id, $detail,$questions);
 // ファイルデータを取得
 // $event_info = getAllEvent();
 
@@ -115,6 +116,16 @@ $result = eventSave($event_name, $theme, $note, $area, $addressAll, $icon_path, 
                     echo '<p class="text" name="detail">' .  nl2br($detail) . '</p>';
                 }else {
                     echo '<p class="text" name="detail">　</p>';
+                }
+                ?>
+            </div>
+            <div class="enter_InfoBox">
+                <label class="required">質問：</label>
+                <?php
+                if(isset($questions) && !empty($questions)){
+                    echo '<p class="text" name="questions">' .  nl2br($questions) . '</p>';
+                }else {
+                    echo '<p class="text" name="questions">　</p>';
                 }
                 ?>
             </div>

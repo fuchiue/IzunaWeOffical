@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once "./data.php";
 //セッションからIDを取得
 if (isset($_SESSION["id"])) {
     $id = $_SESSION["id"];
@@ -9,6 +10,8 @@ if (!isset($id)) {
     //ログインされてないためログインページに
     header("Location: login_page_User.php");
 }
+$eventId = $_GET["eventId"];
+$question = Getevent($eventId);
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -51,18 +54,15 @@ if (!isset($id)) {
                     }
                     ?>
                 
-                <!-- <div class="enter_InfoBox">
-                    <label class="required">質問：</label>
-                    <p>This is a question area OOOOOですか？</p>
-                    <input type="text">
-                </div>
                 <div class="enter_InfoBox">
-                    <label class="noteArea">備考：</label>
-                    <input type="text">
-                </div> -->
+                    <label class="required">質問：</label>
+                    <p><?= $question['QUESTION'] ?></p>
+                    <textarea maxlength="300" name="ans"></textarea>
+                </div>
+                
             </div>
             <div id="enter_InfoSubmit" >
-                <button type="submit" name="eventID" value="<?= $_GET["eventId"]; ?>">送信</button>
+                <button type="submit" name="eventID" value="<?= $eventId ?>">送信</button>
             </div>
         </form>
     </section>

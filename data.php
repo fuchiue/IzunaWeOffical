@@ -305,7 +305,7 @@ if (!is_dir($directory)) {
 /**
  * 作成したイベント内容を保存
  */
-function eventSave($event_name, $theme, $note, $area, $addressAll, $icon, $schedule, $hour, $owner_id, $detail)
+function eventSave($event_name, $theme, $note, $area, $addressAll, $icon, $schedule, $hour, $owner_id, $detail,$questions)
 {
     $result = False;
 
@@ -314,7 +314,7 @@ function eventSave($event_name, $theme, $note, $area, $addressAll, $icon, $sched
     // トランザクションを開始
     $pdo->beginTransaction();
 
-    $sql = "INSERT INTO EVENT(EVENT_NAME, THEME, NOTE, area, ADDRESS, ICON, SCHEDULE, HOUR, OWNER_ID, DETAIL) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO EVENT(EVENT_NAME, THEME, NOTE, area, ADDRESS, ICON, SCHEDULE, HOUR, OWNER_ID, DETAIL, QUESTION) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     try {
         // プリペアドステートメントを作成
@@ -340,6 +340,12 @@ function eventSave($event_name, $theme, $note, $area, $addressAll, $icon, $sched
         } else {
             $detail = null;
             $stmt->bindParam(10, $detail, PDO::PARAM_STR);
+        }
+        if ($questions) {
+            $stmt->bindParam(11, $questions, PDO::PARAM_STR);
+        } else {
+            $questions = null;
+            $stmt->bindParam(11, $questions, PDO::PARAM_STR);
         }
         // クエリを実行
         $stmt->execute();
@@ -384,6 +390,21 @@ function addJoin($userId,$eventId){
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
         $stmt->bindParam(1, $userId, PDO::PARAM_INT);
         $stmt->bindParam(2, $eventId, PDO::PARAM_INT);
+        $result = $stmt->execute(); //実行
+        return $result; //データを返す
+    } catch (Exception $e) {
+        exit($e->getMessage());
+    }
+}
+
+//イベントへの参加応募を登録
+function addans($userId,$eventId,$ans){
+    try {
+        $sql = 'INSERT INTO answer(USER_ID,EVENT_ID,ANSWER)VALUES(?,?,?)'; //団体名、紹介文、アイコン画像を取得
+        $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
+        $stmt->bindParam(1, $userId, PDO::PARAM_INT);
+        $stmt->bindParam(2, $eventId, PDO::PARAM_INT);
+        $stmt->bindParam(3, $ans, PDO::PARAM_STR);
         $result = $stmt->execute(); //実行
         return $result; //データを返す
     } catch (Exception $e) {
@@ -460,4 +481,5 @@ function photoSave($id, $photo_path, $owner_id)
         return $result;
     }
 }
+
 
