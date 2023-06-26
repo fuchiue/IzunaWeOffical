@@ -30,9 +30,9 @@ if ($eventdata['STATUS'] == "終了") {
 }
 
 
-// echo "<pre>";
-// print_r($eventdata);
-// echo "</pre>";
+echo "<pre>";
+print_r($hostdata);
+echo "</pre>";
 ?>
 
 <!DOCTYPE html>

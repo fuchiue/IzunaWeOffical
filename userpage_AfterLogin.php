@@ -3,7 +3,7 @@ session_start();
 require_once __DIR__ . "/data.php";
 // ログインからIDを取ってくる
 $userid = $_SESSION["id"];
-var_dump($userid);
+// var_dump($userid);
 
 // IDが入ってたら、TakeUserData,TakePostData,TakeEventDataファンクションを実行してデータを取得する
 if ($userid != null) {
@@ -90,7 +90,7 @@ if ($userid != null) {
                 <div class="imgRow">
                     <?php $count = 0; ?>
                     <?php foreach ($postdata as $postdatas) : ?>
-                        <a href="hostpage_ViewOnly.php?id=<?= $postdatas['OWNER_ID'] ?>" class="imgBox"><img src=".<?= $postdatas['PHOTO'] ?>"></a>
+                        <a href="hostpage_ViewOnly.php?id=<?= $postdatas['OWNER_ID'] ?>" class="imgBox"><img src="<?= $postdatas['PHOTO'] ?>"></a>
                         <?php $count++; ?>
                         <?php if ($count % 3 === 0) : ?>
                 </div>
@@ -112,7 +112,7 @@ if ($userid != null) {
                             <div class="event-item">
                                 <diV class="col-md-7 center-item">
                                     <div class="eventControl_Img">
-                                        <img src=".<?= $eventdatas['ICON'] ?>" alt="">
+                                        <img src="<?= $eventdatas['ICON'] ?>" alt="">
                                     </div>
 
                                     <div class="information">
