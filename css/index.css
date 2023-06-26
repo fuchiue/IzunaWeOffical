@@ -7,11 +7,9 @@
   width: 100%;
   padding: 20px;
   z-index: 1;
-} 
+} */
 
-#home img:first-child {
-  display: block;
-} */ 
+
 
 /*fade out code*/
 #Opening{
@@ -39,6 +37,10 @@
     padding: 20px;
     z-index: 1;
     object-fit: cover;
+  }
+
+  #home img:first-child {
+    opacity: 1;
   }
 
   .fade-in-image {

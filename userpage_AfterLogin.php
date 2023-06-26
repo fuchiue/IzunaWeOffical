@@ -14,6 +14,9 @@ if ($userid != null) {
     // header('Location:'.'/login_page_User.php');
 }
 
+// echo "<pre>";
+// print_r($postdata);
+// echo "</pre>";
 
 ?>
 <!DOCTYPE html>
@@ -90,7 +93,8 @@ if ($userid != null) {
                 <div class="imgRow">
                     <?php $count = 0; ?>
                     <?php foreach ($postdata as $postdatas) : ?>
-                        <a href="hostpage_ViewOnly.php?id=<?= $postdatas['OWNER_ID'] ?>" class="imgBox"><img src="<?= $postdatas['PHOTO'] ?>"></a>
+                        <!-- <a href="hostpage_ViewOnly.php?id=< ?= $postdatas['OWNER_ID'] ?>" class="imgBox"><img src="< ?= $postdatas['PHOTO'] ?>"></a> -->
+                        <a href="#" class="imgBox"><img src="<?= $postdatas['PHOTO'] ?>"></a>
                         <?php $count++; ?>
                         <?php if ($count % 3 === 0) : ?>
                 </div>
@@ -98,8 +102,29 @@ if ($userid != null) {
                     <div class="imgRow">
                     <?php endif; ?>
                 <?php endif; ?>
-            <?php endforeach; ?>
+            
                     </div>
+
+                    <!-- ポップアップエリア -->
+                    <div class="full-screen hidden flex-container-center">
+
+                        <div id="hidden-content">
+                            <div id="hidden-content-left">
+                                <img src="<?= $postdatas['PHOTO'] ?>">
+                                <button id="closePopup" onclick="togglePopUp()">Close PopUp</button>
+                            </div>
+
+                            <div id="hidden-content-right">
+                                <h3>イベント名：</h3>
+                                <p>日時：</p>
+                                <p>場所：</p>
+                                <p>活動内容：</p>
+                                <a href="hostpage_ViewOnly.php?id=<?= $postdatas['OWNER_ID'] ?>">イベントのホストページへ</a>
+                            </div>
+
+                        </div>
+                    </div>
+                <?php endforeach; ?>
             </div>
 
             <!-- イベント履歴　-->
