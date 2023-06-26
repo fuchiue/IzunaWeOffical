@@ -227,12 +227,12 @@
     object-fit: cover;
 }
 
-#event01_Status{
+#event01_Status_Active{
     color: #DC0000;
 }
 
-#event02_Status{
-    color: blue;
+#event01_Status_Finished{
+    color: rgb(0, 0, 234);
 }
 
 .joinedPpl_Control{

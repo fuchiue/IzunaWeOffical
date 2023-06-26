@@ -8,6 +8,10 @@ $joinedUser = hostGetjoinUser($id); //ボランティアに参加したユーザ
 $eventDatas = HostGetevent($id); //ホストの開催したイベントの情報を取得
 $registers = GetRegister($id); //参加応募者一覧を取得
 $photodatas = TakePostData($id); //投稿した写真を取得
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -200,7 +204,13 @@ $photodatas = TakePostData($id); //投稿した写真を取得
                                     </div>
 
                                     <div class="information">
-                                        <p id="event01_Status"><?= $eventData['STATUS'] ?></p>
+                                        <p id="<?php if ($eventData['STATUS'] == "募集中"){
+                                            echo 'event01_Status_Active';
+                                        }else{
+                                            echo 'event01_Status_Finished';
+                                        };?>">
+                                            <?= $eventData['STATUS'] ?>
+                                        </p>
                                         <h3><?= $eventData['EVENT_NAME'] ?></h3>
                                         <div class="EvCon_Date">
                                             <h4>日時</h4>
