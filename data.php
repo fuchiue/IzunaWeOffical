@@ -202,10 +202,11 @@ function UserLogin($username, $password)
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             if ($result && $result["PASSWORD"] === $password) {
+                echo $result;
                 // ユーザー番号をセッションに登録
-                $_SESSION["id"] = $result["USER_ID"];
+                $_SESSION["id"] = $result["OWNER_ID"];
                 echo $_SESSION["id"];
-                header("Location: userpage_AfterLogin.php");
+                header("Location: login_page_User.php");
                 //ユーザのマイページに移行する
             } else {
                 $msg = "ユーザー名またはパスワードが正しくありません";
