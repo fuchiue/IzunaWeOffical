@@ -12,6 +12,7 @@
     <title>ボランティア</title>
 </head>
 
+
 <body>
 
     <?php include('./Navbar/navbar.php'); ?>
