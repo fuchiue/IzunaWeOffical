@@ -77,8 +77,8 @@
                             <div><input type="password" name="password" required></div>
                         </div>
                         <div id="pwArea">
-                            <label class="required">パスワード(確認)：</label>
-                            <div><input type="password" name="password-K"required></div>
+                            <label class="required">パスワード(確認):</label>
+                            <div><input type="password" name="password_K" required></div>
                         </div>
 
                         <!-- 右側終わり -->

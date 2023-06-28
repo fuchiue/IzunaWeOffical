@@ -11,6 +11,7 @@ if(preg_match("/[^0-9]/", $_POST['tel'])){
 
 // データベース接続
 $pdo = dbc();
+var_dump($_POST);
 
 //パスワード確認
 $password = $_POST["password"];
