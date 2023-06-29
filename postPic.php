@@ -49,7 +49,7 @@ $eventdatas = TakeAllEventData($userid);
                             <span>または</span>
                         </div>    
                         <button id="selectPicBtn">ファイルを選択</button>
-                        <input type="file" name="photo" hidden accept="image/*">
+                        <input type="file" id="photo" name="photo" hidden accept="image/*">
                     </div>
                     <button id="newSelectBtn">ファイルを選択</button>
                     <!-- <input type="file" hidden accept="image/*"> -->
@@ -66,7 +66,7 @@ $eventdatas = TakeAllEventData($userid);
 
                                     <div class="event-item">
                                         <label>
-                                            <input type="radio"  id="event<?= $eventdata['OWNER_ID'] ?>"
+                                            <input type="radio"  id="event>"
                                             name="value" value="<?= $eventdata['OWNER_ID'] ?>" hidden onchange="handleEventSelection(event)">
                                             <diV class="col-md-7 center-item">
                                                 <div class="eventControl_Img">
