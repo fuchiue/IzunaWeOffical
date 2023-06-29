@@ -8,10 +8,16 @@ if( $_SERVER["REQUEST_METHOD"] !== "POST"){
 session_start();
 $id = $_SESSION["id"];
 
+// 取得したvalue分割処理
+$event = explode(",", $_POST["value"]);
+
+$owner_id = $event[0];
+$event_id = $event[1];
+
 // ファイル関連の取得
 $submit = filter_input(INPUT_POST, "submit");
 $owner_id = filter_input(INPUT_POST, "value");
-$event_id = filter_input(INPUT_POST, "event");
+// $event_id = filter_input(INPUT_POST, "event");
 
 // アップロードされたファイルの一時的な保存場所からファイルを取得し、保存先のディレクトリに移動させる
 $photo_tmp = $_FILES["photo"]["tmp_name"];
@@ -29,8 +35,8 @@ if ($photosave) {
 } else {
     // 保存失敗時の処理
     echo "画像の保存に失敗しました。";
-    // header("Location: postPic.php");
-    // exit();
+    header("Location: postPic.php");
+    exit();
 }
 
 ?>
