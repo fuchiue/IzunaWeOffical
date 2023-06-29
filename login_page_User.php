@@ -5,30 +5,15 @@ require_once __DIR__ . "/data.php";
 
 $username = filter_input(INPUT_POST, "user");
 $password = filter_input(INPUT_POST, "password");
-
+$eventid=null;
 if (isset($_SESSION["id"])) {
     $id = $_SESSION["id"];
+    header("Location: userpage_AfterLogin.php");
 }
-
-$result = UserLogin($username, $password);
-
-if ($result === true) {
-    $_SESSION["id"] = $result["id"];
-
-    if (isset($_GET["eventId"])) {
-        $eventid = $_GET["eventId"];
-        if (strlen($_SESSION["id"]) == 5) {
-            header("Location: event_Content.php?eventId=" . $eventid);
-            exit;
-        }
-    } else {
-        if (strlen($_SESSION["id"]) == 5) {
-            header("Location: userpage_AfterLogin.php");
-            exit;
-        }
-    }
+if (isset($_GET["eventId"])) {
+    $eventid = $_GET["eventId"];
 }
-
+$result = UserLogin($username, $password,$eventid);
 // $LocationUrl = "Location: userpage_AfterLogin.php";
 // if(isset($_GET["eventId"])){
 //     echo $_GET["eventId"];

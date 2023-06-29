@@ -33,7 +33,7 @@ if ($UserStmt->rowCount() > 0) {
 
 // 画像のアップロード処理
 //保存先のディレクトリー
-$target_dir = "./image/";
+$target_dir = "./images/usericon";
 var_dump($_FILES);
 //ファイルが指定されたディレクトリに保存されます。
 $target_file = $target_dir . basename($_FILES["img"]["name"]);
