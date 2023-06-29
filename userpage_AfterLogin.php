@@ -103,29 +103,29 @@ if (isset($userid)) {
                     <div class="imgRow">
                     <?php endif; ?>
                 <?php endif; ?>
-            
-                    </div>
 
-                    <!-- ポップアップエリア -->
-                    <div class="full-screen hidden flex-container-center">
 
-                        <div id="hidden-content">
-                            <div id="hidden-content-left">
-                                <img src="<?= $postdatas['PHOTO'] ?>">
-                                <button id="closePopup" onclick="togglePopUp()">Close PopUp</button>
-                            </div>
+                <!-- ポップアップエリア -->
+                <div class="full-screen hidden flex-container-center">
 
-                            <div id="hidden-content-right">
-                                <h3>イベント名：</h3>
-                                <p>日時：</p>
-                                <p>場所：</p>
-                                <p>活動内容：</p>
-                                <a href="hostpage_ViewOnly.php?id=<?= $postdatas['OWNER_ID'] ?>">イベントのホストページへ</a>
-                            </div>
-
+                    <div id="hidden-content">
+                        <div id="hidden-content-left">
+                            <img src="<?= $postdatas['PHOTO'] ?>">
+                            <button id="closePopup" onclick="togglePopUp()">Close PopUp</button>
                         </div>
+
+                        <div id="hidden-content-right">
+                            <h3>イベント名：</h3>
+                            <p>日時：</p>
+                            <p>場所：</p>
+                            <p>活動内容：</p>
+                            <a href="hostpage_ViewOnly.php?id=<?= $postdatas['OWNER_ID'] ?>">イベントのホストページへ</a>
+                        </div>
+
                     </div>
-                <?php endforeach; ?>
+                </div>
+            <?php endforeach; ?>
+                    </div>
             </div>
 
             <!-- イベント履歴　-->

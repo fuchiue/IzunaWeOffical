@@ -54,12 +54,13 @@ $question = Getevent($eventId);
                         echo "<p>応募先に登録のお名前とメールアドレスが提示されます。よろしいですか</p>";
                     }
                     ?>
-                
+                <?php if($question['QUESTION']!=null):?>
                 <div class="enter_InfoBox">
-                    <label class="required">質問：</label>
+                    <label >質問：</label>
                     <p><?= $question['QUESTION'] ?></p>
                     <textarea maxlength="300" name="ans"></textarea>
                 </div>
+                <?php endif; ?>
                 
             </div>
             <div id="enter_InfoSubmit" >
