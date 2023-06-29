@@ -187,10 +187,12 @@ function Getevent($id)
     }
 }
 //ユーザのログイン
-function UserLogin($username, $password)
+function UserLogin($username, $password, $eventid)
 {
     if ($username != null && $password != null) {
         try { // トランザクション開始
+            $LocationUrl = "Location: userpage_AfterLogin.php";
+            
             $pdo = dbc();
             if (strpos($username, '@')) {
                 $sql = "SELECT * FROM USER WHERE EMAIL=:username";
@@ -202,10 +204,15 @@ function UserLogin($username, $password)
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             if ($result && $result["PASSWORD"] === $password) {
+                echo $result;
                 // ユーザー番号をセッションに登録
                 $_SESSION["id"] = $result["USER_ID"];
+                if (isset($_GET["eventId"])) {
+                    echo $_GET["eventId"];
+                    $LocationUrl = "Location: event_Content.php?eventId=" . $_GET["eventId"];
+                }
                 echo $_SESSION["id"];
-                header("Location: userpage_AfterLogin.php");
+                header($LocationUrl);
                 //ユーザのマイページに移行する
             } else {
                 $msg = "ユーザー名またはパスワードが正しくありません";
@@ -397,7 +404,8 @@ function h($s)
 
 
 //イベントへの参加応募を登録
-function addJoin($userId,$eventId){
+function addJoin($userId, $eventId)
+{
     try {
         $sql = 'INSERT INTO joined(USER_ID,EVENT_ID)VALUES(?,?)'; //団体名、紹介文、アイコン画像を取得
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
@@ -425,12 +433,13 @@ function addans($userId,$eventId,$ans){
     }
 }
 
-function checkjoin($userId,$eventId){
+function checkjoin($userId, $eventId)
+{
     try {
         $sql = 'SELECT COUNT(*) FROM joined WHERE EVENT_ID=:eventId AND USER_ID=:userId'; //団体名、紹介文、アイコン画像を取得
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
-        $stmt->bindValue(':eventId', $eventId, PDO::PARAM_INT); 
-        $stmt->bindValue(':userId', $userId, PDO::PARAM_INT); 
+        $stmt->bindValue(':eventId', $eventId, PDO::PARAM_INT);
+        $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
         $stmt->execute(); //実行
         $result = $stmt->fetch(); //データを取得
         return $result; //データを返す

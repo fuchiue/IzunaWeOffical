@@ -1,6 +1,7 @@
 <?php
-session_start();
 require_once "./data.php";
+session_start();
+$eventid=$_GET["eventId"];
 //セッションからIDを取得
 if (isset($_SESSION["id"])) {
     $id = $_SESSION["id"];
@@ -8,7 +9,7 @@ if (isset($_SESSION["id"])) {
 //IDに値が入っているか確認
 if (!isset($id)) {
     //ログインされてないためログインページに
-    header("Location: login_page_User.php");
+    header("Location: login_page_User.php?eventId=". urlencode($eventid));
 }
 $eventId = $_GET["eventId"];
 $question = Getevent($eventId);

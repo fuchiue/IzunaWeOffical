@@ -6,12 +6,13 @@ $userid = $_SESSION["id"];
 // var_dump($userid);
 
 // IDが入ってたら、TakeUserData,TakePostData,TakeEventDataファンクションを実行してデータを取得する
-if ($userid != null) {
+if (isset($userid)) {
     $userdata = TakeUserData($userid);
     $postdata = TakePostData($userid);
     $eventdata = TakeEventData($userid);
 } else {
-    // header('Location:'.'/login_page_User.php');
+    // header('Location:/login_page_User.php');
+    echo "no";
 }
 
 // echo "<pre>";
