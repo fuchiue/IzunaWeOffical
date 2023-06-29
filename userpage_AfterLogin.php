@@ -14,9 +14,9 @@ if ($userid != null) {
     // header('Location:'.'/login_page_User.php');
 }
 
-// echo "<pre>";
-// print_r($postdata);
-// echo "</pre>";
+echo "<pre>";
+print_r($postdata);
+echo "</pre>";
 
 ?>
 <!DOCTYPE html>
@@ -97,34 +97,33 @@ if ($userid != null) {
                         <a href="#" class="imgBox"><img src="<?= $postdatas['PHOTO'] ?>"></a>
                         <?php $count++; ?>
                         <?php if ($count % 3 === 0) : ?>
-                </div>
-                <?php if ($count !== count($postdata)) : ?>
-                    <div class="imgRow">
-                    <?php endif; ?>
-                <?php endif; ?>
-            
-                    </div>
-
-                    <!-- ポップアップエリア -->
-                    <div class="full-screen hidden flex-container-center">
-
-                        <div id="hidden-content">
-                            <div id="hidden-content-left">
-                                <img src="<?= $postdatas['PHOTO'] ?>">
-                                <button id="closePopup" onclick="togglePopUp()">Close PopUp</button>
                             </div>
+                                <?php if ($count !== count($postdata)) : ?>
+                                    <div class="imgRow">
+                                <?php endif; ?>
+                        <?php endif; ?>
 
-                            <div id="hidden-content-right">
-                                <h3>イベント名：</h3>
-                                <p>日時：</p>
-                                <p>場所：</p>
-                                <p>活動内容：</p>
-                                <a href="hostpage_ViewOnly.php?id=<?= $postdatas['OWNER_ID'] ?>">イベントのホストページへ</a>
+                        <!-- ポップアップエリア -->
+                        <div class="full-screen hidden flex-container-center">
+                            
+                            <div class="hidden-content">
+                                <div class="hidden-content-left">
+                                    <img src="<?= $postdatas['PHOTO'] ?>">
+                                    <button class="closePopup">戻る</button>
+                                </div>
+
+                                <div class="hidden-content-right">
+                                    <h3>イベント名：</h3>
+                                    <p>日時：</p>
+                                    <p>場所：</p>
+                                    <p>活動内容：</p>
+                                    <a href="hostpage_ViewOnly.php?id=<?= $postdatas['OWNER_ID'] ?>">イベントのホストページへ</a>
+                                </div>
+
                             </div>
-
                         </div>
-                    </div>
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
+                </div>
             </div>
 
             <!-- イベント履歴　-->
@@ -133,7 +132,7 @@ if ($userid != null) {
                 <?php foreach ($eventdata as $eventdatas) : ?>
                     <div class="place-content">
 
-                        <a href="event_Content.php?id=<?= $eventdatas['EVENT_ID'] ?>" class="col-md-12 col-lg-10 mx-auto item-box">
+                        <a href="event_Content.php?eventId=<?= $eventdatas['EVENT_ID'] ?>" class="col-md-12 col-lg-10 mx-auto item-box">
                             <div class="event-item">
                                 <diV class="col-md-7 center-item">
                                     <div class="eventControl_Img">
