@@ -79,9 +79,12 @@
 .required{
     font-family: 'KleeOneFont';
 }
-.noteArea{
-    font-family: 'KleeOneFont';
+
+#econtent,
+#edetail{
+    word-break: break-all;
 }
+
 
 /* 写真 */
 #upload_PhotoBox{

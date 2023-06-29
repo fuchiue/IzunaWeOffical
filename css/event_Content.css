@@ -52,7 +52,7 @@
 #event_Box1{
     display: flex;
     margin-bottom: 20px;
-    margin-left: -150px;
+    /* margin-left: -150px; */
 }
 
 #event_InfoTitle{
@@ -67,6 +67,7 @@
 
 #event_SmallContent{
     display: grid;
+    width: 500px;
 }
 
 #eventName, #eventTheme,#eventTime,
@@ -90,6 +91,11 @@
 #joinEventBtn{
     text-align: center;
     text-decoration: none;
+}
+
+#eventInfo,
+#eventDetail{
+    word-break: break-all;
 }
 
 #submitBtn{
