@@ -75,28 +75,36 @@ if ($eventdata['STATUS'] == "終了") {
     <section id="event_BigDetails">
 
         <div id="event_Box1">
-            <div id="event_InfoTitle">
+            <div class="event_InfoTitle">
                 <p class="EV_Small_Title">イベント名：</p>
                 <p class="EV_Small_Title">活動テーマ：</p>
                 <p class="EV_Small_Title">活動内容：</p>
                 <p class="EV_Small_Title">日時：</p>
                 <p class="EV_Small_Title">平均活動時間/分：</p>
                 <p class="EV_Small_Title">活動場所：</p>
-                <p class="EV_Small_Title">活動内容：</p>
-                <p class="EV_Small_Title">募集詳細：</p>
+                
             </div>
 
 
-            <div id="event_SmallContent">
+            <div class="event_SmallContent">
                 <p id="eventName"><?= $eventdata["EVENT_NAME"]; ?></p>
                 <p id="eventTheme"><?= $eventdata["THEME"]; ?></p>
                 <p id="eventInfo"><?= nl2br($eventdata["NOTE"]); ?></p>
                 <p id="eventTime"><?= $eventdata["SCHEDULE"]; ?></p>
                 <p id="eventHour"><?= $eventdata["HOUR"]; ?>分</p>
                 <p id="eventPlace"><?= $eventdata["ADDRESS"]; ?></p>
-                <!-- Detaleはない場合があるためIFで判定する必要がある -->
+            </div>
+        </div>
+
+        <div id="detailBox">
+            <div class="event_InfoTitle"> 
+                <p class="EV_Small_Title">募集詳細：</p>
+            </div>
+        <!-- Detailはない場合があるためIFで判定する必要がある -->
+            <div class="event_SmallContent">
                 <p id="eventDetail"><?= nl2br($eventdata["DETAIL"]); ?></p>
             </div>
+        
         </div>
 
         <div id="event_Box2" <?php if ($buttonhidden) {
