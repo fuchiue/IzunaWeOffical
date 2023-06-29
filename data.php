@@ -494,4 +494,18 @@ function photoSave($id, $photo_path, $owner_id)
     }
 }
 
+function TakePostEvent($userid){
+    $id = filter_var($userid, FILTER_SANITIZE_FULL_SPECIAL_CHARS); // ユーザー名をエスケープしてフィルタリングする
+    $pdo = dbc();
+    $sql = "SELECT P.PHOTO,P.OWNER_ID,E.EVENT_NAME,E.NOTE,E.SCHEDULE,E.ADDRESS FROM POST AS P 
+    INNER JOIN EVENT AS E
+    ON P.EVENT_ID = E.EVENT_ID
+    WHERE USER_ID=:userid";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':userid', $id, PDO::PARAM_STR);
+    $stmt->execute();
+    $postdata = $stmt->fetchall(PDO::FETCH_ASSOC);
+    return $postdata;
+}
 
+//WHERE USER_ID=:userid;

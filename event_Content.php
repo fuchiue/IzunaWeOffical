@@ -94,6 +94,7 @@ if ($eventdata['STATUS'] == "終了") {
                 <p id="eventTime"><?= $eventdata["SCHEDULE"]; ?></p>
                 <p id="eventHour"><?= $eventdata["HOUR"]; ?>分</p>
                 <p id="eventPlace"><?= $eventdata["ADDRESS"]; ?></p>
+                <!-- Detaleはない場合があるためIFで判定する必要がある -->
                 <p id="eventDetail"><?= nl2br($eventdata["DETAIL"]); ?></p>
             </div>
         </div>
