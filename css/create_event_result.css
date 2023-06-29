@@ -83,17 +83,6 @@
     font-family: 'KleeOneFont';
 }
 
-/* 必須項目 */
-/* .required::after {
-    content: "必須";
-    color: #ffffff;
-    background: #cc0000;
-    font-size: 0.4em;
-    padding: 0.3em;
-    border-radius: 0.5em;
-    margin-left:0.3em;
-} */
-
 /* 写真 */
 #upload_PhotoBox{
     margin-top: 10px;
