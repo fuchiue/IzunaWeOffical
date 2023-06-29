@@ -62,7 +62,11 @@ $db = null;
         <div id="search" class="search">
 
             <form action="searchResult.php" method="GET" class="search-bar" target="_self" enctype="">
+<<<<<<< HEAD
+                <input type="text" placeholder="キーワードで検索" name="searchKeyWord" autocomplete="off">
+=======
                 <input type="text" placeholder="キーワードで検索" name="searchKeyWord" autocomplete="off"> 
+>>>>>>> 83d1a5a4412846f75757c4449f43bd2e2356ed2a
 
                 <div class="select">
                     <select name="pickArea" id="pickArea">

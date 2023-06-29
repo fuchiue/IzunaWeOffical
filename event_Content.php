@@ -21,7 +21,7 @@ if (isset($loginid)) {
         $buttonhidden = true;
     } else {
         $eventjoin = checkjoin($loginid, $id);
-        $eventjoin = $eventjoin['COUNT(*)'];
+        $eventjoin=$eventjoin['COUNT(*)'];
     }
 }
 //ステータスが終了の場合応募ボタンを非表示フラグをtrueに
@@ -120,7 +120,7 @@ if ($eventdata['STATUS'] == "終了") {
     <section id="selfInfo_TopArea">
         <!-- 写真 -->
         <div id="selfIcon_pic">
-            <a href="hostpage_ViewOnly.php">
+            <a href="hostpage_ViewOnly.php?id=<?= $eventdata['OWNER_ID'] ?>">
                 <img src="<?= $hostdata['ICON'] ?>">
             </a>
         </div>
