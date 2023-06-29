@@ -22,6 +22,7 @@ if (isset($loginid)) {
     } else {
         $eventjoin = checkjoin($loginid, $id);
         $eventjoin=$eventjoin['COUNT(*)'];
+        echo $eventjoin;
     }
 }
 //ステータスが終了の場合応募ボタンを非表示フラグをtrueに
@@ -95,15 +96,16 @@ if ($eventdata['STATUS'] == "終了") {
                 <p id="eventPlace"><?= $eventdata["ADDRESS"]; ?></p>
             </div>
         </div>
-
+        <!-- Detailはない場合があるためIFで判定する必要がある -->
+        <?php if(isset($eventdata["DETAIL"])): ?>
         <div id="detailBox">
             <div class="event_InfoTitle"> 
                 <p class="EV_Small_Title">募集詳細：</p>
             </div>
-        <!-- Detailはない場合があるためIFで判定する必要がある -->
             <div class="event_SmallContent">
                 <p id="eventDetail"><?= nl2br($eventdata["DETAIL"]); ?></p>
             </div>
+        <?php endif; ?>
         
         </div>
 

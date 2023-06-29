@@ -75,7 +75,7 @@ if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
 
         $stmt->execute();
         echo "データが正常に保存されました。";
-        $pdo->commit(); // 成功したらコミット
+        //$pdo->commit(); // 成功したらコミット
 
         $sql="SELECT OWNER_ID from OWNER ORDER BY OWNER_ID DESC LIMIT 1";
         $stmt = $pdo->prepare($sql);
@@ -89,7 +89,7 @@ if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
 
     } catch (PDOException $e) {
         exit("データの保存中にエラーが発生しました: " . $e->getMessage());
-        $pdo->rollBack(); // 失敗したらロールバック
+        //$pdo->rollBack(); // 失敗したらロールバック
     }
 } else {
     echo "画像のアップロード中にエラーが発生しました。";
