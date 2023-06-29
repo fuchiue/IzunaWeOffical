@@ -8,8 +8,9 @@ $userid = $_SESSION["id"];
 // IDが入ってたら、TakeUserData,TakePostData,TakeEventDataファンクションを実行してデータを取得する
 if (isset($userid)) {
     $userdata = TakeUserData($userid);
-    $postdata = TakePostData($userid);
+    $postdata = TakePostEvent($userid);
     $eventdata = TakeEventData($userid);
+
 } else {
     // header('Location:/login_page_User.php');
     echo "no";
@@ -114,10 +115,10 @@ echo "</pre>";
                                 </div>
 
                                 <div class="hidden-content-right">
-                                    <h3>イベント名：</h3>
-                                    <p>日時：</p>
-                                    <p>場所：</p>
-                                    <p>活動内容：</p>
+                                    <h3>イベント名：　<?= $postdatas['EVENT_NAME'] ?></h3>
+                                    <p>日時：　<?= $postdatas['SCHEDULE'] ?></p>
+                                    <p>場所：　<?= $postdatas['ADDRESS'] ?></p>
+                                    <p>活動内容：　<?= $postdatas['NOTE'] ?></p>
                                     <a href="hostpage_ViewOnly.php?id=<?= $postdatas['OWNER_ID'] ?>">イベントのホストページへ</a>
                                 </div>
 

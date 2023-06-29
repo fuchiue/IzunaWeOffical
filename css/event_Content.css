@@ -55,7 +55,7 @@
     /* margin-left: -150px; */
 }
 
-#event_InfoTitle{
+.event_InfoTitle{
     display: grid;
     margin-right: 60px;
     margin-left: 35px;
@@ -65,7 +65,7 @@
     margin: 20px 30px;
 }
 
-#event_SmallContent{
+.event_SmallContent{
     display: grid;
     width: 500px;
 }
@@ -93,10 +93,20 @@
     text-decoration: none;
 }
 
-#eventInfo,
-#eventDetail{
+#detailBox{
+   display: flex;
+}
+
+#eventInfo{
     word-break: break-all;
 }
+
+#eventDetail{
+    word-break: break-all;
+    margin: 0px 0px 0px 80px;
+    width: 450px;
+}
+
 
 #submitBtn{
     background-color:orange;
