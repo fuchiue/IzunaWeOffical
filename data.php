@@ -117,9 +117,6 @@ function GetRegister($id)
 function searchResult($searchKeyWord, $pickArea, $eventTypes)
 {
     try {
-        // var_dump($searchKeyWord);
-        // var_dump($pickArea);
-        // var_dump($eventTypes);
         $sql = "SELECT * FROM event WHERE STATUS ='募集中' ";
         $where = "";
 
@@ -129,20 +126,13 @@ function searchResult($searchKeyWord, $pickArea, $eventTypes)
         }
 
         if ($pickArea && $pickArea != '1') {
-            // if($where != ""){
             $where .= " AND AREA = :pickArea";
-            // }else {
-            // $where = " AND AREA = :pickArea";
-            // }
         }
 
 
         if ($eventTypes && $eventTypes != '1') {
-            // if($where != ""){
+
             $where .= " AND THEME = :eventTypes";
-            // }else {
-            // $where = " AND THEME = :eventTypes";
-            // }
         }
 
         $stmt = dbc()->prepare($sql . $where);

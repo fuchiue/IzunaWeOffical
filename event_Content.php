@@ -78,7 +78,9 @@ if ($eventdata['STATUS'] == "終了") {
             <div id="event_InfoTitle">
                 <p class="EV_Small_Title">イベント名：</p>
                 <p class="EV_Small_Title">活動テーマ：</p>
+                <p class="EV_Small_Title">活動内容：</p>
                 <p class="EV_Small_Title">日時：</p>
+                <p class="EV_Small_Title">平均活動時間/分：</p>
                 <p class="EV_Small_Title">活動場所：</p>
                 <p class="EV_Small_Title">活動内容：</p>
                 <p class="EV_Small_Title">募集詳細：</p>
@@ -88,12 +90,11 @@ if ($eventdata['STATUS'] == "終了") {
             <div id="event_SmallContent">
                 <p id="eventName"><?= $eventdata["EVENT_NAME"]; ?></p>
                 <p id="eventTheme"><?= $eventdata["THEME"]; ?></p>
+                <p id="eventInfo"><?= nl2br($eventdata["NOTE"]); ?></p>
                 <p id="eventTime"><?= $eventdata["SCHEDULE"]; ?></p>
+                <p id="eventHour"><?= $eventdata["HOUR"]; ?>分</p>
                 <p id="eventPlace"><?= $eventdata["ADDRESS"]; ?></p>
-                <p id="eventInfo"><?= $eventdata["NOTE"]; ?></p>
-                <?php if (isset($eventdata["DETAIL"])) : ?>
-                    <p id="eventDetail"><?= $eventdata["DETAIL"]; ?></p>
-                <?php endif; ?>
+                <p id="eventDetail"><?= nl2br($eventdata["DETAIL"]); ?></p>
             </div>
         </div>
 
