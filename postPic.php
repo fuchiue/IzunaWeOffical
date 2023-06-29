@@ -66,7 +66,7 @@ $eventdatas = TakeAllEventData($userid);
 
                                     <div class="event-item">
                                         <label>
-                                            <input type="radio"  id="event>"
+                                            <input type="radio"  id="event"
                                             name="value" value="<?= $eventdata['OWNER_ID'] ?>" hidden onchange="handleEventSelection(event)">
                                             <diV class="col-md-7 center-item">
                                                 <div class="eventControl_Img">
@@ -76,6 +76,7 @@ $eventdatas = TakeAllEventData($userid);
                                                 <div class="information">
 
                                                     <h3><?= $eventdata['EVENT_NAME'] ?></h3>
+                                                    <input type="text" name="event" value="<?= $eventdata['EVENT_ID'] ?>" hidden>
 
                                                 </div>
                                             </diV>

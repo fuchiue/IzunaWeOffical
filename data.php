@@ -448,7 +448,7 @@ if (!is_dir($photo_directory)) {
     mkdir($photo_directory, 0755, true);
 }
 
-function photoSave($id, $photo_path, $owner_id)
+function photoSave($id, $photo_path, $owner_id, $event_id)
 {
     $result = False;
 
@@ -457,7 +457,7 @@ function photoSave($id, $photo_path, $owner_id)
     // トランザクションを開始
     $pdo->beginTransaction();
 
-    $sql = "INSERT INTO POST(USER_ID, PHOTO, OWNER_ID) VALUES(?, ?, ?)";
+    $sql = "INSERT INTO POST(USER_ID, PHOTO, OWNER_ID, EVENT_ID) VALUES(?, ?, ?, ?)";
 
     try {
         // プリペアドステートメントを作成
@@ -477,6 +477,7 @@ function photoSave($id, $photo_path, $owner_id)
             $owner_id = null;
             $stmt->bindParam(3, $owner_id, PDO::PARAM_INT);
         }
+        $stmt->bindParam(4, $event_id, PDO::PARAM_INT);
         // クエリを実行
         $stmt->execute();
 
