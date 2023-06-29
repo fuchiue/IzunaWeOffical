@@ -22,7 +22,6 @@ if (isset($loginid)) {
     } else {
         $eventjoin = checkjoin($loginid, $id);
         $eventjoin=$eventjoin['COUNT(*)'];
-        echo $eventjoin;
     }
 }
 //ステータスが終了の場合応募ボタンを非表示フラグをtrueに
