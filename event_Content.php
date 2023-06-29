@@ -21,11 +21,7 @@ if (isset($loginid)) {
         $buttonhidden = true;
     } else {
         $eventjoin = checkjoin($loginid, $id);
-<<<<<<< HEAD
         $eventjoin=$eventjoin['COUNT(*)'];
-=======
-        $eventjoin = $eventjoin['COUNT(*)'];
->>>>>>> 83d1a5a4412846f75757c4449f43bd2e2356ed2a
     }
 }
 //ステータスが終了の場合応募ボタンを非表示フラグをtrueに
@@ -103,17 +99,10 @@ if ($eventdata['STATUS'] == "終了") {
 
         <div id="event_Box2" <?php if ($buttonhidden) {
                                     echo "hidden";
-<<<<<<< HEAD
-                                } ?>> 
-                                <!--  ***** ページの担当へ：PHPでイベントのstatusを参照して、応募ボタンをhiddenかどうか***** -->
-            <?php if ($eventjoin == 0): ?>
-                <a href="userJoin.php?eventId=<?= $id ?>" id="joinEventBtn">
-=======
                                 } ?>>
             <!--  ***** ページの担当へ：PHPでイベントのstatusを参照して、応募ボタンをhiddenかどうか***** -->
             <?php if ($eventjoin == 0) : ?>
                 <a href="userJoin.php?eventId=<?= $_GET["eventId"]; ?>" id="joinEventBtn">
->>>>>>> 83d1a5a4412846f75757c4449f43bd2e2356ed2a
                     <p id="submitBtn">応募</p>
                 </a>
             <?php else : ?>
@@ -129,7 +118,7 @@ if ($eventdata['STATUS'] == "終了") {
     <section id="selfInfo_TopArea">
         <!-- 写真 -->
         <div id="selfIcon_pic">
-            <a href="hostpage_ViewOnly.php">
+            <a href="hostpage_ViewOnly.php?id=<?= $eventdata['OWNER_ID'] ?>">
                 <img src="<?= $hostdata['ICON'] ?>">
             </a>
         </div>
