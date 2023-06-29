@@ -21,6 +21,7 @@ if (isset($loginid)) {
         $buttonhidden = true;
     } else {
         $eventjoin = checkjoin($loginid, $id);
+        $eventjoin=$eventjoin['COUNT(*)'];
     }
 }
 //ステータスが終了の場合応募ボタンを非表示フラグをtrueに
@@ -97,7 +98,7 @@ if ($eventdata['STATUS'] == "終了") {
                                     echo "hidden";
                                 } ?>> 
                                 <!--  ***** ページの担当へ：PHPでイベントのstatusを参照して、応募ボタンをhiddenかどうか***** -->
-            <?php if ($eventjoin['COUNT(*)'] == 0): ?>
+            <?php if ($eventjoin == 0): ?>
                 <a href="userJoin.php?eventId=<?= $id ?>" id="joinEventBtn">
                     <p id="submitBtn">応募</p>
                 </a>
