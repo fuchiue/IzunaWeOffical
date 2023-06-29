@@ -80,7 +80,7 @@ $result = eventSave($event_name, $theme, $note, $area, $addressAll, $icon_path, 
 
                     <p>都道府県　</p>
 
-                    <p class="text"" style="width:100px" name="area" required><?= $area ?></p>
+                    <p class="text" style="width:100px" name="area" required><?= $area ?></p>
 
                     </div>
 
@@ -98,7 +98,7 @@ $result = eventSave($event_name, $theme, $note, $area, $addressAll, $icon_path, 
             </div>
             <div class="enter_InfoBox">
                 <label class="required">活動内容：</label>
-                <p class="text" name="note" required><?=  nl2br($note) ?></p>
+                <p class="text" name="note" required id="econtent"><?=  nl2br($note) ?></p>
             </div>
             <div class="enter_InfoBox">
                 <label class="required">イベントテーマ：</label>
@@ -112,9 +112,9 @@ $result = eventSave($event_name, $theme, $note, $area, $addressAll, $icon_path, 
                 <label class="required">募集詳細：</label>
                 <?php
                 if(isset($detail) && !empty($detail)){
-                    echo '<p class="text" name="detail">' .  nl2br($detail) . '</p>';
+                    echo '<p class="text" name="detail" id="edetail">' .  nl2br($detail) . '</p>';
                 }else {
-                    echo '<p class="text" name="detail">　</p>';
+                    echo '<p class="text" name="detail" id="edetail">　</p>';
                 }
                 ?>
             </div>
