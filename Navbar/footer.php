@@ -6,7 +6,7 @@ if (isset($_SESSION["id"])) {
 ?>
 <footer>
     <div id="footerSub">
-        <a href="#">このサイトについて</a>
+        <a href="aboutThisSite.php">このサイトについて</a>
         <?php
 
         if ($id == null) {

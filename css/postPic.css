@@ -122,12 +122,10 @@
 }
 
 /*ホストを選択するエリア*/
-
-#choose_Host{
-    background-color: #dcdcdc;
-    /* margin: 30px 200px; */
-    padding: 30px 0px;
-    border-radius: 20px;
+#annotations{
+    margin-top: -20px;
+    text-align: center;
+    color: black;
 }
 
 .place-content{
@@ -142,6 +140,10 @@
     padding:15px 20px;
     margin-bottom: 20px;
     cursor: pointer;
+    /* border-top: 4px solid #767273;
+    border-right: 4px solid #323031;
+    border-bottom: 4px solid #555253;
+    border-left: 4px solid #a9a2a2; */
 }
 
 .item-box{
@@ -185,6 +187,15 @@
     height: 30vmin;
     margin-right: 30px;
     object-fit: cover;
+}
+
+.event-item.selected {
+    background-color: rgba(228, 96, 66, 0.289);
+    border-top: 4px solid #740f2c;
+    border-right: 4px solid #d2849e;
+    border-bottom: 4px solid #d05c82;
+    border-left: 4px solid #780101;
+    
 }
 
 /*送信ボタン*/

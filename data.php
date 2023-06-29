@@ -187,10 +187,12 @@ function Getevent($id)
     }
 }
 //ユーザのログイン
-function UserLogin($username, $password)
+function UserLogin($username, $password, $eventid)
 {
     if ($username != null && $password != null) {
         try { // トランザクション開始
+            $LocationUrl = "Location: userpage_AfterLogin.php";
+            
             $pdo = dbc();
             if (strpos($username, '@')) {
                 $sql = "SELECT * FROM USER WHERE EMAIL=:username";
@@ -202,10 +204,15 @@ function UserLogin($username, $password)
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             if ($result && $result["PASSWORD"] === $password) {
+                echo $result;
                 // ユーザー番号をセッションに登録
                 $_SESSION["id"] = $result["USER_ID"];
+                if (isset($_GET["eventId"])) {
+                    echo $_GET["eventId"];
+                    $LocationUrl = "Location: event_Content.php?eventId=" . $_GET["eventId"];
+                }
                 echo $_SESSION["id"];
-                header("Location: userpage_AfterLogin.php");
+                header($LocationUrl);
                 //ユーザのマイページに移行する
             } else {
                 $msg = "ユーザー名またはパスワードが正しくありません";
@@ -295,6 +302,19 @@ function TakeEventData($userid)
     return $eventdata;
 }
 
+function TakeAllEventData($userid)
+{
+    $id = filter_var($userid, FILTER_SANITIZE_FULL_SPECIAL_CHARS); // ユーザー名をエスケープしてフィルタリングする
+    $pdo = dbc();
+    $sql = "SELECT * FROM EVENT WHERE EVENT_ID IN (SELECT EVENT_ID FROM JOINED WHERE USER_ID=:userid AND STATUS='参加済み')";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':userid', $id, PDO::PARAM_STR);
+    $stmt->execute();
+    $eventdata = $stmt->fetchall(PDO::FETCH_ASSOC);
+    return $eventdata;
+}
+
+
 $directory = "./images/eventicon/";
 
 // ディレクトリが存在しない場合は作成する
@@ -305,7 +325,7 @@ if (!is_dir($directory)) {
 /**
  * 作成したイベント内容を保存
  */
-function eventSave($event_name, $theme, $note, $area, $addressAll, $icon, $schedule, $hour, $owner_id, $detail)
+function eventSave($event_name, $theme, $note, $area, $addressAll, $icon, $schedule, $hour, $owner_id, $detail,$questions)
 {
     $result = False;
 
@@ -314,7 +334,7 @@ function eventSave($event_name, $theme, $note, $area, $addressAll, $icon, $sched
     // トランザクションを開始
     $pdo->beginTransaction();
 
-    $sql = "INSERT INTO EVENT(EVENT_NAME, THEME, NOTE, area, ADDRESS, ICON, SCHEDULE, HOUR, OWNER_ID, DETAIL) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO EVENT(EVENT_NAME, THEME, NOTE, area, ADDRESS, ICON, SCHEDULE, HOUR, OWNER_ID, DETAIL, QUESTION) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     try {
         // プリペアドステートメントを作成
@@ -340,6 +360,12 @@ function eventSave($event_name, $theme, $note, $area, $addressAll, $icon, $sched
         } else {
             $detail = null;
             $stmt->bindParam(10, $detail, PDO::PARAM_STR);
+        }
+        if ($questions) {
+            $stmt->bindParam(11, $questions, PDO::PARAM_STR);
+        } else {
+            $questions = null;
+            $stmt->bindParam(11, $questions, PDO::PARAM_STR);
         }
         // クエリを実行
         $stmt->execute();
@@ -378,7 +404,8 @@ function h($s)
 
 
 //イベントへの参加応募を登録
-function addJoin($userId,$eventId){
+function addJoin($userId, $eventId)
+{
     try {
         $sql = 'INSERT INTO joined(USER_ID,EVENT_ID)VALUES(?,?)'; //団体名、紹介文、アイコン画像を取得
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
@@ -391,12 +418,28 @@ function addJoin($userId,$eventId){
     }
 }
 
-function checkjoin($userId,$eventId){
+//イベントへの参加応募を登録
+function addans($userId,$eventId,$ans){
+    try {
+        $sql = 'INSERT INTO answer(USER_ID,EVENT_ID,ANSWER)VALUES(?,?,?)'; //団体名、紹介文、アイコン画像を取得
+        $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
+        $stmt->bindParam(1, $userId, PDO::PARAM_INT);
+        $stmt->bindParam(2, $eventId, PDO::PARAM_INT);
+        $stmt->bindParam(3, $ans, PDO::PARAM_STR);
+        $result = $stmt->execute(); //実行
+        return $result; //データを返す
+    } catch (Exception $e) {
+        exit($e->getMessage());
+    }
+}
+
+function checkjoin($userId, $eventId)
+{
     try {
         $sql = 'SELECT COUNT(*) FROM joined WHERE EVENT_ID=:eventId AND USER_ID=:userId'; //団体名、紹介文、アイコン画像を取得
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
-        $stmt->bindValue(':eventId', $eventId, PDO::PARAM_INT); 
-        $stmt->bindValue(':userId', $userId, PDO::PARAM_INT); 
+        $stmt->bindValue(':eventId', $eventId, PDO::PARAM_INT);
+        $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
         $stmt->execute(); //実行
         $result = $stmt->fetch(); //データを取得
         return $result; //データを返す
@@ -460,4 +503,5 @@ function photoSave($id, $photo_path, $owner_id)
         return $result;
     }
 }
+
 

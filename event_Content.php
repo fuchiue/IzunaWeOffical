@@ -21,14 +21,17 @@ if (isset($loginid)) {
         $buttonhidden = true;
     } else {
         $eventjoin = checkjoin($loginid, $id);
+<<<<<<< HEAD
         $eventjoin=$eventjoin['COUNT(*)'];
+=======
+        $eventjoin = $eventjoin['COUNT(*)'];
+>>>>>>> 83d1a5a4412846f75757c4449f43bd2e2356ed2a
     }
 }
 //ステータスが終了の場合応募ボタンを非表示フラグをtrueに
 if ($eventdata['STATUS'] == "終了") {
     $buttonhidden = true;
 }
-
 
 // echo "<pre>";
 // print_r($eventdata);
@@ -81,6 +84,7 @@ if ($eventdata['STATUS'] == "終了") {
                 <p class="EV_Small_Title">活動テーマ：</p>
                 <p class="EV_Small_Title">日時：</p>
                 <p class="EV_Small_Title">活動場所：</p>
+                <p class="EV_Small_Title">活動内容：</p>
                 <p class="EV_Small_Title">募集詳細：</p>
             </div>
 
@@ -91,15 +95,25 @@ if ($eventdata['STATUS'] == "終了") {
                 <p id="eventTime"><?= $eventdata["SCHEDULE"]; ?></p>
                 <p id="eventPlace"><?= $eventdata["ADDRESS"]; ?></p>
                 <p id="eventInfo"><?= $eventdata["NOTE"]; ?></p>
+                <?php if (isset($eventdata["DETAIL"])) : ?>
+                    <p id="eventDetail"><?= $eventdata["DETAIL"]; ?></p>
+                <?php endif; ?>
             </div>
         </div>
 
         <div id="event_Box2" <?php if ($buttonhidden) {
                                     echo "hidden";
+<<<<<<< HEAD
                                 } ?>> 
                                 <!--  ***** ページの担当へ：PHPでイベントのstatusを参照して、応募ボタンをhiddenかどうか***** -->
             <?php if ($eventjoin == 0): ?>
                 <a href="userJoin.php?eventId=<?= $id ?>" id="joinEventBtn">
+=======
+                                } ?>>
+            <!--  ***** ページの担当へ：PHPでイベントのstatusを参照して、応募ボタンをhiddenかどうか***** -->
+            <?php if ($eventjoin == 0) : ?>
+                <a href="userJoin.php?eventId=<?= $_GET["eventId"]; ?>" id="joinEventBtn">
+>>>>>>> 83d1a5a4412846f75757c4449f43bd2e2356ed2a
                     <p id="submitBtn">応募</p>
                 </a>
             <?php else : ?>

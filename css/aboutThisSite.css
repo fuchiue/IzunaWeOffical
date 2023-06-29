@@ -1,0 +1,66 @@
+/*Header画像エリア  開始*/
+
+#UL_header img{
+    width: 100%;
+    height: 300px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 50px;
+}
+  
+/*Header画像エリア CSS 終了*/
+/*-------------------------------------------------*/
+
+/*サイトの紹介 CSS   開始*/
+#aboutUs{
+    text-align: center;
+}
+
+#aboutUs h1{
+    color: #DD0000;
+    font-family: 'HandWriteFont';
+    font-size: 50px;
+}
+
+#aboutUs h2{
+    color: #DD0000;
+    font-family: 'OutlineFont';
+    font-size: 40px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+#aboutUs p{
+    padding: 20px 145px;
+    color: #DD0000;
+    font-weight: 600;
+
+}
+
+#aboutUs img{
+    width: 50%;
+}
+
+/*サイトの紹介 CSS  終了*/
+
+/*ポイントを貯まる紹介  開始*/
+
+#introPointArea{
+    display: flex;
+    justify-content: center;
+    padding: 30px 105px;
+}
+
+#left img{
+    width: 340px;
+}
+
+#right{
+    padding: 30px 80px 30px 40px;
+}
+
+#right p{
+    padding-top: 20px;
+}
+/*ポイントを貯まる紹介  終了*/

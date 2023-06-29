@@ -86,9 +86,15 @@ require_once "./data.php";
                     <label class="required">平均活動時間：</label>
                     <input type="number" name="hour" min="10" step="10" placeholder="（１０分単位）" required>
                 </div>
+
                 <div class="enter_InfoBox">
                     <label class="detail">募集詳細：</label>
                     <textarea maxlength="300" name="detail"></textarea>
+                </div>
+
+                <div class="enter_InfoBox">
+                    <label class="detail">質問：</label>
+                    <textarea maxlength="300" name="questions"></textarea>
                 </div>
 
                 <!-- 写真 -->

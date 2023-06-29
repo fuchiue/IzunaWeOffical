@@ -62,7 +62,11 @@ $db = null;
         <div id="search" class="search">
 
             <form action="searchResult.php" method="GET" class="search-bar" target="_self" enctype="">
+<<<<<<< HEAD
                 <input type="text" placeholder="キーワードで検索" name="searchKeyWord" autocomplete="off">
+=======
+                <input type="text" placeholder="キーワードで検索" name="searchKeyWord" autocomplete="off"> 
+>>>>>>> 83d1a5a4412846f75757c4449f43bd2e2356ed2a
 
                 <div class="select">
                     <select name="pickArea" id="pickArea">
@@ -136,7 +140,7 @@ $db = null;
 
     <!-- To Top Apple Button-->
     <div id="pagetop" >
-            <a href="#SR_header"><img src="./image/HT_Fox3 (Small Search).PNG"></a>
+            <a href="#SR_header"><img src="./image/HT_Fox3 (Small Search).gif"></a>
     </div>
     
     <script src="./js/navbar.js"></script>

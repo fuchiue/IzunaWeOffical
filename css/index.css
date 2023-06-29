@@ -2,26 +2,16 @@
 /* Opening エリア CSS　開始*/
 
 /* Normal flashing*/
-#home img{
+/* #home img{
   display: none;
   width: 100%;
   padding: 20px;
   z-index: 1;
-} 
+} */
 
-#home img:first-child {
-  display: block;
-}
+
 
 /*fade out code*/
-/* #home img{
-  position: absolute;
-  opacity: 0;
-  width: 100%;
-  padding: 20px;
-  z-index: 1;
-}
-
 #Opening{
     position: relative;
     width: 100%;
@@ -29,9 +19,29 @@
     padding-top: 0px;
     padding-left: 0px;
     padding-right: 0px;
-    padding-bottom: 30px;
     margin-top: 0px;
-  } */
+    height: 100vh;
+  }
+
+  #home{
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  
+  #home img{
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    z-index: 1;
+    object-fit: cover;
+  }
+
+  #home img:first-child {
+    opacity: 1;
+  }
 
   .fade-in-image {
     animation: fadeIn 2s;
@@ -65,7 +75,7 @@
     width:100%;
     position: absolute;
     z-index: 500;
-    top: 92%;
+    top: 83%;
     left: 47%;
     transform: translate(-50%, -50%);
 }
@@ -113,7 +123,7 @@
   width: 25%;
   position: absolute;
   z-index: 499;
-  top: 45%;
+  top: 44%;
   left: 75%;
 }
 
@@ -189,6 +199,7 @@ select {
 /*最近イベントCSS　開始*/
 
 #deco_ft{
+  padding-top: 20px;
   text-align: center;
 }
 
@@ -287,7 +298,7 @@ a {
     border-radius: 3rem;
     margin: 30px;
     padding: 20px;
-    cursor: pointer;
+    /* cursor: pointer; */
   }
 
   #meritBox2 p{
@@ -297,13 +308,13 @@ a {
     border-radius: 3rem;
     margin: 30px;
     padding: 20px;
-    cursor: pointer;
+    /* cursor: pointer; */
   }
 
-  #meritBox1 p:hover,
+  /* #meritBox1 p:hover,
   #meritBox2 p:hover{
     background-color:#DD0000;
-  }
+  } */
 
   /*メリット一覧CSS　終了*/
 

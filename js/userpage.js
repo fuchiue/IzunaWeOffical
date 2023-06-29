@@ -35,3 +35,22 @@ imgBtn.addEventListener("click",()=>{
         historyBtn.style.border='dashed 2px #DC0000';
 });
 
+
+function togglePopup(){
+    const popup= document.querySelector('.full-screen');
+    console.log(popup);
+    popup.classList.toggle('hidden');
+}
+
+const imgList = document.querySelectorAll(".imgBox");
+
+imgList.forEach((element) => {
+    element.addEventListener("click", (e) => {
+        e.preventDefault();
+        togglePopup();
+    });
+});
+
+document.querySelector("#closePopup").addEventListener("click", () => {
+    togglePopup();
+});
