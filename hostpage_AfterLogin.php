@@ -10,8 +10,6 @@ $registers = GetRegister($id); //参加応募者一覧を取得
 $photodatas = TakePostData($id); //投稿した写真を取得
 
 
-
-
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -251,6 +249,12 @@ $photodatas = TakePostData($id); //投稿した写真を取得
                                     <h3><?= $register['EVENT_NAME']; ?></h3>
                                     <p><?= $register['USER_NAME']; ?></p>
                                     <p><a href="mailto: <?= $register['EMAIL']; ?>"><?= $register['EMAIL']; ?></a></p>
+                                    <?php $answer = GetAns($register['USER_ID'],$register['EVENT_ID']) ;?>
+                                    <?php if(isset($answer['ANSWER'])): ?>
+                                        <p>質問への回答</p>
+                                        <p><?= $answer['ANSWER']; ?></p>
+                                    <?php endif; ?>
+
                                 </div>
                             </diV>
                         </div>

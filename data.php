@@ -97,16 +97,33 @@ function HostGetevent($id)
 function GetRegister($id)
 {
     try {
-        $sql = 'SELECT U.USER_NAME,E.EVENT_NAME,U.ICON,U.EMAIL FROM REGISTER AS R
+        $sql = 'SELECT U.USER_NAME,E.EVENT_NAME,U.ICON,U.EMAIL,U.USER_ID,E.EVENT_ID FROM JOINED AS J
         INNER JOIN USER AS U
-        ON R.USER_ID = U.USER_ID
+        ON J.USER_ID = U.USER_ID
         INNER JOIN EVENT AS E
-        ON R.EVENT_ID = E.EVENT_ID
+        ON J.EVENT_ID = E.EVENT_ID
         WHERE OWNER_ID = :id'; //ホストのIDのイベントに参加済みの人の情報を取得
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする 
         $stmt->bindValue(':id', $id, PDO::PARAM_STR); //sqlの:idに変数の$idを代入
         $stmt->execute(); //実行
         $result = $stmt->fetchAll(); //データを取得
+        return $result; //データを返す
+    } catch (Exception $e) {
+        exit($e->getMessage());
+    }
+}
+/*
+ユーザIDとイベントIDから質問の解答を返す
+hostpage_AfterLogin
+*/
+function GetAns($userId,$eventId){
+    try {
+        $sql = 'SELECT ANSWER FROM answer WHERE USER_ID = :userId AND EVENT_ID = :eventId'; //ホストの開催したイベントを取得
+        $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする 
+        $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
+        $stmt->bindValue(':eventId', $eventId, PDO::PARAM_INT);
+        $stmt->execute(); //実行
+        $result = $stmt->fetch(); //データを取得
         return $result; //データを返す
     } catch (Exception $e) {
         exit($e->getMessage());
