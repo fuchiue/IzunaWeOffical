@@ -52,7 +52,7 @@ function hostGetData($id)
 function hostGetjoinUser($id)
 {
     try {
-        $sql = 'SELECT J.USER_ID,U.ICON FROM
+        $sql = 'SELECT J.USER_ID,U.ICON,J.EVENT_ID FROM
         JOINED AS J
         INNER JOIN
         EVENT AS E
@@ -71,6 +71,7 @@ function hostGetjoinUser($id)
         exit($e->getMessage());
     }
 }
+
 
 /*
 対応するIDの開催したボランティアの情報を返す
@@ -192,7 +193,7 @@ function UserLogin($username, $password, $eventid)
     if ($username != null && $password != null) {
         try { // トランザクション開始
             $LocationUrl = "Location: userpage_AfterLogin.php";
-            
+
             $pdo = dbc();
             if (strpos($username, '@')) {
                 $sql = "SELECT * FROM USER WHERE EMAIL=:username";
@@ -325,7 +326,7 @@ if (!is_dir($directory)) {
 /**
  * 作成したイベント内容を保存
  */
-function eventSave($event_name, $theme, $note, $area, $addressAll, $icon, $schedule, $hour, $owner_id, $detail,$questions)
+function eventSave($event_name, $theme, $note, $area, $addressAll, $icon, $schedule, $hour, $owner_id, $detail, $questions)
 {
     $result = False;
 
@@ -419,7 +420,8 @@ function addJoin($userId, $eventId)
 }
 
 //イベントへの参加応募を登録
-function addans($userId,$eventId,$ans){
+function addans($userId, $eventId, $ans)
+{
     try {
         $sql = 'INSERT INTO answer(USER_ID,EVENT_ID,ANSWER)VALUES(?,?,?)'; //団体名、紹介文、アイコン画像を取得
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
@@ -432,6 +434,29 @@ function addans($userId,$eventId,$ans){
         exit($e->getMessage());
     }
 }
+
+//回答表からANSWERを持ってくる
+function ansdata($eventid, $userid)
+{
+    try {
+        $sql = 'SELECT ANSWER FROM ANSWER WHERE USER_ID=:usertid AND EVENT_ID=eventid'; //団体名、紹介文、アイコン画像を取得
+        $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
+        $stmt->bindParam(':userid', $userid, PDO::PARAM_INT);
+        $stmt->bindParam(':eventid', $eventid, PDO::PARAM_INT);
+        $result = $stmt->execute(); //実行
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        // if ($result) {
+        //     return $result['ANSWER']; // ANSWER の値を返す
+        // } else {
+        //     return null; // 結果が存在しない場合は null を返すなど、適切な処理を行う
+        // }
+
+        return $result;
+    } catch (Exception $e) {
+        exit($e->getMessage());
+    }
+}
+
 
 function checkjoin($userId, $eventId)
 {
@@ -503,5 +528,3 @@ function photoSave($id, $photo_path, $owner_id)
         return $result;
     }
 }
-
-
