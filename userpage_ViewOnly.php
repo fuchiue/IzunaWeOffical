@@ -85,45 +85,45 @@ if ($userid != null) {
         <div id="switchPage">
             <!-- 投稿した写真　-->
             <div id="userPostImg">
-                <div class="imgRow">
+            <div class="imgRow">
                     <?php $count = 0; ?>
                     <?php foreach ($postdata as $postdatas) : ?>
-                        <!-- <a href="hostpage_ViewOnly.php?id=< ?= $postdatas['OWNER_ID'] ?>" class="imgBox"><img src=".< ?= /*$postdatas['PHOTO']*/ ?>"></a> -->
-                        <a href="#" class="imgBox"><img src=".<?= $postdatas['PHOTO'] ?>"></a>
+                        <!-- <a href="hostpage_ViewOnly.php?id=< ?= $postdatas['OWNER_ID'] ?>" class="imgBox"><img src="< ?= $postdatas['PHOTO'] ?>"></a> -->
+                        <a href="#" class="imgBox"><img src="<?= $postdatas['PHOTO'] ?>"></a>
                         <?php $count++; ?>
                         <?php if ($count % 3 === 0) : ?>
-                </div>
-                <?php if ($count !== count($postdata)) : ?>
-                    <div class="imgRow">
-                    <?php endif; ?>
-                <?php endif; ?>
-            
-            <!-- ポップアップエリア -->
-                <div class="full-screen hidden flex-container-center">
+                            </div>
+                                <?php if ($count !== count($postdata)) : ?>
+                                    <div class="imgRow">
+                                <?php endif; ?>
+                        <?php endif; ?>
 
-                    <div id="hidden-content">
-                        <div id="hidden-content-left">
-                            <img src="<?= $postdatas['PHOTO'] ?>">
-                            <button id="closePopup" onclick="togglePopUp()">Close PopUp</button>
-                         </div>
+                        <!-- ポップアップエリア -->
+                        <div class="full-screen hidden flex-container-center">
+                            
+                            <div class="hidden-content">
+                                <div class="hidden-content-left">
+                                    <img src="<?= $postdatas['PHOTO'] ?>">
+                                    <button class="closePopup">戻る</button>
+                                </div>
 
-                        <div id="hidden-content-right">
-                            <h3>イベント名：</h3>
-                            <p>日時：</p>
-                            <p>場所：</p>
-                            <p>活動内容：</p>
-                            <a href="hostpage_ViewOnly.php?id=<?= $postdatas['OWNER_ID'] ?>">イベントのホストページへ</a>
+                                <div class="hidden-content-right">
+                                    <h3>イベント名：　<?= $postdatas['EVENT_NAME'] ?></h3>
+                                    <p>日時：　<?= $postdatas['SCHEDULE'] ?></p>
+                                    <p>場所：　<?= $postdatas['ADDRESS'] ?></p>
+                                    <p>活動内容：　<?= $postdatas['NOTE'] ?></p>
+                                    <a href="hostpage_ViewOnly.php?id=<?= $postdatas['OWNER_ID'] ?>">イベントのホストページへ</a>
+                                </div>
+
+                            </div>
                         </div>
-
-                    </div>
-                </div>
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
                 </div>
             </div>
 
             <!-- イベント履歴　-->
             <div class="eventHistory">
-                <?php $count = 0; ?>
+            <?php $count = 0; ?>
                 <?php foreach ($eventdata as $eventdatas) : ?>
                     <div class="place-content">
 
@@ -131,7 +131,7 @@ if ($userid != null) {
                             <div class="event-item">
                                 <diV class="col-md-7 center-item">
                                     <div class="eventControl_Img">
-                                        <img src=".<?= $eventdatas['ICON'] ?>" alt="">
+                                        <img src="<?= $eventdatas['ICON'] ?>" alt="">
                                     </div>
 
                                     <div class="information">
