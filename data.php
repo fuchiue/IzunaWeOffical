@@ -442,29 +442,6 @@ function addans($userId, $eventId, $ans)
     }
 }
 
-//回答表からANSWERを持ってくる
-function ansdata($eventid, $userid)
-{
-    try {
-        $sql = 'SELECT ANSWER FROM ANSWER WHERE USER_ID=:usertid AND EVENT_ID=eventid'; //団体名、紹介文、アイコン画像を取得
-        $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
-        $stmt->bindParam(':userid', $userid, PDO::PARAM_INT);
-        $stmt->bindParam(':eventid', $eventid, PDO::PARAM_INT);
-        $result = $stmt->execute(); //実行
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        // if ($result) {
-        //     return $result['ANSWER']; // ANSWER の値を返す
-        // } else {
-        //     return null; // 結果が存在しない場合は null を返すなど、適切な処理を行う
-        // }
-
-        return $result;
-    } catch (Exception $e) {
-        exit($e->getMessage());
-    }
-}
-
-
 function checkjoin($userId, $eventId)
 {
     try {
