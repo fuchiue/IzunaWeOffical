@@ -12,7 +12,7 @@ if(isset($_GET["id"])){
 // IDが入ってたら、TakeUserData,TakePostData,TakeEventDataファンクションを実行してデータを取得する
 if ($userid != null) {
     $userdata = TakeUserData($userid);
-    $postdata = TakePostData($userid);
+    $postdata = TakePostEvent($userid);
     $eventdata = TakeEventData($userid);
 } else {
     // header('Location:'.'/login_page_User.php');
