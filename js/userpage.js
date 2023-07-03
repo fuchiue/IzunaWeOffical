@@ -34,12 +34,17 @@ imgBtn.addEventListener("click",()=>{
         historyBtn.style.color='black';
         historyBtn.style.border='dashed 2px #DC0000';
 });
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//ポップアップエリアのJS
 
-
-function togglePopup(){
-    const popup= document.querySelector('.full-screen');
-    console.log(popup);
-    popup.classList.toggle('hidden');
+function togglePopup(imgsrc){
+    const popup= document.querySelectorAll('.full-screen');
+    popup.forEach((element) => {
+        const targetimg = element.querySelector('img').getAttribute('src');
+        if(imgsrc == targetimg){
+            element.classList.toggle('hidden');
+        }
+    });
 }
 
 const imgList = document.querySelectorAll(".imgBox");
@@ -47,10 +52,23 @@ const imgList = document.querySelectorAll(".imgBox");
 imgList.forEach((element) => {
     element.addEventListener("click", (e) => {
         e.preventDefault();
-        togglePopup();
+        const imgsrc = element.querySelector('img').getAttribute('src');
+        togglePopup(imgsrc);
+
     });
 });
 
-document.querySelector("#closePopup").addEventListener("click", () => {
-    togglePopup();
+const hiddenContent = document.querySelectorAll(".hidden-content-left");
+hiddenContent.forEach((element) => {
+    const imgsrc = element.querySelector('img').getAttribute('src');
+    const closeBtn = element.querySelector(".closePopup");
+    closeBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        togglePopup(imgsrc);
+    });
 });
+
+// document.querySelector(".closePopup").addEventListener("click", () => {
+//     console.log("削除")
+//     togglePopup();
+// });

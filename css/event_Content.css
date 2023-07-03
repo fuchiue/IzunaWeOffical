@@ -52,10 +52,10 @@
 #event_Box1{
     display: flex;
     margin-bottom: 20px;
-    margin-left: -150px;
+    /* margin-left: -150px; */
 }
 
-#event_InfoTitle{
+.event_InfoTitle{
     display: grid;
     margin-right: 60px;
     margin-left: 35px;
@@ -65,19 +65,22 @@
     margin: 20px 30px;
 }
 
-#event_SmallContent{
+.event_SmallContent{
     display: grid;
+    width: 500px;
 }
 
 #eventName, #eventTheme,#eventTime,
 #event_Meet_Time, #eventPlace, #eventPeople,
-#eventInfo,#eventDetail
+#eventInfo, #eventHour, #eventDetail
 {
     background-color: #cbcbcb;
     padding: 10px 20px;
     margin: 10px 30px;
     border-radius: 20px;
-    height: 40px;
+    /* height: 40px; */
+    /* word-break: break-word; */
+    /* display: inline-block; */
 }
 
 
@@ -89,6 +92,21 @@
     text-align: center;
     text-decoration: none;
 }
+
+#detailBox{
+   display: flex;
+}
+
+#eventInfo{
+    word-break: break-all;
+}
+
+#eventDetail{
+    word-break: break-all;
+    margin: 0px 0px 0px 80px;
+    width: 450px;
+}
+
 
 #submitBtn{
     background-color:orange;
@@ -150,8 +168,8 @@
     width: 250px;
 }
   
-.normal p{
-    word-break: break-all;
-  }
+/* .normal p{
+    word-break: break-word;
+  } */
 /* 団体アイコン＋団体紹介エリア CSS 終了*/
 /*-------------------------------------------------*/

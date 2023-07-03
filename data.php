@@ -98,11 +98,11 @@ function HostGetevent($id)
 function GetRegister($id)
 {
     try {
-        $sql = 'SELECT U.USER_NAME,E.EVENT_NAME,U.ICON,U.EMAIL FROM REGISTER AS R
+        $sql = 'SELECT U.USER_NAME,E.EVENT_NAME,U.ICON,U.EMAIL,U.USER_ID,E.EVENT_ID FROM JOINED AS J
         INNER JOIN USER AS U
-        ON R.USER_ID = U.USER_ID
+        ON J.USER_ID = U.USER_ID
         INNER JOIN EVENT AS E
-        ON R.EVENT_ID = E.EVENT_ID
+        ON J.EVENT_ID = E.EVENT_ID
         WHERE OWNER_ID = :id'; //ホストのIDのイベントに参加済みの人の情報を取得
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする 
         $stmt->bindValue(':id', $id, PDO::PARAM_STR); //sqlの:idに変数の$idを代入
@@ -113,14 +113,28 @@ function GetRegister($id)
         exit($e->getMessage());
     }
 }
+/*
+ユーザIDとイベントIDから質問の解答を返す
+hostpage_AfterLogin
+*/
+function GetAns($userId,$eventId){
+    try {
+        $sql = 'SELECT ANSWER FROM answer WHERE USER_ID = :userId AND EVENT_ID = :eventId'; //ホストの開催したイベントを取得
+        $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする 
+        $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
+        $stmt->bindValue(':eventId', $eventId, PDO::PARAM_INT);
+        $stmt->execute(); //実行
+        $result = $stmt->fetch(); //データを取得
+        return $result; //データを返す
+    } catch (Exception $e) {
+        exit($e->getMessage());
+    }
+}
 
 
 function searchResult($searchKeyWord, $pickArea, $eventTypes)
 {
     try {
-        // var_dump($searchKeyWord);
-        // var_dump($pickArea);
-        // var_dump($eventTypes);
         $sql = "SELECT * FROM event WHERE STATUS ='募集中' ";
         $where = "";
 
@@ -130,20 +144,13 @@ function searchResult($searchKeyWord, $pickArea, $eventTypes)
         }
 
         if ($pickArea && $pickArea != '1') {
-            // if($where != ""){
             $where .= " AND AREA = :pickArea";
-            // }else {
-            // $where = " AND AREA = :pickArea";
-            // }
         }
 
 
         if ($eventTypes && $eventTypes != '1') {
-            // if($where != ""){
+
             $where .= " AND THEME = :eventTypes";
-            // }else {
-            // $where = " AND THEME = :eventTypes";
-            // }
         }
 
         $stmt = dbc()->prepare($sql . $where);
@@ -295,7 +302,7 @@ function TakeEventData($userid)
 {
     $id = filter_var($userid, FILTER_SANITIZE_FULL_SPECIAL_CHARS); // ユーザー名をエスケープしてフィルタリングする
     $pdo = dbc();
-    $sql = "SELECT EVENT_ID,ICON,EVENT_NAME,ADDRESS,THEME FROM EVENT WHERE EVENT_ID IN (SELECT EVENT_ID FROM JOINED WHERE USER_ID=:userid AND STATUS='参加済み')";
+    $sql = "SELECT EVENT_ID,ICON,EVENT_NAME,OWNER_ID,ADDRESS,THEME FROM EVENT WHERE EVENT_ID IN (SELECT EVENT_ID FROM JOINED WHERE USER_ID=:userid AND STATUS='参加済み')";
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue(':userid', $id, PDO::PARAM_STR);
     $stmt->execute();
@@ -483,7 +490,7 @@ if (!is_dir($photo_directory)) {
     mkdir($photo_directory, 0755, true);
 }
 
-function photoSave($id, $photo_path, $owner_id)
+function photoSave($id, $photo_path, $owner_id, $event_id)
 {
     $result = False;
 
@@ -492,7 +499,7 @@ function photoSave($id, $photo_path, $owner_id)
     // トランザクションを開始
     $pdo->beginTransaction();
 
-    $sql = "INSERT INTO POST(USER_ID, PHOTO, OWNER_ID) VALUES(?, ?, ?)";
+    $sql = "INSERT INTO POST(USER_ID, PHOTO, OWNER_ID, EVENT_ID) VALUES(?, ?, ?, ?)";
 
     try {
         // プリペアドステートメントを作成
@@ -512,6 +519,7 @@ function photoSave($id, $photo_path, $owner_id)
             $owner_id = null;
             $stmt->bindParam(3, $owner_id, PDO::PARAM_INT);
         }
+        $stmt->bindParam(4, $event_id, PDO::PARAM_INT);
         // クエリを実行
         $stmt->execute();
 
@@ -528,3 +536,19 @@ function photoSave($id, $photo_path, $owner_id)
         return $result;
     }
 }
+
+function TakePostEvent($userid){
+    $id = filter_var($userid, FILTER_SANITIZE_FULL_SPECIAL_CHARS); // ユーザー名をエスケープしてフィルタリングする
+    $pdo = dbc();
+    $sql = "SELECT P.PHOTO,P.OWNER_ID,E.EVENT_NAME,E.NOTE,E.SCHEDULE,E.ADDRESS FROM POST AS P 
+    INNER JOIN EVENT AS E
+    ON P.EVENT_ID = E.EVENT_ID
+    WHERE USER_ID=:userid";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':userid', $id, PDO::PARAM_STR);
+    $stmt->execute();
+    $postdata = $stmt->fetchall(PDO::FETCH_ASSOC);
+    return $postdata;
+}
+
+//WHERE USER_ID=:userid;

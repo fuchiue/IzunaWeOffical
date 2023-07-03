@@ -98,8 +98,6 @@ if ($userid != null) {
                     <?php endif; ?>
                 <?php endif; ?>
             
-                    </div>
-            
             <!-- ポップアップエリア -->
                 <div class="full-screen hidden flex-container-center">
 
@@ -120,6 +118,7 @@ if ($userid != null) {
                     </div>
                 </div>
                 <?php endforeach; ?>
+                </div>
             </div>
 
             <!-- イベント履歴　-->

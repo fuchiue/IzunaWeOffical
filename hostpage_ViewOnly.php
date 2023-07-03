@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "./data.php";
 
 if(isset($_GET["id"])){
@@ -129,7 +130,7 @@ $photodatas = TakePostData($id); //投稿した写真を取得
                         echo "\n";
                     }
                     //写真の表示　対応するユーザのIDを変数で送っている。
-                    echo '<a href="./hostpage_ViewOnly.php?id=' . $user['USER_ID'] . '" class="imgBox"><img src="' . $user['ICON'] . '"></a>';
+                    echo '<a href="./userpage_ViewOnly.php?id=' . $user['USER_ID'] . '" class="imgBox"><img src="' . $user['ICON'] . '"></a>';
                     echo "\n";
 
                     //三回写真を表示したら終わりのタグそれ以外ならカウントアップ

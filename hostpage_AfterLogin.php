@@ -1,48 +1,38 @@
-    <?php
-    session_start();
-    require_once "./data.php";
-    $id = $_SESSION["id"]; //IDを取得
-    
-    $hostdata = hostGetData($id); //ホストの情報を取得
-    $joinedUser = hostGetjoinUser($id); //ボランティアに参加したユーザを取得
-    $eventDatas = HostGetevent($id); //ホストの開催したイベントの情報を取得
-    $registers = GetRegister($id); //参加応募者一覧を取得
-    $photodatas = TakePostData($id); //投稿した写真を取得
-    $ansdata = array();
-    foreach ($eventDatas as $eventData) {
-        foreach ($joinedUser as $user) {
-            $ans = ansdata($eventData['EVENT_ID'], $user['USER_ID']); //USER_IDがきちんと渡されてない
-            $ansdata[] = $ans;
-        }
-    }
-    var_dump($ansdata);
+<?php
+session_start();
+require_once "./data.php";
+$id = $_SESSION["id"]; //IDを取得
+
+$hostdata = hostGetData($id); //ホストの情報を取得
+$joinedUser = hostGetjoinUser($id); //ボランティアに参加したユーザを取得
+$eventDatas = HostGetevent($id); //ホストの開催したイベントの情報を取得
+$registers = GetRegister($id); //参加応募者一覧を取得
+$photodatas = TakePostData($id); //投稿した写真を取得
 
 
+?>
+<!DOCTYPE html>
+<html lang="ja">
 
-    ?>
-    <!DOCTYPE html>
-    <html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="stylesheet" href="./css/hostpage.css">
+    <title>ボランティア</title>
+</head>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./css/navbar.css">
-        <link rel="stylesheet" href="./css/hostpage.css">
-        <title>ボランティア</title>
-    </head>
+<body>
 
-    <body>
+    <?php include('./Navbar/navbar.php'); ?>
 
-        <?php include('./Navbar/navbar.php'); ?>
-
-        <!-- Header画像エリア ＋ ページ名 -->
-        <div id="hostpage_header">
-            <img src="./image/navbar1.jpg">
-            <div id="hostpage_tilte">
-                <h1>ホストマイページ</h1>
-                <p>Group Profile</p>
-            </div>
+    <!-- Header画像エリア ＋ ページ名 -->
+    <div id="hostpage_header">
+        <img src="./image/navbar1.jpg">
+        <div id="hostpage_tilte">
+            <h1>ホストマイページ</h1>
+            <p>Group Profile</p>
         </div>
 
         <!-- 団体アイコン＋紹介エリア -->
@@ -265,7 +255,42 @@
                                     </div>
                                 </diV>
                             </div>
+<<<<<<< HEAD
                             </a>
+=======
+                        </a>
+
+                    </div>
+                <?php endforeach; ?>
+
+            </div>
+
+            <!-- 応募者一覧　-->
+            <div class="joinedPpl_Control">
+
+                <?php foreach ($registers as $register) : ?>
+                    <div class="place-content">
+                        <div class="event-item">
+                            <diV class="col-md-7 center-item">
+                                <div class="joinedPpl_Control_Img">
+                                    <a href="userpage_ViewOnly.php">
+                                        <img src="<?= $register['ICON']; ?>" alt="">
+                                    </a>
+                                </div>
+
+                                <div class="informationUser">
+                                    <h3><?= $register['EVENT_NAME']; ?></h3>
+                                    <p><?= $register['USER_NAME']; ?></p>
+                                    <p><a href="mailto: <?= $register['EMAIL']; ?>"><?= $register['EMAIL']; ?></a></p>
+                                    <?php $answer = GetAns($register['USER_ID'],$register['EVENT_ID']) ;?>
+                                    <?php if(isset($answer['ANSWER'])): ?>
+                                        <p>質問への回答</p>
+                                        <p><?= $answer['ANSWER']; ?></p>
+                                    <?php endif; ?>
+
+                                </div>
+                            </diV>
+>>>>>>> 6c5f884025e6c9027fbbc6678074a9d81cc0dbdb
                         </div>
                     <?php endforeach; ?>
 
