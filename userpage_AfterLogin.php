@@ -142,7 +142,6 @@ echo "</pre>";
                                     </div>
 
                                     <div class="information">
-
                                         <h3>
                                             <?= $eventdatas['EVENT_NAME'] ?>
                                         </h3>
