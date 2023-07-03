@@ -40,6 +40,7 @@
 
 #aboutUs img{
     width: 50%;
+    box-shadow: 11px 12px 10px gray;
 }
 
 /*サイトの紹介 CSS  終了*/
@@ -59,12 +60,28 @@
 #right{
     padding: 30px 80px 30px 40px;
 }
+
+#aboutContent{
+    background: #EEEEEE;
+    padding: 30px;
+    box-shadow: 11px 12px 10px gray;
+}
+
 #right h2{
     font-family: 'HandWriteFont';
     font-size: 40px;
+    margin-bottom: 30px;
 }
 
 #right p{
     padding-top: 20px;
 }
 /*ポイントを貯まる紹介  終了*/
+
+#deco_hm{
+    margin-bottom: 50px;
+  }
+
+  #deco_hm img{
+    width: 100%;
+  }

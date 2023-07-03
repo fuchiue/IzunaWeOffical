@@ -1,5 +1,6 @@
 <?php 
 require_once "./data.php";
+session_start();
 
 try{
     $sql = "SELECT * FROM EVENT WHERE STATUS ='募集中'";
