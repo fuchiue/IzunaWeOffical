@@ -4,11 +4,15 @@ require_once __DIR__ . "/data.php";
 // ログインからIDを取ってくる
 // $userid = filter_input(INPUT_POST, "user");
 
-$userid = 10001;
+if(isset($_GET["id"])){
+    $userid = $_GET["id"];
+}else{
+    header("Location: index.php");
+}
 // IDが入ってたら、TakeUserData,TakePostData,TakeEventDataファンクションを実行してデータを取得する
 if ($userid != null) {
     $userdata = TakeUserData($userid);
-    $postdata = TakePostData($userid);
+    $postdata = TakePostEvent($userid);
     $eventdata = TakeEventData($userid);
 } else {
     // header('Location:'.'/login_page_User.php');
@@ -45,7 +49,7 @@ if ($userid != null) {
     <section id="selfInfo_TopArea">
         <!-- 写真 -->
         <div id="selfIcon_pic">
-            <img src="./image/HT_Fox3 (1).PNG">
+            <img src="<?= $userdata['ICON'] ?>">
         </div>
 
         <!-- 分割線 -->

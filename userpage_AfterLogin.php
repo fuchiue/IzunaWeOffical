@@ -16,9 +16,9 @@ if (isset($userid)) {
     echo "no";
 }
 
-echo "<pre>";
-print_r($postdata);
-echo "</pre>";
+// echo "<pre>";
+// print_r($postdata);
+// echo "</pre>";
 
 ?>
 <!DOCTYPE html>
@@ -142,7 +142,6 @@ echo "</pre>";
                                     </div>
 
                                     <div class="information">
-
                                         <h3>
                                             <?= $eventdatas['EVENT_NAME'] ?>
                                         </h3>
