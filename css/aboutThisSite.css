@@ -59,6 +59,10 @@
 #right{
     padding: 30px 80px 30px 40px;
 }
+#right h2{
+    font-family: 'HandWriteFont';
+    font-size: 40px;
+}
 
 #right p{
     padding-top: 20px;
