@@ -4,13 +4,13 @@ require_once "./data.php";
 
 session_start();
 
+// データベース接続
+$pdo = dbc();
+
 //数値入力電話番号
 if (preg_match("/[^0-9]/", $_POST['tel'])) {
     echo "数値以外が入力されています。";
 }
-
-// データベース接続
-$pdo = dbc();
 
 //パスワード確認
 $password = $_POST["password"];
@@ -34,7 +34,6 @@ if ($UserStmt->rowCount() > 0) {
 // 画像のアップロード処理
 //保存先のディレクトリー
 $target_dir = "./images/usericon";
-var_dump($_FILES);
 //ファイルが指定されたディレクトリに保存されます。
 $target_file = $target_dir . basename($_FILES["img"]["name"]);
 

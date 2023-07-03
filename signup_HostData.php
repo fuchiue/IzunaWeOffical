@@ -4,14 +4,13 @@ require_once "./data.php";
 
 session_start();
 
+// データベース接続
+$pdo = dbc();
+
 //数値入力電話番号
 if(preg_match("/[^0-9]/", $_POST['tel'])){
     echo "数値以外が入力されています。";
 }
-
-// データベース接続
-$pdo = dbc();
-var_dump($_POST);
 
 //パスワード確認
 $password = $_POST["password"];
