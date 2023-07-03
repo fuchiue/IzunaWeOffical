@@ -56,6 +56,7 @@ function showFile(){
     let fileType = file.type;
     let fileSize = file.size;
     console.log(fileType);
+    console.log(file);
 
     let validExtensions = ["image/jpeg", "image/jpg", "image/png", ];
     if(validExtensions.includes(fileType)){ //もしアップロードされたファイルは画像の型なら
@@ -111,7 +112,7 @@ const submitBtn = document.querySelector("#signUp_BtnArea");
 const uploadphoto = document.querySelector("#photo");
 
 submitBtn.addEventListener("click", (event) => {
-    if(!uploadphoto.files || uploadphoto.files.length === 0){
+    if(!uploadphoto.files || uploadphoto.files.length === 0 || !file){
         event.preventDefault(); // 送信をキャンセル
         alert("画像を添付してください");
     }
