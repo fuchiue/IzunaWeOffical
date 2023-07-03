@@ -73,7 +73,7 @@ $photodatas = TakePostData($id); //投稿した写真を取得
         <div class="hostView_Btn">
             <button id="imgBtn">写真</button>
             <button id="attendantBtn">参加者の皆様</button>
-            <button id="nowEventBtn">募集中イベント</button>
+            <button id="nowEventBtn">イベント一覧</button>
         </div>
 
         <div id="switchPage">
