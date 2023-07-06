@@ -13,6 +13,8 @@ $event = explode(",", $_POST["value"]);
 
 $owner_id = $event[0];
 $event_id = $event[1];
+$point = Getevent($event_id)['HOUR'];
+
 
 // ファイル関連の取得
 $submit = filter_input(INPUT_POST, "submit");
@@ -27,9 +29,13 @@ $photo_path = "./images/photo/" . $photo_name;
 move_uploaded_file($photo_tmp, $photo_path);
 // 作成したイベント内容を保存
 $photosave = photoSave($id, $photo_path, $owner_id, $event_id); //投稿した画像を保存
-
+$count = countPost($id, $event_id);
+echo $count["COUNT(*)"];
 if ($photosave) {
-    // 保存成功時の処理
+    if($count["COUNT(*)"] == 1){
+        addPoint($id, $point);
+        updateJoin($id, $event_id);
+    }
     header("Location: userpage_AfterLogin.php");
     exit();
 } else {
