@@ -512,6 +512,7 @@ function photoSave($id, $photo_path, $owner_id, $event_id)
     }
 }
 
+
 function TakePostEvent($userid){
     $id = filter_var($userid, FILTER_SANITIZE_FULL_SPECIAL_CHARS); // ユーザー名をエスケープしてフィルタリングする
     $pdo = dbc();
@@ -526,4 +527,43 @@ function TakePostEvent($userid){
     return $postdata;
 }
 
-//WHERE USER_ID=:userid;
+//ここから画像投稿でPOINTを加算するために使うSQL
+
+/*
+ユーザーIDとイベントIDからすでに投稿しているか調べる。投稿がない場合0を返す
+*/
+function countPost ($id,$event)
+{
+    try {
+        $sql = 'SELECT COUNT(*) FROM post WHERE USER_ID=:userId AND EVENT_ID=:eventId'; 
+        $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
+        $stmt->bindValue(':userId', $id, PDO::PARAM_STR); //sqlの:idに変数の$idを代入
+        $stmt->bindValue(':eventId', $event, PDO::PARAM_STR);
+        $stmt->execute(); //実行
+        $result = $stmt->fetch(); //データを取得
+        return $result; //データを返す
+    } catch (Exception $e) {
+        exit($e->getMessage());
+    }
+}
+//上の結果が0で帰ってきた場合 Getevent メゾットを実行しHOURを取得する。
+
+/*
+ユーザーデータのポイントにGeteventで取ってきた活動時間を加算して更新する
+*/
+function addPoint ($userId,$addPoint)
+{
+    try {
+        $sql = 'UPDATE user SET POINT=POINT+:addPoint WHERE USER_ID=:userId'; 
+        $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
+        $stmt->bindValue(':userId', $userId, PDO::PARAM_INT); 
+        $stmt->bindValue(':addPoint', $addPoint, PDO::PARAM_INT); 
+        $stmt->execute(); //実行
+        $result = $stmt->fetch(); //データを取得
+        return $result; //データを返す
+    } catch (Exception $e) {
+        exit($e->getMessage());
+    }
+}
+
+//ここまで画像投稿でPOINTを加算するために使うSQL
