@@ -19,7 +19,10 @@ $point = Getevent($event_id)['HOUR'];
 // ファイル関連の取得
 $submit = filter_input(INPUT_POST, "submit");
 $owner_id = filter_input(INPUT_POST, "value");
-// $event_id = filter_input(INPUT_POST, "event");
+$comment = h(filter_input(INPUT_POST, "comment"));
+if(!comment){
+    $comment = null;
+}
 
 // アップロードされたファイルの一時的な保存場所からファイルを取得し、保存先のディレクトリに移動させる
 $photo_tmp = $_FILES["photo"]["tmp_name"];
@@ -27,11 +30,12 @@ $photo_name = date('YmdHis') . "_" . $_FILES["photo"]["name"];
 $photo_path = "./images/photo/" . $photo_name;
 
 move_uploaded_file($photo_tmp, $photo_path);
-// 作成したイベント内容を保存
-$photosave = photoSave($id, $photo_path, $owner_id, $event_id); //投稿した画像を保存
+// 作成したPOST内容を保存
+$photosave = photoSave($id, $photo_path, $owner_id, $event_id, $comment); //投稿した画像を保存
 $count = countPost($id, $event_id);
 echo $count["COUNT(*)"];
 if ($photosave) {
+    // 保存成功時の処理
     if($count["COUNT(*)"] == 1){
         addPoint($id, $point);
         updateJoin($id, $event_id);
