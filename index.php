@@ -46,6 +46,10 @@ $db = null;
     <!--検索エリア-->
     <section id="Opening">
 
+        <div id="welcomingTitle">
+            <p>ボランティアは、良い社会を動かす力だ！</p>
+        </div>
+
         <div id="home">
         <img src="./image/Home_opening.jpg">
         <img src="./image/Home_opening2.jpg">
@@ -137,10 +141,7 @@ $db = null;
             <div data-aos="fade-up" data-aos-duration="1000"><img src="./image/merit1.png" id="merit1"></div>
             <div data-aos="fade-down" data-aos-duration="2000"><img src="./image/merit2.png" id="merit2"></div>
             <div data-aos="fade-right" data-aos-duration="3000"><img src="./image/merit3.png" id="merit3"></div>
-            <div data-aos="fade-left" data-aos-duration="3000"><img src="./image/merit4.png" id="merit4"></div>
-        </div>
-
-
+            <div data-aos="fade-left" data-aos-duration="2000"><img src="./image/merit4.png" id="merit4"></div>
     </section>
 
     <div id="deco_hm">
@@ -148,6 +149,7 @@ $db = null;
     </div>
 
     <?php include('./Navbar/footer.php'); ?>
+
 
     <script src="./js/navbar.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
