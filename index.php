@@ -34,6 +34,7 @@ $db = null;
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./css/navbar.css">
     <link rel="stylesheet" href="./css/index.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/4d6369389a.js" crossorigin="anonymous"></script>
     <title>ボランティア</title>
 </head>
@@ -127,9 +128,40 @@ $db = null;
 
     <!--メリット一覧-->
 
-    <section id="meritArea">
-        
-        <div id="redDecoBox"></div>
+    <section class="meritArea">
+
+        <div class="meritInner">
+            <div id="meritTitleBox" data-aos="fade-left">
+                <p id="meritTitle">ボランティアのメリット</p>
+            </div>  
+            <div data-aos="fade-up" data-aos-duration="1000"><img src="./image/merit1.png" id="merit1"></div>
+            <div data-aos="fade-down" data-aos-duration="2000"><img src="./image/merit2.png" id="merit2"></div>
+            <div data-aos="fade-right" data-aos-duration="3000"><img src="./image/merit3.png" id="merit3"></div>
+            <div data-aos="fade-left" data-aos-duration="3000"><img src="./image/merit4.png" id="merit4"></div>
+        </div>
+
+
+    </section>
+
+    <div id="deco_hm">
+        <img src="./image/HT_Fox FrontPage2.png">
+    </div>
+
+    <?php include('./Navbar/footer.php'); ?>
+
+    <script src="./js/navbar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init();</script>
+    <script src="./js/index.js"></script>
+
+</body>
+
+</html>
+
+
+
+        <!-- <div id="redDecoBox"></div>
 
         <div id="meritBigBox">
             <h1>ボランティアのメリット</h1>
@@ -146,22 +178,30 @@ $db = null;
                     <p>　　　就活に有利だ　　　</p>
                 </div>
             </div>
+        </div> -->
+
+
+        <!-- 
+        <div class="meritbox">
+            <div class="meritcontent">
+                <h3>社会貢献</h3>
+            </div>
         </div>
 
-        
+        <div class="meritbox">
+            <div class="meritcontent">
+                <h3>友達作り</h3>
+            </div>    
+        </div>
 
-    </section>
+        <div class="meritbox">
+            <div class="meritcontent">
+                <h3>達成感<br>ある</h3>
+            </div>
+        </div>
 
-    <div id="deco_hm">
-        <img src="./image/HT_Fox FrontPage2.png">
-    </div>
-
-    <?php include('./Navbar/footer.php'); ?>
-
-    <script src="./js/navbar.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script src="./js/index.js"></script>
-
-</body>
-
-</html>
+        <div class="meritbox">
+            <div class="meritcontent">
+                <h3>社交スキル<br>が高まる</h3>
+            </div>    
+        </div> -->
