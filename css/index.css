@@ -257,23 +257,23 @@ a {
 /*最近イベントCSS　終了*/
 
   /*メリット一覧CSS　開始*/
-  #meritArea{
+  /* #meritArea{
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 50px;
     margin-bottom: 50px;
-  }
+  } */
 
-  #redDecoBox{
+  /* #redDecoBox{
     border-left: 6px solid #DD0000;
     height: 365px;
     left: 50%;
     top: 60px;
     margin-right: 50px;
-  }
+  } */
 
-  #meritBigBox h1{
+  /* #meritBigBox h1{
     font-family: 'HandWriteFont'; 
     color: #DD0000;
     font-size: 45px;
@@ -298,7 +298,7 @@ a {
     border-radius: 3rem;
     margin: 30px;
     padding: 20px;
-    /* cursor: pointer; */
+
   }
 
   #meritBox2 p{
@@ -308,8 +308,8 @@ a {
     border-radius: 3rem;
     margin: 30px;
     padding: 20px;
-    /* cursor: pointer; */
-  }
+  
+  } */
 
   /* #meritBox1 p:hover,
   #meritBox2 p:hover{
@@ -325,3 +325,91 @@ a {
   #deco_hm img{
     width: 100%;
   }
+
+/* Merit Box test area*/
+
+/* #meritArea{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+} */
+
+.meritbox{
+  background: #DD0000;
+  border-radius: 50%;
+  width: 500px;
+  height: 500px;
+  box-shadow: 11px 12px 10px gray;
+}
+
+.meritcontent{
+  display: grid;
+  justify-content: center;
+  text-align: center;
+  padding: 195px 0px;
+}
+
+.meritcontent h3{
+  color: #ffffff;
+  font-family: 'HandWriteFont';
+  font-size: 110px;
+}
+
+.meritArea{
+  position: relative;
+  margin-top: 30px;
+}
+
+.meritInner{
+  position: relative;
+  height: 200vh;
+}
+
+#meritTitleBox{
+  display: flex;
+  justify-content: end;
+  margin-right: 30px;
+}
+
+#meritTitle{
+  font-family: 'HandWriteFont';
+  color: #DD0000;
+  font-size: 65px;
+  position: absolute;
+  z-index: 4;
+}
+
+#merit1{
+  width: 46%;
+  padding: 20px;
+  position: absolute;
+  z-index: 2;
+  left: 201px;
+}
+
+#merit2{
+  width: 40%;
+  padding: 20px;
+  position: absolute;
+  z-index: 3;
+  left: 652px;
+  top: 254px;
+}
+
+#merit3{
+  width: 42%;
+  padding: 20px;
+  position: absolute;
+  z-index: 1;
+  left: 148px;
+  top: 505px;
+}
+
+#merit4{
+  width: 40%;
+  padding: 20px;
+  position: absolute;
+  z-index: 0;
+  left: 532px;
+  top: 700px;
+}

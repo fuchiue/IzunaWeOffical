@@ -3,6 +3,9 @@ button = document.querySelector("#selectPicBtn"),
 newSelectBtn = document.querySelector("#newSelectBtn"),
 uploadTilte = document.querySelector("#uploadTitle"), //投稿ボックスの文字をコントロールするため
 input = document.querySelector("input");
+const submitBtn = document.querySelector("#signUp_BtnArea");
+const uploadphoto = document.querySelector("#photo");
+const radio = document.querySelectorAll('input[name="value"]');
 
 let file;
 
@@ -47,22 +50,47 @@ dragArea.addEventListener("drop",(event)=>{
     event.preventDefault();
     //ユーザーがアップロードしたファイルを取得する
     file = event.dataTransfer.files[0];
-        // console.log("File is dropped on dragArea");
+    const fileSize = file.size;
+    const fileType = file.type;
+  
+    const validExtensions = ["image/jpeg", "image/jpg", "image/png"];
+    if (!validExtensions.includes(fileType)) {
+      alert("画像ファイルを選択してください。");
+      return;
+    }
+  
+    if (fileSize > 5 * 1024 * 1024) {
+      alert("アップロードされた画像のサイズが5MBを超えています。5MB以下の画像を選択してください。");
+      return;
+    }
+
     //画像アップロード機能を起動する
     showFile();
+    // ドロップされたかどうかを検証
+    if (file) {
+        console.log("ファイルがドロップされました");
+    } else {
+        console.log("ファイルがドロップされていません");
+    }
 });
 
 function showFile(){
     let fileType = file.type;
     let fileSize = file.size;
-    console.log(fileType);
 
     let validExtensions = ["image/jpeg", "image/jpg", "image/png", ];
     if(validExtensions.includes(fileType)){ //もしアップロードされたファイルは画像の型なら
+        if (file) {
+            // console.log("ファイルがドロップされました");
+            const dt = new DataTransfer();
+            dt.items.add(file);
+            uploadphoto.files = dt.files;
+            console.log(uploadphoto.files);
+        }
         if(fileSize > 5 * 1024 * 1024){
             alert("アップロードされた画像のサイズが5MBを超えています。5MB以下の画像を選択してください。");
-            elem.value = ""; // ファイル選択をリセット
-            thumbImage.removeAttribute("src"); // 画像プレビューを削除
+            uploadphoto.value = ""; // ファイル選択をリセット
+            dragArea.classList.remove("active");
             return; // 処理を終了
         }
         
@@ -92,6 +120,7 @@ function showFile(){
         }
         fileReader.readAsDataURL(file);
     }else{
+        uploadphoto.value = "";
         alert("画像ファイルを再選択してください。")
         dragArea.classList.remove("active");
     }
@@ -105,10 +134,6 @@ function handleEventSelection(event) {
     });
     eventItem.classList.add('selected');
 }
-
-const submitBtn = document.querySelector("#signUp_BtnArea");
-const uploadphoto = document.querySelector("#photo");
-const radio = document.querySelectorAll('input[name="value"]');
 
 submitBtn.addEventListener("click", (event) => {
     /** 画像が添付されるかを確認 */ 
@@ -127,6 +152,6 @@ submitBtn.addEventListener("click", (event) => {
     }
     if(!isChecked){
         event.preventDefault(); // 送信をキャンセル
-        alert("イベントを選択してください");
+        alert("イベントを選択してください。");
     }
 });
