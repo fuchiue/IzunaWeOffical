@@ -474,7 +474,7 @@ function photoSave($id, $photo_path, $owner_id, $event_id, $comment)
     // トランザクションを開始
     $pdo->beginTransaction();
 
-    $sql = "INSERT INTO POST(USER_ID, PHOTO, OWNER_ID, EVENT_ID) VALUES(?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO POST(USER_ID, PHOTO, OWNER_ID, EVENT_ID, COMMENT) VALUES(?, ?, ?, ?, ?)";
 
     try {
         // プリペアドステートメントを作成

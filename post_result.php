@@ -20,9 +20,11 @@ $point = Getevent($event_id)['HOUR'];
 $submit = filter_input(INPUT_POST, "submit");
 $owner_id = filter_input(INPUT_POST, "value");
 $comment = h(filter_input(INPUT_POST, "comment"));
-if(!comment){
-    $comment = null;
+echo $comment;
+if(!$comment){
+    $comment = "感想の投稿はありません";
 }
+echo $comment;
 
 // アップロードされたファイルの一時的な保存場所からファイルを取得し、保存先のディレクトリに移動させる
 $photo_tmp = $_FILES["photo"]["tmp_name"];

@@ -92,7 +92,7 @@ $eventdatas = TakeAllEventData($userid);
             </div>
             <!-- 口コミ -->
             <div class="bottomArea">
-                <label class="commentTitle">このボランティア活動に参加した感想をシェアしてください。</label>
+                <label class="commentTitle">このボランティア活動に参加した感想をシェアしてください</label>
                 <textarea maxlength="300" name="comment" cols="30" rows="10" placeholder="感想を入力してください。"></textarea>
             </div>
 
