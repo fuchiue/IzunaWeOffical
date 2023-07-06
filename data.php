@@ -568,4 +568,19 @@ function addPoint ($userId,$addPoint)
     }
 }
 
+function updateJoin ($userId,$eventId)
+{
+    try {
+        $sql = 'UPDATE user SET STATUS="参加済み" WHERE USER_ID=:userId AND EVENT_ID=:eventId'; 
+        $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
+        $stmt->bindValue(':userId', $userId, PDO::PARAM_INT); 
+        $stmt->bindValue(':eventId', $eventId, PDO::PARAM_INT); 
+        $stmt->execute(); //実行
+        $result = $stmt->fetch(); //データを取得
+        return $result; //データを返す
+    } catch (Exception $e) {
+        exit($e->getMessage());
+    }
+}
+
 //ここまで画像投稿でPOINTを加算するために使うSQL
