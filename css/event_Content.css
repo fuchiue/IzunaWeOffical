@@ -127,25 +127,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-right: 55px;
     margin-top: 60px;
     margin-bottom: 20px;
+    text-decoration: none;
 }
+
+#selfInfo_TopArea p,
+#selfInfo_TopArea h1{
+    color: black;
+}
+
+#selfInfo_TopArea h1{
+    margin-bottom: 20px;
+}
+
 
 #selfIcon_pic img{
     width: 75%;
 }
 
-#redDecoBox{
-    border-left: 6px solid #DD0000;
-    height: 330px;
-    margin-right: 50px;
-    
-  }
-
-#selfInfo_Box{
-    /* padding-top: 120px; */
-}
 
 #selfInfo_Box h1{
     font-family: 'HandWriteFont';
@@ -166,6 +166,16 @@
     margin-top: 20px;
     /* border: 2px solid red; */
     width: 250px;
+}
+
+#toHostPage{
+    text-decoration: underline;
+    color: #DD0000;
+    cursor: pointer;
+}
+
+#toHostPage:hover{
+    font-weight: 600;
 }
   
 /* .normal p{

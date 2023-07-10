@@ -527,3 +527,23 @@ function TakePostEvent($userid){
 }
 
 //WHERE USER_ID=:userid;
+
+
+/**
+
+ * ユーザデータを取得
+
+ * @return array $userData
+
+ */
+
+ function getAllUser()
+
+ {
+
+     $sql = "SELECT * FROM USER ORDER BY POINT DESC LIMIT 10";
+ 
+     $userData = dbc()->query($sql);
+     return $userData;
+ 
+ }

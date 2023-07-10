@@ -1,6 +1,7 @@
 <?php 
 require_once "./data.php";
 session_start();
+$userData = getAllUser();
 
 try{
     $sql = "SELECT * FROM EVENT WHERE STATUS ='募集中'";
@@ -104,7 +105,7 @@ $db = null;
         </div>    
 
         <div class="container">
-            <div class="swiper s1">
+            <div class="swiper card_slider">
 
                 <div class="swiper-wrapper">
                 <?php foreach($result as $index):?> 
@@ -128,6 +129,7 @@ $db = null;
                 <div class="swiper-pagination"></div>
             </div>
         </div>
+
     </section>
 
     <!-- ランキング一覧　-->
@@ -171,6 +173,61 @@ $db = null;
             <div data-aos="fade-down" data-aos-duration="2000"><img src="./image/merit2.png" id="merit2"></div>
             <div data-aos="fade-right" data-aos-duration="3000"><img src="./image/merit3.png" id="merit3"></div>
             <div data-aos="fade-left" data-aos-duration="2000"><img src="./image/merit4.png" id="merit4"></div>
+    </section>
+
+    <!-- 参加者のポイント数TOP10 -->
+
+    <section class="slider_top10">
+
+        <div id="topTitle">
+
+            <p>ポイント順位TOP10</p>
+
+        </div>
+
+        <div class="container">
+
+            <div class="swiper card_slider">
+                <div class="swiper-wrapper">
+                    <?php foreach($userData as $user):?>
+                        <div class="swiper-slide">
+                            <div class="img_box">
+                                <a href="userpage_ViewOnly.php?id=<?= $user["USER_ID"] ?>">
+
+                                    <img src="<?= $user["ICON"] ?>" alt="userPhoto">
+
+                                    <div class="HP_userDetails">
+
+                                        <h2><?= $user["USER_NAME"] ?></h2>
+
+                                        <div id="pointArea">
+
+                                            <img src="./image/Point.PNG" id="pointIcon">
+
+                                            <p class="pointT">：<?= $user['POINT'] ?>点</p>
+
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    <?php endforeach ?>
+
+                </div>
+
+                <div class="swiper-button-prev"></div>
+
+                <div class="swiper-button-next"></div>
+
+                <div class="swiper-pagination"></div>
+
+            </div>
+
+        </div>
+
+
+
+
     </section>
 
     <div id="deco_hm">

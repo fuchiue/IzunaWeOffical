@@ -145,6 +145,12 @@
     display: flex;
 }
 
+.imgBox{
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
 .imgBox img{
     width: 40vmin;
     height: 40vmin;
@@ -152,6 +158,34 @@
     margin-bottom: 30px;
 
 }
+
+.imgBox .layer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(224, 79, 79, 0.8);
+    width: 40vmin;
+    height: 40vmin;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.imgBox .layer p{
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+}
+
+.imgBox:hover .layer{
+    opacity: 1;
+}
+
 
 
 /*イベント履歴*/

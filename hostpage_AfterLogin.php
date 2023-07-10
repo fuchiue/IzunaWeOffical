@@ -139,7 +139,14 @@ $photodatas = TakePostData($id); //投稿した写真を取得
                                     echo "\n";
                                 }
                                 //写真の表示　対応するユーザのIDを変数で送っている。
-                                echo '<a href="./userpage_ViewOnly.php?id=' . $user['USER_ID'] . '" class="imgBox"><img src="' . $user['ICON'] . '"></a>';
+                                echo '<a href="./userpage_ViewOnly.php?id=' . $user['USER_ID'] . '" class="imgBox">
+                                        <img src="' . $user['ICON'] . '">
+                                        <div class="layer">
+                                            <p>No.1</p>
+                                            <p>Point</p>
+                                        </div>
+                                    </a>';
+
                                 echo "\n";
 
                                 //三回写真を表示したら終わりのタグそれ以外ならカウントアップ
@@ -246,9 +253,10 @@ $photodatas = TakePostData($id); //投稿した写真を取得
                                 </div>
 
                                 <div class="informationUser">
+                                    <p>応募したイベント：</p>
                                     <h3><?= $register['EVENT_NAME']; ?></h3>
-                                    <p><?= $register['USER_NAME']; ?></p>
-                                    <p><a href="mailto: <?= $register['EMAIL']; ?>"><?= $register['EMAIL']; ?></a></p>
+                                    <p>お名前：<?= $register['USER_NAME']; ?></p>
+                                    <p>連絡：<a href="mailto: <?= $register['EMAIL']; ?>"><?= $register['EMAIL']; ?></a></p>
                                     <?php $answer = GetAns($register['USER_ID'],$register['EVENT_ID']) ;?>
                                     <?php if(isset($answer['ANSWER'])): ?>
                                         <p>質問への回答</p>
