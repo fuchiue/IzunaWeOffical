@@ -256,6 +256,51 @@ a {
 
 /*最近イベントCSS　終了*/
 
+/* ポイント順位TOP10の参加者 */
+
+.slider_top10 h1{
+  color: #DD0000;
+  text-align: center;
+  font-family: 'HandWriteFont';
+  font-size: 65px;
+}
+
+.slider_top10 .container{
+  padding: 0 15px;
+  max-width: 1230px;
+  margin: 0 auto;
+}
+
+#pointArea{
+  display: flex;
+}
+
+#pointIcon{
+  width: 30px;
+  height: 30px;
+}
+
+.HP_userDetails{
+  border: 2px dashed #DC0000;
+  border-radius: 5px;
+  resize: none;
+  width:-webkit-fill-available;
+  display: grid;
+  background-color: white;
+  padding: 10px;
+}
+
+.HP_userDetails h2{
+  margin: 5px 0px;
+  color: #DC0000;
+}
+
+.HP_userDetails p{
+  margin: 5px 0px;
+  color: #DC0000;
+}
+
+
   /*メリット一覧CSS　開始*/
   /* #meritArea{
     display: flex;
