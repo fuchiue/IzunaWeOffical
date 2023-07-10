@@ -104,7 +104,7 @@ $db = null;
         </div>    
 
         <div class="container">
-            <div class="swiper card_slider">
+            <div class="swiper s1">
 
                 <div class="swiper-wrapper">
                 <?php foreach($result as $index):?> 
@@ -129,6 +129,35 @@ $db = null;
             </div>
         </div>
     </section>
+
+    <!-- ランキング一覧　-->
+    <!-- <section id="ranking">
+        <div class="container">
+                <div class="swiper-container s2">
+
+                <div class="swiper-wrapper">
+                <?php foreach($result as $index):?> 
+                    <div class="swiper-slide">
+                        <div class="img_box2">
+                            <a href="event_Content.php?eventId=<?= $index["EVENT_ID"];?>">
+                                <img src="<?= $index["ICON"] ;?>">
+                                <div class="HP_eventDetails">
+                                    <h2><?= $index["EVENT_NAME"] ;?></h2>
+                                    <p><i class="fa-solid fa-calendar-days" style="color: #ffffff;"></i>　<?= $index["SCHEDULE"] ;?></p>
+                                    <p><i class="fa-solid fa-location-dot" style="color: #ffffff;"></i>　<?= $index["ADDRESS"] ;?></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                <?php endforeach ?>
+                </div>
+
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section> -->
 
     <!--メリット一覧-->
 

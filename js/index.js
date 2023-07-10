@@ -45,7 +45,7 @@ let i = 1;
 //ホーム写真の自動的な表示交換　JS　終了
 
 //最近のイベントの自動的な表示交換　JS　開始
-var swiper = new Swiper(".card_slider", {
+var swiper = new Swiper(".s1", {
     autoplay: {
         delay: 1000, // 1000mm == 1 second
         disableOnInteraction: false,
@@ -66,3 +66,21 @@ var swiper = new Swiper(".card_slider", {
     },
   });
 //最近のイベントの自動的な表示交換　JS　終了
+
+
+// var mySwiper2 = new Swiper(".s2", {
+//   effect: "coverflow",
+//   grabCursor: true,
+//   centeredSlides: true,
+//   slidesPerView: 3,
+//   coverflowEffect: {
+//     rotate: 50,
+//     stretch: 0,
+//     depth: 100,
+//     modifier: 1,
+//     slideShadows: true,
+//   },
+//   pagination: {
+//     el: ".swiper-pagination",
+//   },
+// });

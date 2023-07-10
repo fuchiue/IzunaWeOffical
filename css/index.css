@@ -62,15 +62,15 @@
 #welcomingTitle{
   position: absolute;
   z-index: 501;
-  top: 25%;
-  left: 21%;
+  top: 23%;
+  left: 17%;
 }
 
 #welcomingTitle p{
 color: #ffffff;
 font-weight: bold;
-font-size: 38px;
-text-shadow: 11px 12px 10px black;
+font-size: 45px;
+text-shadow: 11px 12px 10px #555555;
 
 }
 
@@ -238,7 +238,7 @@ select {
   margin: 0 auto;
 }
 
-.card_slider{
+.s1{
   padding: 50px;
 }
 
@@ -258,9 +258,6 @@ select {
   color: white;
 }
 
-.swiper-pagination{ 
-  color: #DD0000;
-}
 
 a {
   text-decoration: none;
@@ -268,6 +265,38 @@ a {
 
 
 /*最近イベントCSS　終了*/
+
+/*ランキング　CSS*/
+
+#ranking{
+
+}
+
+.swiper-container .s2{
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 300px;
+}
+
+/* .img_box2 img {
+  display: block;
+  width: 100%;
+} */
+
+.img_box2 img{
+  width: 347px;
+  height: 180px;
+  object-fit: cover;
+}
+
+
 
 /*メリット一覧CSS　開始*/
 
@@ -295,18 +324,19 @@ a {
 .meritArea{
   position: relative;
   margin-top: 30px;
+  max-width: 1160px;
 }
 
 .meritInner{
   position: relative;
   width: 100%;
-  height: 1130px;
+  height: 1060px;
 }
 
 #meritTitleBox{
   display: flex;
   justify-content: end;
-  margin-right: 30px;
+  
 }
 
 #meritTitle{
@@ -323,7 +353,7 @@ a {
   position: absolute;
   z-index: 2;
   /* left: 201px; */
-  left: 15%;
+  left: 19%;
 }
 
 #merit2{
@@ -332,17 +362,17 @@ a {
   position: absolute;
   z-index: 3;
   /* left: 652px; */
-  left: 50%;
+  left: 54%;
   top: 254px;
 }
 
 #merit3{
-  width: 42%;
+  width: 40%;
   padding: 20px;
   position: absolute;
   z-index: 1;
-  left: 7%;
-  top: 500px;
+  left: 17%;
+  top: 456px;
 }
 
 #merit4{
@@ -350,8 +380,8 @@ a {
   padding: 20px;
   position: absolute;
   z-index: 0;
-  left: 40%;
-  top: 700px;
+  left: 46%;
+  top: 660px;
 }
  
   /*メリット一覧CSS　終了*/
