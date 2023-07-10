@@ -202,15 +202,17 @@ function UserLogin($username, $password, $eventid)
             
             $pdo = dbc();
             if (strpos($username, '@')) {
-                $sql = "SELECT * FROM USER WHERE EMAIL=:username";
+                $sql = "SELECT USER_ID,PASSWORD FROM USER WHERE EMAIL=:username";
             } else {
-                $sql = "SELECT * FROM USER WHERE USER_NAME=:username";
+                $sql = "SELECT USER_ID,PASSWORD FROM USER WHERE USER_NAME=:username";
             }
             $stmt = $pdo->prepare($sql);
             $stmt->bindParam(':username', $username, PDO::PARAM_STR);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            if ($result && $result["PASSWORD"] === $password) {
+            
+            //データベースの暗号化ができてない
+            if ($result && password_verify($password,$result["PASSWORD"])) {
                 echo $result;
                 // ユーザー番号をセッションに登録
                 $_SESSION["id"] = $result["USER_ID"];
@@ -224,6 +226,7 @@ function UserLogin($username, $password, $eventid)
             } else {
                 $msg = "ユーザー名またはパスワードが正しくありません";
                 header("Location: login_page_User.php?msg=$msg");
+                // header("Location: login_page_User.php?msg=$hashedpass");
             }
             $pdo->commit();
         } catch (PDOException $poe) {
@@ -251,7 +254,7 @@ function HostLogin($username, $password)
             $stmt->bindParam(':username', $username, PDO::PARAM_STR);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            if ($result && $result["PASSWORD"] === $password) {
+            if ($result && password_verify($password,$result["PASSWORD"])) {
                 echo $result;
                 // ユーザー番号をセッションに登録
                 $_SESSION["id"] = $result["OWNER_ID"];
