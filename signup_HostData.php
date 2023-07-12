@@ -19,7 +19,7 @@ $password_K = $_POST["password_K"];
 if($password != $password_K){
     echo "パスワードが一致しません";
 }
-
+$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 //メールアドレスとパスワードの重複を防ぐ
 $email = $_POST["email"];
 
@@ -71,7 +71,7 @@ if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
         $stmt->bindValue(":ICON", $target_file, PDO::PARAM_STR);
         $stmt->bindValue(":TEL", $_POST["tel"], PDO::PARAM_STR);
         $stmt->bindValue(":EMAIL", $_POST["email"], PDO::PARAM_STR);
-        $stmt->bindValue(":PASSWORD", $_POST["password"], PDO::PARAM_STR);
+        $stmt->bindValue(":PASSWORD", $hashedPassword, PDO::PARAM_STR);
 
         $stmt->execute();
         echo "データが正常に保存されました。";
