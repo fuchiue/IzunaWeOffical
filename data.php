@@ -52,13 +52,16 @@ function hostGetData($id)
 function hostGetjoinUser($id)
 {
     try {
-        $sql = 'SELECT J.USER_ID, U.ICON, J.EVENT_ID
-        FROM JOINED AS J
-        INNER JOIN EVENT AS E ON J.EVENT_ID = E.EVENT_ID
-        INNER JOIN USER AS U ON J.USER_ID = U.USER_ID
+        $sql = 'SELECT J.USER_ID,U.ICON,U.POINT FROM
+        JOINED AS J
+        INNER JOIN
+        EVENT AS E
+        ON J.EVENT_ID = E.EVENT_ID
+        INNER JOIN
+        USER AS U
+        ON J.USER_ID = U.USER_ID
         WHERE E.OWNER_ID = :id
-        AND J.STATUS = "参加済み"
-        ORDER BY U.POINT DESC;';
+        AND J.STATUS="参加済み" ORDER BY U.POINT DESC ;'; //ホストのIDのイベントに参加済みの人の情報を取得
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする 
         $stmt->bindValue(':id', $id, PDO::PARAM_STR); //sqlの:idに変数の$idを代入
         $stmt->execute(); //実行
@@ -411,6 +414,19 @@ function h($s)
     return htmlspecialchars($s, ENT_QUOTES, "UTF-8");
 }
 
+/**
+ * ユーザデータを取得
+ * @return array $userData
+ */
+function getAllUser()
+{
+    $sql = "SELECT * FROM USER ORDER BY POINT DESC LIMIT 10";
+
+    $userData = dbc()->query($sql);
+
+    return $userData;
+}
+
 
 //イベントへの参加応募を登録
 function addJoin($userId, $eventId)
@@ -468,7 +484,7 @@ if (!is_dir($photo_directory)) {
     mkdir($photo_directory, 0755, true);
 }
 
-function photoSave($id, $photo_path, $owner_id, $event_id)
+function photoSave($id, $photo_path, $owner_id, $event_id, $comment)
 {
     $result = False;
 
@@ -477,7 +493,7 @@ function photoSave($id, $photo_path, $owner_id, $event_id)
     // トランザクションを開始
     $pdo->beginTransaction();
 
-    $sql = "INSERT INTO POST(USER_ID, PHOTO, OWNER_ID, EVENT_ID) VALUES(?, ?, ?, ?)";
+    $sql = "INSERT INTO POST(USER_ID, PHOTO, OWNER_ID, EVENT_ID, COMMENT) VALUES(?, ?, ?, ?, ?)";
 
     try {
         // プリペアドステートメントを作成
@@ -498,6 +514,7 @@ function photoSave($id, $photo_path, $owner_id, $event_id)
             $stmt->bindParam(3, $owner_id, PDO::PARAM_INT);
         }
         $stmt->bindParam(4, $event_id, PDO::PARAM_INT);
+        $stmt->bindParam(5, $comment, PDO::PARAM_STR);
         // クエリを実行
         $stmt->execute();
 
@@ -573,7 +590,7 @@ function addPoint($userId, $addPoint)
 function updateJoin($userId, $eventId)
 {
     try {
-        $sql = 'UPDATE user SET STATUS="参加済み" WHERE USER_ID=:userId AND EVENT_ID=:eventId';
+        $sql = 'UPDATE joined SET STATUS="参加済み" WHERE USER_ID=:userId AND EVENT_ID=:eventId'; 
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
         $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
         $stmt->bindValue(':eventId', $eventId, PDO::PARAM_INT);

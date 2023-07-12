@@ -59,10 +59,10 @@ $eventdatas = TakeAllEventData($userid);
                 <div class="rightArea">
                     <h3 id="annotations">この写真に対するイベントを選択してください</h3>
                     <div class="scroll-bg">
-                    <div class="scroll-div">
-                        <div class="scroll-object">
-                        <?php foreach ($eventdatas as $eventdata) : ?>
-                            <div class="place-content">
+                        <div class="scroll-div">
+                            <div class="scroll-object">
+                            <?php foreach ($eventdatas as $eventdata) : ?>
+                                <div class="place-content">
 
                                     <div class="event-item">
                                         <label>
@@ -83,12 +83,17 @@ $eventdatas = TakeAllEventData($userid);
                                         </label>
                                     </div>
 
-                            </div>
+                                </div>
                             <?php endforeach; ?>
+                            </div>
                         </div>
                     </div>
                 </div>
-                </div>
+            </div>
+            <!-- 口コミ -->
+            <div class="bottomArea">
+                <label class="commentTitle">このボランティア活動に参加した感想をシェアしてください</label>
+                <textarea maxlength="300" name="comment" cols="30" rows="10" placeholder="感想を入力してください。"></textarea>
             </div>
 
             <div id="signUp_BtnArea">

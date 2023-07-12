@@ -126,6 +126,7 @@
     margin-top: -20px;
     text-align: center;
     color: black;
+    font-family: 'KleeOneFont';
 }
 
 .place-content{
@@ -197,6 +198,28 @@
     border-left: 4px solid #780101;
     
 }
+/* 口コミ */
+.bottomArea {
+    margin-bottom: 35px;
+}
+.bottomArea textarea {
+    border: 2px dashed #DC0000;
+    border-radius: 5px;
+    resize: none;
+    width:-webkit-fill-available;
+    height:100px; 
+    font-size: large;
+}
+.commentTitle {
+    display: flex;
+    font-family: 'KleeOneFont';
+    font-weight: 600;
+    font-size: large;
+    margin-bottom: 7px;
+}
+::placeholder {
+    font-size: large; /* 好きなサイズに変更 */
+  }
 
 /*送信ボタン*/
 #signUp_BtnArea{
