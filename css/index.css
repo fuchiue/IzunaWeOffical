@@ -10,7 +10,6 @@
 } */
 
 
-
 /*fade out code*/
 #Opening{
     position: relative;
@@ -44,7 +43,7 @@
   }
 
   .fade-in-image {
-    animation: fadeIn 2s;
+    animation: fadeIn 3s;
   }
   
   @keyframes fadeIn {
@@ -53,13 +52,27 @@
   }
   
   .fade-out-image {
-    animation: fadeOut 2s;
+    animation: fadeOut 3s;
   }
   @keyframes fadeOut {
     0% {opacity:1;}
     100% {opacity:0;}
   }
   
+#welcomingTitle{
+  position: absolute;
+  z-index: 501;
+  top: 23%;
+  left: 17%;
+}
+
+#welcomingTitle p{
+color: #ffffff;
+font-weight: bold;
+font-size: 45px;
+text-shadow: 11px 12px 10px #555555;
+
+}
 
   
 /*検索ボックス　CSS　開始 */
@@ -256,13 +269,22 @@ a {
 
 /*最近イベントCSS　終了*/
 
+/*ランキング　CSS*/
 /* ポイント順位TOP10の参加者 */
 
-.slider_top10 h1{
+#topTitle{
+  margin-top: 60px;
+}
+
+.slider_top10 p{
   color: #DD0000;
   text-align: center;
   font-family: 'HandWriteFont';
   font-size: 65px;
+
+}
+.pointT{
+  font-size: small;
 }
 
 .slider_top10 .container{
@@ -281,13 +303,13 @@ a {
 }
 
 .HP_userDetails{
-  border: 2px dashed #DC0000;
+  background-color: lightgray;
   border-radius: 5px;
   resize: none;
   width:-webkit-fill-available;
   display: grid;
-  background-color: white;
   padding: 10px;
+
 }
 
 .HP_userDetails h2{
@@ -298,11 +320,112 @@ a {
 .HP_userDetails p{
   margin: 5px 0px;
   color: #DC0000;
+  font-size: 18px;
 }
 
 
-  /*メリット一覧CSS　開始*/
-  /* #meritArea{
+/*メリット一覧CSS　開始*/
+
+.meritbox{
+  background: #DD0000;
+  border-radius: 50%;
+  width: 500px;
+  height: 500px;
+  box-shadow: 11px 12px 10px gray;
+}
+
+.meritcontent{
+  display: grid;
+  justify-content: center;
+  text-align: center;
+  padding: 195px 0px;
+}
+
+.meritcontent h3{
+  color: #ffffff;
+  font-family: 'HandWriteFont';
+  font-size: 110px;
+}
+
+.meritArea{
+  position: relative;
+  margin-top: 30px;
+  max-width: 1160px;
+}
+
+.meritInner{
+  position: relative;
+  width: 100%;
+  height: 1060px;
+}
+
+#meritTitleBox{
+  display: flex;
+  justify-content: end;
+  
+}
+
+#meritTitle{
+  font-family: 'HandWriteFont';
+  color: #DD0000;
+  font-size: 65px;
+  position: absolute;
+  z-index: 4;
+}
+
+#merit1{
+  width: 46%;
+  padding: 20px;
+  position: absolute;
+  z-index: 2;
+  /* left: 201px; */
+  left: 19%;
+}
+
+#merit2{
+  width: 40%;
+  padding: 20px;
+  position: absolute;
+  z-index: 3;
+  /* left: 652px; */
+  left: 54%;
+  top: 254px;
+}
+
+#merit3{
+  width: 40%;
+  padding: 20px;
+  position: absolute;
+  z-index: 1;
+  left: 17%;
+  top: 456px;
+}
+
+#merit4{
+  width: 40%;
+  padding: 20px;
+  position: absolute;
+  z-index: 0;
+  left: 46%;
+  top: 660px;
+}
+ 
+  /*メリット一覧CSS　終了*/
+
+  #deco_hm{
+    margin-bottom: 50px;
+  }
+
+  #deco_hm img{
+    width: 100%;
+  }
+
+
+  
+
+  /*----元のメリット一覧　CSS--------------------*/
+
+   /* #meritArea{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -361,100 +484,6 @@ a {
     background-color:#DD0000;
   } */
 
-  /*メリット一覧CSS　終了*/
 
-  #deco_hm{
-    margin-bottom: 50px;
-  }
 
-  #deco_hm img{
-    width: 100%;
-  }
 
-/* Merit Box test area*/
-
-/* #meritArea{
-  display: grid;
-  justify-content: center;
-  align-items: center;
-} */
-
-.meritbox{
-  background: #DD0000;
-  border-radius: 50%;
-  width: 500px;
-  height: 500px;
-  box-shadow: 11px 12px 10px gray;
-}
-
-.meritcontent{
-  display: grid;
-  justify-content: center;
-  text-align: center;
-  padding: 195px 0px;
-}
-
-.meritcontent h3{
-  color: #ffffff;
-  font-family: 'HandWriteFont';
-  font-size: 110px;
-}
-
-.meritArea{
-  position: relative;
-  margin-top: 30px;
-}
-
-.meritInner{
-  position: relative;
-  height: 200vh;
-}
-
-#meritTitleBox{
-  display: flex;
-  justify-content: end;
-  margin-right: 30px;
-}
-
-#meritTitle{
-  font-family: 'HandWriteFont';
-  color: #DD0000;
-  font-size: 65px;
-  position: absolute;
-  z-index: 4;
-}
-
-#merit1{
-  width: 46%;
-  padding: 20px;
-  position: absolute;
-  z-index: 2;
-  left: 201px;
-}
-
-#merit2{
-  width: 40%;
-  padding: 20px;
-  position: absolute;
-  z-index: 3;
-  left: 652px;
-  top: 254px;
-}
-
-#merit3{
-  width: 42%;
-  padding: 20px;
-  position: absolute;
-  z-index: 1;
-  left: 148px;
-  top: 505px;
-}
-
-#merit4{
-  width: 40%;
-  padding: 20px;
-  position: absolute;
-  z-index: 0;
-  left: 532px;
-  top: 700px;
-}

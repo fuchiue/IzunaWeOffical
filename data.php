@@ -212,9 +212,9 @@ function UserLogin($username, $password, $eventid)
             $stmt->bindParam(':username', $username, PDO::PARAM_STR);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            
+
             //データベースの暗号化ができてない
-            if ($result && password_verify($password,$result["PASSWORD"])) {
+            if ($result && password_verify($password, $result["PASSWORD"])) {
                 echo $result;
                 // ユーザー番号をセッションに登録
                 $_SESSION["id"] = $result["USER_ID"];
@@ -256,7 +256,7 @@ function HostLogin($username, $password)
             $stmt->bindParam(':username', $username, PDO::PARAM_STR);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            if ($result && password_verify($password,$result["PASSWORD"])) {
+            if ($result && password_verify($password, $result["PASSWORD"])) {
                 echo $result;
                 // ユーザー番号をセッションに登録
                 $_SESSION["id"] = $result["OWNER_ID"];
@@ -548,6 +548,7 @@ function TakePostEvent($userid)
     return $postdata;
 }
 
+
 //ここから画像投稿でPOINTを加算するために使うSQL
 
 /*
@@ -590,7 +591,7 @@ function addPoint($userId, $addPoint)
 function updateJoin($userId, $eventId)
 {
     try {
-        $sql = 'UPDATE joined SET STATUS="参加済み" WHERE USER_ID=:userId AND EVENT_ID=:eventId'; 
+        $sql = 'UPDATE joined SET STATUS="参加済み" WHERE USER_ID=:userId AND EVENT_ID=:eventId';
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
         $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
         $stmt->bindValue(':eventId', $eventId, PDO::PARAM_INT);
@@ -603,3 +604,4 @@ function updateJoin($userId, $eventId)
 }
 
 //ここまで画像投稿でPOINTを加算するために使うSQL
+

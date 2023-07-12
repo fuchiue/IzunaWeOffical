@@ -70,9 +70,13 @@ if (isset($userid)) {
 
             <!-- 自己紹介文　-->
             <p>自己紹介文</p>
-            <p>
-                <?= $userdata['NOTE'] ?>
-            </p>
+            <div class="word-break">
+                <div class="normal">
+                    <p>
+                        <?= $userdata['NOTE'] ?>
+                    </p>
+                </div>
+            </div>
         </div>
 
 
@@ -119,6 +123,11 @@ if (isset($userid)) {
                                     <p>日時：　<?= $postdatas['SCHEDULE'] ?></p>
                                     <p>場所：　<?= $postdatas['ADDRESS'] ?></p>
                                     <p>活動内容：　<?= $postdatas['NOTE'] ?></p>
+                                    <div class="word-break">
+                                        <div class="normal">
+                                            <p>感想：　ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+                                        </div>
+                                    </div>    
                                     <a href="hostpage_ViewOnly.php?id=<?= $postdatas['OWNER_ID'] ?>">イベントのホストページへ</a>
                                 </div>
 
