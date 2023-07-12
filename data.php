@@ -52,16 +52,13 @@ function hostGetData($id)
 function hostGetjoinUser($id)
 {
     try {
-        $sql = 'SELECT J.USER_ID,U.ICON FROM
-        JOINED AS J
-        INNER JOIN
-        EVENT AS E
-        ON J.EVENT_ID = E.EVENT_ID
-        INNER JOIN
-        USER AS U
-        ON J.USER_ID = U.USER_ID
+        $sql = 'SELECT J.USER_ID, U.ICON, J.EVENT_ID
+        FROM JOINED AS J
+        INNER JOIN EVENT AS E ON J.EVENT_ID = E.EVENT_ID
+        INNER JOIN USER AS U ON J.USER_ID = U.USER_ID
         WHERE E.OWNER_ID = :id
-        AND J.STATUS="参加済み";'; //ホストのIDのイベントに参加済みの人の情報を取得
+        AND J.STATUS = "参加済み"
+        ORDER BY U.POINT DESC;';
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする 
         $stmt->bindValue(':id', $id, PDO::PARAM_STR); //sqlの:idに変数の$idを代入
         $stmt->execute(); //実行
@@ -71,6 +68,7 @@ function hostGetjoinUser($id)
         exit($e->getMessage());
     }
 }
+
 
 /*
 対応するIDの開催したボランティアの情報を返す
@@ -116,7 +114,8 @@ function GetRegister($id)
 ユーザIDとイベントIDから質問の解答を返す
 hostpage_AfterLogin
 */
-function GetAns($userId,$eventId){
+function GetAns($userId, $eventId)
+{
     try {
         $sql = 'SELECT ANSWER FROM answer WHERE USER_ID = :userId AND EVENT_ID = :eventId'; //ホストの開催したイベントを取得
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする 
@@ -199,7 +198,7 @@ function UserLogin($username, $password, $eventid)
     if ($username != null && $password != null) {
         try { // トランザクション開始
             $LocationUrl = "Location: userpage_AfterLogin.php";
-            
+
             $pdo = dbc();
             if (strpos($username, '@')) {
                 $sql = "SELECT USER_ID,PASSWORD FROM USER WHERE EMAIL=:username";
@@ -335,7 +334,7 @@ if (!is_dir($directory)) {
 /**
  * 作成したイベント内容を保存
  */
-function eventSave($event_name, $theme, $note, $area, $addressAll, $icon, $schedule, $hour, $owner_id, $detail,$questions)
+function eventSave($event_name, $theme, $note, $area, $addressAll, $icon, $schedule, $hour, $owner_id, $detail, $questions)
 {
     $result = False;
 
@@ -429,7 +428,8 @@ function addJoin($userId, $eventId)
 }
 
 //イベントへの参加応募を登録
-function addans($userId,$eventId,$ans){
+function addans($userId, $eventId, $ans)
+{
     try {
         $sql = 'INSERT INTO answer(USER_ID,EVENT_ID,ANSWER)VALUES(?,?,?)'; //団体名、紹介文、アイコン画像を取得
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
@@ -516,7 +516,8 @@ function photoSave($id, $photo_path, $owner_id, $event_id)
 }
 
 
-function TakePostEvent($userid){
+function TakePostEvent($userid)
+{
     $id = filter_var($userid, FILTER_SANITIZE_FULL_SPECIAL_CHARS); // ユーザー名をエスケープしてフィルタリングする
     $pdo = dbc();
     $sql = "SELECT P.PHOTO,P.OWNER_ID,E.EVENT_NAME,E.NOTE,E.SCHEDULE,E.ADDRESS FROM POST AS P 
@@ -535,10 +536,10 @@ function TakePostEvent($userid){
 /*
 ユーザーIDとイベントIDからすでに投稿しているか調べる。投稿がない場合0を返す
 */
-function countPost ($id,$event)
+function countPost($id, $event)
 {
     try {
-        $sql = 'SELECT COUNT(*) FROM post WHERE USER_ID=:userId AND EVENT_ID=:eventId'; 
+        $sql = 'SELECT COUNT(*) FROM post WHERE USER_ID=:userId AND EVENT_ID=:eventId';
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
         $stmt->bindValue(':userId', $id, PDO::PARAM_STR); //sqlの:idに変数の$idを代入
         $stmt->bindValue(':eventId', $event, PDO::PARAM_STR);
@@ -554,13 +555,13 @@ function countPost ($id,$event)
 /*
 ユーザーデータのポイントにGeteventで取ってきた活動時間を加算して更新する
 */
-function addPoint ($userId,$addPoint)
+function addPoint($userId, $addPoint)
 {
     try {
-        $sql = 'UPDATE user SET POINT=POINT+:addPoint WHERE USER_ID=:userId'; 
+        $sql = 'UPDATE user SET POINT=POINT+:addPoint WHERE USER_ID=:userId';
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
-        $stmt->bindValue(':userId', $userId, PDO::PARAM_INT); 
-        $stmt->bindValue(':addPoint', $addPoint, PDO::PARAM_INT); 
+        $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
+        $stmt->bindValue(':addPoint', $addPoint, PDO::PARAM_INT);
         $stmt->execute(); //実行
         $result = $stmt->fetch(); //データを取得
         return $result; //データを返す
@@ -569,13 +570,13 @@ function addPoint ($userId,$addPoint)
     }
 }
 
-function updateJoin ($userId,$eventId)
+function updateJoin($userId, $eventId)
 {
     try {
-        $sql = 'UPDATE user SET STATUS="参加済み" WHERE USER_ID=:userId AND EVENT_ID=:eventId'; 
+        $sql = 'UPDATE user SET STATUS="参加済み" WHERE USER_ID=:userId AND EVENT_ID=:eventId';
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
-        $stmt->bindValue(':userId', $userId, PDO::PARAM_INT); 
-        $stmt->bindValue(':eventId', $eventId, PDO::PARAM_INT); 
+        $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
+        $stmt->bindValue(':eventId', $eventId, PDO::PARAM_INT);
         $stmt->execute(); //実行
         $result = $stmt->fetch(); //データを取得
         return $result; //データを返す
