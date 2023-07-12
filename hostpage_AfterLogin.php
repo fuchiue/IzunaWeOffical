@@ -240,7 +240,7 @@ $photodatas = TakePostData($id); //投稿した写真を取得
                         <div class="event-item">
                             <diV class="col-md-7 center-item">
                                 <div class="joinedPpl_Control_Img">
-                                    <a href="userpage_ViewOnly.php">
+                                    <a href="userpage_ViewOnly.php?id=<?= $register['USER_ID'] ?>">
                                         <img src="<?= $register['ICON']; ?>" alt="">
                                     </a>
                                 </div>
