@@ -68,10 +68,16 @@ hiddenContent.forEach((element) => {
     });
 });
 
-const hiddenBox = document.querySelector(".full-screen")
-hiddenBox.addEventListener("click",(e)=>{
-    console.log("clicked")
+const hiddenBox = document.querySelectorAll(".hidden-content");
+hiddenBox.forEach((element) => {
+    const grayArea = element.parentNode;
+    grayArea.addEventListener("click",(e)=>{
+        console.log(grayArea)
+        if(!grayArea.classList.contains(".hidden")){
+            grayArea.classList.toggle('hidden');
+        }
 
+    });
 });
 
 // document.querySelector(".closePopup").addEventListener("click", () => {
