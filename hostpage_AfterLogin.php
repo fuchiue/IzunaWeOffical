@@ -94,6 +94,19 @@ $photodatas = TakePostData($id); //投稿した写真を取得
                                 echo '<a class="imgBox"><img src="' . $photo['PHOTO'] . '"></a>';
                                 echo "\n";
 
+                                //  ポップアップエリア 
+                                echo '<div class="full-screen hidden flex-container-center">';
+                                                  
+                                echo '<div class="hidden-content">';
+                                    echo '<div class="hidden-content-left">';
+                                    echo '<div class="background">'; 
+                                        echo '<img src="'. $photo['PHOTO'] . '" class="popup-img">';
+                                        echo '<button class="closePopup">戻る</button>';
+                                    echo '</div>';
+                                echo '</div>';
+                                echo '</div>';
+                                echo '</div>';
+
                                 //三回写真を表示したら終わりのタグそれ以外ならカウントアップ
                                 if ($cont == 2) {
                                     echo '</div>'; //終わりのタグ

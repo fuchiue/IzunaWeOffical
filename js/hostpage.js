@@ -67,3 +67,35 @@ imgBtn.addEventListener("click",()=>{
         nowEBtn.style.border='dashed 2px #DC0000';
 });
 
+//ポップアップエリアのJS
+
+function togglePopup(imgsrc){
+    const popup= document.querySelectorAll('.full-screen');
+    popup.forEach((element) => {
+        const targetimg = element.querySelector('.popup-img').getAttribute('src');
+        if(imgsrc == targetimg){
+            element.classList.toggle('hidden');
+        }
+    });
+}
+
+const imgList = document.querySelectorAll(".imgBox");
+
+imgList.forEach((element) => {
+    element.addEventListener("click", (e) => {
+        e.preventDefault();
+        const imgsrc = element.querySelector('img').getAttribute('src');
+        togglePopup(imgsrc);
+
+    });
+});
+
+const hiddenContent = document.querySelectorAll(".hidden-content-left");
+hiddenContent.forEach((element) => {
+    const imgsrc = element.querySelector('.popup-img').getAttribute('src');
+    const closeBtn = element.querySelector(".closePopup");
+    closeBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        togglePopup(imgsrc);
+    });
+});
