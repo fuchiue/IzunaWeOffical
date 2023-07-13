@@ -132,34 +132,6 @@ $db = null;
 
     </section>
 
-    <!-- ランキング一覧　-->
-    <!-- <section id="ranking">
-        <div class="container">
-                <div class="swiper-container s2">
-
-                <div class="swiper-wrapper">
-                <?php foreach($result as $index):?> 
-                    <div class="swiper-slide">
-                        <div class="img_box2">
-                            <a href="event_Content.php?eventId=<?= $index["EVENT_ID"];?>">
-                                <img src="<?= $index["ICON"] ;?>">
-                                <div class="HP_eventDetails">
-                                    <h2><?= $index["EVENT_NAME"] ;?></h2>
-                                    <p><i class="fa-solid fa-calendar-days" style="color: #ffffff;"></i>　<?= $index["SCHEDULE"] ;?></p>
-                                    <p><i class="fa-solid fa-location-dot" style="color: #ffffff;"></i>　<?= $index["ADDRESS"] ;?></p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                <?php endforeach ?>
-                </div>
-
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-    </section> -->
 
     <!--メリット一覧-->
 
@@ -169,10 +141,10 @@ $db = null;
             <div id="meritTitleBox" data-aos="fade-left">
                 <p id="meritTitle">ボランティアのメリット</p>
             </div>  
-            <div data-aos="fade-up" data-aos-duration="1000"><img src="./image/merit1.png" id="merit1"></div>
-            <div data-aos="fade-down" data-aos-duration="2000"><img src="./image/merit2.png" id="merit2"></div>
-            <div data-aos="fade-right" data-aos-duration="3000"><img src="./image/merit3.png" id="merit3"></div>
-            <div data-aos="fade-left" data-aos-duration="2000"><img src="./image/merit4.png" id="merit4"></div>
+            <div data-aos="fade-up" data-aos-duration="1000"><a href="merit_Content.php #society"><img src="./image/merit1.png" id="merit1"></a></div>
+            <div data-aos="fade-down" data-aos-duration="2000"><a href="merit_Content.php #friends"><img src="./image/merit2.png" id="merit2"></div>
+            <div data-aos="fade-right" data-aos-duration="3000"><a href="merit_Content.php #communicate"><img src="./image/merit3.png" id="merit3"></div>
+            <div data-aos="fade-left" data-aos-duration="2000"><a href="merit_Content.php #jobs"><img src="./image/merit4.png" id="merit4"></div>
     </section>
 
     <!-- 参加者のポイント数TOP10 -->

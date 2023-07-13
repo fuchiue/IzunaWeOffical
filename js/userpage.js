@@ -68,6 +68,12 @@ hiddenContent.forEach((element) => {
     });
 });
 
+const hiddenBox = document.querySelector(".full-screen")
+hiddenBox.addEventListener("click",(e)=>{
+    console.log("clicked")
+
+});
+
 // document.querySelector(".closePopup").addEventListener("click", () => {
 //     console.log("削除")
 //     togglePopup();
