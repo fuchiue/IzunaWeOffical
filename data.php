@@ -304,7 +304,7 @@ function TakeEventData($userid)
 {
     $id = filter_var($userid, FILTER_SANITIZE_FULL_SPECIAL_CHARS); // ユーザー名をエスケープしてフィルタリングする
     $pdo = dbc();
-    $sql = "SELECT EVENT_ID,ICON,EVENT_NAME,OWNER_ID,ADDRESS,THEME,STATUS FROM EVENT WHERE EVENT_ID IN (SELECT EVENT_ID FROM JOINED WHERE USER_ID=:userid )";
+    $sql = "SELECT EVENT_ID,ICON,EVENT_NAME,OWNER_ID,ADDRESS,THEME,STATUS FROM EVENT WHERE EVENT_ID IN (SELECT EVENT_ID FROM JOINED WHERE USER_ID=:userid UNION SELECT EVENT_ID FROM REGISTER WHERE USER_ID=:userid )";
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue(':userid', $id, PDO::PARAM_STR);
     $stmt->execute();
