@@ -596,3 +596,24 @@ function updateJoin ($userId,$eventId)
 }
 
 //ここまで画像投稿でPOINTを加算するために使うSQL
+
+
+// 参加者名簿を取得
+function Getguest($eventId)
+{
+    try {
+        $sql = 'SELECT U.USER_NAME,E.EVENT_NAME,U.ICON,U.EMAIL,U.USER_ID,E.EVENT_ID, J.STATUS FROM JOINED AS J
+        INNER JOIN USER AS U
+        ON J.USER_ID = U.USER_ID
+        INNER JOIN EVENT AS E
+        ON J.EVENT_ID = E.EVENT_ID
+        WHERE J.EVENT_ID = :eventId'; //ホストのIDのイベントに参加済みの人の情報を取得
+        $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする 
+        $stmt->bindValue(':eventId', $eventId, PDO::PARAM_STR); //sqlの:idに変数の$idを代入
+        $stmt->execute(); //実行
+        $result = $stmt->fetchAll(); //データを取得
+        return $result; //データを返す
+    } catch (Exception $e) {
+        exit($e->getMessage());
+    }
+}
