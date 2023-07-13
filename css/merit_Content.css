@@ -24,7 +24,7 @@
 
 #Merit_Area{
   margin-top: 30px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 #society,
@@ -34,6 +34,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 400px;
 }
 
 #society a,
