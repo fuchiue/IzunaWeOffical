@@ -58,15 +58,16 @@ imgList.forEach((element) => {
     });
 });
 
-const hiddenContent = document.querySelectorAll(".hidden-content-left");
-hiddenContent.forEach((element) => {
-    const imgsrc = element.querySelector('img').getAttribute('src');
-    const closeBtn = element.querySelector(".closePopup");
-    closeBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        togglePopup(imgsrc);
-    });
-});
+//ボタンだけでポップアップ画面を閉じる場合：
+// const hiddenContent = document.querySelectorAll(".hidden-content-left");
+// hiddenContent.forEach((element) => {
+//     const imgsrc = element.querySelector('img').getAttribute('src');
+//     const closeBtn = element.querySelector(".closePopup");
+//     closeBtn.addEventListener("click", (e) => {
+//         e.preventDefault();
+//         //togglePopup(imgsrc);
+//     });
+// });
 
 const hiddenBox = document.querySelectorAll(".hidden-content");
 hiddenBox.forEach((element) => {
