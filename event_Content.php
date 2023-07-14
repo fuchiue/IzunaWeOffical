@@ -7,6 +7,8 @@ $eventdata = Getevent($id);
 $hostdata = hostGetData($eventdata['OWNER_ID']); //ホストの情報を取得
 
 $buttonhidden = false; //応募ボタン非表示フラグ
+$eventstuts = false; //募集中ならfalse　終了ならtrue
+$ownerflag = false;
 $eventjoin = 0;
 
 //セッションからIDを取得
@@ -21,13 +23,19 @@ if (isset($loginid)) {
         $buttonhidden = true;
     } else {
         $eventjoin = checkjoin($loginid, $id);
-        $eventjoin=$eventjoin['COUNT(*)'];
+        $eventjoin = $eventjoin['COUNT(*)'];
+    }
+    //ホストIDとログインIDが一緒ならフラグを立てておく
+    if ($loginid == $eventdata['OWNER_ID']) {
+        $ownerflag = true;
     }
 }
 //ステータスが終了の場合応募ボタンを非表示フラグをtrueに
 if ($eventdata['STATUS'] == "終了") {
     $buttonhidden = true;
 }
+
+
 
 // echo "<pre>";
 // print_r($eventdata);
@@ -82,7 +90,7 @@ if ($eventdata['STATUS'] == "終了") {
                 <p class="EV_Small_Title">日時：</p>
                 <p class="EV_Small_Title">平均活動時間/分：</p>
                 <p class="EV_Small_Title">活動場所：</p>
-                
+
             </div>
 
 
@@ -96,61 +104,74 @@ if ($eventdata['STATUS'] == "終了") {
             </div>
         </div>
         <!-- Detailはない場合があるためIFで判定する必要がある -->
-        <?php if(isset($eventdata["DETAIL"])): ?>
-        <div id="detailBox">
-            <div class="event_InfoTitle"> 
-                <p class="EV_Small_Title">募集詳細：</p>
-            </div>
-            <div class="event_SmallContent">
-                <p id="eventDetail"><?= nl2br($eventdata["DETAIL"]); ?></p>
-            </div>
-        <?php endif; ?>
-        
-        </div>
-
-        <div id="event_Box2" <?php if ($buttonhidden) {
-                                    echo "hidden";
-                                } ?>>
-            <!--  ***** ページの担当へ：PHPでイベントのstatusを参照して、応募ボタンをhiddenかどうか***** -->
-            <?php if ($eventjoin == 0) : ?>
-                <a href="userJoin.php?eventId=<?= $_GET["eventId"]; ?>" id="joinEventBtn">
-                    <p id="submitBtn">応募</p>
-                </a>
-            <?php else : ?>
-                <a id="joinEventBtn">
-                    <p id="submitBtn">応募済み</p>
-                </a>
+        <?php if (isset($eventdata["DETAIL"])) : ?>
+            <div id="detailBox">
+                <div class="event_InfoTitle">
+                    <p class="EV_Small_Title">募集詳細：</p>
+                </div>
+                <div class="event_SmallContent">
+                    <p id="eventDetail"><?= nl2br($eventdata["DETAIL"]); ?></p>
+                </div>
             <?php endif; ?>
-        </div>
+
+            </div>
+
+            <div id="event_Box2" <?php if ($buttonhidden || $eventstuts) {
+                                        echo "hidden";
+                                    } ?>>
+                <!--  ***** ページの担当へ：PHPでイベントのstatusを参照して、応募ボタンをhiddenかどうか***** -->
+                <?php if ($eventjoin == 0) : ?>
+                    <a href="userJoin.php?eventId=<?= $_GET["eventId"]; ?>" id="joinEventBtn">
+                        <p id="submitBtn">応募</p>
+                    </a>
+                <?php else : ?>
+                    <a id="joinEventBtn">
+                        <p id="submitBtn">応募済み</p>
+                    </a>
+                <?php endif; ?>
+            </div>
+            <?php if ($ownerflag) : ?>
+                <div id="event_Box2">
+                    <?php if ($eventdata['STATUS']=="募集中") : ?>
+                        <a href="endEvent.php?eventId=<?= $_GET["eventId"]; ?>" id="joinEventBtn">
+                            <p id="submitBtn">募集を終了する</p>
+                        </a>
+                    <?php else : ?>
+                        <a href="restartEvent.php?eventId=<?= $_GET["eventId"]; ?>" id="joinEventBtn">
+                            <p id="submitBtn">応募を再開する</p>
+                        </a>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
 
     </section>
 
     <!-- 団体アイコン＋紹介エリア -->
     <section>
         <a href="hostpage_ViewOnly.php?id=<?= $eventdata['OWNER_ID'] ?>" id="selfInfo_TopArea">
-            
-                <!-- 写真 -->
-                <div id="selfIcon_pic">
-                    
-                        <img src="<?= $hostdata['ICON'] ?>">
-                </div>
 
-                <!-- 団体情報 -->
-                <div id="selfInfo_Box">
+            <!-- 写真 -->
+            <div id="selfIcon_pic">
 
-                    <!-- 団体名　-->
-                    <h1><?= $hostdata['OWNER_NAME'] ?></h1>
+                <img src="<?= $hostdata['ICON'] ?>">
+            </div>
 
-                    <!-- 団体紹介文　-->
-                    <p id="selfInfo_title">団体紹介文</p>
-                    <div class="word-break">
-                        <div class="normal">
-                            <p><?= $hostdata['NOTE'] ?></p>
-                        </div>
+            <!-- 団体情報 -->
+            <div id="selfInfo_Box">
+
+                <!-- 団体名　-->
+                <h1><?= $hostdata['OWNER_NAME'] ?></h1>
+
+                <!-- 団体紹介文　-->
+                <p id="selfInfo_title">団体紹介文</p>
+                <div class="word-break">
+                    <div class="normal">
+                        <p><?= $hostdata['NOTE'] ?></p>
                     </div>
-                    <span id="toHostPage">イベントのホストページへ</span>
                 </div>
-            
+                <span id="toHostPage">イベントのホストページへ</span>
+            </div>
+
 
         </a>
     </section>
