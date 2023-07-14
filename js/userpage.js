@@ -58,20 +58,27 @@ imgList.forEach((element) => {
     });
 });
 
-const hiddenContent = document.querySelectorAll(".hidden-content-left");
-hiddenContent.forEach((element) => {
-    const imgsrc = element.querySelector('img').getAttribute('src');
-    const closeBtn = element.querySelector(".closePopup");
-    closeBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        togglePopup(imgsrc);
+//ボタンだけでポップアップ画面を閉じる場合：
+// const hiddenContent = document.querySelectorAll(".hidden-content-left");
+// hiddenContent.forEach((element) => {
+//     const imgsrc = element.querySelector('img').getAttribute('src');
+//     const closeBtn = element.querySelector(".closePopup");
+//     closeBtn.addEventListener("click", (e) => {
+//         e.preventDefault();
+//         //togglePopup(imgsrc);
+//     });
+// });
+
+const hiddenBox = document.querySelectorAll(".hidden-content");
+hiddenBox.forEach((element) => {
+    const grayArea = element.parentNode;
+    grayArea.addEventListener("click",(e)=>{
+        console.log(grayArea)
+        if(!grayArea.classList.contains(".hidden")){
+            grayArea.classList.toggle('hidden');
+        }
+
     });
-});
-
-const hiddenBox = document.querySelector(".full-screen")
-hiddenBox.addEventListener("click",(e)=>{
-    console.log("clicked")
-
 });
 
 // document.querySelector(".closePopup").addEventListener("click", () => {

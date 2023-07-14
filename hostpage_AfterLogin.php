@@ -154,10 +154,6 @@ $photodatas = TakePostData($id); //投稿した写真を取得
                                 //写真の表示　対応するユーザのIDを変数で送っている。
                                 echo '<a href="./userpage_ViewOnly.php?id=' . $user['USER_ID'] . '" class="imgBox">
                                         <img src="' . $user['ICON'] . '">
-                                        <div class="layer">
-                                            <p>No.1</p>
-                                            <p>Point</p>
-                                        </div>
                                     </a>';
 
                                 echo "\n";
