@@ -4,9 +4,9 @@ require_once __DIR__ . "/data.php";
 // ログインからIDを取ってくる
 // $userid = filter_input(INPUT_POST, "user");
 
-if(isset($_GET["id"])){
+if (isset($_GET["id"])) {
     $userid = $_GET["id"];
-}else{
+} else {
     header("Location: index.php");
 }
 // IDが入ってたら、TakeUserData,TakePostData,TakeEventDataファンクションを実行してデータを取得する
@@ -60,7 +60,9 @@ if ($userid != null) {
             <!-- ポイント表示 -->
             <div id="pointArea">
                 <img src="./image/Point.PNG" id="pointIcon">
-                <p>：<?= $userdata['POINT'] ?>点</p>
+                <p>：
+                    <?= $userdata['POINT'] ?>点
+                </p>
             </div>
             <!-- ニックネーム　-->
             <h1>
@@ -89,22 +91,22 @@ if ($userid != null) {
         <div id="switchPage">
             <!-- 投稿した写真　-->
             <div id="userPostImg">
-            <div class="imgRow">
+                <div class="imgRow">
                     <?php $count = 0; ?>
-                    <?php foreach ($postdata as $postdatas) : ?>
+                    <?php foreach ($postdata as $postdatas): ?>
                         <!-- <a href="hostpage_ViewOnly.php?id=< ?= $postdatas['OWNER_ID'] ?>" class="imgBox"><img src="< ?= $postdatas['PHOTO'] ?>"></a> -->
                         <a href="#" class="imgBox"><img src="<?= $postdatas['PHOTO'] ?>"></a>
                         <?php $count++; ?>
-                        <?php if ($count % 3 === 0) : ?>
-                            </div>
-                                <?php if ($count !== count($postdata)) : ?>
-                                    <div class="imgRow">
-                                <?php endif; ?>
+                        <?php if ($count % 3 === 0): ?>
+                        </div>
+                        <?php if ($count !== count($postdata)): ?>
+                            <div class="imgRow">
+                            <?php endif; ?>
                         <?php endif; ?>
 
                         <!-- ポップアップエリア -->
                         <div class="full-screen hidden flex-container-center">
-                            
+
                             <div class="hidden-content">
                                 <div class="hidden-content-left">
                                     <img src="<?= $postdatas['PHOTO'] ?>">
@@ -132,11 +134,12 @@ if ($userid != null) {
 
             <!-- イベント履歴　-->
             <div class="eventHistory">
-            <?php $count = 0; ?>
-                <?php foreach ($eventdata as $eventdatas) : ?>
+                <?php $count = 0; ?>
+                <?php foreach ($eventdata as $eventdatas): ?>
                     <div class="place-content">
 
-                        <a href="event_Content.php?eventId=<?= $eventdatas['EVENT_ID'] ?>" class="col-md-12 col-lg-10 mx-auto item-box">
+                        <a href="event_Content.php?eventId=<?= $eventdatas['EVENT_ID'] ?>"
+                            class="col-md-12 col-lg-10 mx-auto item-box">
                             <div class="event-item">
                                 <diV class="col-md-7 center-item">
                                     <div class="eventControl_Img">
@@ -144,7 +147,17 @@ if ($userid != null) {
                                     </div>
 
                                     <div class="information">
-
+                                        <?php
+                                        if ($eventdatas['STATUS'] == "募集中") {
+                                            ?>
+                                            <span style="color:blue;">未参加</span>
+                                            <?php
+                                        } else if ($eventdatas['STATUS'] == "終了") {
+                                            ?>
+                                                <div style="color:red;">参加済み</div>
+                                                <?php
+                                        }
+                                        ?>
                                         <h3>
                                             <?= $eventdatas['EVENT_NAME'] ?>
                                         </h3>
