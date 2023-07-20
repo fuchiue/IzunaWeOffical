@@ -39,12 +39,15 @@
 /*-------------------------------------------------*/
 .qrcode{
     text-align: center;
+    margin: 50px;
 }
 
 /* 参加者情報 */
 
 .list-area{
     display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 25px;
 }
 
