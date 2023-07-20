@@ -22,7 +22,7 @@ $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 //メールアドレスとパスワードの重複を防ぐ
 $email = $_POST["email"];
 
-$UserQuery = "SELECT * FROM user WHERE email = :email";
+$UserQuery = "SELECT * FROM USER WHERE email = :email";
 $UserStmt = $pdo->prepare($UserQuery);
 $UserStmt->bindValue(':email', $email, PDO::PARAM_STR);
 $UserStmt->execute();
@@ -47,7 +47,7 @@ if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
 
     // データベースに保存
     try {
-        $sql = "INSERT INTO user(
+        $sql = "INSERT INTO USER(
             USER_NAME,
             NICKNAME,
             NOTE,
