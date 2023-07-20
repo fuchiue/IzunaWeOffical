@@ -23,7 +23,7 @@ $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 //メールアドレスとパスワードの重複を防ぐ
 $email = $_POST["email"];
 
-$UserQuery = "SELECT * FROM owner WHERE email = :email";
+$UserQuery = "SELECT * FROM OWNER WHERE email = :email";
 $UserStmt = $pdo ->prepare($UserQuery);
 $UserStmt ->bindValue(':email',$email,PDO::PARAM_STR);
 $UserStmt -> execute();
@@ -45,7 +45,7 @@ if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
 
     // データベースに保存
     try {
-        $sql = "INSERT INTO owner(
+        $sql = "INSERT INTO OWNER(
             OWNER_NAME,
             NOTE,
             ADDRESS,
@@ -77,7 +77,7 @@ if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
         echo "データが正常に保存されました。";
         //$pdo->commit(); // 成功したらコミット
 
-        $sql="SELECT OWNER_ID from OWNER ORDER BY OWNER_ID DESC LIMIT 1";
+        $sql="SELECT OWNER_ID FROM OWNER ORDER BY OWNER_ID DESC LIMIT 1";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);

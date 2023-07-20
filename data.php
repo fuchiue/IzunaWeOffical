@@ -34,7 +34,7 @@ dbc();
 function hostGetData($id)
 {
     try {
-        $sql = 'SELECT OWNER_NAME,NOTE,ICON FROM owner WHERE OWNER_ID=:id'; //団体名、紹介文、アイコン画像を取得
+        $sql = 'SELECT OWNER_NAME,NOTE,ICON FROM OWNER WHERE OWNER_ID=:id'; //団体名、紹介文、アイコン画像を取得
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
         $stmt->bindValue(':id', $id, PDO::PARAM_STR); //sqlの:idに変数の$idを代入
         $stmt->execute(); //実行
@@ -118,7 +118,7 @@ hostpage_AfterLogin
 */
 function GetAns($userId,$eventId){
     try {
-        $sql = 'SELECT ANSWER FROM answer WHERE USER_ID = :userId AND EVENT_ID = :eventId'; //ホストの開催したイベントを取得
+        $sql = 'SELECT ANSWER FROM ANSWER WHERE USER_ID = :userId AND EVENT_ID = :eventId'; //ホストの開催したイベントを取得
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする 
         $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
         $stmt->bindValue(':eventId', $eventId, PDO::PARAM_INT);
@@ -134,7 +134,7 @@ function GetAns($userId,$eventId){
 function searchResult($searchKeyWord, $pickArea, $eventTypes)
 {
     try {
-        $sql = "SELECT * FROM event WHERE STATUS ='募集中' ";
+        $sql = "SELECT * FROM EVENT WHERE STATUS ='募集中' ";
         $where = "";
 
         if ($searchKeyWord) {
@@ -199,50 +199,6 @@ function UserLogin($username, $password, $eventid)
     if ($username != null && $password != null) {
         try { // トランザクション開始
             $LocationUrl = "Location: userpage_AfterLogin.php";
-            
-            $pdo = dbc();
-            if (strpos($username, '@')) {
-                $sql = "SELECT USER_ID,PASSWORD FROM USER WHERE EMAIL=:username";
-            } else {
-                $sql = "SELECT USER_ID,PASSWORD FROM USER WHERE USER_NAME=:username";
-            }
-            $stmt = $pdo->prepare($sql);
-            $stmt->bindParam(':username', $username, PDO::PARAM_STR);
-            $stmt->execute();
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            
-            //データベースの暗号化ができてない
-            if ($result && password_verify($password,$result["PASSWORD"])) {
-                echo $result;
-                // ユーザー番号をセッションに登録
-                $_SESSION["id"] = $result["USER_ID"];
-                if (isset($_GET["eventId"])) {
-                    echo $_GET["eventId"];
-                    $LocationUrl = "Location: event_Content.php?eventId=" . $_GET["eventId"];
-                }
-                echo $_SESSION["id"];
-                header($LocationUrl);
-                //ユーザのマイページに移行する
-            } else {
-                $msg = "ユーザー名またはパスワードが正しくありません";
-                header("Location: login_page_User.php?msg=$msg");
-                // header("Location: login_page_User.php?msg=$hashedpass");
-            }
-            $pdo->commit();
-        } catch (PDOException $poe) {
-            $pdo->rollBack();
-            echo "DB 接続エラー" . $poe->getMessage();
-        } finally {
-            $stmt = null;
-            $pdo = null;
-        }
-    }
-}
-function UserLoginQR($username, $password, $eventid)
-{
-    if ($username != null && $password != null) {
-        try { // トランザクション開始
-            $LocationUrl = "Location: login_user_proccess.php";
             
             $pdo = dbc();
             if (strpos($username, '@')) {
@@ -387,7 +343,7 @@ function eventSave($event_name, $theme, $note, $area, $addressAll, $icon, $sched
     // トランザクションを開始
     $pdo->beginTransaction();
 
-    $sql = "INSERT INTO EVENT(EVENT_NAME, THEME, NOTE, area, ADDRESS, ICON, SCHEDULE, HOUR, OWNER_ID, DETAIL, QUESTION) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO EVENT(EVENT_NAME, THEME, NOTE, AREA, ADDRESS, ICON, SCHEDULE, HOUR, OWNER_ID, DETAIL, QUESTION) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     try {
         // プリペアドステートメントを作成
@@ -460,7 +416,7 @@ function h($s)
 function addJoin($userId, $eventId)
 {
     try {
-        $sql = 'INSERT INTO joined(USER_ID,EVENT_ID)VALUES(?,?)'; //団体名、紹介文、アイコン画像を取得
+        $sql = 'INSERT INTO JOINED(USER_ID,EVENT_ID)VALUES(?,?)'; //団体名、紹介文、アイコン画像を取得
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
         $stmt->bindParam(1, $userId, PDO::PARAM_INT);
         $stmt->bindParam(2, $eventId, PDO::PARAM_INT);
@@ -474,7 +430,7 @@ function addJoin($userId, $eventId)
 //イベントへの参加応募を登録
 function addans($userId,$eventId,$ans){
     try {
-        $sql = 'INSERT INTO answer(USER_ID,EVENT_ID,ANSWER)VALUES(?,?,?)'; //団体名、紹介文、アイコン画像を取得
+        $sql = 'INSERT INTO ANSWER(USER_ID,EVENT_ID,ANSWER)VALUES(?,?,?)'; //団体名、紹介文、アイコン画像を取得
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
         $stmt->bindParam(1, $userId, PDO::PARAM_INT);
         $stmt->bindParam(2, $eventId, PDO::PARAM_INT);
@@ -489,7 +445,7 @@ function addans($userId,$eventId,$ans){
 function checkjoin($userId, $eventId)
 {
     try {
-        $sql = 'SELECT COUNT(*) FROM joined WHERE EVENT_ID=:eventId AND USER_ID=:userId'; //団体名、紹介文、アイコン画像を取得
+        $sql = 'SELECT COUNT(*) FROM JOINED WHERE EVENT_ID=:eventId AND USER_ID=:userId'; //団体名、紹介文、アイコン画像を取得
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
         $stmt->bindValue(':eventId', $eventId, PDO::PARAM_INT);
         $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
@@ -581,7 +537,7 @@ function TakePostEvent($userid){
 function countPost ($id,$event)
 {
     try {
-        $sql = 'SELECT COUNT(*) FROM post WHERE USER_ID=:userId AND EVENT_ID=:eventId'; 
+        $sql = 'SELECT COUNT(*) FROM POST WHERE USER_ID=:userId AND EVENT_ID=:eventId'; 
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
         $stmt->bindValue(':userId', $id, PDO::PARAM_STR); //sqlの:idに変数の$idを代入
         $stmt->bindValue(':eventId', $event, PDO::PARAM_STR);
@@ -600,7 +556,7 @@ function countPost ($id,$event)
 function addPoint ($userId,$addPoint)
 {
     try {
-        $sql = 'UPDATE user SET POINT=POINT+:addPoint WHERE USER_ID=:userId'; 
+        $sql = 'UPDATE USER SET POINT=POINT+:addPoint WHERE USER_ID=:userId'; 
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
         $stmt->bindValue(':userId', $userId, PDO::PARAM_INT); 
         $stmt->bindValue(':addPoint', $addPoint, PDO::PARAM_INT); 
@@ -615,7 +571,7 @@ function addPoint ($userId,$addPoint)
 function updateJoin ($userId,$eventId)
 {
     try {
-        $sql = 'UPDATE user SET STATUS="参加済み" WHERE USER_ID=:userId AND EVENT_ID=:eventId'; 
+        $sql = 'UPDATE USER SET STATUS="参加済み" WHERE USER_ID=:userId AND EVENT_ID=:eventId'; 
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
         $stmt->bindValue(':userId', $userId, PDO::PARAM_INT); 
         $stmt->bindValue(':eventId', $eventId, PDO::PARAM_INT); 
