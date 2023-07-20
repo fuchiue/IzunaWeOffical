@@ -178,6 +178,7 @@
 .imgBox img{
     width: 40vmin;
     height: 40vmin;
+    object-fit: cover;
     margin-right: 30px;
     margin-bottom: 30px;
 

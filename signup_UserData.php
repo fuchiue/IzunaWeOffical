@@ -34,6 +34,10 @@ if ($UserStmt->rowCount() > 0) {
 // 画像のアップロード処理
 //保存先のディレクトリー
 $target_dir = "./images/usericon/";
+// ディレクトリが存在しない場合は作成する
+if (!is_dir($target_dir)) {
+    mkdir($target_dir, 0755, true);
+}
 //ファイルが指定されたディレクトリに保存されます。
 $target_file = $target_dir . basename($_FILES["img"]["name"]);
 

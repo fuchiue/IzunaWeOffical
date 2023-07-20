@@ -1,0 +1,72 @@
+/*Header画像エリア ＋ ページ名CSS 開始*/
+
+#guestlist_header{
+    display: flex;
+}
+
+#guestlist_header img{
+    width: 100%;
+    height: 300px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    z-index: 1;
+}
+
+#guestlist_tilte{
+    background-color: #DD0000;
+    top: 265px;
+    left:70% ;
+    padding: 20px 40px;
+    z-index: 500;
+    position: absolute;
+    text-align: center;
+    
+}
+
+#guestlist_tilte h1{
+    color: #ffff;
+    font-size: 40px;
+    font-family: 'OutlineFont';
+}
+
+#guestlist_tilte p{
+    color: #ffff;
+    font-weight: bold;
+}
+
+/*Header画像エリア ＋ ページ名CSS 終了*/
+/*-------------------------------------------------*/
+.qrcode{
+    text-align: center;
+    margin: 50px;
+}
+
+/* 参加者情報 */
+
+.list-area{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 25px;
+}
+
+.small-area{
+    display: grid;
+}
+
+.small-area p{
+    text-align: center;
+}
+
+.small-area img{
+    width: 30vmin;
+    height: 30vmin;
+    margin-right: 30px;
+    object-fit: cover;
+}
+
+.status{
+    color: blue;
+    /* background-color: #DD0000; */
+}
