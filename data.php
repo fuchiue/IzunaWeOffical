@@ -240,7 +240,6 @@ function UserLogin($username, $password, $eventid)
         }
     }
 }
-
 //オーナのログイン
 function HostLogin($username, $password)
 {
@@ -349,7 +348,7 @@ function eventSave($event_name, $theme, $note, $area, $addressAll, $icon, $sched
     // トランザクションを開始
     $pdo->beginTransaction();
 
-    $sql = "INSERT INTO EVENT(EVENT_NAME, THEME, NOTE, area, ADDRESS, ICON, SCHEDULE, HOUR, OWNER_ID, DETAIL, QUESTION) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO EVENT(EVENT_NAME, THEME, NOTE, AREA, ADDRESS, ICON, SCHEDULE, HOUR, OWNER_ID, DETAIL, QUESTION) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     try {
         // プリペアドステートメントを作成
@@ -465,7 +464,7 @@ function addans($userId, $eventId, $ans)
 function checkjoin($userId, $eventId)
 {
     try {
-        $sql = 'SELECT COUNT(*) FROM joined WHERE EVENT_ID=:eventId AND USER_ID=:userId'; //団体名、紹介文、アイコン画像を取得
+        $sql = 'SELECT COUNT(*) FROM JOINED WHERE EVENT_ID=:eventId AND USER_ID=:userId'; //団体名、紹介文、アイコン画像を取得
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
         $stmt->bindValue(':eventId', $eventId, PDO::PARAM_INT);
         $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
@@ -560,7 +559,7 @@ function TakePostEvent($userid)
 function countPost($id, $event)
 {
     try {
-        $sql = 'SELECT COUNT(*) FROM post WHERE USER_ID=:userId AND EVENT_ID=:eventId';
+        $sql = 'SELECT COUNT(*) FROM POST WHERE USER_ID=:userId AND EVENT_ID=:eventId'; 
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
         $stmt->bindValue(':userId', $id, PDO::PARAM_STR); //sqlの:idに変数の$idを代入
         $stmt->bindValue(':eventId', $event, PDO::PARAM_STR);
@@ -579,7 +578,7 @@ function countPost($id, $event)
 function addPoint($userId, $addPoint)
 {
     try {
-        $sql = 'UPDATE user SET POINT=POINT+:addPoint WHERE USER_ID=:userId';
+        $sql = 'UPDATE USER SET POINT=POINT+:addPoint WHERE USER_ID=:userId'; 
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
         $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
         $stmt->bindValue(':addPoint', $addPoint, PDO::PARAM_INT);
@@ -594,7 +593,7 @@ function addPoint($userId, $addPoint)
 function updateJoin($userId, $eventId)
 {
     try {
-        $sql = 'UPDATE joined SET STATUS="参加済み" WHERE USER_ID=:userId AND EVENT_ID=:eventId';
+        $sql = 'UPDATE JOINED SET STATUS="参加済み" WHERE USER_ID=:userId AND EVENT_ID=:eventId';
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
         $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
         $stmt->bindValue(':eventId', $eventId, PDO::PARAM_INT);
