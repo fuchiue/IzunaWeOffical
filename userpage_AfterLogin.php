@@ -127,7 +127,7 @@ if (isset($userid)) {
                                     <p>活動内容：　<?= $postdatas['NOTE'] ?></p>
                                     <div class="word-break">
                                         <div class="normal">
-                                            <p>感想：　ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+                                            <p>感想：　<?= $postdatas['COMMENT'] ?></p>
                                         </div>
                                     </div>    
                                     <a href="hostpage_ViewOnly.php?id=<?= $postdatas['OWNER_ID'] ?>">イベントのホストページへ</a>

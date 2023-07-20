@@ -540,7 +540,7 @@ function TakePostEvent($userid)
 {
     $id = filter_var($userid, FILTER_SANITIZE_FULL_SPECIAL_CHARS); // ユーザー名をエスケープしてフィルタリングする
     $pdo = dbc();
-    $sql = "SELECT P.PHOTO,P.OWNER_ID,E.EVENT_NAME,E.NOTE,E.SCHEDULE,E.ADDRESS FROM POST AS P 
+    $sql = "SELECT P.PHOTO,P.OWNER_ID,P.COMMENT,E.EVENT_NAME,E.NOTE,E.SCHEDULE,E.ADDRESS FROM POST AS P 
     INNER JOIN EVENT AS E
     ON P.EVENT_ID = E.EVENT_ID
     WHERE USER_ID=:userid";
