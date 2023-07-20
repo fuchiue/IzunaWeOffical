@@ -142,6 +142,11 @@ if ($eventdata['STATUS'] == "終了") {
                         </a>
                     <?php endif; ?>
                 </div>
+                <div id="event_Box2">
+                        <a href="guestList.php?eventId=<?= $_GET["eventId"]; ?>" id="joinEventBtn">
+                            <p id="submitBtn">参加者名簿</p>
+                        </a>
+                </div>
             <?php endif; ?>
 
     </section>

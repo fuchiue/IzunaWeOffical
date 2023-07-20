@@ -40,7 +40,7 @@ $photodatas = TakePostData($id); //投稿した写真を取得
 
     <!-- QRcodeエリア -->
     <div class="qrcode">
-        <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://www.disney.co.jp/&size=100x100" alt="QRコード" />
+        <img src="/&size=100x100" alt="QRコード" />
     </div>
 
     <form action="#" method="POST">
