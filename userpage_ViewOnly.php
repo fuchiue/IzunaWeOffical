@@ -71,9 +71,13 @@ if ($userid != null) {
 
             <!-- 自己紹介文　-->
             <p>自己紹介文</p>
-            <p>
-                <?= $userdata['NOTE'] ?>
-            </p>
+            <div class="word-break">
+                <div class="normal">
+                    <p>
+                        <?= $userdata['NOTE'] ?>
+                    </p>
+                </div>
+            </div>        
         </div>
 
     </section>
