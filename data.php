@@ -34,7 +34,7 @@ dbc();
 function hostGetData($id)
 {
     try {
-        $sql = 'SELECT OWNER_NAME,NOTE,ICON FROM owner WHERE OWNER_ID=:id'; //団体名、紹介文、アイコン画像を取得
+        $sql = 'SELECT OWNER_NAME,NOTE,ICON FROM OWNER WHERE OWNER_ID=:id'; //団体名、紹介文、アイコン画像を取得
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
         $stmt->bindValue(':id', $id, PDO::PARAM_STR); //sqlの:idに変数の$idを代入
         $stmt->execute(); //実行
@@ -120,7 +120,7 @@ hostpage_AfterLogin
 function GetAns($userId, $eventId)
 {
     try {
-        $sql = 'SELECT ANSWER FROM answer WHERE USER_ID = :userId AND EVENT_ID = :eventId'; //ホストの開催したイベントを取得
+        $sql = 'SELECT ANSWER FROM ANSWER WHERE USER_ID = :userId AND EVENT_ID = :eventId'; //ホストの開催したイベントを取得
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする 
         $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
         $stmt->bindValue(':eventId', $eventId, PDO::PARAM_INT);
@@ -136,7 +136,7 @@ function GetAns($userId, $eventId)
 function searchResult($searchKeyWord, $pickArea, $eventTypes)
 {
     try {
-        $sql = "SELECT * FROM event WHERE STATUS ='募集中' ";
+        $sql = "SELECT * FROM EVENT WHERE STATUS ='募集中' ";
         $where = "";
 
         if ($searchKeyWord) {
@@ -435,7 +435,7 @@ function getAllUser()
 function addJoin($userId, $eventId)
 {
     try {
-        $sql = 'INSERT INTO joined(USER_ID,EVENT_ID)VALUES(?,?)'; //団体名、紹介文、アイコン画像を取得
+        $sql = 'INSERT INTO JOINED(USER_ID,EVENT_ID)VALUES(?,?)'; //団体名、紹介文、アイコン画像を取得
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
         $stmt->bindParam(1, $userId, PDO::PARAM_INT);
         $stmt->bindParam(2, $eventId, PDO::PARAM_INT);
@@ -450,7 +450,7 @@ function addJoin($userId, $eventId)
 function addans($userId, $eventId, $ans)
 {
     try {
-        $sql = 'INSERT INTO answer(USER_ID,EVENT_ID,ANSWER)VALUES(?,?,?)'; //団体名、紹介文、アイコン画像を取得
+        $sql = 'INSERT INTO ANSWER(USER_ID,EVENT_ID,ANSWER)VALUES(?,?,?)'; //団体名、紹介文、アイコン画像を取得
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
         $stmt->bindParam(1, $userId, PDO::PARAM_INT);
         $stmt->bindParam(2, $eventId, PDO::PARAM_INT);
