@@ -9,6 +9,7 @@ session_start();
 $id = $_SESSION["id"];
 $owner_id = $_SESSION["id"];
 $event_id = null;
+$comment = null;
 
 // ファイル関連の取得
 $submit = filter_input(INPUT_POST, "submit");
@@ -20,7 +21,7 @@ $photo_path = "./images/photo/" . $photo_name;
 
 move_uploaded_file($photo_tmp, $photo_path);
 // 作成したイベント内容を保存
-$photosave = photoSave($id, $photo_path, $owner_id, $event_id); //投稿した画像を保存
+$photosave = photoSave($id, $photo_path, $owner_id, $event_id, $comment); //投稿した画像を保存
 
 if ($photosave) {
     // 保存成功時の処理
