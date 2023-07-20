@@ -4,9 +4,9 @@
 function dbc()
 {
     $host = "localhost";
-    $dbname = "izanadb";
-    $user = "root";
-    $pass = "root";
+    $dbname = "sys2_se2a_a";
+    $user = "sys2_se2a_a";
+    $pass = "rTN5kHvn";
     $dns = "mysql:host=$host;dbname=$dbname;charset=utf8";
     try {
         $pdo = new PDO(
