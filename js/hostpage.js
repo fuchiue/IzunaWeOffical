@@ -83,7 +83,7 @@ const imgList = document.querySelectorAll(".imgBox");
 
 imgList.forEach((element) => {
     element.addEventListener("click", (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         const imgsrc = element.querySelector('img').getAttribute('src');
         togglePopup(imgsrc);
 
