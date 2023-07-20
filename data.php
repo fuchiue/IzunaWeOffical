@@ -238,7 +238,50 @@ function UserLogin($username, $password, $eventid)
         }
     }
 }
-
+function UserLoginQR($username, $password, $eventid)
+{
+    if ($username != null && $password != null) {
+        try { // トランザクション開始
+            $LocationUrl = "Location: login_user_proccess.php";
+            
+            $pdo = dbc();
+            if (strpos($username, '@')) {
+                $sql = "SELECT USER_ID,PASSWORD FROM USER WHERE EMAIL=:username";
+            } else {
+                $sql = "SELECT USER_ID,PASSWORD FROM USER WHERE USER_NAME=:username";
+            }
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+            //データベースの暗号化ができてない
+            if ($result && password_verify($password,$result["PASSWORD"])) {
+                echo $result;
+                // ユーザー番号をセッションに登録
+                $_SESSION["id"] = $result["USER_ID"];
+                if (isset($_GET["eventId"])) {
+                    echo $_GET["eventId"];
+                    $LocationUrl = "Location: event_Content.php?eventId=" . $_GET["eventId"];
+                }
+                echo $_SESSION["id"];
+                header($LocationUrl);
+                //ユーザのマイページに移行する
+            } else {
+                $msg = "ユーザー名またはパスワードが正しくありません";
+                header("Location: login_page_User.php?msg=$msg");
+                // header("Location: login_page_User.php?msg=$hashedpass");
+            }
+            $pdo->commit();
+        } catch (PDOException $poe) {
+            $pdo->rollBack();
+            echo "DB 接続エラー" . $poe->getMessage();
+        } finally {
+            $stmt = null;
+            $pdo = null;
+        }
+    }
+}
 //オーナのログイン
 function HostLogin($username, $password)
 {
