@@ -627,3 +627,71 @@ function Getguest($eventId)
         exit($e->getMessage());
     }
 }
+
+function Check($id,$eventid){
+    try {
+        $sql = "UPDATE JOINED SET STATUS='参加済み' WHERE USER_ID=:id AND EVENT_ID=:eventId"; //ホストのIDのイベントに参加済みの人の情報を取得
+        $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする 
+        $stmt->bindValue(':id', $id, PDO::PARAM_STR);
+        $stmt->bindValue(':eventId', $eventid, PDO::PARAM_STR); //sqlの:idに変数の$idを代入
+        $stmt->execute(); //実行
+        $result = $stmt->fetchAll(); //データを取得
+        return $result; //データを返す
+    } catch (Exception $e) {
+        exit($e->getMessage());
+    }
+}
+
+function UserLoginQR($username, $password, $eventid)
+{
+    if ($username != null && $password != null) {
+        try { // トランザクション開始
+            $LocationUrl = "Location: guestList.php";
+            $pdo = dbc();
+            if (strpos($username, '@')) {
+                $sql = "SELECT USER_ID,PASSWORD FROM USER WHERE EMAIL=:username";
+            } else {
+                $sql = "SELECT USER_ID,PASSWORD FROM USER WHERE USER_NAME=:username";
+            }
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            //データベースの暗号化ができてない
+            if ($result && password_verify($password,$result["PASSWORD"])) {
+                echo $result;
+                // ユーザー番号をセッションに登録
+                $_SESSION["id"] = $result["USER_ID"];
+                $id=$_SESSION["id"];
+                Check($id,$eventid);
+                header($LocationUrl);
+                //ユーザのマイページに移行する
+            } else {
+
+                $msg = "ユーザー名またはパスワードが正しくありません";
+
+                header("Location: login_user_QR.php?msg=$msg");
+
+                // header("Location: login_page_User.php?msg=$hashedpass");
+
+            }
+
+            $pdo->commit();
+
+        } catch (PDOException $poe) {
+
+            $pdo->rollBack();
+
+            echo "DB 接続エラー" . $poe->getMessage();
+
+        } finally {
+
+            $stmt = null;
+
+            $pdo = null;
+
+        }
+
+    }
+
+}
