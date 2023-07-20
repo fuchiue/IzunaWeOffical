@@ -264,6 +264,7 @@
     margin-right: 50px;
     text-decoration: none;
     color: #555555;
+    width: 600px;
 }
 
 .event-item:hover{
