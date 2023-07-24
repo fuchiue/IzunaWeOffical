@@ -68,7 +68,9 @@ function hostGetjoinUser($id)
         USER AS U
         ON J.USER_ID = U.USER_ID
         WHERE E.OWNER_ID = :id
-        AND J.STATUS="参加済み" ORDER BY U.POINT DESC ;'; //ホストのIDのイベントに参加済みの人の情報を取得
+        AND J.STATUS="参加済み" 
+        GROUP BY J.USER_ID
+        ORDER BY U.POINT DESC ;'; //ホストのIDのイベントに参加済みの人の情報を取得
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする 
         $stmt->bindValue(':id', $id, PDO::PARAM_STR); //sqlの:idに変数の$idを代入
         $stmt->execute(); //実行
