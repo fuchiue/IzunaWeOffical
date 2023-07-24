@@ -3,10 +3,17 @@
 //上記コードをファイルの最初に入れればデータベース接続できる
 function dbc()
 {
+    //pc
+    // $host = "localhost";
+    // $dbname = "izanadb";
+    // $user = "root";
+    // $pass = "root";
+    //web
     $host = "localhost";
     $dbname = "sys2_se2a_a";
     $user = "sys2_se2a_a";
     $pass = "rTN5kHvn";
+
     $dns = "mysql:host=$host;dbname=$dbname;charset=utf8";
     try {
         $pdo = new PDO(
@@ -80,7 +87,7 @@ function hostGetjoinUser($id)
 function HostGetevent($id)
 {
     try {
-        $sql = 'SELECT * FROM EVENT WHERE OWNER_ID = :id ORDER BY SCHEDULE'; //ホストの開催したイベントを取得
+        $sql = 'SELECT * FROM EVENT WHERE OWNER_ID = :id ORDER BY SCHEDULE DESC'; //ホストの開催したイベントを取得
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする 
         $stmt->bindValue(':id', $id, PDO::PARAM_STR); //sqlの:idに変数の$idを代入
         $stmt->execute(); //実行
