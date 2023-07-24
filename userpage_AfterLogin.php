@@ -11,11 +11,11 @@ if (isset($userid)) {
     $postdata = TakePostEvent($userid);
     $eventdata = TakeEventData($userid);
 
+
 } else {
     // header('Location:/login_page_User.php');
     echo "no";
 }
-
 // echo "<pre>";
 // print_r($postdata);
 // echo "</pre>";
@@ -121,15 +121,25 @@ if (isset($userid)) {
                                 </div>
 
                                 <div class="hidden-content-right">
-                                    <h3>イベント名：　<?= $postdatas['EVENT_NAME'] ?></h3>
-                                    <p>日時：　<?= $postdatas['SCHEDULE'] ?></p>
-                                    <p>場所：　<?= $postdatas['ADDRESS'] ?></p>
-                                    <p>活動内容：　<?= $postdatas['NOTE'] ?></p>
+                                    <h3>イベント名：　
+                                        <?= $postdatas['EVENT_NAME'] ?>
+                                    </h3>
+                                    <p>日時：　
+                                        <?= $postdatas['SCHEDULE'] ?>
+                                    </p>
+                                    <p>場所：　
+                                        <?= $postdatas['ADDRESS'] ?>
+                                    </p>
+                                    <p>活動内容：　
+                                        <?= $postdatas['NOTE'] ?>
+                                    </p>
                                     <div class="word-break">
                                         <div class="normal">
-                                            <p>感想：　<?= $postdatas['COMMENT'] ?></p>
+                                            <p>感想：　
+                                                <?= $postdatas['COMMENT'] ?>
+                                            </p>
                                         </div>
-                                    </div>    
+                                    </div>
                                     <a href="hostpage_ViewOnly.php?id=<?= $postdatas['OWNER_ID'] ?>">イベントのホストページへ</a>
                                 </div>
 
@@ -154,15 +164,16 @@ if (isset($userid)) {
                                     </div>
 
                                     <div class="information">
-                                    <?php
-                                        if ($eventdatas['STATUS'] == "募集中") {
+                                        <?php
+                                        $checkjoin = checkjoined($userid, $eventdatas["EVENT_ID"]);
+                                        if ($checkjoined["STATUS"] = "未参加") {
                                             ?>
                                             <span style="color:blue;">未参加</span>
                                             <?php
-                                        } else if ($eventdatas['STATUS'] == "終了") {
+                                        } else {
                                             ?>
-                                                <div style="color:red;">参加済み</div>
-                                                <?php
+                                            <div style="color:red;">参加済み</div>
+                                            <?php
                                         }
                                         ?>
                                         <h3>
