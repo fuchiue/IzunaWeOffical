@@ -3,8 +3,8 @@ session_start();
 require_once "./data.php";
 $id = $_SESSION["id"]; //IDを取得
 
-$eventId = 30008;
-// $eventId = $_GET["eventId"];
+
+$eventId = $_GET["eventId"];
 
 $eventDatas = Getevent($eventId); //イベントの情報を取得
 $Getguest = Getguest($eventId);
@@ -41,8 +41,7 @@ $photodatas = TakePostData($id); //投稿した写真を取得
 
     <!-- QRcodeエリア -->
     <div class="qrcode">
-        <!-- <a href="login_user_QR.php?eventId=<?=$eventId?>">リンク</a> -->
-        <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://click.ecc.ac.jp/ecc/sys2_se2a_a/login_user_QR.php/&size=100x100" alt="QRコード" />
+        <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://click.ecc.ac.jp/ecc/sys2_se2a_a/login_user_QR.php?eventId=<?= $eventId ?>/&size=100x100" alt="QRコード" />
     </div>
 
     <form action="#" method="POST">

@@ -141,9 +141,14 @@
     margin-bottom: 20px;
 }
 
+#selfIcon_pic{
+    margin-right: 30px;
+}
 
 #selfIcon_pic img{
-    width: 75%;
+    width:300px;
+    height: 300px;
+    object-fit: cover;
 }
 
 

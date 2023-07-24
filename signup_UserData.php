@@ -90,7 +90,7 @@ if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
         echo "データが正常に保存されました。";
         //$pdo->commit(); // 成功したらコミット
 
-        $sql = "SELECT USER_ID from USER ORDER BY USER_ID DESC LIMIT 1";
+        $sql = "SELECT USER_ID FROM USER ORDER BY USER_ID DESC LIMIT 1";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);

@@ -145,43 +145,43 @@ $photodatas = TakePostData($id); //投稿した写真を取得
                             <?php
                             $cont = 0; //表示回数を管理
                             //三回表示ごとにタグを閉じる
-                            foreach ($joinedUser as $user) { //参加ユーザの数だけ回る
-
-                                if ($cont == 0) {
-                                    echo '<div class="imgRow">'; //初めのタグ
-                                    echo "\n";
-                                }
-                                //写真の表示　対応するユーザのIDを変数で送っている。
-                                echo '<a href="./userpage_ViewOnly.php?id=' . $user['USER_ID'] . '" class="imgBox">
-                                        <img src="' . $user['ICON'] . '">
-                                    </a>';
-
-                                echo "\n";
-
-                                //三回写真を表示したら終わりのタグそれ以外ならカウントアップ
-                                if ($cont == 2) {
-                                    echo '</div>'; //終わりのタグ
-                                    echo "\n";
-                                    $cont = 0;
-                                } else {
-                                    $cont++;
-                                }
-                            }
-
-                            //ユーザが一人もいなかったとき
-                            if (!$joinedUser) {
-                                echo '<div class="imgRow">'; //始まりのタグ
-                                echo "\n";
-                                echo '</div>'; //終わりのタグ
-                                echo "\n";
-                            }
-                            //ループを抜けた後タグを閉じていないときに閉じる
-                            if ($cont != 0) {
-                                echo '</div>'; //終わりのタグ
-                                echo "\n";
-                            }
-
                             ?>
+                            <?php foreach ($joinedUser as $user): //参加ユーザの数だけ回る?> 
+
+                                <?php if ($cont == 0): ?>
+                                    <!-- 初めのタグ -->
+                                    <div class="imgRow">
+                                <?php endif; ?>
+                                <!-- 写真の表示　対応するユーザのIDを変数で送っている。 -->
+                                <a href="./userpage_ViewOnly.php?id=<?=$user['USER_ID']?>" class="imgBox">
+                                        <img src="<?=$user['ICON']?>">
+                                </a>
+
+                                <!-- 三回写真を表示したら終わりのタグそれ以外ならカウントアップ -->
+                                <?php if ($cont == 2): ?>
+                                    <!-- 終わりのタグ -->
+                                    </div> 
+                                    <?php $cont = 0; ?>
+                                <?php else: ?>
+                                <?php $cont++; endif; ?> 
+                                    
+                                
+                            <?php endforeach; ?>
+
+                            <!-- ユーザが一人もいなかったとき -->
+                            <?php if (!$joinedUser): ?>
+                                <!-- 始まりのタグ -->
+                                <div class="imgRow"> 
+                                <!-- 終わりのタグ -->
+                                </div>
+   
+                            <?php endif; ?>
+
+                            <!-- //ループを抜けた後タグを閉じていないときに閉じる -->
+                            <?php if ($cont != 0): ?>
+                                <!-- 終わりのタグ -->
+                                </div>
+                            <?php endif;?>
 
                         </div>
                     </div>
