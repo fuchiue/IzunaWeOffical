@@ -152,14 +152,15 @@ if ($userid != null) {
 
                                     <div class="information">
                                         <?php
-                                        if ($eventdatas['STATUS'] == "募集中") {
+                                        $checkjoin = checkjoined($userid, $eventdatas["EVENT_ID"]);
+                                        if ($checkjoined["STATUS"] = "未参加") {
                                             ?>
                                             <span style="color:blue;">未参加</span>
                                             <?php
-                                        } else if ($eventdatas['STATUS'] == "終了") {
+                                        } else {
                                             ?>
-                                                <div style="color:red;">参加済み</div>
-                                                <?php
+                                            <div style="color:red;">参加済み</div>
+                                            <?php
                                         }
                                         ?>
                                         <h3>

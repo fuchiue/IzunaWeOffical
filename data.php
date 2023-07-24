@@ -468,6 +468,21 @@ function addans($userId, $eventId, $ans)
     }
 }
 
+
+function checkjoined($userId, $eventId)
+{
+    try {
+        $sql = 'SELECT STATUS FROM JOINED WHERE EVENT_ID=:eventId AND USER_ID=:userId'; //団体名、紹介文、アイコン画像を取得
+        $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
+        $stmt->bindValue(':eventId', $eventId, PDO::PARAM_INT);
+        $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
+        $stmt->execute(); //実行
+        $result = $stmt->fetch(); //データを取得
+        return $result; //データを返す
+    } catch (Exception $e) {
+        exit($e->getMessage());
+    }
+}
 function checkjoin($userId, $eventId)
 {
     try {
