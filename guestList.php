@@ -3,8 +3,8 @@ session_start();
 require_once "./data.php";
 $id = $_SESSION["id"]; //IDを取得
 
-$eventId = 30008;
-// $eventId = $_GET["eventId"];
+
+$eventId = $_GET["eventId"];
 
 $eventDatas = Getevent($eventId); //イベントの情報を取得
 $Getguest = Getguest($eventId);
