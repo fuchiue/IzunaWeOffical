@@ -67,7 +67,10 @@
     object-fit: cover;
 }
 
-.status{
-    color: blue;
-    /* background-color: #DD0000; */
+#event01_Status_Active{
+    color: #DC0000;
+}
+
+#event01_Status_Finished{
+    color: rgb(0, 0, 234);
 }

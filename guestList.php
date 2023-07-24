@@ -51,7 +51,11 @@ $photodatas = TakePostData($id); //投稿した写真を取得
         <div class="small-area">
             <img src="<?= $guest['ICON'] ?>" alt="">
             <p><?= $guest['USER_NAME'] ?></p>
-            <p class="status"><?= $guest['STATUS'] ?></p>
+            <p id="<?php if ($guest['STATUS'] == "未参加"){
+                echo 'event01_Status_Active';
+            }else{
+                echo 'event01_Status_Finished';
+            };?>"><?= $guest['STATUS'] ?></p>
         </div>
     <?php endforeach; ?>
     </div>
