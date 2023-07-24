@@ -110,3 +110,19 @@
 }
 
 /*ログインの入力 CSS　終了*/
+
+/* 結果画面 */
+
+.container {
+  height: 10em;
+  position: relative
+}
+
+.container h3 {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
