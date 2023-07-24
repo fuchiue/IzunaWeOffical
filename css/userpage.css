@@ -234,6 +234,7 @@
 .hidden-content-left img{
     width: 400px;
     height: 400px;
+    object-fit: cover;
 }
 
 .hidden-content-left button{
