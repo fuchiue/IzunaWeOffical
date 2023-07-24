@@ -14,11 +14,12 @@ $event_name = filter_input(INPUT_POST,"event_name");
 $theme = filter_input(INPUT_POST,"theme");
 $note = h(filter_input(INPUT_POST,"note"));
 $area = filter_input(INPUT_POST,"area");
+$prefecture = filter_input(INPUT_POST,"prefecture");
 $address1 = filter_input(INPUT_POST,"address1");
 $address2 = filter_input(INPUT_POST,"address2");
 $schedule = filter_input(INPUT_POST,"schedule");
 $hour = filter_input(INPUT_POST,"hour",FILTER_VALIDATE_INT);
-$addressAll = $area.$address1.$address2;
+$addressAll = $prefecture.$address1.$address2;
 $detail = h(filter_input(INPUT_POST,"detail"));
 $questions = h(filter_input(INPUT_POST,"questions"));
 
