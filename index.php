@@ -4,7 +4,7 @@ session_start();
 $userData = getAllUser();
 
 try{
-    $sql = "SELECT * FROM EVENT WHERE STATUS ='募集中'";
+    $sql = "SELECT * FROM EVENT WHERE STATUS ='募集中' ORDER BY EVENT_ID DESC LIMIT 5";
     $stmt = dbc()->prepare($sql);
 
     $stmt->execute();
