@@ -84,6 +84,7 @@ $db = null;
                         <option value="福祉">福祉</option>
                         <option value="災害">災害</option>
                         <option value="お祭り">お祭り</option>
+                        <option value="その他">その他</option>
                     </select>
                 </div>
     
