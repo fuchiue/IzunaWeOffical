@@ -187,7 +187,16 @@ $photodatas = TakePostData($id); //投稿した写真を取得
                                     </div>
 
                                     <div class="information">
-                                        <p id="event01_Status"><?= $eventData['STATUS'] ?></p>
+                                        <p id="event01_Status"><?php if ($eventData['STATUS']= "募集中") {
+                                            ?>
+                                            <span style="color:blue;">募集中</span>
+                                            <?php
+                                        } else {
+                                            ?>
+                                            <div style="color:red;">終了</div>
+                                            <?php
+                                        }
+                                        ?></p>
                                         <h3><?= $eventData['EVENT_NAME'] ?></h3>
                                         <div class="EvCon_Date">
                                             <h4>日時</h4>
