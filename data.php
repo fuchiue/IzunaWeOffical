@@ -676,7 +676,7 @@ function UserLoginQR($username, $password, $eventid)
 
                 $msg = "ユーザー名またはパスワードが正しくありません";
 
-                header("Location: login_user_QR.php?msg=$msg");
+                header("Location: login_user_QR.php?msg=$msg&eventId=$eventid");
 
                 // header("Location: login_page_User.php?msg=$hashedpass");
 
