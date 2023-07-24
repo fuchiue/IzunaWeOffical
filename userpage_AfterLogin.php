@@ -154,14 +154,14 @@ if (isset($userid)) {
                                     </div>
 
                                     <div class="information">
-                                        <?php
+                                    <?php
                                         if ($eventdatas['STATUS'] == "募集中") {
                                             ?>
-                                            <div class="text-blue-700">未参加</div>
+                                            <span style="color:blue;">未参加</span>
                                             <?php
                                         } else if ($eventdatas['STATUS'] == "終了") {
                                             ?>
-                                                <div class="text-red-600">参加済み</div>
+                                                <div style="color:red;">参加済み</div>
                                                 <?php
                                         }
                                         ?>
