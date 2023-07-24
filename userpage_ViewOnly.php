@@ -153,7 +153,7 @@ if ($userid != null) {
                                     <div class="information">
                                         <?php
                                         $checkjoin = checkjoined($userid, $eventdatas["EVENT_ID"]);
-                                        if ($checkjoined["STATUS"] = "未参加") {
+                                        if ($checkjoin["STATUS"] == "未参加") {
                                             ?>
                                             <span style="color:blue;">未参加</span>
                                             <?php
