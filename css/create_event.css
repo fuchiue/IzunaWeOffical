@@ -54,6 +54,15 @@
     padding: 10px 10px;
 }
 
+.enter_BigInfoBox_A{
+    display: flex;
+    padding: 8px 30px;
+}
+
+.enter_BigInfoBox_A label{
+margin-right: 10px;
+}
+
 .enter_InfoBox input{
     background-color:  #d0abab;
     border: solid 0.5px #555555;
