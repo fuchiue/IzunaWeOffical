@@ -80,7 +80,7 @@ function hostGetjoinUser($id)
 function HostGetevent($id)
 {
     try {
-        $sql = 'SELECT * FROM EVENT WHERE OWNER_ID = :id'; //ホストの開催したイベントを取得
+        $sql = 'SELECT * FROM EVENT WHERE OWNER_ID = :id ORDER BY SCHEDULE'; //ホストの開催したイベントを取得
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする 
         $stmt->bindValue(':id', $id, PDO::PARAM_STR); //sqlの:idに変数の$idを代入
         $stmt->execute(); //実行

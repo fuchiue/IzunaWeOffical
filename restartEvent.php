@@ -5,7 +5,7 @@ session_start();
 $id = $_GET["eventId"]; //前ページで選択された項目のidを取得する
 
 try {
-    $sql = 'UPDATE event SET STATUS="募集中" WHERE EVENT_ID=:eventId';
+    $sql = 'UPDATE EVENT SET STATUS="募集中" WHERE EVENT_ID=:eventId';
     $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする
     $stmt->bindValue(':eventId', $id, PDO::PARAM_INT);
     $stmt->execute(); //実行
