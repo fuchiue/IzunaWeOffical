@@ -10,7 +10,6 @@ if (isset($userid)) {
     $userdata = TakeUserData($userid);
     $postdata = TakePostEvent($userid);
     $eventdata = TakeEventData($userid);
-
 } else {
     // header('Location:/login_page_User.php');
     echo "no";

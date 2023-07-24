@@ -652,7 +652,7 @@ function UserLoginQR($username, $password, $eventid)
 {
     if ($username != null && $password != null) {
         try { // トランザクション開始
-            $LocationUrl = "Location: guestList.php";
+            $LocationUrl = "Location: guestList.php?eventId=$eventid";
             $pdo = dbc();
             if (strpos($username, '@')) {
                 $sql = "SELECT USER_ID,PASSWORD FROM USER WHERE EMAIL=:username";
