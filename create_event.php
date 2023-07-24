@@ -52,7 +52,7 @@ session_start();
 
                             <p>都道府県　</p>
 
-                            <input type="text" style="width:100px" name="area" required>
+                            <input type="text" style="width:100px" name="prefecture" required>
 
                         </div>
 
@@ -63,6 +63,20 @@ session_start();
                             <input type="text" style="width:100px" name="address1" required>
 
                         </div>
+
+                            <div class="enter_BigInfoBox_A">
+                                <label class="required">エリア：</label>
+                                <select name="area">
+                                    <option value="1" selected>エリア</option>
+                                    <option value="北海道">北海道</option>
+                                    <option value="東北">東北</option>
+                                    <option value="関東">関東</option>
+                                    <option value="中部">中部</option>
+                                    <option value="関西">関西</option>
+                                    <option value="四国">四国</option>
+                                    <option value="九州">九州</option>
+                                </select>
+                            </div>
 
                     </div>
 
@@ -77,7 +91,7 @@ session_start();
                     <select name="theme">
                         <option value="教育">教育</option>
                         <option value="国際">国際</option>
-                        <option value="介護">介護</option>
+                        <option value="介護">福祉</option>
                         <option value="災害">災害</option>
                         <option value="お祭り">お祭り</option>
                         <option value="その他">その他</option>
