@@ -118,19 +118,30 @@ if (isset($userid)) {
                                     <button class="closePopup">戻る</button>
                                 </div>
 
-                                <div class="hidden-content-right">
-                                    <h3>イベント名：　
-                                        <?= $postdatas['EVENT_NAME'] ?>
-                                    </h3>
+                                    <div class="hidden-content-right">
+                                        <div class="word-break">
+                                            <div class="normal">
+                                                <h3>イベント名：　
+                                                    <?= $postdatas['EVENT_NAME'] ?>
+                                                </h3>
+                                            </div>
+                                    </div>        
+                                        
                                     <p>日時：　
                                         <?= $postdatas['SCHEDULE'] ?>
                                     </p>
                                     <p>場所：　
                                         <?= $postdatas['ADDRESS'] ?>
                                     </p>
-                                    <p>活動内容：　
-                                        <?= $postdatas['NOTE'] ?>
-                                    </p>
+
+                                    <div class="word-break">
+                                        <div class="normal">
+                                            <p>活動内容：　
+                                                <?= $postdatas['NOTE'] ?>
+                                            </p>    
+                                        </div>
+                                    </div>
+                                    
                                     <div class="word-break">
                                         <div class="normal">
                                             <p>感想：　

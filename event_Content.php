@@ -165,7 +165,11 @@ if ($eventdata['STATUS'] == "終了") {
             <div id="selfInfo_Box">
 
                 <!-- 団体名　-->
-                <h1><?= $hostdata['OWNER_NAME'] ?></h1>
+                <div class="word-break">
+                    <div class="normal">
+                        <h1><?= $hostdata['OWNER_NAME'] ?></h1>
+                    </div>
+                </div>
 
                 <!-- 団体紹介文　-->
                 <p id="selfInfo_title">団体紹介文</p>

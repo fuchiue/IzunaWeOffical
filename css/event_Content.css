@@ -34,7 +34,8 @@
 }
 
 #EV_Title img{
-    width: 50%;
+    width: 610px;
+    height: 327px;
 }
 
 
@@ -170,7 +171,7 @@
 .word-break div {
     margin-top: 20px;
     /* border: 2px solid red; */
-    width: 250px;
+    width: 430px;
 }
 
 #toHostPage{
