@@ -64,9 +64,13 @@ if (isset($userid)) {
                 </p>
             </div>
             <!-- ニックネーム　-->
-            <h1>
-                <?= $userdata['NICKNAME'] ?>
-            </h1>
+            <div class="word-break">
+                <div class="normal">
+                    <h1>
+                        <?= $userdata['NICKNAME'] ?>
+                    </h1>
+                </div>
+            </div>
 
             <!-- 自己紹介文　-->
             <p>自己紹介文</p>
