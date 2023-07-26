@@ -70,7 +70,7 @@ function hostGetjoinUser($id)
         WHERE E.OWNER_ID = :id
         AND J.STATUS="参加済み" 
         GROUP BY J.USER_ID
-        ORDER BY U.POINT DESC ;'; //ホストのIDのイベントに参加済みの人の情報を取得
+        ORDER BY U.POINT DESC'; //ホストのIDのイベントに参加済みの人の情報を取得
         $stmt = dbc()->prepare($sql); //SQLにbindValueできるようにする 
         $stmt->bindValue(':id', $id, PDO::PARAM_STR); //sqlの:idに変数の$idを代入
         $stmt->execute(); //実行
@@ -303,7 +303,7 @@ function TakePostData($userid)
 {
     $id = filter_var($userid, FILTER_SANITIZE_FULL_SPECIAL_CHARS); // ユーザー名をエスケープしてフィルタリングする
     $pdo = dbc();
-    $sql = "SELECT PHOTO,OWNER_ID FROM POST WHERE USER_ID=:userid";
+    $sql = "SELECT PHOTO,OWNER_ID FROM POST WHERE USER_ID=:userid ORDER BY POST_ID DESC";
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue(':userid', $id, PDO::PARAM_STR);
     $stmt->execute();
@@ -329,7 +329,7 @@ function TakeAllEventData($userid)
     $sql = "SELECT * FROM EVENT AS E INNER JOIN JOINED AS J
     ON J.EVENT_ID = E.EVENT_ID
     WHERE J.USER_ID = :userid
-    AND E.STATUS = '終了'";
+    AND J.STATUS='参加済み'";
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue(':userid', $id, PDO::PARAM_STR);
     $stmt->execute();
@@ -566,7 +566,8 @@ function TakePostEvent($userid)
     $sql = "SELECT P.PHOTO,P.OWNER_ID,P.COMMENT,E.EVENT_NAME,E.NOTE,E.SCHEDULE,E.ADDRESS FROM POST AS P 
     INNER JOIN EVENT AS E
     ON P.EVENT_ID = E.EVENT_ID
-    WHERE USER_ID=:userid";
+    WHERE USER_ID=:userid
+    ORDER BY E.SCHEDULE DESC";
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue(':userid', $id, PDO::PARAM_STR);
     $stmt->execute();

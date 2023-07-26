@@ -187,38 +187,26 @@ $photodatas = TakePostData($id); //投稿した写真を取得
                                     </div>
 
                                     <div class="information">
-                                        <p id="event01_Status"><?php if ($eventData['STATUS'] = "募集中") {
-
-                                                                ?>
-
-                                                <span style="color:blue;">募集中</span>
-
-                                            <?php
-
-                                                                } else {
-
-                                            ?>
-
-                                        <div style="color:red;">終了</div>
-
-                                    <?php
-
-                                                                }
-
-                                    ?></p>
-                                    <h3><?= $eventData['EVENT_NAME'] ?></h3>
-                                    <div class="EvCon_Date">
-                                        <h4>日時</h4>
-                                        <p id="#"><?php echo date("Y年m月d日 H:i", strtotime($eventData['SCHEDULE'])) ?></p>
-                                    </div>
-                                    <div class="EvCon_Place">
-                                        <h4>場所</h4>
-                                        <p id="#"><?= $eventData['ADDRESS'] ?></p>
-                                    </div>
-                                    <div class="EvCon_Theme">
-                                        <h4>テーマ</h4>
-                                        <p id="#"><?= $eventData['THEME'] ?></p>
-                                    </div>
+                                    <p id="<?php if ($eventData['STATUS'] == "募集中"){
+                                            echo 'event01_Status_Active';
+                                        }else{
+                                            echo 'event01_Status_Finished';
+                                        };?>">
+                                            <?= $eventData['STATUS'] ?>
+                                        </p>
+                                        <h3><?= $eventData['EVENT_NAME'] ?></h3>
+                                        <div class="EvCon_Date">
+                                            <h4>日時</h4>
+                                            <p id="#"><?php echo date("Y年m月d日 H:i", strtotime($eventData['SCHEDULE'])) ?></p>
+                                        </div>
+                                        <div class="EvCon_Place">
+                                            <h4>場所</h4>
+                                            <p id="#"><?= $eventData['ADDRESS'] ?></p>
+                                        </div>
+                                        <div class="EvCon_Theme">
+                                            <h4>テーマ</h4>
+                                            <p id="#"><?= $eventData['THEME'] ?></p>
+                                        </div>
                                     </div>
                                 </diV>
                             </div>
