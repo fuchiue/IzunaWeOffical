@@ -103,7 +103,7 @@
 
                 <label class="required" >団体紹介文：</label>
                 <div>
-                    <textarea name="introduction" placeholder="団体紹介文を入力してください"></textarea>
+                    <textarea maxlength="255" name="introduction" placeholder="団体紹介文を入力してください"></textarea>
                 </div>
 
                 <label class="required" class="signUp_BSmallBox">イベント募集のカテゴリー：</label>

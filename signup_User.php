@@ -55,7 +55,7 @@
                         </div>
                         <div class="singlebox">
                             <label class="required">ニックネーム：</label>
-                            <div><input type="text" name="nickname" required></div>
+                            <div><input type="text" name="nickname" maxlength="5" required></div>
                         </div>
                         <div class="singlebox">
                             <label class="required">電話番号：</label>
@@ -111,7 +111,7 @@
                 </div>
 
                 <label class="required">自己紹介文：</label>
-                <textarea name="introduction" placeholder="自己紹介文を入力してください" required></textarea>
+                <textarea maxlength="255" name="introduction" placeholder="自己紹介文を入力してください" required></textarea>
 
                 <label>スキル/資格：</label>
                 <input type="text" name="skill">
