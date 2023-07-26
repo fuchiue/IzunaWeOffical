@@ -171,7 +171,7 @@ $db = null;
 
                                     <div class="HP_userDetails">
 
-                                        <h2><?= $user["USER_NAME"] ?></h2>
+                                        <h2><?= $user["NICKNAME"] ?></h2>
 
                                         <div id="pointArea">
 
